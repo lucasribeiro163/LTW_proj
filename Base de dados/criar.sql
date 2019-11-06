@@ -31,12 +31,9 @@ DROP TABLE IF EXISTS Utilizador;
 CREATE TABLE Utilizador (
     idUtilizador    INTEGER PRIMARY KEY,
     nome            VARCHAR(30) NOT NULL, 
-    dataNascimento  DATE        NOT NULL, 
     email           VARCHAR(30) UNIQUE NOT NULL, 
-    telefone        VARCHAR(15) UNIQUE NOT NULL, 
-    morada          VARCHAR(250) NOT NULL, 
-    codigoPostal    VARCHAR(10) NOT NULL, 
-    idPais            INTEGER REFERENCES Pais (idPais) ON DELETE SET NULL ON UPDATE CASCADE
+    idPais          INTEGER REFERENCES Pais (idPais) ON DELETE SET NULL ON UPDATE CASCADE,
+    pass        VARCHAR(20) NOT NULL
 );
 
 -- Table: Cliente
@@ -167,15 +164,6 @@ CREATE TABLE TipoDeHabitacao (
     nome VARCHAR(30) UNIQUE NOT NULL
 );
 
--- Table: PoliticaDeCancelamento
-DROP TABLE IF EXISTS PoliticaDeCancelamento;
-
-CREATE TABLE PoliticaDeCancelamento (
-    idPolitica          INTEGER PRIMARY KEY,
-    nome        VARCHAR(25) UNIQUE NOT NULL, 
-    descricao   VARCHAR(500) NOT NULL, 
-    percentagemReembolso INTEGER CHECK (percentagemReembolso >= 0 AND percentagemReembolso <= 1)
-);
 
 -- Table: Habitacao
 DROP TABLE IF EXISTS Habitacao;
@@ -185,13 +173,10 @@ CREATE TABLE Habitacao (
     numQuartos  INTEGER CHECK (numQuartos > 0), 
     maxHospedes INTEGER CHECK (maxHospedes > 0), 
     morada      VARCHAR(250) UNIQUE NOT NULL, 
-    distCentro  INTEGER CHECK (distCentro >= 0), 
     precoNoite  REAL    CHECK (precoNoite > 0), 
-    taxaLimpeza REAL CHECK (taxaLimpeza >= 0), 
     classificacaoHabitacao INTEGER  CHECK(classificacaoHabitacao >= 1 AND classificacaoHabitacao <= 5), 
     idCidade      INTEGER REFERENCES Cidade (idCidade) ON DELETE CASCADE ON UPDATE CASCADE, 
-    idTipo        INTEGER REFERENCES TipoDeHabitacao (idTipo) ON DELETE SET NULL ON UPDATE CASCADE, 
-    idPolitica    INTEGER REFERENCES PoliticaDeCancelamento (idPolitica) ON DELETE RESTRICT ON UPDATE CASCADE
+    idTipo        INTEGER REFERENCES TipoDeHabitacao (idTipo) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- Table: Disponivel
@@ -239,5 +224,60 @@ CREATE TABLE Possui (
     idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE, 
     PRIMARY KEY (idHabitacao)
 );
+
+
+
+CREATE TRIGGER Restricao_Estado
+BEFORE INSERT ON ClassificacaoPorCliente
+FOR EACH ROW
+WHEN exists (SELECT * FROM Reserva WHERE Reserva.idReserva = New.idReserva AND Reserva.idEstado != 0)
+BEGIN
+    SELECT RAISE(IGNORE);
+END;
+
+CREATE TRIGGER Classificacao
+AFTER INSERT ON ClassificacaoPorCliente
+FOR EACH ROW
+BEGIN
+    UPDATE Anfitriao
+    SET classificacaoAnfitriao = (
+        SELECT AVG(classificacaoAnfitriao)
+        FROM (ClassificacaoPorCliente NATURAL JOIN (Reserva NATURAL JOIN (Habitacao NATURAL JOIN Possui))) AS E
+        WHERE E.idAnfitriao = Anfitriao.idAnfitriao
+    )
+    WHERE Anfitriao.idAnfitriao = (SELECT idAnfitriao FROM Possui WHERE Possui.idHabitacao = (SELECT idHabitacao FROM Reserva WHERE Reserva.idReserva = New.idReserva));
+
+    UPDATE Habitacao
+    SET classificacaoHabitacao = (
+        (
+        (SELECT AVG(limpeza)
+        FROM (ClassificacaoPorCliente NATURAL JOIN Reserva) AS E
+        WHERE E.idHabitacao = Habitacao.idHabitacao)
+        +
+        (SELECT AVG(valor)
+        FROM (ClassificacaoPorCliente NATURAL JOIN Reserva) AS E
+        WHERE E.idHabitacao = Habitacao.idHabitacao)
+        +
+        (SELECT AVG(checkIn)
+        FROM (ClassificacaoPorCliente NATURAL JOIN Reserva) AS E
+        WHERE E.idHabitacao = Habitacao.idHabitacao)
+        +
+        (SELECT AVG(localizacao)
+        FROM (ClassificacaoPorCliente NATURAL JOIN Reserva) AS E
+        WHERE E.idHabitacao = Habitacao.idHabitacao)
+        ) / 4
+    )
+    WHERE Habitacao.idHabitacao = (SELECT idHabitacao FROM Reserva WHERE Reserva.idReserva = New.idReserva);
+END;
+
+
+CREATE TRIGGER Disponibilidade
+AFTER INSERT ON Reserva
+FOR EACH ROW
+BEGIN
+    DELETE FROM Disponivel
+    WHERE Disponivel.idHabitacao = New.idHabitacao AND Disponivel.data >= New.dataCheckIn AND Disponivel.data <= New.dataCheckOut;
+END;
+
 
 COMMIT TRANSACTION;
