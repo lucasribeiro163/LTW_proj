@@ -17,6 +17,7 @@ CREATE TABLE item (
 );
 
 INSERT INTO user VALUES ('john', '$2y$12$cH5Hmh/4JgKSEM4ZCih1jOOSItL2WW.XZruOxkG0udohjH5xMu6FG');
+INSERT INTO user VALUES ('ttt', '1111');
 
 INSERT INTO list VALUES (NULL, 'Things to do', 'john');
 INSERT INTO list VALUES (NULL, 'Things NOT to do', 'john');
