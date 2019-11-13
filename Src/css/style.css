@@ -54,7 +54,7 @@ input[type=text], input[type=password] {
   background-color: var(--panel-color);
 }
 
-input[type="submit"], input[type="button"] {
+input[type="submit"], input[type="button"]{
   padding: 1em;
 
   background: var(--main-color);
@@ -68,6 +68,8 @@ input[type="submit"], input[type="button"] {
 
   text-transform: uppercase;
 }
+
+
 
 /**
  * Primary header
@@ -275,4 +277,28 @@ body > #messages .success {
   font-weight: bold;
 
   border-bottom: none;
+}
+
+/**
+ * Listing
+ */
+/*
+ #listing select[Type]{
+  font-size: 1.2em;
+  margin: 1em 0;
+  display: block;
+}*/
+
+#listing textarea, select{
+  font-size: 1.2em;
+  margin: 1em 0;
+  display: block;
+  width: 30%;
+}
+
+#listing input{
+  display: block;
+  margin: 1em 0;
+  width: 15%;
+  
 }
