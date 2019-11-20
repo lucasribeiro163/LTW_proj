@@ -1,12 +1,12 @@
 /**
  * Body
  */
-
+/*
 body {
   max-width: 80em;
   margin: 0 auto;
 
-  --bg-color: #EEE;
+  --bg-color: #FFF;
   --panel-color: #FFF;
 
   --main-color: #4169E1;
@@ -29,7 +29,7 @@ body {
 /**
  * Generic
  */
-
+/*
 a, p, input, li {
   font-family: var(--serif-font), serif;
 }
@@ -41,16 +41,11 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--sans-font), sans-serif;
-}
-
+}*/
+/*
 input[type=text], input[type=password] {
   box-sizing: border-box;
-
   padding: 1em 0;
-
-  border: 0;
-  border-bottom: 1px solid var(--light-color);
-
   background-color: var(--panel-color);
 }
 
@@ -67,14 +62,26 @@ input[type="submit"], input[type="button"]{
   border-radius: 2px;
 
   text-transform: uppercase;
+} */
+
+body {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
+body > header {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
 
+body > header img {
+  width: 4em;
+}
 
 /**
  * Primary header
  */
-
+/*
 body > header {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -116,12 +123,12 @@ body > header nav li {
 body > header nav li:last-child {
   border: none;
 }
-
+*/
 
 /**
  * Messages
  */
-
+/*
 body > #messages div {
   max-width: 40em;
   margin: 0 auto; 
@@ -138,11 +145,11 @@ body > #messages .success {
   color: var(--success-fg-color);
   background-color: var(--success-bg-color);
 }
-
+*/
 /**
  * Login
  */
-
+/*
 #login, #signup {
   width: 30em;
 
@@ -184,12 +191,12 @@ body > #messages .success {
 
   text-align: center;
   background-color: var(--panel-color);
-}
+}*/
 
 /**
  * Lists
  */
-
+/*
 #lists {
   display: flex;
   flex-wrap: wrap;
@@ -277,7 +284,7 @@ body > #messages .success {
   font-weight: bold;
 
   border-bottom: none;
-}
+}*/
 
 /**
  * Listing
@@ -289,16 +296,25 @@ body > #messages .success {
   display: block;
 }
 */
+
+
+
+/*
+
+
 #listing textarea, select{
   font-size: 1.2em;
   margin: 1em 0;
   display: block;
-  width: 30%;
 }
 
 #listing input{
   display: block;
   margin: 1em 0;
-  width: 15%;
-  
 }
+
+section#images {
+  margin: 1em;
+  overflow: hidden;
+}
+*/
