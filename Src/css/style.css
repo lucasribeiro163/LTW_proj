@@ -282,12 +282,6 @@ body > #messages .success {
 /**
  * Listing
  */
-/*
- #listing select[Type]{
-  font-size: 1.2em;
-  margin: 1em 0;
-  display: block;
-}*/
 
 #listing textarea, select{
   font-size: 1.2em;
