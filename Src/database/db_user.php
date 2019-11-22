@@ -21,6 +21,6 @@
     $options = ['cost' => 12];
 
     $stmt = $db->prepare('INSERT INTO Utilizador VALUES(NULL, ?, ?, ?, ?)');
-    $stmt->execute(array($username, $email, $idPais, password_hash($password, PASSWORD_DEFAULT, $options));
+    $stmt->execute(array($username, $email, $idPais, password_hash($password, PASSWORD_DEFAULT, $options)));
   }
 ?>

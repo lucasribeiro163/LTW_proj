@@ -4,7 +4,10 @@
  */ ?>
   <section id="login">
     
-    <header><h2>Login in</h2></header>
+  <header>
+      <h1>Welcome to our website</h1>
+      <h2>Please log in using your credentials</h2>
+    </header>
 
     <form method="post" action="../actions/action_login.php">
       <input type="text" name="username" placeholder="username" required>
@@ -17,6 +20,11 @@
     </footer>
 
   </section>
+
+  <section id="someImage">
+    <img src =https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg alt="house">
+  </section>
+  
 <?php } ?>
 
 <?php function draw_signup() { 
@@ -25,7 +33,10 @@
  */ ?>
   <section id="signup">
 
-    <header><h2>New Account</h2></header>
+    <header>
+      <h1>Get ready to start.</h1>
+      <h2>Please register so you can start.</h2>
+    </header>
 
     <form method="post" action="../actions/action_signup.php">
       <input type="text" name="username" placeholder="username" required> 
@@ -40,6 +51,11 @@
     </footer>
 
   </section>
+
+  <section id="someImage">
+    <img src =https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg alt="house">
+  </section>
+
 <?php }
 
 function draw_listing() { 
@@ -47,9 +63,8 @@ function draw_listing() {
  * Draws the signup section.
  */ ?>
   <section id="listing">
-
-    <header><h1>Create your home's listing</h1></header>
-    <h2>By filling the following requeriments</h2>
+    <header><h1>Create your home's listing.</h1></header>
+    <h2>By filling the following requeriments.</h2>
 
     <form method="post" action="../actions/action_signup.php">
       <input type="text" name="listingTitle" placeholder="Enter a title for the listing" required> 
@@ -73,8 +88,8 @@ function draw_listing() {
         <option value="basement suite">6</option>
         <option value="Tiny home">7</option>
       </select> 
-      <select name="Nr of bathrooms" required>
-        <option value="1" selected disabled>Nr of bathrooms</option>
+      <select name="Nr of bedrooms" required>
+        <option value="1" selected disabled>Nr of bedrooms</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -97,5 +112,9 @@ function draw_listing() {
       <input type="submit" value="Submit">
     </form>
 
+  </section>
+
+  <section id="images">
+    <img src =https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg alt="house">
   </section>
 <?php } ?>

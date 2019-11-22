@@ -1,7 +1,7 @@
 /**
  * Body
  */
-/*
+
 body {
   max-width: 80em;
   margin: 0 auto;
@@ -29,53 +29,81 @@ body {
 /**
  * Generic
  */
-/*
+
 a, p, input, li {
   font-family: var(--serif-font), serif;
+  color: var(--dark-color);
+  padding: 1em 0em 0em 1em;
 }
 
 a {
-  color: var(--main-color);
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--sans-font), sans-serif;
-}*/
-/*
-input[type=text], input[type=password] {
-  box-sizing: border-box;
-  padding: 1em 0;
-  background-color: var(--panel-color);
+h1 {
+  font-size: 1.4em;
+  font-family: var(--serif-font), sans-serif;
+  margin: 1em 0.2em 0em 0em;
+  padding: 0em;
 }
 
-input[type="submit"], input[type="button"]{
+h2, h3, h4, h5, h6 {
+  font-family: var(--serif-font), sans-serif;
+  font-size: 0.9em;
+  margin: 0em 0em 1.5em 1.5em;
+  padding: 0em;
+  color: var(--dark-color);
+}
+
+body {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+#signup, #login {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#signup a, #login a { 
+  color: var(--main-color);
+}
+
+input[type=text], input[type=password], input[type="button"] {
+  display: grid;
+  padding: 1em;
+  margin-bottom: 1em;
+  background-color: var(--panel-color);
+  width: 60%;
+  font-size: 1.05em;
+}
+
+/* buttons to submit are blue rectangle */
+input[type="submit"]{
   padding: 1em;
 
   background: var(--main-color);
   color: var(--panel-color);
 
   font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 1.2em;
+  font-size: 1em;
 
   border: none;
   border-radius: 2px;
 
   text-transform: uppercase;
-} */
+} 
 
-body {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-body > header {
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
-
+/* logo   */
 body > header img {
-  width: 4em;
+  width: 7em;
+  padding-top: 7%;
+}
+
+#someImage > img{
+  padding: 0em 0em 1em 0em;
+  border-style: solid;
+  max-width: 650px;
 }
 
 /**
