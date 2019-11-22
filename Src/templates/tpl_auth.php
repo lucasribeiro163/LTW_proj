@@ -114,7 +114,7 @@ function draw_listing() {
 
   </section>
 
-  <section id="images">
+  <section id="houseImage">
     <img src =https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg alt="house">
   </section>
 <?php } ?>

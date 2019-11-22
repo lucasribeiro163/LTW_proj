@@ -60,7 +60,7 @@ body {
   grid-template-columns: 40% 60%;
 }
 
-#signup, #login {
+#signup, #login, #listing {
   grid-column-start: 1;
   grid-column-end: 2;
 }
@@ -73,6 +73,7 @@ input[type=text], input[type=password], input[type="button"] {
   display: grid;
   padding: 1em;
   margin-bottom: 1em;
+  margin-inline-start: 1em;
   background-color: var(--panel-color);
   width: 60%;
   font-size: 1.05em;
@@ -92,7 +93,16 @@ input[type="submit"]{
   border-radius: 2px;
 
   text-transform: uppercase;
+  margin-inline-start: 1em;
 } 
+
+textarea, select {
+  font-size: 1.2em;
+  margin: 1em 0;
+  display: grid;
+  margin-inline-start: 1em;
+  width: 80%;
+}
 
 /* logo   */
 body > header img {
@@ -100,10 +110,11 @@ body > header img {
   padding-top: 7%;
 }
 
-#someImage > img{
-  padding: 0em 0em 1em 0em;
+#someImage > img, #houseImage > img {
+  margin: 0em 0em 1em 1em;
   border-style: solid;
   max-width: 650px;
+  overflow: hidden;
 }
 
 /**
@@ -317,32 +328,13 @@ body > #messages .success {
 /**
  * Listing
  */
-/*
- #listing select[Type]{
-  font-size: 1.2em;
-  margin: 1em 0;
-  display: block;
+
+#listing input[type=text] {
+  display: grid;
+  padding: 1em;
+  margin-bottom: 1em;
+  margin-inline-start: 1.4em;
+  background-color: var(--panel-color);
+  width: 75%;
+  font-size: 0.80em;
 }
-*/
-
-
-
-/*
-
-
-#listing textarea, select{
-  font-size: 1.2em;
-  margin: 1em 0;
-  display: block;
-}
-
-#listing input{
-  display: block;
-  margin: 1em 0;
-}
-
-section#images {
-  margin: 1em;
-  overflow: hidden;
-}
-*/
