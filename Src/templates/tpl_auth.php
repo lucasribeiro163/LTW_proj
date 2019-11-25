@@ -22,7 +22,7 @@
   </section>
 
   <section id="someImage">
-    <img src =https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg alt="house">
+    <img src ="http://projectus.pt/wp-content/uploads/2018/10/007.jpg" alt="house">
   </section>
   
 <?php } ?>
@@ -38,11 +38,12 @@
       <h2>Please register so you can start.</h2>
     </header>
 
-    <form method="post" action="../actions/action_signup.php">
+    <form method="post" action="../actions/action_signup.php">     
+      <input type="text" name="email" placeholder="email" required>
       <input type="text" name="username" placeholder="username" required> 
       <input type="text" name="name" placeholder="name" required>
       <input type="password" name="password" placeholder="password" required>
-      <input type="password" name="password" placeholder="password" required>
+      <input type="password" name="password" placeholder="password" required>     
       <input type="submit" value="Signup">
     </form>
 
@@ -53,7 +54,7 @@
   </section>
 
   <section id="someImage">
-    <img src =https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg alt="house">
+    <img src ="http://projectus.pt/wp-content/uploads/2018/10/007.jpg" alt="house">
   </section>
 
 <?php }
@@ -115,6 +116,59 @@ function draw_listing() {
   </section>
 
   <section id="houseImage">
-    <img src =https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg alt="house">
+    <img src ="http://projectus.pt/wp-content/uploads/2018/10/007.jpg" alt="house">
   </section>
-<?php } ?>
+<?php } 
+
+function draw_editProfile() { 
+  /**
+   * Draws the signup section.
+   */ ?>
+    <section id="editProfile">
+  
+      <header>
+        <h1>Looking for a change.</h1>
+        <h2>Edit your credentials below.</h2>
+      </header>
+  
+      <form method="post" action="../actions/action_signup.php">     
+        <input type="text" name="username" placeholder="username" required> 
+        <input type="text" name="name" placeholder="name" required>
+        <input type="text" name="email" placeholder="email" required>
+        <input type="password" name="password" placeholder="password" required>
+        <input type="password" name="password1" placeholder="confirm password" required>     
+        <select name="Country">
+          <option value="Other" selected disabled>Home Contry</option>     
+          <option value="Portugal">Portugal</option>
+          <option value="United States of America">United States of America</option>
+          <option value="Spain">Spain</option>
+          <option value="France">France</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Italy">Italy</option>
+          <option value="Japan">Japan</option>        
+          <option value="Angola">Angola</option>
+          <option value="Australia">Australia</option>
+          <option value="Finland">Finland</option>
+          <option value="Mali">Mali</option>
+          <option value="Peru">Peru</option>
+          <option value="Chile">Chile</option>
+          <option value="China">China</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="Turkey">Turkey</option>
+          <option value="Brazil">Brazil</option>
+          <option value="Argentina">Argentina</option>
+        </select> 
+        <input type="submit" value="edit">
+      </form>
+
+    </section>
+  
+    <section id="personImg">
+      <img src="https://fotos.web.sapo.io/i/B1e04a0bb/19478664_y37lu.png" alt="person pic">
+      <form action="upload_file.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+      </form>
+    </section>
+  
+  <?php }
+

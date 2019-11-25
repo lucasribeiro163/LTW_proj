@@ -60,7 +60,7 @@ body {
   grid-template-columns: 40% 60%;
 }
 
-#signup, #login, #listing {
+#signup, #login, #listing, #editProfile {
   grid-column-start: 1;
   grid-column-end: 2;
 }
@@ -69,13 +69,22 @@ body {
   color: var(--main-color);
 }
 
-input[type=text], input[type=password], input[type="button"] {
+input[type=text], input[type=password], input[type="button"], input[type="email"] {
   display: grid;
+  margin-bottom: 0.8em;
   padding: 1em;
-  margin-bottom: 1em;
   margin-inline-start: 1em;
   background-color: var(--panel-color);
-  width: 60%;
+  width: 80%;
+  font-size: 1.05em;
+}
+
+#signup select, #editProfile select {
+  display: grid;
+  margin-bottom: 0.8em;
+  margin-inline-start: 1em;
+  background-color: var(--panel-color);
+  width: 20%;
   font-size: 1.05em;
 }
 
@@ -107,15 +116,49 @@ textarea, select {
 /* logo   */
 body > header img {
   width: 7em;
-  padding-top: 7%;
+  padding: 7%;
 }
 
 #someImage > img, #houseImage > img {
-  margin: 0em 0em 1em 1em;
+  margin: 3em 0em 0em 2em;
   border-style: solid;
   max-width: 650px;
   overflow: hidden;
 }
+
+/**
+ * Listing
+ */
+
+#listing input[type=text] {
+  display: grid;
+  padding: 1em;
+  margin-bottom: 1em;
+  margin-inline-start: 1.4em;
+  background-color: var(--panel-color);
+  width: 75%;
+  font-size: 0.80em;
+}
+
+#listing select[name="Nr of bedrooms"], #listing select[name="Nr of bathrooms"]{
+  display: grid;
+  width: 40%;
+  grid-template-rows: 50% 50%;
+}
+
+/**
+ * editProfile
+ */
+#editProfile select {
+  width: 87%;
+  font-size: 1.15rem;
+}
+
+#personImg {
+  max-width: 180em;
+  padding: 2em 0em 0em 8em ;
+}
+
 
 /**
  * Primary header
@@ -324,17 +367,3 @@ body > #messages .success {
 
   border-bottom: none;
 }*/
-
-/**
- * Listing
- */
-
-#listing input[type=text] {
-  display: grid;
-  padding: 1em;
-  margin-bottom: 1em;
-  margin-inline-start: 1.4em;
-  background-color: var(--panel-color);
-  width: 75%;
-  font-size: 0.80em;
-}
