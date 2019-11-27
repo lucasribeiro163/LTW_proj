@@ -25,7 +25,17 @@ body {
 
   background-color: var(--bg-color);
 }
+/*
+  Footer
+*/
 
+footer > div {
+  background-color: var(--main-color);
+  padding: 10px;
+  text-align: center;
+  color:white;
+  font-size: 15px;
+}
 /**
  * Generic
  */

@@ -17,7 +17,6 @@
     </head>
 
     <body>
-
       <header>
         <img src =../../Mockups/logo2.png alt="Rent a Car">
          <!-- <i class="fas fa-bed"></i> Rent a house</a></h1> -->
@@ -43,6 +42,9 @@
 /**
  * Draws the footer for all pages.
  */ ?>
+   <footer id="f1"> 
+    <div>Rent A House.Inc</div>
+    </footer>
   </body>
 </html>
 <?php } ?>
