@@ -17,7 +17,6 @@
     </head>
 
     <body>
-
       <header>
         <h1><a href="login.php"><i class="fas fa-bed"></i> Rent a house</a></h1>
         <?php if ($username != NULL) { ?>
@@ -42,6 +41,9 @@
 /**
  * Draws the footer for all pages.
  */ ?>
+   <footer id="f1"> 
+    <div>Rent A House.Inc</div>
+    </footer>
   </body>
 </html>
 <?php } ?>
