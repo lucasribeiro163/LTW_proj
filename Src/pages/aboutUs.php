@@ -8,8 +8,6 @@
     die(header('Location: list.php'));
 
   draw_header(null);
-  draw_login();
- // draw_editProfile();
- //draw_listing();
+  draw_aboutUs();
   draw_footer();
 ?>

@@ -11,14 +11,15 @@
       <title>Rent a house</title>
       <meta charset="utf-8">
       <link rel="stylesheet" href="../css/style.css">
-   <!--   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
-      <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300" rel="stylesheet"> -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
+      <!--link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300" rel="stylesheet"> -->
       <script ="../js/main.js" defer></script>
     </head>
 
     <body>
       <header>
         <img src =../../Mockups/logo2.png alt="Rent a Car">
+        <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
          <!-- <i class="fas fa-bed"></i> Rent a house</a></h1> -->
         <?php if ($username != NULL) { ?>
           <nav>
