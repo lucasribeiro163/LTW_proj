@@ -4,6 +4,7 @@
 
   $username = $_POST['username'];
   $password = $_POST['password'];
+  $name = $_POST['name'];
 
   // Don't allow certain characters
   if ( !preg_match ("/^[a-zA-Z0-9]+$/", $username)) {

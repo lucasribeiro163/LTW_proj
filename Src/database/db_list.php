@@ -2,78 +2,88 @@
   include_once('../includes/database.php');
 
   /**
-   * Returns the lists belonging to a certain user.
+   * Returns the ids of houses belonging to a certain user.
    */
-  function getUserLists($username) {
+  function getUserHouseIds($user_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM list WHERE username = ?');
-    $stmt->execute(array($username));
+    $stmt = $db->prepare('SELECT idHabitacao FROM Possui WHERE idAnfitriao = ?');
+    $stmt->execute(array($user_id));
     return $stmt->fetchAll(); 
   }
 
   /**
-   * Returns the items belonging to a certain list.
+   * Returns all the info from a hoyse with id equal to house_id
    */
-  function getListItems($list_id) {
+  function getHouseInfoArray($house_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM item WHERE list_id = ?');
-    $stmt->execute(array($list_id));
+    $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
     return $stmt->fetchAll(); 
   }
 
   /**
-   * Inserts a new list into the database.
+   * Inserts a new house into the database.
    */
-  function insertList($list_name, $username) {
+  function insertHouse($nr_bedrooms, $max_people, $price, $rating, $city_id, $type_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('INSERT INTO list VALUES(NULL, ?, ?)');
-    $stmt->execute(array($list_name, $username));
+    $stmt = $db->prepare('INSERT INTO Habitacao VALUES(NULL, ? , ? , ? , ? , ? , ? )');
+    $stmt->execute(array($nr_bedrooms, $max_people, $price, $rating, $city_id, $type_id));
   }
 
   /**
-   * Verifies if a user owns a list.
+   * Verifies if a user owns a House with id house_id
    */
-  function checkIsListOwner($username, $list_id) {
+  function checkIsHouseOwner($user_id, $house_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM list WHERE username = ? AND list_id = ?');
-    $stmt->execute(array($username, $list_id));
+    $stmt = $db->prepare('SELECT * FROM Possui WHERE idAnfitriao = ? AND idHabitacao = ?');
+    $stmt->execute(array($user_id, $house_id));
     return $stmt->fetch()?true:false; // return true if a line exists
   }
 
   /**
-   * Inserts a new item into a list.
+   * Changes house price
    */
-  function insertItem($item_text, $list_id) {
+  function changePrice($house_id, $new_price) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('INSERT INTO item VALUES(NULL, ?, 0, ?)');
-    $stmt->execute(array($item_text, $list_id));
+    $stmt = $db->prepare('UPDATE Habitacao SET precoNoite = ? WHERE idHabitcao = ?;');
+    $stmt->execute(array($new_price, $house_id));
   }
 
   /**
-   * Returns a certain item from the database.
+   * Deletes a user from database
    */
-  function getItem($item_id) {
+  function deleteUser($user_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM item WHERE item_id = ?');
-    $stmt->execute(array($item_id));
-    return $stmt->fetch();
+    $stmt = $db->prepare('DELETE FROM Utilizador WHERE idUtilizador = ?');
+    $stmt->execute(array($user_id));
   }
 
   /**
-   * Deletes a certain item from the database.
+   * Deletes a house from database
    */
-  function deleteItem($item_id) {
+  function deleteHouse($house_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('DELETE FROM item WHERE item_id = ?');
-    $stmt->execute(array($item_id));
+    $stmt = $db->prepare('DELETE FROM Habitacao WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
   }
 
   /**
-   * Toggles the done state of a certain item.
+   * Set Reservation state has completed
    */
-  function toggleItem($item_id) {
+  function toggleReservation($reservation_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('UPDATE item SET item_done = 1 - item_done WHERE item_id = ?');
-    $stmt->execute(array($item_id));
+    $stmt = $db->prepare('UPDATE Reserva SET idEstado = 2 WHERE idReserva = ?');
+    $stmt->execute(array($reservation_id));
   }
+
+  /**
+   * Creates a new reservation
+   */
+  function createReservation($check_in, $check_out, $nr_people, $price, $house_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('INSERT INTO Reserva VALUES(NULL, ? , ? , ? , ? , 0 , ? )');
+    $stmt->execute(array($check_in, $check_out, $nr_people, $price, $house_id));
+  }
+
 ?>
+
