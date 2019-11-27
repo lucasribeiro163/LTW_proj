@@ -279,26 +279,20 @@ body > header nav li:last-child {
  */
 
 body > #messages div {
-  max-width: 100%;
-  margin: 4 auto; 
+  max-width: 90%;
+  margin: 2em 1em 1em 1em;
   padding: 1em;
   text-align: center;
-  grid-column-start: 1;
-  grid-column-end: 3;
 }
 
 body > #messages .error {
   color: var(--error-fg-color);
   background-color: var(--error-bg-color);
-  grid-column-start: 1;
-  grid-column-end: 3;
 }
 
 body > #messages .success {
   color: var(--success-fg-color);
   background-color: var(--success-bg-color);
-  grid-column-start: 1;
-  grid-column-end: 3;
 }
 
 /**

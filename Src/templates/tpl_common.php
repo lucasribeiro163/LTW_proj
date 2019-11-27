@@ -12,11 +12,10 @@
       <meta charset="utf-8">
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
-      <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300" rel="stylesheet">
+      <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|+Sans+Condensed:300">
       <script src="../js/main.js" defer></script>
     </head>
     
-
     <body>
       <header id="options">
         <img src =../../Mockups/logo2.png alt="Rent a house">
