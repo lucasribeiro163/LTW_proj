@@ -174,10 +174,10 @@ function draw_aboutUs(){
   </section>
 
   <section id="descriptionAbout">
-      <h3><p>This company started with the sole purpose of finding you, the home of your dreams.
+      <h3><p>This company started with the sole purpose of helping you find the home of your dreams.
          We quickly noticed a big hole in the market for an easy way to rent houses without dealing with the tedious process of it all.</p>
-       <p> With Rent A House, it is as easy as clicling a button. All our houses are verified for your safety. 
-         Feel free to add your home or to look at our great range of selection and enjoy!</p></h3>
+       <p> With Rent A House, it is as easy as clicking a button. All the houses available on this website are verified for your safety. 
+         Feel free to add your home or to look around at our great range of selection and enjoy!</p></h3>
     </section>
 
 <?php 
