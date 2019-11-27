@@ -31,7 +31,7 @@ body {
  * Generic
  */
 
-a, p, input, li {
+ a, p, input, li {
   font-family: var(--serif-font), serif;
   color: var(--dark-color);
   padding: 1em 0em 0em 1em;
@@ -147,7 +147,6 @@ body > header img {
   margin-right: 70%;
 }
 
-/* about us  */
 body > header  i {
   font-size: 1.5em;
   padding: 1%;
@@ -162,7 +161,6 @@ textarea {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-
 /* login & signup */
 
 #someImage > img, #houseImage > img {
@@ -181,11 +179,48 @@ textarea {
   grid-column-end: 2;
 }
 
+/*
+ *About Us
+*/
+#aboutUs{
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: var(--light-color);
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#aboutUs h1{
+  margin: 0;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+  font-size: 100px;
+  color: var(--bg-color);
+}
+
+#descriptionAbout {
+  margin: 0;
+  text-align: center;
+  position: relative;
+  float: left;
+  left: 10%;
+  align-self: auto;
+  width: 75%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#descriptionAbout > h3 {
+  margin-bottom: 0;
+  font-size: 20px;
+  padding-top: 3.5em;
+}
+
 /**
  * Listing
  */
  
-#listing > form {
+ #listing > form {
   display: grid;
   grid-template-columns: 50% 50%;
 }
@@ -207,7 +242,7 @@ textarea {
  * editProfile
  */
 
-#editProfile select {
+ #editProfile select {
   width: 88%;
 }
 
@@ -216,69 +251,11 @@ textarea {
   padding: 2% 0% 0% 30% ;
 }
 
-/*
-  About Us
-*/
-/*#aboutUs {
-
-}
-
-#aboutUsInfo {
-
-}*/
-
-/**
- * Primary header
- */
-/*
-body > header {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-
-  margin: 0;
-  padding: 1em;
-
-  font-size: 2em;
-  text-align: center;
-
-  color: var(--dark-color);
-}
-
-body > header h1 {
-  margin: 0;
-  flex-grow: 1;
-  grid-column-start: 2;
-}
-
-body > header h1 i {
-  color: var(--main-color);
-}
-
-body > header h1 a {
-  font-family: var(--sans-font), sans-serif;
-}
-
-body > header nav ul {
-  padding: 0;
-}
-
-body > header nav li {
-  display: inline-block;
-  font-size: 0.5em;
-  border-right: 1px solid var(--dark-color);
-  padding: 0 1em;
-}
-
-body > header nav li:last-child {
-  border: none;
-}
-*/
-
 /**
  * Messages
  */
 
-body > #messages div {
+ body > #messages div {
   max-width: 90%;
   margin: 2em 1em 1em 1em;
   padding: 1em;
@@ -295,51 +272,15 @@ body > #messages .success {
   background-color: var(--success-bg-color);
 }
 
-/**
- * Login
- */
 /*
-#login, #signup {
-  width: 30em;
+  About Us
+*/
+/*#aboutUs {
 
-  margin: 2em auto;
-
-  border: 1px solid var(--light-color);
-
-  background: white;
 }
 
-#login header, #signup header {
-  color: var(--panel-color);
-  padding: 2em 0;
-  text-align: center;
-  text-transform: uppercase;
-  background: var(--main-color);  
-}
+#aboutUsInfo {
 
-#login header h2, #signup header h2 {
-  margin: 0;
-}
-
-#login form, #signup form {
-  margin: 0;
-  padding: 1em;
-
-  background-color: var(--panel-color);
-} 
-
-#login input, #signup input {
-  display: block;
-  margin: 1em 0;
-  width: 100%;
-}
-
-#login footer p, #signup footer p {
-  margin: 0;
-  padding-bottom: 2em;
-
-  text-align: center;
-  background-color: var(--panel-color);
 }*/
 
 /**

@@ -18,7 +18,7 @@
     
     <body>
       <header id="options">
-        <img src =../../Mockups/logo2.png alt="Rent a house">
+      <a href="../../Src/pages/login.php"><img src =../../Mockups/logo2.png alt="Rent a house"></a>
         <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
           <?php if ($username != NULL) { ?>
           <nav>
