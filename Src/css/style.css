@@ -31,7 +31,7 @@ body {
  * Generic
  */
 
-a, p, input, li {
+ a, p, input, li {
   font-family: var(--serif-font), serif;
   color: var(--dark-color);
   padding: 1em 0em 0em 1em;
@@ -57,23 +57,7 @@ h2, h3, h4, h5, h6 {
 }
 
 body {
-  margin: 0;
-  padding: 0;
   display: grid;
-  grid-template-columns: 40% 80%;
-}
-
-#signup, #login, #listing, #editProfile {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  padding: 2em;
-}
-
-#signup a, #login a { 
-  color: var(--main-color);
-}
-
-input[type=text], input[type=password], input[type="button"], input[type="email"] {
   grid-template-columns: 1fr auto;
 }
 
@@ -162,11 +146,8 @@ body > header img {
   width: 7em;
   margin-right: 70%;
 }
-/*
- * icon
-*/
-body > header  a {
-  padding: 0;
+
+body > header  i {
   font-size: 1.5em;
   padding: 1%;
 }
@@ -180,15 +161,24 @@ textarea {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-
 /* login & signup */
 
 #someImage > img, #houseImage > img {
   margin: 3em 0em 10em 2em;
   border-style: solid;
-  max-width: 900px;
+  max-width: 650px;
   overflow: hidden;
 }
+
+#signup a, #login a { 
+  color: var(--main-color);
+}
+
+#signup, #login, #listing, #editProfile {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
 /*
  *About Us
 */
@@ -203,7 +193,7 @@ textarea {
 #aboutUs h1{
   margin: 0;
   padding-top: 0.5em;
-  padding-bottom: 1.5em;
+  padding-bottom: 1em;
   font-size: 100px;
   color: var(--bg-color);
 }
@@ -219,25 +209,15 @@ textarea {
   margin-bottom: 0;
   font-size: 20px;
   width: 50%;
-  padding-top: 4em;
+  padding-top: 3.5em;
   padding-left:17em;
-}
-
-
-#signup a, #login a { 
-  color: var(--main-color);
-}
-
-#signup, #login, #listing, #editProfile {
-  grid-column-start: 1;
-  grid-column-end: 2;
 }
 
 /**
  * Listing
  */
  
-#listing > form {
+ #listing > form {
   display: grid;
   grid-template-columns: 50% 50%;
 }
@@ -259,7 +239,7 @@ textarea {
  * editProfile
  */
 
-#editProfile select {
+ #editProfile select {
   width: 88%;
 }
 
@@ -267,217 +247,3 @@ textarea {
   max-width: 160em;
   padding: 2% 0% 0% 30% ;
 }
-
-/**
- * Primary header
- */
-/*
-body > header {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-
-  margin: 0;
-  padding: 1em;
-
-  font-size: 2em;
-  text-align: center;
-
-  color: var(--dark-color);
-}
-
-body > header h1 {
-  margin: 0;
-  flex-grow: 1;
-  grid-column-start: 2;
-}
-
-body > header h1 i {
-  color: var(--main-color);
-}
-
-body > header h1 a {
-  font-family: var(--sans-font), sans-serif;
-}
-
-body > header nav ul {
-  padding: 0;
-}
-
-body > header nav li {
-  display: inline-block;
-  font-size: 0.5em;
-  border-right: 1px solid var(--dark-color);
-  padding: 0 1em;
-}
-
-body > header nav li:last-child {
-  border: none;
-}
-*/
-
-/**
- * Messages
- */
-
-body > #messages div {
-  max-width: 100%;
-  margin: 4 auto; 
-  padding: 1em;
-  text-align: center;
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
-body > #messages .error {
-  color: var(--error-fg-color);
-  background-color: var(--error-bg-color);
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
-body > #messages .success {
-  color: var(--success-fg-color);
-  background-color: var(--success-bg-color);
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
-/**
- * Login
- */
-/*
-#login, #signup {
-  width: 30em;
-
-  margin: 2em auto;
-
-  border: 1px solid var(--light-color);
-
-  background: white;
-}
-
-#login header, #signup header {
-  color: var(--panel-color);
-  padding: 2em 0;
-  text-align: center;
-  text-transform: uppercase;
-  background: var(--main-color);  
-}
-
-#login header h2, #signup header h2 {
-  margin: 0;
-}
-
-#login form, #signup form {
-  margin: 0;
-  padding: 1em;
-
-  background-color: var(--panel-color);
-} 
-
-#login input, #signup input {
-  display: block;
-  margin: 1em 0;
-  width: 100%;
-}
-
-#login footer p, #signup footer p {
-  margin: 0;
-  padding-bottom: 2em;
-
-  text-align: center;
-  background-color: var(--panel-color);
-}*/
-
-/**
- * Lists
- */
-/*
-#lists {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;	
-}
-
-#lists article.list {
-  border: 1px solid black;
-
-  margin: 1em;
-  background-color: var(--panel-color);
-
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-
-#lists article.list header{
-  background-color: var(--main-color);
-  padding: 1em;
-}
-
-#lists article.list header h2{
-  color: var(--panel-color);
-  margin: 0;
-}
-
-#lists article.list ol{
-  padding: 1em;
-}
-
-#lists article.list ol li{
-  display: block;
-
-  margin: 0;
-  padding: 1em 1em 1em 0;
-}
-
-#lists article.list ol li a{
-  float: left;
-  padding: 0 .5em 0 0;
-  visibility: hidden;
-}
-
-#lists article.list ol li:hover a{
-  visibility: visible;
-}
-
-#lists article.list ol li label{
-  display: block;
-  max-width: 20em;
-}
-
-#lists article.list ol li label input{
-  float: right;
-}
-
-#lists article.list form {
-  padding: 1em;
-}
-
-#lists article.list form input {
-  width: 100%;
-  padding: 1em;
-}
-
-#lists article.new-list {
-  border: 1px solid black;
-
-  margin: 1em;
-  background-color: var(--panel-color);
-}
-
-#lists article.new-list form {
-  background-color: var(--main-color);
-}
-
-#lists article.new-list form input {
-  padding: .5em;
-
-  color: var(--panel-color);
-  background-color: var(--main-color);
-
-  font-family: var(--sans-font);
-  font-size: 1.5em;
-  font-weight: bold;
-
-  border-bottom: none;
-}*/
