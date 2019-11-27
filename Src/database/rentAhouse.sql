@@ -1,4 +1,3 @@
-PRAGMA foreign_keys = ON;
 BEGIN TRANSACTION;
 
 -- Table: Agenda
@@ -875,8 +874,8 @@ insert into Cidade(idCidade, nome, idPais) values(33,"Auckland", 15);
 insert into Cidade(idCidade, nome, idPais) values(34,"Istambul", 16);
 insert into Cidade(idCidade, nome, idPais) values(35,"Rio de Janeiro", 17);
 insert into Cidade(idCidade, nome, idPais) values(36,"Buenos Aires", 18);
-
-insert into Utilizador (idUtilizador, nome, dataNascimento, email, telefone, morada, codigoPostal, idPais) values (1,"José Ribeiro", "jribeiro@gmail.com", 1);
+/*
+insert into Utilizador (idUtilizador, nome, email, telefone, morada, codigoPostal, idPais) values (1,"José Ribeiro", "jribeiro@gmail.com", 1);
 insert into Utilizador (idUtilizador, nome, dataNascimento, email, telefone, morada, codigoPostal, idPais) values (2,"Stuart Little", "slittle@gmail.com", 2);
 insert into Utilizador (idUtilizador, nome, dataNascimento, email, telefone, morada, codigoPostal, idPais) values (3,"Marta Silva", "msilva15@gmail.com", 1);
 insert into Utilizador (idUtilizador, nome, dataNascimento, email, telefone, morada, codigoPostal, idPais) values (4,"Ricardo Sousa", "rsousa@gmail.com", 1);
@@ -1745,3 +1744,4 @@ insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros
 insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idReserva, idCliente) values (4,4,3,5,NULL,5,"Casa muito bem localizada", 13, 16);
 insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idReserva, idCliente) values (5,5,3,3,NULL,5,"Anfitriao atencioso e preocupado. Boa experiencia.", 18, 10);
 insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idReserva, idCliente) values (5,5,3,3,NULL,5,"Anfitriao atencioso. Cesto de boas vindas a chegada e um pormenor muito bom.", 8, 15);
+*/

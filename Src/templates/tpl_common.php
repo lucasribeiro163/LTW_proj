@@ -5,23 +5,23 @@
  * link.
  */?>
   <!DOCTYPE html>
-  <html>
+  <html lang="en-us">
 
     <head>
       <title>Rent a house</title>
       <meta charset="utf-8">
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
-      <!--link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300" rel="stylesheet"> -->
-      <script ="../js/main.js" defer></script>
+      <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300" rel="stylesheet">
+      <script src="../js/main.js" defer></script>
     </head>
+    
 
     <body>
-      <header>
-      <a href="../../Src/pages/login.php"><img src =../../Mockups/logo2.png alt="Rent a Car"></a>
+      <header id="options">
+      <a href="../../Src/pages/login.php"><img src =../../Mockups/logo2.png alt="Rent a house"></a>
         <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
-         <!-- <i class="fas fa-bed"></i> Rent a house</a></h1> -->
-        <?php if ($username != NULL) { ?>
+          <?php if ($username != NULL) { ?>
           <nav>
             <ul>
               <li><?=$username?></li>
@@ -44,7 +44,7 @@
  * Draws the footer for all pages.
  */ ?>
    <footer id="f1"> 
-    Rent A House, Inc
+    <div>Rent A House.Inc</div>
     </footer>
   </body>
 </html>
