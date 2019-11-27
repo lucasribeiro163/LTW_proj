@@ -7,6 +7,7 @@ body {
   margin: 0 auto;
 
   --bg-color: #FFF;
+  --black-color: #000;
   --panel-color: #EEE;
 
   --main-color: #4169E1;
@@ -25,24 +26,6 @@ body {
 
   background-color: var(--bg-color);
 }
-/*
-  Footer
-*/
-
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-footer {
-  padding: 10px;
-  text-align: center;
-  color:black;
-  font-size: 15px;
-  margin-top: auto;
-}
-
 
 /**
  * Generic
@@ -61,7 +44,7 @@ a {
 h1 {
   font-size: 1.4em;
   font-family: var(--serif-font), sans-serif;
-  margin: 1em 0.2em 0em 0em;
+  margin: 1.2em 0em 0.2em 0em;
   padding: 0em;
 }
 
@@ -75,12 +58,12 @@ h2, h3, h4, h5, h6 {
 
 body {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 1fr auto;
 }
 
 input {
   display: grid;
-  margin-bottom: 0.8em;
+  margin-bottom: 0.9em;
   padding: 1em;
   margin-inline-start: 1em;
   background-color: var(--panel-color);
@@ -92,7 +75,7 @@ input {
 
 form {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 0.5fr auto;
 }
 
 select {
@@ -110,28 +93,64 @@ select {
 input[type="submit"]{
   background: var(--main-color);
   color: var(--panel-color);
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: sans-serif;
   font-size: 1em;
   border: none;
   border-radius: 2px;
   text-transform: uppercase;
   margin-top: 2em;
-  margin-bottom: 10em;
   margin-inline-start: 1em;
   grid-column-start: 1;
   grid-column-end: 2;
-  height: 20%;
+  width: 110%;
+  padding: 1em;
 } 
 
 form > p {
-  margin-top: 2em;
-  margin-left: 3em;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin: 2em 0em 0em 5em;
 }
+
+/*
+  Footer
+*/
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  text-align: center;
+  font-size: 15px;
+  margin-top: auto; 
+  grid-column-start: 1;
+  grid-column-end: 3;
+  color: var(--black-color);
+  width: 100%;
+}
+
+/*
+  Body Header
+*/
+
+body > header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: var(--light-color);
+} 
 
 /* logo   */
 body > header img {
   width: 7em;
-  padding: 7%;
+  margin-right: 70%;
+}
+
+/* about us  */
+body > header  i {
+  font-size: 1.5em;
+  padding: 1%;
 }
 
 textarea {
@@ -147,7 +166,7 @@ textarea {
 /* login & signup */
 
 #someImage > img, #houseImage > img {
-  margin: 3em 0em 0em 2em;
+  margin: 3em 0em 10em 2em;
   border-style: solid;
   max-width: 650px;
   overflow: hidden;
@@ -165,6 +184,7 @@ textarea {
 /**
  * Listing
  */
+ 
 #listing > form {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -196,6 +216,16 @@ textarea {
   padding: 2% 0% 0% 30% ;
 }
 
+/*
+  About Us
+*/
+/*#aboutUs {
+
+}
+
+#aboutUsInfo {
+
+}*/
 
 /**
  * Primary header
@@ -247,24 +277,30 @@ body > header nav li:last-child {
 /**
  * Messages
  */
-/*
+
 body > #messages div {
-  max-width: 40em;
-  margin: 0 auto; 
+  max-width: 100%;
+  margin: 4 auto; 
   padding: 1em;
   text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 body > #messages .error {
   color: var(--error-fg-color);
   background-color: var(--error-bg-color);
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 body > #messages .success {
   color: var(--success-fg-color);
   background-color: var(--success-bg-color);
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
-*/
+
 /**
  * Login
  */

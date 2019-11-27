@@ -12,7 +12,7 @@
     $stmt->execute(array($username));
 
     $user = $stmt->fetch();
-    return $user !== false && password_verify($password, $user['password']);
+    return ($password == $user['pass']);
   }
 
   function insertUser($username, $password, $email, $idPais) {

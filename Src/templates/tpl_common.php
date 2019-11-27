@@ -11,14 +11,16 @@
       <title>Rent a house</title>
       <meta charset="utf-8">
       <link rel="stylesheet" href="../css/style.css">
-   <!--   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
-      <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300" rel="stylesheet"> -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300" rel="stylesheet">
       <script src="../js/main.js" defer></script>
     </head>
+    
 
     <body>
-      <header>
+      <header id="options">
         <img src =../../Mockups/logo2.png alt="Rent a house">
+        <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
           <?php if ($username != NULL) { ?>
           <nav>
             <ul>
@@ -42,7 +44,7 @@
  * Draws the footer for all pages.
  */ ?>
    <footer id="f1"> 
-    Rent A House. Inc
+    <div>Rent A House.Inc</div>
     </footer>
   </body>
 </html>

@@ -12,7 +12,7 @@
   <form method="post" action="../actions/action_login.php">
     <input type="text" name="username" placeholder="username" required>
     <input type="password" name="password" placeholder="password" required>
-    <input type="submit" value="Login">
+    <input type="submit" value="login">
     <p>Don't have an account? <a href="signup.php">Signup!</a></p>
   </form>
 
@@ -36,11 +36,11 @@
     </header>
 
     <form method="post" action="../actions/action_signup.php">     
-      <input type="text" name="email" placeholder="email" required>
+      <input type="email" name="email" placeholder="email" required>
       <input type="text" name="username" placeholder="username" required> 
       <input type="text" name="name" placeholder="name" required>
       <input type="password" name="password" placeholder="password" required>
-      <input type="password" name="password" placeholder="password" required>     
+      <input type="password" name="password1" placeholder="password" required>     
       <input type="submit" value="Signup">
       <p>Already have an account? So just <a href="login.php">Login!</a></p>
     </form>
@@ -165,3 +165,19 @@ function draw_editProfile() {
   
   <?php }
 
+function draw_aboutUs(){
+  /**
+   * Draws the about us section.
+   */ ?>
+  <section id="aboutUs">
+    <header>
+      <h1>About Us</h1>
+      </header>
+  </section>
+
+  <section id="aboutUsInfo">
+    Something, something
+  </section>
+
+<?php 
+}
