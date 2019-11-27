@@ -7,17 +7,14 @@
   <header>
       <h1>Welcome to our website</h1>
       <h2>Please log in using your credentials</h2>
-    </header>
+  </header>
 
-    <form method="post" action="../actions/action_login.php">
-      <input type="text" name="username" placeholder="username" required>
-      <input type="password" name="password" placeholder="password" required>
-      <input type="submit" value="Login">
-    </form>
-
-    <footer>
-      <p>Don't have an account? <a href="signup.php">Signup!</a></p>
-    </footer>
+  <form method="post" action="../actions/action_login.php">
+    <input type="text" name="username" placeholder="username" required>
+    <input type="password" name="password" placeholder="password" required>
+    <input type="submit" value="Login">
+    <p>Don't have an account? <a href="signup.php">Signup!</a></p>
+  </form>
 
   </section>
 
@@ -45,12 +42,8 @@
       <input type="password" name="password" placeholder="password" required>
       <input type="password" name="password" placeholder="password" required>     
       <input type="submit" value="Signup">
-    </form>
-
-    <footer>
       <p>Already have an account? So just <a href="login.php">Login!</a></p>
-    </footer>
-
+    </form>
   </section>
 
   <section id="someImage">

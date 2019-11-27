@@ -5,7 +5,7 @@
  * link.
  */?>
   <!DOCTYPE html>
-  <html>
+  <html lang="en-us">
 
     <head>
       <title>Rent a house</title>
@@ -13,15 +13,13 @@
       <link rel="stylesheet" href="../css/style.css">
    <!--   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
       <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300" rel="stylesheet"> -->
-      <script ="../js/main.js" defer></script>
+      <script src="../js/main.js" defer></script>
     </head>
 
     <body>
-
       <header>
-        <img src =../../Mockups/logo2.png alt="Rent a Car">
-         <!-- <i class="fas fa-bed"></i> Rent a house</a></h1> -->
-        <?php if ($username != NULL) { ?>
+        <img src =../../Mockups/logo2.png alt="Rent a house">
+          <?php if ($username != NULL) { ?>
           <nav>
             <ul>
               <li><?=$username?></li>
@@ -43,6 +41,9 @@
 /**
  * Draws the footer for all pages.
  */ ?>
+   <footer id="f1"> 
+    <div>Rent A House.Inc</div>
+    </footer>
   </body>
 </html>
 <?php } ?>
