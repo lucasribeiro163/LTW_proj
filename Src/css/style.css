@@ -29,12 +29,17 @@ body {
   Footer
 */
 
-footer > div {
-  background-color: var(--main-color);
+#f1{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: var(--panel-color);
   padding: 10px;
   text-align: center;
   color:white;
   font-size: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 /**
  * Generic

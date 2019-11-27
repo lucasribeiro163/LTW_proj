@@ -43,7 +43,7 @@
  * Draws the footer for all pages.
  */ ?>
    <footer id="f1"> 
-    <div>Rent A House.Inc</div>
+    Rent A House, Inc
     </footer>
   </body>
 </html>
