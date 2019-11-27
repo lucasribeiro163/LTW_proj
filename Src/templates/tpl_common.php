@@ -18,7 +18,7 @@
 
     <body>
       <header>
-        <img src =../../Mockups/logo2.png alt="Rent a Car">
+      <a href="../../Src/pages/login.php"><img src =../../Mockups/logo2.png alt="Rent a Car"></a>
         <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
          <!-- <i class="fas fa-bed"></i> Rent a house</a></h1> -->
         <?php if ($username != NULL) { ?>
