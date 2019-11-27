@@ -7,7 +7,7 @@ body {
   margin: 0 auto;
 
   --bg-color: #FFF;
-  --panel-color: #FFF;
+  --panel-color: #EEE;
 
   --main-color: #4169E1;
 
@@ -25,17 +25,7 @@ body {
 
   background-color: var(--bg-color);
 }
-/*
-  Footer
-*/
 
-footer > div {
-  background-color: var(--main-color);
-  padding: 10px;
-  text-align: center;
-  color:white;
-  font-size: 15px;
-}
 /**
  * Generic
  */
@@ -123,10 +113,39 @@ textarea, select {
   width: 80%;
 }
 
+/*
+  Footer
+*/
+
+#f1{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 10px;
+  color:var(--dark-color);
+  font-size: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/*
+  Body Header
+*/
+body > header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: var(--light-color);
+}
+
 /* logo   */
 body > header img {
   width: 7em;
-  padding: 7%;
+  /*padding: 7%;*/
+}
+
+/* about us  */
+body > header  i {
+  font-size: 1.5em;
 }
 
 #someImage > img, #houseImage > img {
@@ -169,6 +188,16 @@ body > header img {
   padding: 2em 0em 0em 8em ;
 }
 
+/*
+  About Us
+*/
+/*#aboutUs {
+
+}
+
+#aboutUsInfo {
+
+}*/
 
 /**
  * Primary header

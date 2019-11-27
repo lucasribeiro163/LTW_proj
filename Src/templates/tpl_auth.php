@@ -172,3 +172,19 @@ function draw_editProfile() {
   
   <?php }
 
+function draw_aboutUs(){
+  /**
+   * Draws the about us section.
+   */ ?>
+  <section id="aboutUs">
+    <header>
+      <h1>About Us</h1>
+      </header>
+  </section>
+
+  <section id="aboutUsInfo">
+    Something, something
+  </section>
+
+<?php 
+}
