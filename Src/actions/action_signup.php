@@ -20,10 +20,10 @@
   }
 
   try {
-    insertUser($username, $password, $email, null);
+    insertUser($username, $password, $email, $name);
     $_SESSION['username'] = $username;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
-    header('Location: ../pages/list.php');
+    header('Location: ../pages/editProfile.php');
   } catch (PDOException $e) {
     die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');

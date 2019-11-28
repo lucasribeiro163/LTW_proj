@@ -28,7 +28,8 @@ CREATE TABLE Cidade (
 DROP TABLE IF EXISTS Utilizador;
 
 CREATE TABLE Utilizador (
-    idUtilizador    INTEGER PRIMARY KEY,
+    idUtilizador   INTEGER IDENTITY(1,1) PRIMARY KEY,
+    username       VARCHAR(30) NOT NULL, 
     nome            VARCHAR(30) NOT NULL, 
     email           VARCHAR(30) UNIQUE NOT NULL, 
     idPais          INTEGER REFERENCES Pais (idPais) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -875,22 +876,14 @@ insert into Cidade(idCidade, nome, idPais) values(34,"Istambul", 16);
 insert into Cidade(idCidade, nome, idPais) values(35,"Rio de Janeiro", 17);
 insert into Cidade(idCidade, nome, idPais) values(36,"Buenos Aires", 18);
 
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (1,"José Ribeiro", "jribeiro@gmail.com", 1, "crocodilo1");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (2,"Stuart Little", "slittle@gmail.com", 2, "tartaruga2");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (3,"Marta Silva", "msilva15@gmail.com", 1, "leao3");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (4,"Ricardo Sousa", "rsousa@gmail.com", 1, "tigre4");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (5,"Penélope Cruz", "pcruz@gmail.com", 3, "hipopotamo5");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (6,"Kit Harington", "kharington@gmail.com", 5, "formiga6");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (7,"Monica Bellucci", "mbelluci@gmail.com", 6, "pato7");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (8,"Chris Hemsworth", "chemsworth@gmail.com", 9, "rinoceronte8");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (9,"Duarte Lima", "dlima@gmail.com", 1, "zebra9");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (10,"Desmond Miles", "dmiles@gmail.com", 2, "pinguim10");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (11,"Hugh Oliver", "holiver@gmail.com", 1, "ursopolar11");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (12,"Manuel Sousa","msousa@gmail.com", 1, "galinha12");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (13,"Rodrigo Lima", "rlima@gmail.com", 11, "puma13");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (14,"Esteves Trindade", "etrindade123@gmail.com", 13, "jaguar14");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (15,"Lolla Trappezi", "lollita123@gmail.com", 6, "papagaio15");
-insert into Utilizador (idUtilizador, nome, email, idPais, pass) values (16,"Vladimir Trotski", "trotski@gmail.com", 16, "flamingo16");
+insert into Utilizador ( username, nome,  email, idPais, pass) values ( "Jose", "José Ribeiro", "jribeiro@gmail.com", 1, "crocodilo1");
+insert into Utilizador ( username, nome, email, idPais, pass) values ( "Stuart","Stuart Little", "slittle@gmail.com", 2, "tartaruga2");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Marta", "Marta Silva", "msilva15@gmail.com", 1, "leao3");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Ricardo", "Ricardo Sousa", "rsousa@gmail.com", 1, "tigre4");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Penélope","Penélope Cruz", "pcruz@gmail.com", 3, "hipopotamo5");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Kit", "Kit Harington", "kharington@gmail.com", 5, "formiga6");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Monica", "Monica Bellucci", "mbelluci@gmail.com", 6, "pato7");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Chris","Chris Hemsworth", "chemsworth@gmail.com", 9, "rinoceronte8");
 
 insert into Anfitriao (idAnfitriao, classificacaoAnfitriao) values (1, NULL); 
 insert into Anfitriao (idAnfitriao, classificacaoAnfitriao) values (2, NULL);

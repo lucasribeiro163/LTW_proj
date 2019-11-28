@@ -1,6 +1,6 @@
 <?php
   include_once('../includes/database.php');
-
+  
   /**
    * Returns the ids of houses belonging to a certain user.
    */

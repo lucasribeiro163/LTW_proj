@@ -41,7 +41,7 @@
       <input type="text" name="name" placeholder="name" required>
       <input type="password" name="password" placeholder="password" required>
       <input type="password" name="password1" placeholder="password" required>     
-      <input type="submit" value="Signup">
+      <input type="submit" value="signup">
       <p>Already have an account? So just <a href="login.php">Login!</a></p>
     </form>
   </section>
