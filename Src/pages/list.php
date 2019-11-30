@@ -11,7 +11,7 @@
   // Lists owned by the user currently logged in
   $lists = getUserLists($_SESSION['username']);
   foreach ($lists as $k => $list)
-    $lists[$k]['list_items'] = getListItems($list['list_id']);
+    $lists[$k]['list_items'] = getListItems($list['classificacaoAnfitriao']);
 
   draw_header($_SESSION['username']);
   draw_lists($lists);

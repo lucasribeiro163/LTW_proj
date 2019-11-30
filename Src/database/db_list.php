@@ -1,5 +1,12 @@
 <?php
   include_once('../includes/database.php');
+
+  function getUserLists($username) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Possui WHERE idAnfitriao = ?');
+    $stmt->execute(array($username));
+    return $stmt->fetchAll(); 
+  }
   
   /**
    * Returns the ids of houses belonging to a certain user.

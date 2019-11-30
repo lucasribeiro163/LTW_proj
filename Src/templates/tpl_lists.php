@@ -5,7 +5,9 @@
  * each list.
  */ ?>
   <section id="lists">
-
+  
+<h1><?=$list['list_items']?></h1>
+  <h1>loool</h1>
   <?php 
     foreach($lists as $list)
       draw_list($list);
@@ -29,7 +31,7 @@
  */ ?>
   <article class="list">
     <header><h2><?=$list['list_name']?></h2></header>
-
+  
     <ol>
       <?php 
         foreach ($list['list_items'] as $item)
