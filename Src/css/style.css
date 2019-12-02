@@ -46,6 +46,7 @@ h1 {
   font-size: 1.4em;
   font-family: var(--serif-font), sans-serif;
   margin: 1.2em 0em 0.2em 0em;
+  margin-inline-start: 1em;
   padding: 0em;
 }
 
@@ -55,18 +56,19 @@ h2, h3, h4, h5, h6 {
   margin: 0em 0em 1.5em 1.5em;
   padding: 0em;
   color: var(--dark-color);
+  margin-inline-start: 3em;
 }
 
 body {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 0.85fr auto;
 }
 
 input {
   display: grid;
   margin-bottom: 0.9em;
   padding: 1em;
-  margin-inline-start: 1em;
+  margin-inline-start: 1.5em;
   background-color: var(--panel-color);
   width: 80%;
   font-size: 1.05em;
@@ -105,6 +107,7 @@ input[type="submit"]{
   grid-column-end: 2;
   width: 110%;
   padding: 1em;
+  margin-inline-start: 2em;
 } 
 
 form > p {
@@ -165,10 +168,10 @@ textarea {
 /* login & signup */
 
 #someImage > img, #houseImage > img {
-  margin: 3em 0em 10em 2em;
+  margin: 6.5em 1em 5em 4em;
   border-style: solid;
-  max-width: 650px;
-  overflow: hidden;
+  max-width: 550px;
+  overflow: auto;
 }
 
 #signup a, #login a { 
@@ -278,10 +281,34 @@ body > #messages .success {
 *Article
 */
 
+body > #lists { 
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-template-columns: 33.4% 33.3% 33.3%;
+}
+
 #lists article{
-  display: flex;
   border-style: solid;
   justify-content: space-around; 
+  margin: 1em;
+  overflow: hidden;
+  border-radius: 25px;
+  padding: 1em;
+}
+
+#Info {
+  font-size: 1.4em;
+}
+
+#options > nav ul {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 10% 10% 10% 10%;
+  list-style-type: none;
+}
+
+#options > nav li {
+  margin-inline-start: 350%;
 }
 
 

@@ -40,7 +40,7 @@
   $image = "https://utcdn.utsource.info/m_540x420/public/nopic.jpg";
   else $image = $url[0]['urlImagem'];
 ?>
-<img src="<?php echo $image; ?>"></img>
+<img src="<?php echo $image; ?>" alt="house image"></img>
 <section id="Info">
   <h2><?=$item['titulo']?></h2>
   <section id="address">

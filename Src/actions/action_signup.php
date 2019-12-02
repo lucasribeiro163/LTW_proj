@@ -23,7 +23,7 @@
     insertUser($username, $password, $email, $name);
     $_SESSION['username'] = $username;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
-    header('Location: ../pages/editProfile.php');
+    header('Location: ../pages/main_page.php');
   } catch (PDOException $e) {
     die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
