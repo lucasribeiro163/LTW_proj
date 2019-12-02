@@ -4,16 +4,16 @@
 
   // Verify if user is logged in
   if (!isset($_SESSION['username']))
-    die(header('Location: ../pages/login.php'));
+    die(header('Location: ../page/login.php'));
 
   $list_id = $_POST['list_id'];
   $item_text = $_POST['item_text'];
 
   // Verify if user owns the list
   if (!checkIsListOwner($_SESSION['username'], $list_id))
-    die(header('Location: ../pages/list.php'));
+    die(header('Location: ../pages/main_page.php'));
 
   insertItem($item_text, $list_id);
 
-  header('Location: ../pages/list.php');
+  header('Location: ../pages/main_page.php');
 ?>

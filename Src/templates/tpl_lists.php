@@ -6,18 +6,10 @@
  */ ?>
   <section id="lists">
   
-<h1><?=$list['list_items']?></h1>
-  <h1>loool</h1>
-  <?php 
-    foreach($lists as $list)
-      draw_list($list);
+  <?php
+    foreach($lists as $list){
+     draw_list($list);}
   ?>
-
-  <article class="new-list">
-    <form action="../actions/action_add_list.php" method="post">
-      <input type="text" name="list_name" placeholder="Add list">
-    </form>
-  </article>
 
   </section>
 <?php } ?>
@@ -30,20 +22,10 @@
  * fields.
  */ ?>
   <article class="list">
-    <header><h2><?=$list['list_name']?></h2></header>
-  
-    <ol>
       <?php 
         foreach ($list['list_items'] as $item)
           draw_item($item);
       ?>
-    </ol>
-
-    <form action="../actions/action_add_item.php" method="post">
-      <input type="hidden" name="list_id" value="<?=$list['list_id']?>">
-      <input type="text" name="item_text" placeholder="Add item">
-    </form>
-
   </article>
 <?php } ?>
 
@@ -51,12 +33,20 @@
 /**
  * Draws a single item. Expects each item to have
  * an item_id, item_done and item_text fields. 
- **/ ?>
-  <li>
-    <a href="../actions/action_delete_item.php?item_id=<?=$item['item_id']?>&csrf=<?=$_SESSION['csrf']?>"><i class="fas fa-trash"></i></a>
-    <label>
-      <input type="checkbox" <?=$item['item_done']?'checked':''?> data-id="<?=$item['item_id']?>">
-      <?=htmlspecialchars($item['item_text'])?>
-    </label>
-  </li>
+ **/
+  $cidade = getCity($item['idCidade']);
+  $url =  getHousePhoto($item['idHabitacao']);
+  if($url == null)
+  $image = "https://utcdn.utsource.info/m_540x420/public/nopic.jpg";
+  else $image = $url[0]['urlImagem'];
+?>
+<img src="<?php echo $image; ?>"></img>
+<section id="Info">
+  <h2><?=$item['titulo']?></h2>
+  <section id="address">
+    <?=htmlspecialchars($item['morada'])?>
+    ,
+    <?=print_r($cidade[0]['nome'])?>
+  </section>
+</section>
 <?php } ?>

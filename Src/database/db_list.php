@@ -1,13 +1,34 @@
 <?php
   include_once('../includes/database.php');
 
-  function getUserLists($username) {
+  function getHouses() {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM Possui WHERE idAnfitriao = ?');
-    $stmt->execute(array($username));
+    $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao');
+    $stmt->execute();
+    return $stmt->fetchAll(); 
+  }
+
+  function getHouseItems($house_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
+    return $stmt->fetchAll(); 
+  }
+
+  function getCity($city_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT nome FROM Cidade WHERE idCidade = ?');
+    $stmt->execute(array($city_id));
     return $stmt->fetchAll(); 
   }
   
+  function getHousePhoto($house_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT urlImagem FROM Fotografia WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
+    return $stmt->fetchAll(); 
+  }
+
   /**
    * Returns the ids of houses belonging to a certain user.
    */

@@ -172,7 +172,9 @@ CREATE TABLE Habitacao (
     idHabitacao INTEGER PRIMARY KEY,
     numQuartos  INTEGER CHECK (numQuartos > 0), 
     maxHospedes INTEGER CHECK (maxHospedes > 0), 
-    morada      VARCHAR(250) UNIQUE NOT NULL, 
+    titulo      TEXT NOT NULL,
+    descricaoHabitacao   TEXT NOT NULL, 
+    morada      TEXT UNIQUE NOT NULL, 
     precoNoite  REAL    CHECK (precoNoite > 0), 
     classificacaoHabitacao INTEGER  CHECK(classificacaoHabitacao >= 1 AND classificacaoHabitacao <= 5), 
     idCidade      INTEGER REFERENCES Cidade (idCidade) ON DELETE CASCADE ON UPDATE CASCADE, 
@@ -943,24 +945,24 @@ insert into TipoDeHabitacao(idTipo,nome) values (6,"Quarto Privado");
 insert into TipoDeHabitacao(idTipo,nome) values (7,"Quarto Partilhado");
 insert into TipoDeHabitacao(idTipo,nome) values (8,"Hostel");
 
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (1,3,7,"Av. Afonso Henriques 9035", 35, NULL, 7, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (2,5,10,"Rua S. Caetano, s/n",40, NULL, 8, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (3,1,2,"Rua da Boavista",35, NULL, 1, 6);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (4,1,1,"Praceta Joao XXI",80, NULL, 3, 5);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (5,4,9,"Av. Esteves Alberto 645", 33, NULL, 8, 6);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (6,3,3,"Rua D.Pedro III, s/n", 40, NULL, 7, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (7,2,4,"Rua da Trindade",43, NULL, 3, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (8,1,2,"Praca Joao I", 23, NULL, 3, 5);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (9,3,7,"Rua do Algarve, 23", 23, NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (1,3,7,"casa fixe","reserva-me pff!","Av. Afonso Henriques 9035", 35, NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (2,5,10,"casa fixe","reserva-me pff!","Rua S. Caetano, s/n",40, NULL, 8, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (3,1,2,"casa fixe","reserva-me pff!","Rua da Boavista",35, NULL, 1, 6);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (4,1,1,"casa fixe","reserva-me pff!","Praceta Joao XXI",80, NULL, 3, 5);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (5,4,9,"casa fixe","reserva-me pff!","Av. Esteves Alberto 645", 33, NULL, 8, 6);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (6,3,3,"casa fixe","reserva-me pff!","Rua D.Pedro III, s/n", 40, NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (7,2,4,"casa fixe","reserva-me pff!","Rua da Trindade",43, NULL, 3, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (8,1,2,"casa fixe","reserva-me pff!","Praca Joao I", 23, NULL, 3, 5);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (9,3,7,"casa fixe","reserva-me pff!","Rua do Algarve, 23", 23, NULL, 7, 2);
 
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (10,3,5,"Rua do Olhar, 23", 50, NULL, 7, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (11,3,3,"Rua da Gaivota, 30", 70,  NULL, 7, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (12,3,10,"Praca D. Pedro, 10", 300, NULL, 7, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (13,3,5,"Rua do Mar, 1", 23, NULL, 7, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (14,3,6,"Rua da Alegria, 1000", 20,  NULL, 7, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (15,3,8,"Rua do Sal, 14", 60,  NULL, 7, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (16,3,4,"Rua da Areia, 70", 85, NULL, 7, 2);
-insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, precoNoite, classificacaoHabitacao, idCidade, idTipo) values (17,3,7,"Rua do Algarve, 500", 890, NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (10,3,5,"casa fixe","reserva-me pff!","Rua do Olhar, 23", 50, NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (11,3,3,"casa fixe","reserva-me pff!","Rua da Gaivota, 30", 70,  NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (12,3,10,"casa fixe","reserva-me pff!","Praca D. Pedro, 10", 300, NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (13,3,5,"casa fixe","reserva-me pff!","Rua do Mar, 1", 23, NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (14,3,6,"casa fixe","reserva-me pff!","Rua da Alegria, 1000", 20,  NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (15,3,8,"casa fixe","reserva-me pff!","Rua do Sal, 14", 60,  NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (16,3,4,"casa fixe","reserva-me pff!","Rua da Areia, 70", 85, NULL, 7, 2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (17,3,7,"casa fixe","reserva-me pff!","Rua do Algarve, 500", 890, NULL, 7, 2);
 
 insert into Disponivel (idHabitacao, data) values (1, '2019-06-01');   
 insert into Disponivel (idHabitacao, data) values (1, '2019-06-02');
@@ -1616,7 +1618,7 @@ insert into Favorito(idCliente, idHabitacao) values (8, 5);
 insert into Favorito(idCliente, idHabitacao) values (9, 5);
 insert into Favorito(idCliente, idHabitacao) values (5, 3);
 
-insert into Fotografia(urlImagem,legenda, idHabitacao) values ("bit.ly/jHDSA", "Cozinha", 1);
+insert into Fotografia(urlImagem,legenda, idHabitacao) values ("https://specials-images.forbesimg.com/imageserve/1026205392/960x0.jpg?fit=scale", "Cozinha", 1);
 insert into Fotografia(urlImagem,legenda, idHabitacao) values ("bit.ly/Ohds", "Jacuzzi", 1);
 insert into Fotografia(urlImagem,legenda, idHabitacao) values ("bit.ly/OhMt", "Piscina Interior", 1);
 insert into Fotografia(urlImagem,legenda, idHabitacao) values ("bit.ly/GtdsaeIy", "Quarto 1", 1);

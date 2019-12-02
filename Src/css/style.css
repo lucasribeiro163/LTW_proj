@@ -3,8 +3,9 @@
  */
 
 body {
-  max-width: 80em;
-  margin: 0 auto;
+  margin: 0;
+  width: 100%;
+  background-size: cover;
 
   --bg-color: #FFF;
   --black-color: #000;
@@ -272,16 +273,17 @@ body > #messages .success {
   background-color: var(--success-bg-color);
 }
 
-/*
-  About Us
-*/
-/*#aboutUs {
 
+/*
+*Article
+*/
+
+#lists article{
+  display: flex;
+  border-style: solid;
+  justify-content: space-around; 
 }
 
-#aboutUsInfo {
-
-}*/
 
 /**
  * Lists

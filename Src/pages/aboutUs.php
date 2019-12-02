@@ -5,9 +5,9 @@
 
   // Verify if user is logged in
   if (isset($_SESSION['username']))
-    die(header('Location: list.php'));
-
-  draw_header(null);
+    draw_header($_SESSION['username']);
+  else draw_header(null);
+  
   draw_aboutUs();
   draw_footer();
 ?>

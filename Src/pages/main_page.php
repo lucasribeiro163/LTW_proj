@@ -8,10 +8,10 @@
   if (!isset($_SESSION['username']))
     die(header('Location: login.php'));
 
-  // Lists owned by the user currently logged in
-  $lists = getUserLists($_SESSION['username']);
+  // Lists of all houses
+  $lists = getHouses();
   foreach ($lists as $k => $list)
-    $lists[$k]['list_items'] = getListItems($list['classificacaoAnfitriao']);
+    $lists[$k]['list_items'] = getHouseItems($list['idHabitacao']);
 
   draw_header($_SESSION['username']);
   draw_lists($lists);

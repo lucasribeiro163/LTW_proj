@@ -14,5 +14,5 @@
 
   insertList($list_name, $username);
 
-  header('Location: ../pages/list.php');
+  header('Location: ../pages/main_page.php');
 ?>
