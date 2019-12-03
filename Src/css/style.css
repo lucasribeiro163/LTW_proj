@@ -61,7 +61,7 @@ h2, h3, h4, h5, h6 {
 
 body {
   display: grid;
-  grid-template-columns: 0.85fr auto;
+  grid-template-columns: 0.90fr auto;
 }
 
 input {
@@ -73,12 +73,12 @@ input {
   width: 80%;
   font-size: 1.05em;
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
 }
 
 form {
   display: grid;
-  grid-template-columns: 0.5fr auto;
+  grid-template-columns: auto 20% 50%;
 }
 
 select {
@@ -102,18 +102,15 @@ input[type="submit"]{
   border-radius: 2px;
   text-transform: uppercase;
   margin-top: 2em;
-  margin-inline-start: 1em;
-  grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
   width: 110%;
-  padding: 1em;
-  margin-inline-start: 2em;
 } 
 
 form > p {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  margin: 2em 0em 0em 5em;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  margin-left: 5em;
 }
 
 /*
@@ -131,8 +128,10 @@ footer {
   margin-top: auto; 
   grid-column-start: 1;
   grid-column-end: 3;
-  color: var(--black-color);
   width: 100%;
+  border-top: 0.05em;
+  border-top-style: solid;
+  border-color: var(--light-color);
 }
 
 /*
@@ -170,8 +169,8 @@ textarea {
 #someImage > img, #houseImage > img {
   margin: 6.5em 1em 5em 4em;
   border-style: solid;
-  max-width: 550px;
-  overflow: auto;
+  max-width: 570px;
+  overflow: scroll;
 }
 
 #signup a, #login a { 

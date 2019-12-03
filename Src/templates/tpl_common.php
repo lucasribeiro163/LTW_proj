@@ -43,7 +43,7 @@
  * Draws the footer for all pages.
  */ ?>
    <footer id="f1"> 
-    <div>Rent A House.Inc</div>
+    <div>© 2019 Rent A House, Inc. All rights reserved.</div>
     </footer>
   </body>
 </html>
