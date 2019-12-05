@@ -141,18 +141,22 @@ footer {
 body > header {
   grid-column-start: 1;
   grid-column-end: 3;
-  background-color: var(--light-color);
+  background-color: var(--bg-color);
+  
 } 
 
 /* logo   */
 body > header img {
-  width: 7em;
+  width: 10em;
+  margin-top: 1%;
   margin-right: 70%;
 }
 
 body > header  i {
   font-size: 1.5em;
   padding: 1%;
+  padding-right: 0%;
+  margin-left: 15%;
 }
 
 textarea {
@@ -167,9 +171,11 @@ textarea {
 /* login & signup */
 
 #someImage > img, #houseImage > img {
-  margin: 6.5em 1em 5em 4em;
+  margin: 0em 0em 0em 0em;
   border-style: solid;
-  max-width: 570px;
+  border-width: 0.5em;
+  max-width: 1200px;
+  margin-left: 10%;
   overflow: scroll;
 }
 
@@ -178,9 +184,88 @@ textarea {
 }
 
 #signup, #login, #listing, #editProfile {
+  padding-top: 10%;
+  padding-left: 10%;
   grid-column-start: 1;
   grid-column-end: 2;
+
 }
+
+
+#login > header {
+
+  margin-top: 15%;
+  font-size: 120%;
+  margin-bottom: 7%;
+
+}
+
+#login > header > h1,h2,h3 {
+
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+#login > form {
+
+  width: 85%;
+
+}
+
+
+#login > form > input{
+
+  padding: 1.6%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+
+
+#login > form > input[type="submit"]{
+
+  padding: 5%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  height: 40%;
+}
+
+
+#login > form > p{
+
+  padding: 6%;
+  margin-top: 6%;
+  margin-left: 20%;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  padding-left: 0%;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+
+
+
+
+
+#f1 {
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top-color: #FFF;
+  color: black;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+
+}
+
+
+
+
 
 /*
  *About Us
@@ -308,6 +393,22 @@ body > #lists {
 
 #options > nav li {
   margin-inline-start: 350%;
+}
+
+#house_details > h3{
+
+  font-size: 2.2em;
+  margin: 2em;
+
+}
+
+#house_details > #address{
+
+  font-size: 1.2em;
+  margin-left: 5em;
+  margin-top: 0em;
+  color: grey;
+
 }
 
 
