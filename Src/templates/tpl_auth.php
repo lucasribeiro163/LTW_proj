@@ -13,13 +13,13 @@
     <input type="text" name="username" placeholder="username" required>
     <input type="password" name="password" placeholder="password" required>
     <input type="submit" value="login">
-    <p>Don't have an account? <a href="signup.php">Signup!</a></p>
+    <p>Don't have an account?<a href="signup.php">Signup!</a></p>
   </form>
 
   </section>
 
   <section id="someImage">
-    <img src ="http://projectus.pt/wp-content/uploads/2018/10/007.jpg" alt="house">
+    <img src ="https://airbnb.design/wp-content/uploads/2018/08/Plus-living.jpg" alt="house">
   </section>
   
 <?php } ?>

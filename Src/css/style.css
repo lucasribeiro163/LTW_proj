@@ -142,12 +142,15 @@ body > header {
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: var(--bg-color);
+  border-bottom: solid;
+  border-bottom-color: #f3f3f3;
+  border-bottom-width: 2px;
   
 } 
 
 /* logo   */
 body > header img {
-  width: 10em;
+  width: 9em;
   margin-top: 1%;
   margin-right: 70%;
 }
@@ -156,6 +159,7 @@ body > header  i {
   font-size: 1.5em;
   padding: 1%;
   padding-right: 0%;
+  padding-top: 0em;
   margin-left: 15%;
 }
 
@@ -175,8 +179,18 @@ textarea {
   border-style: solid;
   border-width: 0.5em;
   max-width: 1200px;
+  height: 710px;
   margin-left: 10%;
   overflow: scroll;
+}
+
+#login{
+
+
+  margin-left: 60px;
+  font-size: 17px;
+
+
 }
 
 #signup a, #login a { 
@@ -213,10 +227,14 @@ textarea {
 }
 
 
-#login > form > input{
+#login > form > input[type="text"], input[type="password"]{
 
   padding: 1.6%;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-color: #CCC;
+  border-style: solid;
+  border-radius: 7px;
+  background: var(--bg-color);
 
 
 }
@@ -228,6 +246,8 @@ textarea {
   grid-column-start: 1;
   grid-column-end: 2;
   height: 40%;
+  border-radius: 7px;
+  
 }
 
 
@@ -248,7 +268,7 @@ textarea {
 
 
 
-
+/*cor a branco porque queria que vissem se acham melhor sem isto*/
 #f1 {
 
   position: fixed;
@@ -256,7 +276,7 @@ textarea {
   bottom: 0;
   width: 100%;
   border-top-color: #FFF;
-  color: black;
+  color: white;
   text-align: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
