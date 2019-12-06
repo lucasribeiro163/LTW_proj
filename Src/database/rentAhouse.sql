@@ -1,22 +1,13 @@
 BEGIN TRANSACTION;
 
--- Table: Agenda
-DROP TABLE IF EXISTS Agenda;
-
 CREATE TABLE Agenda (
     data DATE PRIMARY KEY 
 );
-
--- Table: Pais
-DROP TABLE IF EXISTS Pais;
 
 CREATE TABLE Pais (
     idPais      INTEGER PRIMARY KEY,
     nome    VARCHAR(15) UNIQUE NOT NULL 
 );
-
--- Table: Cidade
-DROP TABLE IF EXISTS Cidade;
 
 CREATE TABLE Cidade (
     idCidade      INTEGER PRIMARY KEY,
@@ -24,11 +15,8 @@ CREATE TABLE Cidade (
     idPais    INTEGER REFERENCES Pais (idPais) 
 );
 
--- Table: Utilizador
-DROP TABLE IF EXISTS Utilizador;
-
 CREATE TABLE Utilizador (
-    idUtilizador   INTEGER IDENTITY(1,1) PRIMARY KEY,
+    id INTEGER IDENTITY(1,1) PRIMARY KEY,
     username       VARCHAR(30) NOT NULL, 
     nome            VARCHAR(30) NOT NULL, 
     email           VARCHAR(30) UNIQUE NOT NULL, 
@@ -36,44 +24,28 @@ CREATE TABLE Utilizador (
     pass        VARCHAR(20) NOT NULL
 );
 
--- Table: Cliente
-DROP TABLE IF EXISTS Cliente;
-
 CREATE TABLE Cliente (
-    idCliente  INTEGER REFERENCES Utilizador(idUtilizador)  ON DELETE CASCADE ON UPDATE CASCADE,
+    idCliente  INTEGER REFERENCES Utilizador(id)  ON DELETE CASCADE ON UPDATE CASCADE,
     classificacaoCliente INTEGER CHECK(classificacaoCLiente >= 1 AND classificacaoCliente <= 5),
     PRIMARY KEY(idCliente)
 );
 
-
--- Table: Anfitriao
-DROP TABLE IF EXISTS Anfitriao;
-
 CREATE TABLE Anfitriao (
-    idAnfitriao INTEGER REFERENCES Utilizador(idUtilizador)  ON DELETE CASCADE ON UPDATE CASCADE,
+    idAnfitriao INTEGER REFERENCES Utilizador(id)  ON DELETE CASCADE ON UPDATE CASCADE,
     classificacaoAnfitriao INTEGER CHECK(classificacaoAnfitriao >= 1 AND classificacaoAnfitriao <= 5),
     PRIMARY KEY(idAnfitriao)
 );
-
--- Table: MetodoDePagamento
-DROP TABLE IF EXISTS MetodoDePagamento;
 
 CREATE TABLE MetodoDePagamento (
     idMetodo      INTEGER PRIMARY KEY,
     nome    VARCHAR(25) UNIQUE NOT NULL
 );
 
--- Table: Aceita
-DROP TABLE IF EXISTS Aceita;
-
 CREATE TABLE Aceita ( 
     anfitriao   INTEGER REFERENCES Anfitriao (idAnfitriao) ON DELETE CASCADE ON UPDATE CASCADE, 
     idMetodo      INTEGER  REFERENCES MetodoDePagamento(idMetodo) ON DELETE CASCADE ON UPDATE CASCADE, 
     PRIMARY KEY (anfitriao, idMetodo)
 );
-
--- Table: Reserva
-DROP TABLE IF EXISTS Reserva;
 
 CREATE TABLE Reserva (
     idReserva          INTEGER PRIMARY KEY, 
@@ -86,15 +58,10 @@ CREATE TABLE Reserva (
     UNIQUE (dataCheckIn, idHabitacao)
 );
 
-DROP TABLE IF EXISTS Estado;
-
 CREATE TABLE Estado (
     idEstado      INTEGER PRIMARY KEY,                 
     estado  CHAR(9) UNIQUE NOT NULL
 );
-
--- Table: Cancelamento
-DROP TABLE IF EXISTS Cancelamento;
 
 CREATE TABLE Cancelamento (
     reembolso   INTEGER     NOT NULL, 
@@ -103,9 +70,6 @@ CREATE TABLE Cancelamento (
     PRIMARY KEY(idReserva)
 );
 
--- Table: ClassificacaoPorAnfitriao
-DROP TABLE IF EXISTS ClassificacaoPorAnfitriao;
-
 CREATE TABLE ClassificacaoPorAnfitriao (
     classificacao   INTEGER CHECK(classificacao >= 1 AND classificacao <= 5), 
     descricao       VARCHAR(500) DEFAULT 'Nao preenchido', 
@@ -113,9 +77,6 @@ CREATE TABLE ClassificacaoPorAnfitriao (
     idAnfitriao     INTEGER REFERENCES Anfitriao (idAnfitriao) ON DELETE RESTRICT ON UPDATE RESTRICT, 
     PRIMARY KEY (idReserva)
 );
-
--- Table: ClassificacaoPorCliente
-DROP TABLE IF EXISTS ClassificacaoPorCliente;
 
 CREATE TABLE ClassificacaoPorCliente (
     limpeza     INTEGER CHECK(limpeza >= 1 AND limpeza <= 5), 
@@ -130,16 +91,10 @@ CREATE TABLE ClassificacaoPorCliente (
     PRIMARY KEY (idReserva)
 );
 
--- Table: Comodidade
-DROP TABLE IF EXISTS Comodidade;
-
 CREATE TABLE Comodidade (
     idComodidade      INTEGER PRIMARY KEY,
     nome    VARCHAR(15) UNIQUE NOT NULL
 );
-
--- Table: Efetua
-DROP TABLE IF EXISTS Efetua;
 
 CREATE TABLE Efetua (
     idCliente INTEGER REFERENCES Cliente(idCliente) ON DELETE CASCADE ON UPDATE CASCADE, 
@@ -147,26 +102,16 @@ CREATE TABLE Efetua (
     PRIMARY KEY(idReserva)
 );
 
--- Table: EscolhidoPelocliente
-DROP TABLE IF EXISTS EscolhidoPelocliente;
-
 CREATE TABLE EscolhidoPelocliente (
     idMetodo  INTEGER REFERENCES MetodoDePagamento(idMetodo) ON DELETE CASCADE ON UPDATE CASCADE, 
     idReserva INTEGER REFERENCES Reserva(idReserva) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (idReserva)
 );
 
--- Table: TipoDeHabitacao
-DROP TABLE IF EXISTS TipoDeHabitacao;
-
 CREATE TABLE TipoDeHabitacao (
     idTipo   INTEGER PRIMARY KEY,
     nome VARCHAR(30) UNIQUE NOT NULL
 );
-
-
--- Table: Habitacao
-DROP TABLE IF EXISTS Habitacao;
 
 CREATE TABLE Habitacao (
     idHabitacao INTEGER PRIMARY KEY,
@@ -181,17 +126,11 @@ CREATE TABLE Habitacao (
     idTipo        INTEGER REFERENCES TipoDeHabitacao (idTipo) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- Table: Disponivel
-DROP TABLE IF EXISTS Disponivel;
-
 CREATE TABLE Disponivel (
     idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao)  ON DELETE CASCADE ON UPDATE CASCADE, 
     data        DATE REFERENCES Agenda (data)  ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (idHabitacao, data)
 );
-
--- Table: Dispoe
-DROP TABLE IF EXISTS Dispoe;
 
 CREATE TABLE Dispoe (
     idComodidade  INTEGER REFERENCES Comodidade (idComodidade) ON DELETE CASCADE ON UPDATE CASCADE, 
@@ -199,17 +138,11 @@ CREATE TABLE Dispoe (
     PRIMARY KEY (idComodidade, idHabitacao)
 );
 
--- Table: Favorito
-DROP TABLE IF EXISTS Favorito;
-
 CREATE TABLE Favorito (
     idCliente     INTEGER REFERENCES Cliente (idCliente) ON DELETE CASCADE ON UPDATE CASCADE, 
     idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE, 
     PRIMARY KEY (idCliente, idHabitacao)
 );
-
--- Table: Fotografia
-DROP TABLE IF EXISTS Fotografia;
 
 CREATE TABLE Fotografia (
     urlImagem   VARCHAR(20) PRIMARY KEY, 
@@ -217,16 +150,20 @@ CREATE TABLE Fotografia (
     idHabitacao   INTEGER REFERENCES Habitacao(idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
--- Table: Possui
-DROP TABLE IF EXISTS Possui;
-
 CREATE TABLE Possui (
     idAnfitriao   INTEGER REFERENCES Anfitriao (idAnfitriao) ON DELETE CASCADE ON UPDATE CASCADE, 
     idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE, 
     PRIMARY KEY (idHabitacao)
 );
 
+CREATE TABLE imagesHouses (
+  id INTEGER PRIMARY KEY,
+  title VARCHAR NOT NULL
+);
+
+CREATE TABLE imagesPersons (
+  id INTEGER PRIMARY KEY
+);
 
 
 CREATE TRIGGER Restricao_Estado
@@ -280,6 +217,8 @@ BEGIN
     DELETE FROM Disponivel
     WHERE Disponivel.idHabitacao = New.idHabitacao AND Disponivel.data >= New.dataCheckIn AND Disponivel.data <= New.dataCheckOut;
 END;
+
+
 
 
 COMMIT TRANSACTION;
@@ -822,14 +761,12 @@ insert into Agenda(data) values ('2019-09-28');
 insert into Agenda(data) values ('2019-09-29');
 insert into Agenda(data) values ('2019-09-30');
 
-insert into Pais(idPais, nome) values (1,"Portugal");
 insert into Pais(idPais, nome) values (2,"United States of America");
 insert into Pais(idPais, nome) values (3,"Spain");
 insert into Pais(idPais, nome) values (4,"France");
 insert into Pais(idPais, nome) values (5,"United Kingdom");
 insert into Pais(idPais, nome) values (6,"Italy");
 insert into Pais(idPais, nome) values (7,"Japan");
-insert into Pais(idPais, nome) values (8,"Angola");
 insert into Pais(idPais, nome) values (9,"Australia");
 insert into Pais(idPais, nome) values (10,"Finland");
 insert into Pais(idPais, nome) values (11,"Mali");
@@ -840,6 +777,235 @@ insert into Pais(idPais, nome) values (15,"New Zealand");
 insert into Pais(idPais, nome) values (16,"Turkey");
 insert into Pais(idPais, nome) values (17,"Brazil");
 insert into Pais(idPais, nome) values (18,"Argentina");
+INSERT INTO Pais(idPais, nome) VALUES (19, 'Afghanistan');
+INSERT INTO Pais(idPais, nome) VALUES (20, 'Albania');
+INSERT INTO Pais(idPais, nome) VALUES (21, 'Algeria');
+INSERT INTO Pais(idPais, nome) VALUES (22, 'American Samoa');
+INSERT INTO Pais(idPais, nome) VALUES (23, 'Andorra');
+insert into Pais(idPais, nome) values (8,"Angola");
+INSERT INTO Pais(idPais, nome) VALUES (24, 'Anguilla');
+INSERT INTO Pais(idPais, nome) VALUES (25, 'Antarctica');
+INSERT INTO Pais(idPais, nome) VALUES (26, 'Antigua and Barbuda');
+INSERT INTO Pais(idPais, nome) VALUES (27, 'Armenia');
+INSERT INTO Pais(idPais, nome) VALUES (28, 'Aruba');
+INSERT INTO Pais(idPais, nome) VALUES (29, 'Austria');
+INSERT INTO Pais(idPais, nome) VALUES (30, 'Azerbaijan');
+INSERT INTO Pais(idPais, nome) VALUES (31, 'Bahamas');
+INSERT INTO Pais(idPais, nome) VALUES (32, 'Bahrain');
+INSERT INTO Pais(idPais, nome) VALUES (33, 'Bangladesh');
+INSERT INTO Pais(idPais, nome) VALUES (34, 'Barbados');
+INSERT INTO Pais(idPais, nome) VALUES (35, 'Belarus');
+INSERT INTO Pais(idPais, nome) VALUES (36, 'Belgium');
+INSERT INTO Pais(idPais, nome) VALUES (37, 'Belize');
+INSERT INTO Pais(idPais, nome) VALUES (38, 'Benin');
+INSERT INTO Pais(idPais, nome) VALUES (39, 'Bermuda');
+INSERT INTO Pais(idPais, nome) VALUES (40, 'Bhutan');
+INSERT INTO Pais(idPais, nome) VALUES (41, 'Bolivia');
+INSERT INTO Pais(idPais, nome) VALUES (42, 'Bosnia and Herzegovina');
+INSERT INTO Pais(idPais, nome) VALUES (43, 'Botswana');
+INSERT INTO Pais(idPais, nome) VALUES (44, 'Bouvet Island');
+INSERT INTO Pais(idPais, nome) VALUES (45, 'British Indian Ocean Territory');
+INSERT INTO Pais(idPais, nome) VALUES (46, 'Brunei Darussalam');
+INSERT INTO Pais(idPais, nome) VALUES (47, 'Bulgaria');
+INSERT INTO Pais(idPais, nome) VALUES (48, 'Burkina Faso');
+INSERT INTO Pais(idPais, nome) VALUES (49, 'Burundi');
+INSERT INTO Pais(idPais, nome) VALUES (50, 'Cambodia');
+INSERT INTO Pais(idPais, nome) VALUES (52, 'Cameroon');
+INSERT INTO Pais(idPais, nome) VALUES (53, 'Canada');
+INSERT INTO Pais(idPais, nome) VALUES (54, 'Cape Verde');
+INSERT INTO Pais(idPais, nome) VALUES (55, 'Cayman Islands');
+INSERT INTO Pais(idPais, nome) VALUES (56, 'Central African Republic');
+INSERT INTO Pais(idPais, nome) VALUES (57, 'Chad');
+INSERT INTO Pais(idPais, nome) VALUES (58, 'Christmas Island');
+INSERT INTO Pais(idPais, nome) VALUES (59, 'Cocos (Keeling) Islands');
+INSERT INTO Pais(idPais, nome) VALUES (60, 'Colombia');
+INSERT INTO Pais(idPais, nome) VALUES (61, 'Comoros');
+INSERT INTO Pais(idPais, nome) VALUES (62, 'Democratic Republic of the Congo');
+INSERT INTO Pais(idPais, nome) VALUES (63, 'Republic of Congo');
+INSERT INTO Pais(idPais, nome) VALUES (64, 'Cook Islands');
+INSERT INTO Pais(idPais, nome) VALUES (65, 'Costa Rica');
+INSERT INTO Pais(idPais, nome) VALUES (66, 'Croatia (Hrvatska)');
+INSERT INTO Pais(idPais, nome) VALUES (67, 'Cuba');
+INSERT INTO Pais(idPais, nome) VALUES (68, 'Cyprus');
+INSERT INTO Pais(idPais, nome) VALUES (69, 'Czech Republic');
+INSERT INTO Pais(idPais, nome) VALUES (70, 'Denmark');
+INSERT INTO Pais(idPais, nome) VALUES (71, 'Djibouti');
+INSERT INTO Pais(idPais, nome) VALUES (72, 'Dominica');
+INSERT INTO Pais(idPais, nome) VALUES (73, 'Dominican Republic');
+INSERT INTO Pais(idPais, nome) VALUES (74, 'East Timor');
+INSERT INTO Pais(idPais, nome) VALUES (75, 'Ecuador');
+INSERT INTO Pais(idPais, nome) VALUES (76, 'Egypt');
+INSERT INTO Pais(idPais, nome) VALUES (77, 'El Salvador');
+INSERT INTO Pais(idPais, nome) VALUES (78, 'Equatorial Guinea');
+INSERT INTO Pais(idPais, nome) VALUES (79, 'Eritrea');
+INSERT INTO Pais(idPais, nome) VALUES (80, 'Estonia');
+INSERT INTO Pais(idPais, nome) VALUES (81, 'Ethiopia');
+INSERT INTO Pais(idPais, nome) VALUES (82, 'Falkland Islands (Malvinas)');
+INSERT INTO Pais(idPais, nome) VALUES (83, 'Faroe Islands');
+INSERT INTO Pais(idPais, nome) VALUES (84, 'Fiji');
+INSERT INTO Pais(idPais, nome) VALUES (85, 'France, Metropolitan');
+INSERT INTO Pais(idPais, nome) VALUES (86, 'French Guiana');
+INSERT INTO Pais(idPais, nome) VALUES (87, 'French Polynesia');
+INSERT INTO Pais(idPais, nome) VALUES (88, 'French Southern Territories');
+INSERT INTO Pais(idPais, nome) VALUES (89, 'Gabon');
+INSERT INTO Pais(idPais, nome) VALUES (90, 'Gambia');
+INSERT INTO Pais(idPais, nome) VALUES (91, 'Georgia');
+INSERT INTO Pais(idPais, nome) VALUES (92, 'Germany');
+INSERT INTO Pais(idPais, nome) VALUES (93, 'Ghana');
+INSERT INTO Pais(idPais, nome) VALUES (94, 'Gibraltar');
+INSERT INTO Pais(idPais, nome) VALUES (95, 'Guernsey');
+INSERT INTO Pais(idPais, nome) VALUES (96, 'Greece');
+INSERT INTO Pais(idPais, nome) VALUES (97, 'Greenland');
+INSERT INTO Pais(idPais, nome) VALUES (98, 'Grenada');
+INSERT INTO Pais(idPais, nome) VALUES (99, 'Guadeloupe');
+INSERT INTO Pais(idPais, nome) VALUES (110, 'Guam');
+INSERT INTO Pais(idPais, nome) VALUES (111, 'Guatemala');
+INSERT INTO Pais(idPais, nome) VALUES (112, 'Guinea');
+INSERT INTO Pais(idPais, nome) VALUES (113, 'Guinea-Bissau');
+INSERT INTO Pais(idPais, nome) VALUES (114, 'Guyana');
+INSERT INTO Pais(idPais, nome) VALUES (115, 'Haiti');
+INSERT INTO Pais(idPais, nome) VALUES (116, 'Heard and Mc Donald Islands');
+INSERT INTO Pais(idPais, nome) VALUES (117, 'Honduras');
+INSERT INTO Pais(idPais, nome) VALUES (118, 'Hong Kong');
+INSERT INTO Pais(idPais, nome) VALUES (119, 'Hungary');
+INSERT INTO Pais(idPais, nome) VALUES (120, 'Iceland');
+INSERT INTO Pais(idPais, nome) VALUES (121, 'India');
+INSERT INTO Pais(idPais, nome) VALUES (122, 'Isle of Man');
+INSERT INTO Pais(idPais, nome) VALUES (123, 'Indonesia');
+INSERT INTO Pais(idPais, nome) VALUES (124, 'Iran (Islamic Republic of)');
+INSERT INTO Pais(idPais, nome) VALUES (125, 'Iraq');
+INSERT INTO Pais(idPais, nome) VALUES (126, 'Ireland');
+INSERT INTO Pais(idPais, nome) VALUES (127, 'Israel');
+INSERT INTO Pais(idPais, nome) VALUES (128, 'Ivory Coast');
+INSERT INTO Pais(idPais, nome) VALUES (129, 'Jersey');
+INSERT INTO Pais(idPais, nome) VALUES (130, 'Jamaica');
+INSERT INTO Pais(idPais, nome) VALUES (131, 'Jordan');
+INSERT INTO Pais(idPais, nome) VALUES (132, 'Kazakhstan');
+INSERT INTO Pais(idPais, nome) VALUES (133, 'Kenya');
+INSERT INTO Pais(idPais, nome) VALUES (134, 'Kiribati');
+INSERT INTO Pais(idPais, nome) VALUES (135, 'Korea, Democratic People''s Republic of');
+INSERT INTO Pais(idPais, nome) VALUES (136, 'Korea, Republic of');
+INSERT INTO Pais(idPais, nome) VALUES (137, 'Kosovo');
+INSERT INTO Pais(idPais, nome) VALUES (138, 'Kuwait');
+INSERT INTO Pais(idPais, nome) VALUES (139, 'Kyrgyzstan');
+INSERT INTO Pais(idPais, nome) VALUES (140, 'Lao People''s Democratic Republic');
+INSERT INTO Pais(idPais, nome) VALUES (141, 'Latvia');
+INSERT INTO Pais(idPais, nome) VALUES (142, 'Lebanon');
+INSERT INTO Pais(idPais, nome) VALUES (143, 'Lesotho');
+INSERT INTO Pais(idPais, nome) VALUES (144, 'Liberia');
+INSERT INTO Pais(idPais, nome) VALUES (145, 'Libyan Arab Jamahiriya');
+INSERT INTO Pais(idPais, nome) VALUES (146, 'Liechtenstein');
+INSERT INTO Pais(idPais, nome) VALUES (147, 'Lithuania');
+INSERT INTO Pais(idPais, nome) VALUES (148, 'Luxembourg');
+INSERT INTO Pais(idPais, nome) VALUES (149, 'Macau');
+INSERT INTO Pais(idPais, nome) VALUES (150, 'North Macedonia');
+INSERT INTO Pais(idPais, nome) VALUES (151, 'Madagascar');
+INSERT INTO Pais(idPais, nome) VALUES (152, 'Malawi');
+INSERT INTO Pais(idPais, nome) VALUES (153, 'Malaysia');
+INSERT INTO Pais(idPais, nome) VALUES (154, 'Maldives');
+INSERT INTO Pais(idPais, nome) VALUES (155, 'Malta');
+INSERT INTO Pais(idPais, nome) VALUES (156, 'Marshall Islands');
+INSERT INTO Pais(idPais, nome) VALUES (157, 'Martinique');
+INSERT INTO Pais(idPais, nome) VALUES (158, 'Mauritania');
+INSERT INTO Pais(idPais, nome) VALUES (159, 'Mauritius');
+INSERT INTO Pais(idPais, nome) VALUES (160, 'Mayotte');
+INSERT INTO Pais(idPais, nome) VALUES (161, 'Mexico');
+INSERT INTO Pais(idPais, nome) VALUES (162, 'Micronesia, Federated States of');
+INSERT INTO Pais(idPais, nome) VALUES (163, 'Moldova, Republic of');
+INSERT INTO Pais(idPais, nome) VALUES (164, 'Monaco');
+INSERT INTO Pais(idPais, nome) VALUES (165, 'Mongolia');
+INSERT INTO Pais(idPais, nome) VALUES (166, 'Montenegro');
+INSERT INTO Pais(idPais, nome) VALUES (167, 'Montserrat');
+INSERT INTO Pais(idPais, nome) VALUES (168, 'Morocco');
+INSERT INTO Pais(idPais, nome) VALUES (169, 'Mozambique');
+INSERT INTO Pais(idPais, nome) VALUES (170, 'Myanmar');
+INSERT INTO Pais(idPais, nome) VALUES (171, 'Namibia');
+INSERT INTO Pais(idPais, nome) VALUES (172, 'Nauru');
+INSERT INTO Pais(idPais, nome) VALUES (173, 'Nepal');
+INSERT INTO Pais(idPais, nome) VALUES (174, 'Netherlands');
+INSERT INTO Pais(idPais, nome) VALUES (175, 'Netherlands Antilles');
+INSERT INTO Pais(idPais, nome) VALUES (176, 'New Caledonia');
+INSERT INTO Pais(idPais, nome) VALUES (177, 'Nicaragua');
+INSERT INTO Pais(idPais, nome) VALUES (178, 'Niger');
+INSERT INTO Pais(idPais, nome) VALUES (179, 'Nigeria');
+INSERT INTO Pais(idPais, nome) VALUES (180, 'Niue');
+INSERT INTO Pais(idPais, nome) VALUES (181, 'Norfolk Island');
+INSERT INTO Pais(idPais, nome) VALUES (182, 'Northern Mariana Islands');
+INSERT INTO Pais(idPais, nome) VALUES (183, 'Norway');
+INSERT INTO Pais(idPais, nome) VALUES (184, 'Oman');
+INSERT INTO Pais(idPais, nome) VALUES (185, 'Pakistan');
+INSERT INTO Pais(idPais, nome) VALUES (186, 'Palau');
+INSERT INTO Pais(idPais, nome) VALUES (187, 'Palestine');
+INSERT INTO Pais(idPais, nome) VALUES (188, 'Panama');
+INSERT INTO Pais(idPais, nome) VALUES (189, 'Papua New Guinea');
+INSERT INTO Pais(idPais, nome) VALUES (190, 'Paraguay');
+INSERT INTO Pais(idPais, nome) VALUES (191, 'Philippines');
+INSERT INTO Pais(idPais, nome) VALUES (192, 'Pitcairn');
+INSERT INTO Pais(idPais, nome) VALUES (193, 'Poland');
+insert into Pais(idPais, nome) values (1, "Portugal");
+INSERT INTO Pais(idPais, nome) VALUES (194, 'Puerto Rico');
+INSERT INTO Pais(idPais, nome) VALUES (195, 'Qatar');
+INSERT INTO Pais(idPais, nome) VALUES (196, 'Reunion');
+INSERT INTO Pais(idPais, nome) VALUES (197, 'Romania');
+INSERT INTO Pais(idPais, nome) VALUES (198, 'Russian Federation');
+INSERT INTO Pais(idPais, nome) VALUES (199, 'Rwanda');
+INSERT INTO Pais(idPais, nome) VALUES (201, 'Saint Kitts and Nevis');
+INSERT INTO Pais(idPais, nome) VALUES (202, 'Saint Lucia');
+INSERT INTO Pais(idPais, nome) VALUES (203, 'Saint Vincent and the Grenadines');
+INSERT INTO Pais(idPais, nome) VALUES (204, 'Samoa');
+INSERT INTO Pais(idPais, nome) VALUES (205, 'San Marino');
+INSERT INTO Pais(idPais, nome) VALUES (206, 'Sao Tome and Principe');
+INSERT INTO Pais(idPais, nome) VALUES (207, 'Saudi Arabia');
+INSERT INTO Pais(idPais, nome) VALUES (208, 'Senegal');
+INSERT INTO Pais(idPais, nome) VALUES (209, 'Serbia');
+INSERT INTO Pais(idPais, nome) VALUES (210, 'Seychelles');
+INSERT INTO Pais(idPais, nome) VALUES (211, 'Sierra Leone');
+INSERT INTO Pais(idPais, nome) VALUES (212, 'Singapore');
+INSERT INTO Pais(idPais, nome) VALUES (213, 'Slovakia');
+INSERT INTO Pais(idPais, nome) VALUES (214, 'Slovenia');
+INSERT INTO Pais(idPais, nome) VALUES (215, 'Solomon Islands');
+INSERT INTO Pais(idPais, nome) VALUES (216, 'Somalia');
+INSERT INTO Pais(idPais, nome) VALUES (217, 'South Africa');
+INSERT INTO Pais(idPais, nome) VALUES (218, 'South Georgia South Sandwich Islands');
+INSERT INTO Pais(idPais, nome) VALUES (219, 'South Sudan');
+INSERT INTO Pais(idPais, nome) VALUES (220, 'Sri Lanka');
+INSERT INTO Pais(idPais, nome) VALUES (221, 'St. Helena');
+INSERT INTO Pais(idPais, nome) VALUES (222, 'St. Pierre and Miquelon');
+INSERT INTO Pais(idPais, nome) VALUES (223, 'Sudan');
+INSERT INTO Pais(idPais, nome) VALUES (224, 'Suriname');
+INSERT INTO Pais(idPais, nome) VALUES (225, 'Svalbard and Jan Mayen Islands');
+INSERT INTO Pais(idPais, nome) VALUES (226, 'Swaziland');
+INSERT INTO Pais(idPais, nome) VALUES (227, 'Sweden');
+INSERT INTO Pais(idPais, nome) VALUES (228, 'Switzerland');
+INSERT INTO Pais(idPais, nome) VALUES (229, 'Syrian Arab Republic');
+INSERT INTO Pais(idPais, nome) VALUES (230, 'Taiwan');
+INSERT INTO Pais(idPais, nome) VALUES (231, 'Tajikistan');
+INSERT INTO Pais(idPais, nome) VALUES (232, 'Tanzania, United Republic of');
+INSERT INTO Pais(idPais, nome) VALUES (233, 'Thailand');
+INSERT INTO Pais(idPais, nome) VALUES (234, 'Togo');
+INSERT INTO Pais(idPais, nome) VALUES (235, 'Tokelau');
+INSERT INTO Pais(idPais, nome) VALUES (236, 'Tonga');
+INSERT INTO Pais(idPais, nome) VALUES (237, 'Trinidad and Tobago');
+INSERT INTO Pais(idPais, nome) VALUES (238, 'Tunisia');
+INSERT INTO Pais(idPais, nome) VALUES (239, 'Turkmenistan');
+INSERT INTO Pais(idPais, nome) VALUES (240, 'Turks and Caicos Islands');
+INSERT INTO Pais(idPais, nome) VALUES (241, 'Tuvalu');
+INSERT INTO Pais(idPais, nome) VALUES (242, 'Uganda');
+INSERT INTO Pais(idPais, nome) VALUES (243, 'Ukraine');
+INSERT INTO Pais(idPais, nome) VALUES (244, 'United Arab Emirates');
+INSERT INTO Pais(idPais, nome) VALUES (245, 'Uruguay');
+INSERT INTO Pais(idPais, nome) VALUES (246, 'Uzbekistan');
+INSERT INTO Pais(idPais, nome) VALUES (247, 'Vanuatu');
+INSERT INTO Pais(idPais, nome) VALUES (248, 'Vatican City State');
+INSERT INTO Pais(idPais, nome) VALUES (249, 'Venezuela');
+INSERT INTO Pais(idPais, nome) VALUES (250, 'Vietnam');
+INSERT INTO Pais(idPais, nome) VALUES (251, 'Virgin Islands (British)');
+INSERT INTO Pais(idPais, nome) VALUES (252, 'Virgin Islands (U.S.)');
+INSERT INTO Pais(idPais, nome) VALUES (253, 'Wallis and Futuna Islands');
+INSERT INTO Pais(idPais, nome) VALUES (254, 'Western Sahara');
+INSERT INTO Pais(idPais, nome) VALUES (255, 'Yemen');
+INSERT INTO Pais(idPais, nome) VALUES (256, 'Zambia');
+INSERT INTO Pais(idPais, nome) VALUES (257, 'Zimbabwe');
 
 insert into Cidade(idCidade, nome, idPais) values(1,"Porto", 1);
 insert into Cidade(idCidade, nome, idPais) values(2,"Lisboa", 1);
@@ -878,15 +1044,6 @@ insert into Cidade(idCidade, nome, idPais) values(34,"Istambul", 16);
 insert into Cidade(idCidade, nome, idPais) values(35,"Rio de Janeiro", 17);
 insert into Cidade(idCidade, nome, idPais) values(36,"Buenos Aires", 18);
 
-insert into Utilizador ( username, nome,  email, idPais, pass) values ( "Jose", "José Ribeiro", "jribeiro@gmail.com", 1, "crocodilo1");
-insert into Utilizador ( username, nome, email, idPais, pass) values ( "Stuart","Stuart Little", "slittle@gmail.com", 2, "tartaruga2");
-insert into Utilizador ( username, nome, email, idPais, pass) values ("Marta", "Marta Silva", "msilva15@gmail.com", 1, "leao3");
-insert into Utilizador ( username, nome, email, idPais, pass) values ("Ricardo", "Ricardo Sousa", "rsousa@gmail.com", 1, "tigre4");
-insert into Utilizador ( username, nome, email, idPais, pass) values ("Penélope","Penélope Cruz", "pcruz@gmail.com", 3, "hipopotamo5");
-insert into Utilizador ( username, nome, email, idPais, pass) values ("Kit", "Kit Harington", "kharington@gmail.com", 5, "formiga6");
-insert into Utilizador ( username, nome, email, idPais, pass) values ("Monica", "Monica Bellucci", "mbelluci@gmail.com", 6, "pato7");
-insert into Utilizador ( username, nome, email, idPais, pass) values ("Chris","Chris Hemsworth", "chemsworth@gmail.com", 9, "rinoceronte8");
-
 insert into Anfitriao (idAnfitriao, classificacaoAnfitriao) values (1, NULL); 
 insert into Anfitriao (idAnfitriao, classificacaoAnfitriao) values (2, NULL);
 insert into Anfitriao (idAnfitriao, classificacaoAnfitriao) values (3, NULL);
@@ -909,6 +1066,15 @@ insert into Cliente (idCliente, ClassificacaoCliente) values (13, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (14, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (15, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (16, NULL);
+
+insert into Utilizador ( username, nome,  email, idPais, pass) values ("Jose", "José Ribeiro", "jribeiro@gmail.com", 1, "crocodilo1");
+insert into Utilizador ( username, nome, email, idPais, pass) values ( "Stuart","Stuart Little", "slittle@gmail.com", 2, "tartaruga2");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Marta", "Marta Silva", "msilva15@gmail.com", 1, "leao3");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Ricardo", "Ricardo Sousa", "rsousa@gmail.com", 1, "tigre4");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Penélope","Penélope Cruz", "pcruz@gmail.com", 3, "hipopotamo5");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Kit", "Kit Harington", "kharington@gmail.com", 5, "formiga6");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Monica", "Monica Bellucci", "mbelluci@gmail.com", 6, "pato7");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Chris","Chris Hemsworth", "chemsworth@gmail.com", 9, "rinoceronte8");
 
 insert into MetodoDePagamento(idMetodo,nome) values(1,"Multibanco");
 insert into MetodoDePagamento(idMetodo,nome) values(2,"MB Way");

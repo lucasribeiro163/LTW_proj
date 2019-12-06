@@ -76,20 +76,15 @@ input {
   grid-column-end: 4;
 }
 
-form {
-  display: grid;
-  grid-template-columns: auto 20% 50%;
-}
-
 select {
   padding: 1em;
   margin-bottom: 1em;
-  margin-inline-start: 1.4em;
+  margin-inline-start: 1.65em;
   background-color: var(--panel-color);
   grid-column-start: 1;
-  grid-column-end: 3;
-  font-size: 0.80em;
-  width: 90%;
+  grid-column-end: 4;
+  font-size: 0.90em;
+  width: 86%;
 }
 
 /* buttons to submit are blue rectangle */
@@ -164,14 +159,24 @@ textarea {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-/* login & signup */
 
+/* login & signup */
 #someImage > img, #houseImage > img {
   margin: 6.5em 1em 5em 4em;
   border-style: solid;
   max-width: 570px;
   overflow: scroll;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: span 2;
 }
+
+#signup > form, #login > form {
+  display: grid;
+  grid-template-columns: auto 20% 50%;
+}
+
 
 #signup a, #login a { 
   color: var(--main-color);
@@ -244,15 +249,51 @@ textarea {
 /**
  * editProfile
  */
+ 
+#editProfile > form {
+  display: grid;
+  grid-template-columns: 83% 17%;
+} 
 
- #editProfile select {
-  width: 88%;
+
+#editProfile input {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  width: 70%;
+  margin: 0em 0em 2em 1em;
+} 
+
+#editProfile input[type="submit"] {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  width: 60%;
+  margin: 0.6em 10em 2.6em 0em;
+
+} 
+
+#editProfile select {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  width: 76%;
+  padding-left: 2em;
+  margin: 0em 0em 3.2em 1em;
 }
+
+#personImg input[type="submit"] {
+  width: 60%;
+  margin-left: 6em;
+} 
 
 #personImg {
   max-width: 160em;
-  padding: 2% 0% 0% 30% ;
+  padding: 20% 0% 10% 0%;
 }
+
+#personImg > img {
+  max-width: 200em;
+  padding-left: 25%;
+}
+
 
 /**
  * Messages
@@ -310,96 +351,3 @@ body > #lists {
   margin-inline-start: 350%;
 }
 
-
-/**
- * Lists
- */
-/*
-#lists {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;	
-}
-
-#lists article.list {
-  border: 1px solid black;
-
-  margin: 1em;
-  background-color: var(--panel-color);
-
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-
-#lists article.list header{
-  background-color: var(--main-color);
-  padding: 1em;
-}
-
-#lists article.list header h2{
-  color: var(--panel-color);
-  margin: 0;
-}
-
-#lists article.list ol{
-  padding: 1em;
-}
-
-#lists article.list ol li{
-  display: block;
-
-  margin: 0;
-  padding: 1em 1em 1em 0;
-}
-
-#lists article.list ol li a{
-  float: left;
-  padding: 0 .5em 0 0;
-  visibility: hidden;
-}
-
-#lists article.list ol li:hover a{
-  visibility: visible;
-}
-
-#lists article.list ol li label{
-  display: block;
-  max-width: 20em;
-}
-
-#lists article.list ol li label input{
-  float: right;
-}
-
-#lists article.list form {
-  padding: 1em;
-}
-
-#lists article.list form input {
-  width: 100%;
-  padding: 1em;
-}
-
-#lists article.new-list {
-  border: 1px solid black;
-
-  margin: 1em;
-  background-color: var(--panel-color);
-}
-
-#lists article.new-list form {
-  background-color: var(--main-color);
-}
-
-#lists article.new-list form input {
-  padding: .5em;
-
-  color: var(--panel-color);
-  background-color: var(--main-color);
-
-  font-family: var(--sans-font);
-  font-size: 1.5em;
-  font-weight: bold;
-
-  border-bottom: none;
-}*/

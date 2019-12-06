@@ -1,4 +1,8 @@
-<?php function draw_login() { 
+<?php 
+include_once('../database/db_user.php');
+
+function draw_login() { 
+
 /**
  * Draws the login section.
  */ ?>
@@ -40,7 +44,28 @@
       <input type="text" name="username" placeholder="username" required> 
       <input type="text" name="name" placeholder="name" required>
       <input type="password" name="password" placeholder="password" required>
-      <input type="password" name="password1" placeholder="password" required>     
+      <input type="password" name="password1" placeholder="password" required>  
+      <select name="Country" required>
+          <option value="Other" selected disabled>Home Contry</option>     
+          <option value="Portugal">Portugal</option>
+          <option value="United States of America">United States of America</option>
+          <option value="Spain">Spain</option>
+          <option value="France">France</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Italy">Italy</option>
+          <option value="Japan">Japan</option>        
+          <option value="Angola">Angola</option>
+          <option value="Australia">Australia</option>
+          <option value="Finland">Finland</option>
+          <option value="Mali">Mali</option>
+          <option value="Peru">Peru</option>
+          <option value="Chile">Chile</option>
+          <option value="China">China</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="Turkey">Turkey</option>
+          <option value="Brazil">Brazil</option>
+          <option value="Argentina">Argentina</option>
+        </select>    
       <input type="submit" value="signup">
       <p>Already have an account? So just <a href="login.php">Login!</a></p>
     </form>
@@ -113,7 +138,7 @@ function draw_listing() {
   </section>
 <?php } 
 
-function draw_editProfile() { 
+function draw_editProfile($username) { 
   /**
    * Draws the signup section.
    */ ?>
@@ -123,14 +148,25 @@ function draw_editProfile() {
         <h1>Looking for a change.</h1>
         <h2>Edit your credentials below.</h2>
       </header>
-  
-      <form method="post" action="../actions/action_signup.php">     
-        <input type="text" name="username" placeholder="username" required> 
-        <input type="text" name="name" placeholder="name" required>
+
+      <form method="post" action="../actions/action_change_email.php">  
         <input type="text" name="email" placeholder="email" required>
+        <input type="submit" value="edit">  
+      </form>
+
+      <form method="post" action="../actions/action_change_name.php"> 
+        <input type="text" name="name" placeholder="name" required>
+        <input type="submit" value="edit">
+      </form>
+
+      <form method="post" action="../actions/action_change_password.php">   
         <input type="password" name="password" placeholder="password" required>
-        <input type="password" name="password1" placeholder="confirm password" required>     
-        <select name="Country">
+        <input type="password" name="password1" placeholder="confirm password" required>   
+        <input type="submit" value="edit">        
+      </form>
+
+      <form method="post" action="../actions/action_change_country.php"> 
+        <select name="Country" required>
           <option value="Other" selected disabled>Home Contry</option>     
           <option value="Portugal">Portugal</option>
           <option value="United States of America">United States of America</option>
@@ -155,11 +191,19 @@ function draw_editProfile() {
       </form>
 
     </section>
-  
+
+  <?php
+    $id = getPersonImage($username);
+    if($id == null)
+      $image = "../images/person/thumbs_small/default.jpg";
+    else $image = "../images/person/thumbs_small/$id.jpg";
+    ?>
+
     <section id="personImg">
-      <img src="https://fotos.web.sapo.io/i/B1e04a0bb/19478664_y37lu.png" alt="person pic">
+      <img src="<?=$image?>" alt="person pic">
       <form action="upload_file.php" method="post" enctype="multipart/form-data">
         <input type="file" name="file">
+        <input type="submit" value="Change picture">
       </form>
     </section>
   

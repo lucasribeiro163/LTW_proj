@@ -8,6 +8,8 @@
   $name = $_POST['name'];
   $email = $_POST['email'];
 
+  
+
   // Don't allow certain characters
   if ( !preg_match ("/^[a-zA-Z0-9]+$/", $username)) {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Username can only contain letters and numbers!');

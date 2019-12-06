@@ -9,6 +9,6 @@
     die(header('Location: login.php'));
 
   draw_header($_SESSION['username']);
-  draw_editProfile();
+  draw_editProfile($_SESSION['username']);
   draw_footer();
 ?>
