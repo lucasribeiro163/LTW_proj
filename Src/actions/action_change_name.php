@@ -8,7 +8,13 @@
 
   $name = $_POST['name'];
   
-  update_email($_SESSION['username'], $name);
-
-  header('Location: ../pages/main_page.php');
+  try {
+    update_name($_SESSION['username'], $name);
+    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our name was updated!');
+    header('Location: ../pages/main_page.php');
+  } catch (PDOException $e) {
+    die($e->getMessage());
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update name!');
+    header('Location: ../pages/editProfile.php');
+  }
 ?>

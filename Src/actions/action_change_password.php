@@ -14,7 +14,13 @@
     die(header('Location: ../pages/editProfile.php'));
   }
   
-  update_password($_SESSION['username'], $password );
-
-  header('Location: ../pages/main_page.php');
+  try {
+    update_password($_SESSION['username'], $password );
+    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our password was updated!');
+    header('Location: ../pages/main_page.php');
+  } catch (PDOException $e) {
+    die($e->getMessage());
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update password!');
+    header('Location: ../pages/editProfile.php');
+  }
 ?>

@@ -21,6 +21,16 @@
     die(header('Location: ../pages/signup.php'));
   }
 
+  if (checkIfEmailExists($email) != null) {
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Email is being use already!');
+    die(header('Location: ../pages/signup.php'));
+  }
+
+  if (checkIfUsernameExists($username) != null) {
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Username is being use already!');
+    die(header('Location: ../pages/signup.php'));
+  }
+
   try {
     insertUser($username, $password, $email, $name, $country);
     $_SESSION['username'] = $username;

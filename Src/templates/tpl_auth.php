@@ -392,8 +392,8 @@ function draw_editProfile($username) {
       </form>
 
       <form method="post" action="../actions/action_change_password.php">   
-        <input type="password" name="password" placeholder="password" required>
-        <input type="password" name="password1" placeholder="confirm password" required>   
+        <input type="password" name="password" placeholder="new password" required>
+        <input type="password" name="password1" placeholder="confirm new password" required>   
         <input type="submit" value="edit">        
       </form>
 
@@ -650,7 +650,6 @@ function draw_editProfile($username) {
       </form>
     </section>
 
-  <?=$username?>
   <?php
 
     $id = getId($username);  

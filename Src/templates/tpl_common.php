@@ -23,7 +23,7 @@
           <?php if ($username != NULL) { ?>
           <nav>
             <ul>
-              <li><?=$username?></li>
+              <li><a href="../../Src/pages/editProfile.php"><?=$username?></li>
               <li><a href="../actions/action_logout.php">Logout</a></li>
             </ul>
           </nav>

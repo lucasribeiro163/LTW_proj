@@ -62,9 +62,9 @@
   }
 
   function checkIfEmailExists($email) {
-    $db = Database::instance()->db();
+    $db1 = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE email = ?');
+    $stmt = $db1->prepare('SELECT * FROM Utilizador WHERE email = ?');
     $stmt->execute(array($email));
     return $stmt->fetch();
   }

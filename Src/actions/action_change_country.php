@@ -6,15 +6,15 @@
   if (!isset($_SESSION['username']))
     die(header('Location: ../page/login.php'));
 
-  $email = $_POST['email'];
+  $country = $_POST['country'];
 
-  if (checkIfExists($username, $email) != null) {
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Email is being use already!');
-    die(header('Location: ../pages/editProfile.php'));
+  try {
+    update_country($_SESSION['username'], $country) ;
+    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our country was updated!');
+    header('Location: ../pages/main_page.php');
+  } catch (PDOException $e) {
+    die($e->getMessage());
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update country!');
+    header('Location: ../pages/editProfile.php');
   }
-  
-  
-  update_email($_SESSION['username'], $email);
-
-  header('Location: ../pages/main_page.php');
 ?>
