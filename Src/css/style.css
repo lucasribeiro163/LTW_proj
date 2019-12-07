@@ -252,14 +252,15 @@ textarea {
  
 #editProfile > form {
   display: grid;
-  grid-template-columns: 83% 17%;
+  grid-template-columns: 80% 20%;
 } 
 
 
 #editProfile input {
   grid-column-start: 1;
   grid-column-end: 2;
-  width: 70%;
+  width: 90%;
+  height: 20%;
   margin: 0em 0em 2em 1em;
 } 
 
@@ -267,14 +268,15 @@ textarea {
   grid-column-start: 2;
   grid-column-end: 3;
   width: 60%;
-  margin: 0.6em 10em 2.6em 0em;
+  height: 50%;
+  margin: 0.6em 0em 0em 0em;
 
 } 
 
 #editProfile select {
   grid-column-start: 1;
   grid-column-end: 2;
-  width: 76%;
+  width: 97%;
   padding-left: 2em;
   margin: 0em 0em 3.2em 1em;
 }

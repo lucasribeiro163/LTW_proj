@@ -218,13 +218,7 @@ BEGIN
     WHERE Disponivel.idHabitacao = New.idHabitacao AND Disponivel.data >= New.dataCheckIn AND Disponivel.data <= New.dataCheckOut;
 END;
 
-
-
-
 COMMIT TRANSACTION;
-
-
-PRAGMA foreign_keys = ON;
 
 insert into Agenda(data) values('2018-01-01');
 insert into Agenda(data) values('2018-01-02');
@@ -1067,7 +1061,7 @@ insert into Cliente (idCliente, ClassificacaoCliente) values (14, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (15, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (16, NULL);
 
-insert into Utilizador ( username, nome,  email, idPais, pass) values ("Jose", "José Ribeiro", "jribeiro@gmail.com", 1, "crocodilo1");
+insert into Utilizador ( username, nome, email, idPais, pass) values ("Jose", "José Ribeiro", "jribeiro@gmail.com", 1, "crocodilo1");
 insert into Utilizador ( username, nome, email, idPais, pass) values ( "Stuart","Stuart Little", "slittle@gmail.com", 2, "tartaruga2");
 insert into Utilizador ( username, nome, email, idPais, pass) values ("Marta", "Marta Silva", "msilva15@gmail.com", 1, "leao3");
 insert into Utilizador ( username, nome, email, idPais, pass) values ("Ricardo", "Ricardo Sousa", "rsousa@gmail.com", 1, "tigre4");
@@ -1882,9 +1876,6 @@ insert into Efetua(idCliente, idReserva) values (1, 23);
 insert into Efetua(idCliente, idReserva) values (1, 24);
 insert into Efetua(idCliente, idReserva) values (7, 25);
 insert into Efetua(idCliente, idReserva) values (9, 26);
-
-
-
 
 insert into Cancelamento(reembolso, idCliente, idReserva) values (260, 4, 2);
 insert into Cancelamento(reembolso, idCliente, idReserva) values (38, 7, 25);

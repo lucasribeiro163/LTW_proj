@@ -1,13 +1,11 @@
 <?php
-  // Database connection
-  $db = Database::instance()->db();
 
-  // Insert image data into database
-  $stmt = $dbh->prepare("INSERT INTO imagesPersons VALUES(NULL)");
-  $stmt->execute(array());
+  include_once('../db_user.php');
 
   // Get image ID
-  $id = $dbh->lastInsertId();
+  $id = $_GET['id'];
+  if(getPersonImage($id) == null)
+    insertPersonImage($id);
 
   // Generate filenames for original, small and medium files
   $originalFileName = "images/person/originals/$id.jpg";

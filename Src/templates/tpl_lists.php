@@ -55,7 +55,6 @@
 
 <?php function draw_house_ad($house, $lists) {
 
-
   foreach($lists as $list){
     foreach ($list['list_items'] as $item){
       if($item['idHabitacao'] == $house){

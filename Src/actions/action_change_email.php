@@ -8,7 +8,7 @@
 
   $email = $_POST['email'];
 
-  if (checkIfExists($username, $email) != null) {
+  if (checkIfUsernameExists($email) != null) {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Email is being use already!');
     die(header('Location: ../pages/editProfile.php'));
   }
