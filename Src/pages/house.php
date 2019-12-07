@@ -13,7 +13,7 @@
   foreach ($lists as $k => $list)
     $lists[$k]['list_items'] = getHouseItems($list['idHabitacao']);
 
-  draw_header(null);
+  draw_header($_SESSION['username']);
   draw_house_ad($house, $lists);
   draw_footer();
 ?>
