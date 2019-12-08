@@ -1,4 +1,7 @@
-<?php function draw_header($username) { 
+<?php 
+include_once('../database/db_user.php');
+
+function draw_header($username) { 
 /**
  * Draws the header for all pages. Receives an username
  * if the user is logged in in order to draw the logout
@@ -10,10 +13,11 @@
     <head>
       <title>Rent a house</title>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
       <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|+Sans+Condensed:300">
-      <script src="../js/main.js" defer></script>
+      <script src="../js/dropbox.js" defer></script>
     </head>
     
     <body>
@@ -21,14 +25,20 @@
       <a href="../../Src/pages/login.php"><img src =../../Mockups/logo2.png alt="Rent a house"></a>
       <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
       <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
-          <?php if ($username != NULL) { ?>
-          <nav>
-            <ul>
-              <li><?=$username?></li>
-              <li><a href="../actions/action_logout.php">Logout</a></li>
-            </ul>
-          </nav>
-        <?php } ?>
+        <?php 
+        if ($username != NULL) {  ?>
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn"><?=$username?></button>
+              <div id="myDropdown" class="dropdown-content">
+              <a href="../../Src/pages/login.php">My places</a>
+              <a href="../../Src/pages/aboutUs.php">My Lists</a>
+              <a href="../../Src/pages/aboutUs.php">Rents</a>
+              <a href="../actions/action_logout.php">Logout</a>
+          </div>
+        </div>
+        <?php
+        }
+        ?>
       </header>
       <?php if (isset($_SESSION['messages'])) {?>
         <section id="messages">
@@ -44,7 +54,7 @@
  * Draws the footer for all pages.
  */ ?>
    <footer id="f1"> 
-    <div>Rent A House.Inc</div>
+    <div>© 2019 Rent A House, Inc. All rights reserved.</div>
     </footer>
   </body>
 </html>

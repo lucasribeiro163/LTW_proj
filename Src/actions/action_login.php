@@ -8,7 +8,7 @@
   if (checkUserPassword($username, $password)) {
     $_SESSION['username'] = $username;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in successfully!');
-    header('Location: ../pages/editProfile.php');
+    header('Location: ../pages/main_page.php');
   } else {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Login failed!');
     header('Location: ../pages/login.php');

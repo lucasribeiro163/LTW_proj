@@ -46,6 +46,7 @@ h1 {
   font-size: 1.4em;
   font-family: var(--serif-font), sans-serif;
   margin: 1.2em 0em 0.2em 0em;
+  margin-inline-start: 1em;
   padding: 0em;
 }
 
@@ -55,39 +56,35 @@ h2, h3, h4, h5, h6 {
   margin: 0em 0em 1.5em 1.5em;
   padding: 0em;
   color: var(--dark-color);
+  margin-inline-start: 3em;
 }
 
 body {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 0.90fr auto;
 }
 
 input {
   display: grid;
   margin-bottom: 0.9em;
   padding: 1em;
-  margin-inline-start: 1em;
+  margin-inline-start: 1.5em;
   background-color: var(--panel-color);
   width: 80%;
   font-size: 1.05em;
   grid-column-start: 1;
-  grid-column-end: 3;
-}
-
-form {
-  display: grid;
-  grid-template-columns: 0.5fr auto;
+  grid-column-end: 4;
 }
 
 select {
   padding: 1em;
   margin-bottom: 1em;
-  margin-inline-start: 1.4em;
+  margin-inline-start: 1.65em;
   background-color: var(--panel-color);
   grid-column-start: 1;
-  grid-column-end: 3;
-  font-size: 0.80em;
-  width: 90%;
+  grid-column-end: 4;
+  font-size: 0.90em;
+  width: 89%;
 }
 
 /* buttons to submit are blue rectangle */
@@ -100,17 +97,15 @@ input[type="submit"]{
   border-radius: 2px;
   text-transform: uppercase;
   margin-top: 2em;
-  margin-inline-start: 1em;
-  grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
   width: 110%;
-  padding: 1em;
 } 
 
 form > p {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  margin: 2em 0em 0em 5em;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  margin-left: 5em;
 }
 
 /*
@@ -128,8 +123,10 @@ footer {
   margin-top: auto; 
   grid-column-start: 1;
   grid-column-end: 3;
-  color: var(--black-color);
   width: 100%;
+  border-top: 0.05em;
+  border-top-style: solid;
+  border-color: var(--light-color);
 }
 
 /*
@@ -144,14 +141,21 @@ body > header {
 
 /* logo   */
 body > header img {
-  width: 7em;
+  width: 10%;
   margin-right: 70%;
 }
 
 body > header  i {
   font-size: 1.5em;
   padding: 1%;
+  margin-right: 1%;
 }
+
+/*person image */
+body > header :nth-child(3) {
+  width: 3%;
+}
+
 
 textarea {
   font-size: 1.2em;
@@ -162,14 +166,24 @@ textarea {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-/* login & signup */
 
+/* login & signup */
 #someImage > img, #houseImage > img {
-  margin: 3em 0em 10em 2em;
+  margin: 6.5em 1em 5em 4em;
   border-style: solid;
-  max-width: 650px;
-  overflow: hidden;
+  max-width: 570px;
+  overflow: scroll;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: span 2;
 }
+
+#signup > form, #login > form {
+  display: grid;
+  grid-template-columns: auto 20% 50%;
+}
+
 
 #signup a, #login a { 
   color: var(--main-color);
@@ -242,15 +256,53 @@ textarea {
 /**
  * editProfile
  */
+ 
+#editProfile > form {
+  display: grid;
+  grid-template-columns: 80% 20%;
+} 
 
- #editProfile select {
-  width: 88%;
+
+#editProfile input {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  width: 90%;
+  height: 20%;
+  margin: 0em 0em 2em 1em;
+} 
+
+#editProfile input[type="submit"] {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  width: 60%;
+  height: 50%;
+  margin: 0.6em 0em 0em 0em;
+
+} 
+
+#editProfile select {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  width: 97%;
+  padding-left: 2em;
+  margin: 0em 0em 3.2em 1em;
 }
+
+#personImg input[type="submit"] {
+  width: 60%;
+  margin-left: 6em;
+} 
 
 #personImg {
   max-width: 160em;
-  padding: 2% 0% 0% 30% ;
+  padding: 20% 0% 10% 0%;
 }
+
+#personImg > img {
+  max-width: 200em;
+  padding-left: 25%;
+}
+
 
 /**
  * Messages
@@ -278,8 +330,14 @@ body > #messages .success {
 *Article
 */
 
+body > #lists { 
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-template-columns: 33.4% 33.3% 33.3%;
+}
+
 #lists article{
-  display: flex;
   border-style: solid;
   justify-content: space-around; 
 }
@@ -287,7 +345,11 @@ body > #messages .success {
 /*
 * Contact us
 */
+
 #contacts h1{
+  margin: 0;
+  justify-content: space-evenly;
+  top: 250px;
   color: white;
   position: absolute;
   left: 200px;
@@ -319,113 +381,87 @@ body > #messages .success {
 }
 
 #contacts img{
-  background-size: 100%;
+  position: absolute;
   width: 100%;
 }
 
 #rectangles{
   display: flex;
-  position: absolute;
   width: 100%;
+  position: absolute;
+  justify-content: space-evenly;
+  top: 648px;
 }
 
 #rectangles div{
-  background: lightblue;
+  background: white;
   padding: 20px;
   width: 400px;
   height: 300px;
   border-radius: 25px;
+  text-align: center;
 }
+#rectangles div i{
+  border-style: solid;
+  border-radius: 25px;
+  padding: 15px;
+  padding-left: 35px;
+  padding-right: 35px;
+  font-size: 100px;
+}
+#rectangles div p{
+  font-size: 45px;
+  padding: 0%;
+  padding-top: 25px;
+  margin: 0%;
+}
+
+#subText{
+  margin: 0;
+  font-size: 30px;
+  padding-top: 30px;
+  color: blue;
+}
+
 
 /**
- * Lists
+ * Dropbox user
  */
-/*
-#lists {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;	
+
+.dropbtn {
+  background-color: var(--light-color);
+  color: var(--black-color);
+  font-size: 2em;
+  border: none;
+  cursor: pointer;
 }
 
-#lists article.list {
-  border: 1px solid black;
-
-  margin: 1em;
+.dropbtn:hover, .dropbtn:focus {
   background-color: var(--panel-color);
+}
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--light-color);
+  width: 350%;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: var(--black-color);
+  padding-top: 3%;
+  text-decoration: none;
   display: grid;
-  grid-template-rows: auto 1fr auto;
 }
 
-#lists article.list header{
-  background-color: var(--main-color);
-  padding: 1em;
-}
+.dropdown a:hover {background-color: var(--dark-color);}
 
-#lists article.list header h2{
-  color: var(--panel-color);
-  margin: 0;
-}
-
-#lists article.list ol{
-  padding: 1em;
-}
-
-#lists article.list ol li{
-  display: block;
-
-  margin: 0;
-  padding: 1em 1em 1em 0;
-}
-
-#lists article.list ol li a{
-  float: left;
-  padding: 0 .5em 0 0;
-  visibility: hidden;
-}
-
-#lists article.list ol li:hover a{
-  visibility: visible;
-}
-
-#lists article.list ol li label{
-  display: block;
-  max-width: 20em;
-}
-
-#lists article.list ol li label input{
-  float: right;
-}
-
-#lists article.list form {
-  padding: 1em;
-}
-
-#lists article.list form input {
-  width: 100%;
-  padding: 1em;
-}
-
-#lists article.new-list {
-  border: 1px solid black;
-
-  margin: 1em;
-  background-color: var(--panel-color);
-}
-
-#lists article.new-list form {
-  background-color: var(--main-color);
-}
-
-#lists article.new-list form input {
-  padding: .5em;
-
-  color: var(--panel-color);
-  background-color: var(--main-color);
-
-  font-family: var(--sans-font);
-  font-size: 1.5em;
-  font-weight: bold;
-
-  border-bottom: none;
-}*/
+.show {display: grid;}
