@@ -182,3 +182,32 @@ function draw_aboutUs(){
 
 <?php 
 }
+
+function draw_contacts(){
+  /**
+   * Draws the about us section.
+   */ ?>
+  <section id="contacts">
+    <h1>Get in touch</h1>
+    <img src="https://www.thebighousemuseum.com/wp-content/uploads/2013/07/about-the-big-house-1.jpg"></img>
+  </section>
+
+  <section id="rectangles">
+    <div id="contactRectangle1">
+      <p>jnfjbfi</p>
+    </div>
+
+    <div id="contactRectangle2">
+      <p>jnfjbfi</p>
+    </div>
+  </section>
+
+  <section id="descriptionAbout">
+      <h3><p>This company started with the sole purpose of helping you find the home of your dreams.
+         We quickly noticed a big hole in the market for an easy way to rent houses without dealing with the tedious process of it all.</p>
+       <p> With Rent A House, it is as easy as clicking a button. All the houses available on this website are verified for your safety. 
+         Feel free to add your home or to look around at our great range of selection and enjoy!</p></h3>
+    </section>
+
+<?php 
+}

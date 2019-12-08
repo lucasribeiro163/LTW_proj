@@ -19,7 +19,8 @@
     <body>
       <header id="options">
       <a href="../../Src/pages/login.php"><img src =../../Mockups/logo2.png alt="Rent a house"></a>
-        <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
+      <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
+      <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
           <?php if ($username != NULL) { ?>
           <nav>
             <ul>
