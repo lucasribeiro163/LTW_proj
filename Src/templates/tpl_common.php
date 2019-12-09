@@ -30,9 +30,10 @@ function draw_header($username) {
           <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn"><?=$username?></button>
               <div id="myDropdown" class="dropdown-content">
-              <a href="../../Src/pages/login.php">My places</a>
+              <a href="../../Src/pages/aboutUs.php">My places</a>
               <a href="../../Src/pages/aboutUs.php">My Lists</a>
-              <a href="../../Src/pages/aboutUs.php">Rents</a>
+              <a href="../../Src/pages/aboutUs.php">My Rents</a>
+              <a href="../../Src/pages/profile.php">Profile</a>
               <a href="../actions/action_logout.php">Logout</a>
           </div>
         </div>

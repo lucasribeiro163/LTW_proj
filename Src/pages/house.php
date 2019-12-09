@@ -5,6 +5,9 @@
   include_once('../templates/tpl_lists.php');
   include_once('../database/db_list.php');
 
+  // Verify if user is logged in
+  if (!isset($_SESSION['username']))
+    die(header('Location: login.php'));
 
   $house = $_GET['house'];
 

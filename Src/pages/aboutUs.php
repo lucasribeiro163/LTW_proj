@@ -4,9 +4,9 @@
   include_once('../templates/tpl_auth.php');
 
   // Verify if user is logged in
-  if (isset($_SESSION['username']))
-    draw_header($_SESSION['username']);
-  else draw_header(null);
+  if (!isset($_SESSION['username']))
+    draw_header(null);
+  else draw_header($_SESSION['username']); 
   
   draw_aboutUs();
   draw_footer();

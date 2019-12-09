@@ -709,5 +709,34 @@ function draw_contacts(){
     </div>
   </section>
 
-<?php 
-}
+<?php } 
+
+function draw_profile($username) {
+  
+/**
+   * Draws the signup section.
+   */ ?>
+  <section id="editProfile">
+  
+  <header>
+    <h1>Your Profile.</h1>
+  </header>
+
+  <p>Name: <?=getPersonName($username)?> </p>
+  <p>Username: <?=$username?> </p>
+  <p>Email: <?=getPersonEmail($username)?> </p>
+  </section>
+
+<?php
+
+$id = getId($username);  
+if(getPersonImage($id) == null)
+  $image = "../images/person/thumbs_small/default.jpg";
+else $image = "../images/person/thumbs_small/$id.jpg";
+?>
+
+<section id="personImg">
+  <img src="<?=$image?>" alt="person pic">
+</section>
+
+<?php } ?>
