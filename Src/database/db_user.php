@@ -117,4 +117,18 @@
     $user = $stmt->fetch();
     return $user['email'];
   }
+
+  function getPersonCountry($username) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username = ?');
+    $stmt->execute(array($username));
+    $user = $stmt->fetch();
+    $country = $user['idPais'];
+
+    $dbh = Database::instance()->db();
+    $stmt1 = $dbh->prepare('SELECT * FROM Pais WHERE idPais = ?');
+    $stmt1->execute(array($country));
+    $countryName = $stmt1->fetch();
+    return $countryName['nome'];
+  }
 ?>

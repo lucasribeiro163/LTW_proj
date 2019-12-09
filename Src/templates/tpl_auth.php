@@ -716,27 +716,25 @@ function draw_profile($username) {
 /**
    * Draws the signup section.
    */ ?>
-  <section id="editProfile">
+  <section id="profile">
   
   <header>
     <h1>Your Profile.</h1>
   </header>
 
+  <?php 
+  $id = getId($username);  
+  if(getPersonImage($id) == null)
+    $image = "../images/person/thumbs_small/default.jpg";
+  else $image = "../images/person/thumbs_small/$id.jpg";
+  ?>
+  
+  <img src="<?=$image?>" alt="person pic">
+  <p>Account</p>
   <p>Name: <?=getPersonName($username)?> </p>
   <p>Username: <?=$username?> </p>
   <p>Email: <?=getPersonEmail($username)?> </p>
+  <p>Country: <?getPersonCountry($username)?> </p>
   </section>
-
-<?php
-
-$id = getId($username);  
-if(getPersonImage($id) == null)
-  $image = "../images/person/thumbs_small/default.jpg";
-else $image = "../images/person/thumbs_small/$id.jpg";
-?>
-
-<section id="personImg">
-  <img src="<?=$image?>" alt="person pic">
-</section>
 
 <?php } ?>

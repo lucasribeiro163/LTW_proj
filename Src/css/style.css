@@ -173,10 +173,6 @@ textarea {
   border-style: solid;
   max-width: 570px;
   overflow: scroll;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: span 2;
 }
 
 #signup > form, #login > form {
@@ -321,6 +317,8 @@ body > #messages .error {
 }
 
 body > #messages .success {
+  width: 110%;
+  grid-column-end: 3;
   color: var(--success-fg-color);
   background-color: var(--success-bg-color);
 }
@@ -334,12 +332,19 @@ body > #lists {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-template-columns: 33.4% 33.3% 33.3%;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
 #lists article{
+  justify-content: space-evenly; 
+  padding: 1%;
+  margin: 2%;
+  text-align: center;
+}
+
+#lists img {
   border-style: solid;
-  justify-content: space-around; 
+  align-self: auto;
 }
 
 /*
@@ -394,7 +399,7 @@ body > #lists {
 }
 
 #rectangles div{
-  background: white;
+  background: var(--bg-color);
   padding: 20px;
   width: 400px;
   height: 300px;
@@ -449,7 +454,7 @@ body > #lists {
   display: none;
   position: absolute;
   background-color: var(--light-color);
-  width: 350%;
+  width: 100%;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -465,3 +470,22 @@ body > #lists {
 .dropdown a:hover {background-color: var(--dark-color);}
 
 .show {display: grid;}
+
+/**
+ * Profile
+ */
+
+#profile {
+  padding-left: 40%;
+}
+
+#profile p {
+  font-size: large;
+}
+
+#profile img {
+  min-width: 200;
+  max-width: 400;
+  border-style: solid;
+  border: 2%;
+}

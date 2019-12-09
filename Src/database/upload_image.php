@@ -40,5 +40,5 @@
   imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
   imagejpeg($medium, $mediumFileName);
 
-  header("Location: editProfile.php");
+  header("Location: main_page.php");
 ?>

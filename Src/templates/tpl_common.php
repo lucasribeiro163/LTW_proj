@@ -18,11 +18,13 @@ function draw_header($username) {
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
       <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|+Sans+Condensed:300">
       <script src="../js/dropbox.js" defer></script>
+      <script src="../js/changeColor.js" defer></script>
+      <script src="../js/changeImage.js" defer></script>
     </head>
     
     <body>
       <header id="options">
-      <a href="../../Src/pages/login.php"><img src =../../Mockups/logo2.png alt="Rent a house"></a>
+      <a href="../../Src/pages/login.php"><img src =../images/logo2.png alt="Rent a house"></a>
       <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
       <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
         <?php 
@@ -56,6 +58,7 @@ function draw_header($username) {
  */ ?>
    <footer id="f1"> 
     <div>© 2019 Rent A House, Inc. All rights reserved.</div>
+      <button onclick="setColor()">Change Color</button>
     </footer>
   </body>
 </html>

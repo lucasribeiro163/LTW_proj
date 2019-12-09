@@ -24,9 +24,9 @@
   
   function getHousePhoto($house_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT urlImagem FROM Fotografia WHERE idHabitacao = ?');
+    $stmt = $db->prepare('SELECT * FROM imagesHouses WHERE id = ?');
     $stmt->execute(array($house_id));
-    return $stmt->fetchAll(); 
+    return $stmt->fetch();
   }
 
   /**
