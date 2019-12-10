@@ -312,7 +312,7 @@ function draw_listing() {
     <header><h1>Create your home's listing.</h1></header>
     <h2>By filling the following requeriments.</h2>
 
-    <form method="post" action="../actions/action_signup.php">
+    <form method="post" action="../actions/action_newHouse.php">
       <input type="text" name="listingTitle" placeholder="Enter a title for the listing" required> 
       <select name="Location" required>
         <option value="1" selected disabled>Location...</option>     
@@ -730,11 +730,11 @@ function draw_profile($username) {
   ?>
   
   <img src="<?=$image?>" alt="person pic">
-  <p>Account</p>
-  <p>Name: <?=getPersonName($username)?> </p>
-  <p>Username: <?=$username?> </p>
-  <p>Email: <?=getPersonEmail($username)?> </p>
-  <p>Country: <?getPersonCountry($username)?> </p>
+  <h2>Account</h2>
+  <a>Name: </a><p><?=getPersonName($username)?> </p>
+  <a>Username: </a><p> <?=$username?> </p>
+  <a>Email: </a> <p><?=getPersonEmail($username)?> </p>
+  <a>Country: </a><p><?getPersonCountry($username)?> </p>
   </section>
 
 <?php } ?>

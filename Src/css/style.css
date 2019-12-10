@@ -120,7 +120,7 @@ form > p {
 footer {
   text-align: center;
   font-size: 15px;
-  margin-top: auto; 
+  margin-top: 5%; 
   grid-column-start: 1;
   grid-column-end: 3;
   width: 100%;
@@ -347,6 +347,21 @@ body > #lists {
   align-self: auto;
 }
 
+#Info {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+}
+
+#address {
+  grid-column-start: 1;
+}
+
+#Info img {
+  border-style: solid;
+  grid-column-start: 2;
+}
+
 /*
 * Contact us
 */
@@ -433,7 +448,7 @@ body > #lists {
  * Dropbox user
  */
 
-.dropbtn {
+.userDropdown {
   background-color: var(--light-color);
   color: var(--black-color);
   font-size: 2em;
@@ -441,7 +456,7 @@ body > #lists {
   cursor: pointer;
 }
 
-.dropbtn:hover, .dropbtn:focus {
+.userDropdown:hover, .userDropdown:focus {
   background-color: var(--panel-color);
 }
 
@@ -454,7 +469,7 @@ body > #lists {
   display: none;
   position: absolute;
   background-color: var(--light-color);
-  width: 100%;
+  width: 120%;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -462,7 +477,7 @@ body > #lists {
 
 .dropdown-content a {
   color: var(--black-color);
-  padding-top: 3%;
+  padding-top: 5%;
   text-decoration: none;
   display: grid;
 }
@@ -476,11 +491,21 @@ body > #lists {
  */
 
 #profile {
-  padding-left: 40%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding-left: 10%;
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  font-size: larger;
+}
+
+#profile a {
+  grid-column-start: 1;
 }
 
 #profile p {
-  font-size: large;
+  border-style: solid;
+  grid-column-start: 2;
 }
 
 #profile img {
@@ -488,4 +513,21 @@ body > #lists {
   max-width: 400;
   border-style: solid;
   border: 2%;
+  border-radius: 100%;
+
+  grid-column-start: 1;
+  grid-row-end: 2;
+}
+
+#profile h1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  font-size: larger;
+  padding-bottom: 5%;
+}
+
+#profile h2 {
+  font-size: larger;
+  padding-top: 5%;
+  grid-column-start: 1;
 }

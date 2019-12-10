@@ -30,11 +30,12 @@ function draw_header($username) {
         <?php 
         if ($username != NULL) {  ?>
           <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"><?=$username?></button>
+            <button onclick="myFunction()" class="userDropdown"><?=$username?></button>
               <div id="myDropdown" class="dropdown-content">
               <a href="../../Src/pages/aboutUs.php">My places</a>
               <a href="../../Src/pages/aboutUs.php">My Lists</a>
-              <a href="../../Src/pages/aboutUs.php">My Rents</a>
+              <a href="../../Src/pages/aboutUs.php">Rents</a>
+              <a href="../../Src/pages/newHouse.php">Listing</a>
               <a href="../../Src/pages/profile.php">Profile</a>
               <a href="../actions/action_logout.php">Logout</a>
           </div>
@@ -58,7 +59,7 @@ function draw_header($username) {
  */ ?>
    <footer id="f1"> 
     <div>© 2019 Rent A House, Inc. All rights reserved.</div>
-      <button onclick="setColor()">Change Color</button>
+      <a>Change Color</a>
     </footer>
   </body>
 </html>
