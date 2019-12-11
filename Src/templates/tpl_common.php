@@ -29,16 +29,6 @@ function draw_header($username) {
       <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for names.." title="Type in a name">
 
 <ul id="myUL" >
-  <li style="display:none"><a href="#">Aveiro</a></li>
-  <li style="display:none"><a href="#">Braga</a></li>
-  <li style="display:none"><a href="#">Coimbra</a></li>
-  <li style="display:none"><a href="#">Evora</a></li>
-  <li style="display:none"><a href="#">Faro</a></li>
-  <li style="display:none"><a href="#">Funchal</a></li>
-  <li style="display:none"><a href="#">Guimarães</a></li>
-  <li style="display:none"><a href="#">Lisboa</a></li>
-  <li style="display:none"><a href="#">Porto</a></li>
-  <li style="display:none"><a href="#">Vila Nova de Gaia</a></li>
 </ul>
 
       <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
