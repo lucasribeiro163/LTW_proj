@@ -314,26 +314,31 @@ function draw_listing() {
 
     <form method="post" action="../actions/action_signup.php">
       <input type="text" name="listingTitle" placeholder="Enter a title for the listing" required> 
+      
+      <textarea name="title" rows="1" cols="50">Enter a title.</textarea>   
+      <textarea name="price" rows="4" cols="50">Enter the price per night.</textarea> 
       <select name="Location" required>
         <option value="1" selected disabled>Location...</option>     
-        <option value="Housebarn">1</option>
-        <option value="flat">2</option>
-        <option value="Apartment">3</option>
-        <option value="Ranch-Style">4</option>
-        <option value="Cabin">5</option>
-        <option value="basement suite">6</option>
-        <option value="Tiny home">7</option>
+        <option value="1">Housebarn</option>
+        <option value="2">flat</option>
+        <option value="3">Apartment</option>
+        <option value="4">Ranch-Style</option>
+        <option value="5">Cabin</option>
+        <option value="6">basement suite</option>
+        <option value="7">Tiny home</option>
       </select> 
+
       <select name="Type" required>
         <option value="1" selected disabled>Type...</option>     
-        <option value="Housebarn">1</option>
-        <option value="flat">2</option>
-        <option value="Apartment">3</option>
-        <option value="Ranch-Style">4</option>
-        <option value="Cabin">5</option>
-        <option value="basement suite">6</option>
-        <option value="Tiny home">7</option>
+        <option value="1">Housebarn</option>
+        <option value="2">flat</option>
+        <option value="3">Apartment"</option>
+        <option value="4">Ranch-Style</option>
+        <option value="5">Cabin</option>
+        <option value="6">basement suite</option>
+        <option value="7">Tiny home</option>
       </select> 
+
       <select name="Nr of bedrooms" required>
         <option value="1" selected disabled>Nr of bedrooms</option>
         <option value="1">1</option>
@@ -344,6 +349,7 @@ function draw_listing() {
         <option value="6">6</option>
         <option value="7">7</option>
       </select>
+
       <select name="Nr of bathrooms" required>
         <option value="1" selected disabled>Nr of bathrooms</option>
         <option value="1">1</option>
@@ -354,6 +360,20 @@ function draw_listing() {
         <option value="6">6</option>
         <option value="7">7</option>
       </select>
+
+      <select name="maxGuests" required>
+        <option value="1" selected disabled>max number of guests</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+
       <textarea name="description" rows="4" cols="50">Enter a short description of the home.</textarea>
       <input type="submit" value="Submit">
     </form>
