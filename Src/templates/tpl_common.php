@@ -20,12 +20,13 @@ function draw_header($username) {
       <script src="../js/dropbox.js" defer></script>
       <script src="../js/changeColor.js" defer></script>
       <script src="../js/changeImage.js" defer></script>
+      <script src="../js/searchBar.js" defer></script>
     </head>
     
     <body>
       <header id="options">
       <a href="../../Src/pages/login.php"><img src =../images/logo2.png alt="Rent a house"></a>
-      <input type="text" id="myInput" onkeyup="choose()" placeholder="Search for names.." title="Type in a name">
+      <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for names.." title="Type in a name">
 
 <ul id="myUL" >
   <li style="display:none"><a href="#">Aveiro</a></li>
@@ -40,38 +41,17 @@ function draw_header($username) {
   <li style="display:none"><a href="#">Vila Nova de Gaia</a></li>
 </ul>
 
-<script>
-function choose() {
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName("li");//todas as opcoes
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if(filter =="")
-            li[i].style.display = "none";
-        else
-        if(txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-        
-    }
-}
-</script>
       <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
       <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
         <?php 
         if ($username != NULL) {  ?>
           <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"><?=$username?></button>
+            <button onclick="myFunction()" class="userDropdown"><?=$username?></button>
               <div id="myDropdown" class="dropdown-content">
               <a href="../../Src/pages/aboutUs.php">My places</a>
               <a href="../../Src/pages/aboutUs.php">My Lists</a>
-              <a href="../../Src/pages/aboutUs.php">My Rents</a>
+              <a href="../../Src/pages/aboutUs.php">Rents</a>
+              <a href="../../Src/pages/newHouse.php">Listing</a>
               <a href="../../Src/pages/profile.php">Profile</a>
               <a href="../actions/action_logout.php">Logout</a>
           </div>
@@ -95,7 +75,7 @@ function choose() {
  */ ?>
    <footer id="f1"> 
     <div>© 2019 Rent A House, Inc. All rights reserved.</div>
-      <button onclick="setColor()">Change Color</button>
+      <a>Change Color</a>
     </footer>
   </body>
 </html>

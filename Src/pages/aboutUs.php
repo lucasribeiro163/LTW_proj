@@ -7,7 +7,7 @@
   if (!isset($_SESSION['username']))
     draw_header(null);
   else draw_header($_SESSION['username']); 
-  
+
   draw_aboutUs();
   draw_footer();
 ?>

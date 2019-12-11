@@ -76,15 +76,20 @@ input {
   grid-column-end: 4;
 }
 
+form {
+  display: grid;
+  grid-template-columns: auto 20% 50%;
+}
+
 select {
   padding: 1em;
   margin-bottom: 1em;
-  margin-inline-start: 1.65em;
+  margin-inline-start: 1.4em;
   background-color: var(--panel-color);
   grid-column-start: 1;
-  grid-column-end: 4;
-  font-size: 0.90em;
-  width: 89%;
+  grid-column-end: 3;
+  font-size: 0.80em;
+  width: 90%;
 }
 
 /* buttons to submit are blue rectangle */
@@ -120,13 +125,11 @@ form > p {
 footer {
   text-align: center;
   font-size: 15px;
-  margin-top: auto; 
+  margin-top: 5%; 
   grid-column-start: 1;
   grid-column-end: 3;
   width: 100%;
-  border-top: 0.05em;
-  border-top-style: solid;
-  border-color: var(--light-color);
+  background-color: white;
 }
 
 /*
@@ -136,26 +139,27 @@ footer {
 body > header {
   grid-column-start: 1;
   grid-column-end: 3;
-  background-color: var(--light-color);
+  background-color: var(--bg-color);
+  border-bottom: solid;
+  border-bottom-color: #f3f3f3;
+  border-bottom-width: 2px;
+  
 } 
 
 /* logo   */
 body > header img {
-  width: 10%;
-  margin-right: 65%;
+  width: 9em;
+  margin-top: 1%;
+  margin-right: 70%;
 }
 
 body > header  i {
   font-size: 1.5em;
   padding: 1%;
-  margin-right: 1%;
+  padding-right: 0%;
+  padding-top: 0em;
+  margin-left: 0%;
 }
-
-/*person image */
-body > header :nth-child(3) {
-  width: 3%;
-}
-
 
 textarea {
   font-size: 1.2em;
@@ -166,29 +170,143 @@ textarea {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-
 /* login & signup */
+
 #someImage > img, #houseImage > img {
-  margin: 6.5em 1em 5em 4em;
+  margin: 0em 0em 0em 0em;
   border-style: solid;
-  max-width: 570px;
+  border-width: 0.5em;
+  max-width: 1200px;
+  height: 710px;
+  margin-left: 10%;
   overflow: scroll;
 }
 
-#signup > form, #login > form {
-  display: grid;
-  grid-template-columns: auto 20% 50%;
-}
+#login{
 
+
+  margin-left: 60px;
+  font-size: 17px;
+
+
+}
 
 #signup a, #login a { 
   color: var(--main-color);
 }
 
 #signup, #login, #listing, #editProfile {
+  padding-top: 10%;
+  padding-left: 10%;
   grid-column-start: 1;
   grid-column-end: 2;
+
 }
+
+
+#login > header {
+
+  margin-top: 15%;
+  font-size: 120%;
+  margin-bottom: 7%;
+
+}
+
+#login > header > h1,h2,h3 {
+
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+#login > form {
+
+  width: 85%;
+
+}
+
+
+#login > form > input[type="text"], input[type="password"]{
+
+  padding: 1.6%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-color: #CCC;
+  border-style: solid;
+  border-radius: 7%;
+  background: var(--bg-color);
+
+
+}
+
+
+#login > form > input[type="submit"]{
+
+  padding: 5%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  height: 40%;
+  border-radius: 7px;
+  
+}
+
+
+#login > form > p{
+
+  padding: 6%;
+  margin-top: 6%;
+  margin-left: 20%;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  padding-left: 0%;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+
+
+
+
+#f1 {
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top-color: #FFF;
+  background-color: white;
+  color: #babababa;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  box-shadow: 0 -8px 10px rgba(0,0,0,.2);
+  padding-top: 0.5em;
+
+
+}
+
+#f1 > div {
+
+
+  margin-bottom: 0.6em;
+
+
+}
+
+
+#f1 > button{
+
+  background-color: #ffffff;
+  border: hidden;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  box-shadow: 0 -2px 3px rgba(0,0,0,.2);
+  font-weight: bold;
+  color: #babababa;
+
+}
+
+
+
+
 
 /*
  *About Us
@@ -230,6 +348,74 @@ textarea {
 /**
  * Listing
  */
+
+
+ #myDropdown {
+
+  background-color: black;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-width: 10em;
+  box-shadow: 0 8px 10px rgba(0,0,0,.2);
+
+
+
+ }
+
+
+ #myDropdown > a {
+
+  
+  color: white;
+
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+ }
+
+
+ .list > a > img{
+
+  border: solid;
+  max-width: 92%;
+
+
+
+ }
+
+
+ .list {
+
+
+  border-color: white;
+  background-color: white;
+  border-width: 0.05em;  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0,0,0,.2)
+
+
+
+ }
+
+ #lists {
+
+  background-color: #fafafa;
+  padding-left: 10%;
+  padding-right: 10%;
+
+ }
+
+
+
+ #Info > h1, h2{
+
+  margin-left: 0em;
+  text-align: left;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+ }
  
  #listing > form {
   display: grid;
@@ -252,53 +438,15 @@ textarea {
 /**
  * editProfile
  */
- 
-#editProfile > form {
-  display: grid;
-  grid-template-columns: 80% 20%;
-} 
 
-
-#editProfile input {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  width: 90%;
-  height: 20%;
-  margin: 0em 0em 2em 1em;
-} 
-
-#editProfile input[type="submit"] {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  width: 60%;
-  height: 50%;
-  margin: 0.6em 0em 0em 0em;
-
-} 
-
-#editProfile select {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  width: 97%;
-  padding-left: 2em;
-  margin: 0em 0em 3.2em 1em;
+ #editProfile select {
+  width: 88%;
 }
-
-#personImg input[type="submit"] {
-  width: 60%;
-  margin-left: 6em;
-} 
 
 #personImg {
   max-width: 160em;
-  padding: 20% 0% 10% 0%;
+  padding: 2% 0% 0% 30% ;
 }
-
-#personImg > img {
-  max-width: 200em;
-  padding-left: 25%;
-}
-
 
 /**
  * Messages
@@ -317,8 +465,6 @@ body > #messages .error {
 }
 
 body > #messages .success {
-  width: 110%;
-  grid-column-end: 3;
   color: var(--success-fg-color);
   background-color: var(--success-bg-color);
 }
@@ -332,163 +478,68 @@ body > #lists {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 33.4% 33.3% 33.3%;
 }
 
 #lists article{
-  justify-content: space-evenly; 
-  padding: 1%;
-  margin: 2%;
-  text-align: center;
+  border-style: solid;
+  justify-content: space-around; 
+  margin: 1em;
+  overflow: hidden;
+  border-radius: 25px;
+  padding: 1em;
 }
 
-#lists img {
+#Info {
+  font-size: 1.4em;
+}
+
+#Info {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+}
+
+#address {
+  grid-column-start: 1;
+}
+
+#Info img {
   border-style: solid;
-  align-self: auto;
+  grid-column-start: 2;
 }
 
 /*
 * Contact us
 */
-
-#contacts h1{
-  margin: 0;
-  justify-content: space-evenly;
-  top: 250px;
-  color: white;
-  position: absolute;
-  left: 200px;
-  font-size: 200px;
-  text-shadow:  1px 1px 0 #333,
-  -1px 1px 0 #333,
-  1px -1px 0 #333,
-  -1px -1px 0 #333,
-  0px 1px 0 #333,
-  0px -1px 0 #333,
-  -1px 0px 0 #333,
-  1px 0px 0 #333,
-  2px 2px 0 #333,
-  -2px 2px 0 #333,
-  2px -2px 0 #333,
-  -2px -2px 0 #333,
-  0px 2px 0 #333,
-  0px -2px 0 #333,
-  -2px 0px 0 #333,
-  2px 0px 0 #333,
-  1px 2px 0 #333,
-  -1px 2px 0 #333,
-  1px -2px 0 #333,
-  -1px -2px 0 #333,
-  2px 1px 0 #333,
-  -2px 1px 0 #333,
-  2px -1px 0 #333,
-  -2px -1px 0 #333;
-}
-
-#contacts img{
-  position: absolute;
-  width: 100%;
-}
-
-#rectangles{
-  display: flex;
-  width: 100%;
-  position: absolute;
-  justify-content: space-evenly;
-  top: 648px;
-}
-
-#rectangles div{
-  background: var(--bg-color);
-  padding: 20px;
-  width: 400px;
-  height: 300px;
-  border-radius: 25px;
-  text-align: center;
-}
-#rectangles div i{
-  border-style: solid;
-  border-radius: 25px;
-  padding: 15px;
-  padding-left: 35px;
-  padding-right: 35px;
-  font-size: 100px;
-}
-#rectangles div p{
-  font-size: 45px;
-  padding: 0%;
-  padding-top: 25px;
-  margin: 0%;
-}
-
-#subText{
-  margin: 0;
-  font-size: 30px;
-  padding-top: 30px;
-  color: blue;
-}
-
-
-/**
- * Dropbox user
- */
-
-.dropbtn {
-  background-color: var(--light-color);
-  color: var(--black-color);
-  font-size: 2em;
-  border: none;
-  cursor: pointer;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-  background-color: var(--panel-color);
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--light-color);
-  width: 100%;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: var(--black-color);
-  padding-top: 3%;
-  text-decoration: none;
+#options > nav ul {
   display: grid;
+  grid-template-columns: 20% 20% 20% 10% 10% 10% 10%;
+  list-style-type: none;
 }
 
-.dropdown a:hover {background-color: var(--dark-color);}
-
-.show {display: grid;}
-
-/**
- * Profile
- */
-
-#profile {
-  padding-left: 40%;
+#options > nav li {
+  margin-inline-start: 350%;
 }
 
-#profile p {
-  font-size: large;
+#house_details > h3{
+
+  font-size: 2.2em;
+  margin: 2em;
+
 }
 
-#profile img {
-  min-width: 200;
-  max-width: 400;
-  border-style: solid;
-  border: 2%;
+#house_details > #address{
+
+  font-size: 1.2em;
+  margin-left: 5em;
+  margin-top: 0em;
+  color: grey;
+
 }
+/*
+* Search Bar
+*/
 
 #myInput {
   background-position: 10px 12px; /* Position the search icon */
