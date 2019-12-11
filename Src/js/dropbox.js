@@ -5,9 +5,10 @@ toggle between hiding and showing the dropdown content */
 function handleEventDrop(event) {
   let dropdown = document.getElementById("myDropdown")
   dropdown.classList.toggle("show");
-  let dropdowns = dropdown.childNodes
+  let dropdowns = dropdown.children
   for (let i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
+      console.log(openDropdown)
       openDropdown.classList.remove('show');
   }  
   event.preventDefault()

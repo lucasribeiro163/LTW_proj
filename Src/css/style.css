@@ -10,10 +10,12 @@ body {
   --bg-color: #FFF;
   --black-color: #000;
   --panel-color: #EEE;
+  --ligth-white: #f3f3f3;
 
   --main-color: #4169E1;
 
   --dark-color: #333;
+  --medium-color: #babababa;
   --light-color: #CCC;
 
   --success-bg-color: #DFF2BF;
@@ -92,6 +94,16 @@ select {
   width: 90%;
 }
 
+input[type="text"], input[type="password"]{
+  padding: 1.6%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-color: var(--light-color);
+  border-style: solid;
+  border-radius: 7px;
+  background: var(--bg-color);
+
+}
+
 /* buttons to submit are blue rectangle */
 input[type="submit"]{
   background: var(--main-color);
@@ -99,12 +111,12 @@ input[type="submit"]{
   font-family: sans-serif;
   font-size: 1em;
   border: none;
-  border-radius: 2px;
+  border-radius: 7px;
   text-transform: uppercase;
   margin-top: 2em;
   grid-column-start: 2;
   grid-column-end: 3;
-  width: 110%;
+  width: 150%;
 } 
 
 form > p {
@@ -129,7 +141,7 @@ footer {
   grid-column-start: 1;
   grid-column-end: 3;
   width: 100%;
-  background-color: white;
+  background-color: var(--bg-color);
 }
 
 /*
@@ -141,7 +153,7 @@ body > header {
   grid-column-end: 3;
   background-color: var(--bg-color);
   border-bottom: solid;
-  border-bottom-color: #f3f3f3;
+  border-bottom-color: var(--ligth-white);
   border-bottom-width: 2px;
   
 } 
@@ -170,8 +182,8 @@ textarea {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-/* login & signup */
 
+/* login & signup */
 #someImage > img, #houseImage > img {
   margin: 0em 0em 0em 0em;
   border-style: solid;
@@ -223,32 +235,9 @@ textarea {
 }
 
 
-input[type="text"], input[type="password"]{
 
-  padding: 1.6%;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  border-color: #CCC;
-  border-style: solid;
-  border-radius: 7%;
-  background: var(--bg-color);
-
-
-}
-
-
-#login > form > input[type="submit"]{
-
-  padding: 5%;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  height: 40%;
-  border-radius: 7px;
-  
-}
-
-
-#login > form > p{
-
+#login > p, #signup > p{
+  color: #333;
   padding: 6%;
   margin-top: 6%;
   margin-left: 20%;
@@ -265,9 +254,9 @@ input[type="text"], input[type="password"]{
   left: 0;
   bottom: 0;
   width: 100%;
-  border-top-color: #FFF;
-  background-color: white;
-  color: #babababa;
+  border-top-color: var(--bg-color);
+  background-color: var(--bg-color);
+  color: var(--medium-color);
   text-align: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
@@ -278,16 +267,13 @@ input[type="text"], input[type="password"]{
 
 #f1 > div {
 
-
   margin-bottom: 0.6em;
-
-
 }
 
 
 #f1 > button{
 
-  background-color: #ffffff;
+  background-color: var(--bg-color);
   border: hidden;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   box-shadow: 0 -2px 3px rgba(0,0,0,.2);
@@ -298,9 +284,9 @@ input[type="text"], input[type="password"]{
 
 
 /*
- *About Us
+ *About Us, security and privacy
 */
-#aboutUs{
+#aboutUs, #security, #privacy {
   text-align: center;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -308,7 +294,7 @@ input[type="text"], input[type="password"]{
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
-#aboutUs h1{
+#aboutUs h1,  #security h1, #privacy h1 {
   margin: 0;
   padding-top: 0.5em;
   padding-bottom: 1em;
@@ -316,7 +302,7 @@ input[type="text"], input[type="password"]{
   color: var(--bg-color);
 }
 
-#descriptionAbout {
+#descriptionAbout, #descriptionPrivacy, #descriptionSecurity  {
   margin: 0;
   text-align: center;
   position: relative;
@@ -328,10 +314,11 @@ input[type="text"], input[type="password"]{
   grid-column-end: 3;
 }
 
-#descriptionAbout > h3 {
+#descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2 {
   margin-bottom: 0;
   font-size: 20px;
   padding-top: 3.5em;
+  text-align: center;
 }
 
  /**
@@ -384,25 +371,19 @@ input[type="text"], input[type="password"]{
  */
 
  .list > a > img{
-
   border: solid;
   max-width: 92%;
-
 
  }
 
 
  .list {
-
-
-  border-color: white;
-  background-color: white;
+  border-color:var(--bg-color);
+  background-color: var(--bg-color);
   border-width: 0.05em;  
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0,0,0,.2)
-
-
 
  }
 
@@ -413,8 +394,6 @@ input[type="text"], input[type="password"]{
   padding-right: 10%;
 
  }
-
-
 
  #Info > h1, h2{
 
@@ -524,25 +503,20 @@ body > #lists {
   font-size: 1.2em;
   margin-left: 5em;
   margin-top: 0em;
-  color: grey;
+  color: var(--light-color);
 
 }
-
 
 
 /**
  * Profile
  */
 
-
-
- #profile {
-
+#profile {
 
   padding-left: 10%;
   padding-right: 10%;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
   display: grid;
 
  }
@@ -562,7 +536,7 @@ body > #lists {
 
   max-width: 20em;
   border: solid;
-  border-color: #dadadada;
+  border-color: var(--light-color);
   border-radius: 1em;
   border-width: 0.05em;  
   grid-column-start: 1;
@@ -570,17 +544,13 @@ body > #lists {
 
  }
 
- #userWall{
-
+#userWall{
 
   grid-column-start: 2;
   grid-column-end: 3;
   
   grid-row-start: 2;
   grid-row-end: 3;
-
-
-
 
  }
 
@@ -595,102 +565,7 @@ body > #lists {
 
 [type = "date"] {
 
-  color:white;
-  background-color: black;
+  color: var(--bg-color);
+  background-color: var(--black-color);
 
 }
-
-
-
-/**
- * Lists
- */
-/*
-#lists {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;	
-}
-
-#lists article.list {
-  border: 1px solid black;
-
-  margin: 1em;
-  background-color: var(--panel-color);
-
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-
-#lists article.list header{
-  background-color: var(--main-color);
-  padding: 1em;
-}
-
-#lists article.list header h2{
-  color: var(--panel-color);
-  margin: 0;
-}
-
-#lists article.list ol{
-  padding: 1em;
-}
-
-#lists article.list ol li{
-  display: block;
-
-  margin: 0;
-  padding: 1em 1em 1em 0;
-}
-
-#lists article.list ol li a{
-  float: left;
-  padding: 0 .5em 0 0;
-  visibility: hidden;
-}
-
-#lists article.list ol li:hover a{
-  visibility: visible;
-}
-
-#lists article.list ol li label{
-  display: block;
-  max-width: 20em;
-}
-
-#lists article.list ol li label input{
-  float: right;
-}
-
-#lists article.list form {
-  padding: 1em;
-}
-
-#lists article.list form input {
-  width: 100%;
-  padding: 1em;
-}
-
-#lists article.new-list {
-  border: 1px solid black;
-
-  margin: 1em;
-  background-color: var(--panel-color);
-}
-
-#lists article.new-list form {
-  background-color: var(--main-color);
-}
-
-#lists article.new-list form input {
-  padding: .5em;
-
-  color: var(--panel-color);
-  background-color: var(--main-color);
-
-  font-family: var(--sans-font);
-  font-size: 1.5em;
-  font-weight: bold;
-
-  border-bottom: none;
-}*/

@@ -61,6 +61,8 @@ function draw_header($username) {
    <footer id="f1"> 
     <div>© 2019 Rent A House, Inc. All rights reserved.</div>
       <a>Change Color</a>
+      <a href="../../Src/pages/privacy.php"<a>Privacy</a>
+      <a href="../../Src/pages/security.php"<a>Security</a>
     </footer>
   </body>
 </html>

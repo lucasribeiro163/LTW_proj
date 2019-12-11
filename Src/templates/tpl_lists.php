@@ -30,16 +30,16 @@
 <?php } ?>
 
 <?php function draw_item($item) {
-  "changeImage()";
 /**
  * Draws a single item. Expects each item to have
  * an item_id, item_done and item_text fields. 
  **/
   $cidade = getCity($item['idCidade']);
-  if(getHousePhoto($item['idHabitacao']) == null) 
-    $image = "../images/houses/thumbs_small/default.jpg";
-  else $image = "../images/houses/thumbs_small/$id.jpg";
   $idHabitacao = $item['idHabitacao'];
+  if(getHousePhoto($item['idHabitacao']) == null) 
+    $image = "../images/houses/thumbs_small/default0.jpg";
+  else $image = "../images/houses/thumbs_small/$idHabitacao.jpg";
+  
 ?>
 <a href= "house.php?house=<?=$idHabitacao?>"> <img id="defaultImage" src="<?php echo $image; ?>" alt="house image"></img> </a>
 <section id="Info">
@@ -60,11 +60,10 @@
 
         $morada = $item['morada'];
         $cidade = getCity($item['idCidade']);
-        $url =  getHousePhoto($item['idHabitacao']);
-        if($url == null)
-          $image = "https://utcdn.utsource.info/m_540x420/public/nopic.jpg";
-        else 
-          $image = $url[0]['urlImagem'];
+        $idHabitacao = $item['idHabitacao'];
+        if(getHousePhoto($item['idHabitacao']) == null) 
+          $image = "../images/houses/thumbs_medium/default0.jpg";
+        else $image = "../images/houses/thumbs_medium/$idHabitacao.jpg";
 
       }
     }
