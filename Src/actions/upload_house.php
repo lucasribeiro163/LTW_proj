@@ -1,5 +1,8 @@
 <?php
-
+ include_once('../includes/database.php');
+ 
+ try {
+ //click on upload and there isn't a picture
   $db = Database::instance()->db();
 
   // Insert image data into database
@@ -43,4 +46,6 @@
   imagejpeg($medium, $mediumFileName);
 
   header("Location: main_page.php");
-?>
+} catch(RuntimeException $e){
+  die(header('Location: ../pages/newHouse.php'));
+}?>

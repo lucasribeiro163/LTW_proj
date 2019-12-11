@@ -575,7 +575,7 @@ function draw_listing() {
         <option value="7">Tiny home</option>
       </select> 
 
-      <select name="Nr of bedrooms" required>
+      <select name="Nrbedrooms" required>
         <option value="1" selected disabled>Nr of bedrooms</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -586,7 +586,7 @@ function draw_listing() {
         <option value="7">7</option>
       </select>
 
-      <select name="Nr of bathrooms" required>
+      <select name="Nrbathrooms" required>
         <option value="1" selected disabled>Nr of bathrooms</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -617,8 +617,8 @@ function draw_listing() {
   </section>
 
   <section id="houseImg">
-    <img src="../images/house/thumbs_small/default.jpg" alt="your house picture">
-    <form action="upload_house.php" method="post" enctype="multipart/form-data">
+    <img src="../images/house/thumbs_small/default0.jpg" alt="your house picture">
+    <form action="../actions/upload_house.php" method="post" enctype="multipart/form-data">
       <input type="file" name="file">
       <input type="submit" value="Change picture">
     </form>
@@ -913,6 +913,7 @@ function draw_editProfile($username) {
   <?php
 
     $id = getId($username);  
+    
     if(getPersonImage($id) == null)
       $image = "../images/person/thumbs_small/default.jpg";
     else $image = "../images/person/thumbs_small/$id.jpg";
@@ -920,7 +921,7 @@ function draw_editProfile($username) {
 
     <section id="personImg">
       <img src="<?=$image?>" alt="person pic">
-      <form action="upload_image.php" method="post" enctype="multipart/form-data">
+      <form action="../actions/upload_image.php?id=<?=$id?>" method="post" enctype="multipart/form-data">
         <input type="file" name="file">
         <input type="submit" value="Change picture">
       </form>
@@ -1016,10 +1017,10 @@ function draw_security() {
   </section>
 
   <section id="descriptionSecurity">
-      <h2><p>Yor security is you priority! If you don't feel secure in this site contact us immediately </p>
-       <p>All image and data introduce in this site won't be taken from you </p></h2>
-      <p>All cookies follow the web protocol</p>
-      <p>If you like us to have a more secure site, contact us by phone or email available, saying want we can do for you</p>
+      <h2><p>Yor security is you priority! If you don't feel secure in this site contact us immediately. </p>
+      <p>All image and data introduce in this site won't be taken from you. </p></h2>
+      <p>All cookies follow the web protocol. All cookies are random and generated in running time.</p>
+      <p>If you like us to have a more secure site, contact us by phone or email available, saying want we can do for you.</p>
   </section>
 <?php
 } 
@@ -1033,10 +1034,11 @@ function draw_privacy() {
   </section>
 
   <section id="descriptionPrivacy">
-      <h2><p>Yor privacy is you priority! If you don't feel privite in this site contact us immediately </p>
-       <p>All image and data introduce in this site won't be taken from you </p></h2>
-      <p>If you don't like to share all you data you don't have to, keep it privity</p>
-      <p>If you like us to have a more secure site, contact us by phone or email available, saying want we can do for you</p>
+      <h2><p>Yor privacy is you priority! If you don't feel privite in this site contact us immediately. </p>
+      <p>All image and data introduce in this site won't be taken from you in any situation. </p></h2>
+      <p>If you don't like to share all you data you don't have to, keep it privity.</p>
+      <p>If you like us to have a more secure site, contact us by phone or email available, saying want we can do for you.</p>
+      <p>Privity is a relation between two parties that is recognized by law, such as that of blood, lease, or service. So both you as us have to keep in contact to follow the privacy rules</p>
   </section>
   
 <?php

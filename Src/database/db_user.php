@@ -96,7 +96,7 @@
 
   function insertPersonImage($id) {
     // Database connection
-    $db = Database::instance()->db(); 
+    $dbh = Database::instance()->db(); 
     // Insert image data into database
     $stmt = $dbh->prepare("INSERT INTO imagesPersons VALUES(?)");
     $stmt->execute(array($id));

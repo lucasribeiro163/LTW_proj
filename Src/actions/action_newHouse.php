@@ -1,6 +1,7 @@
 <?php
   include_once('../includes/session.php');
   include_once('../database/db_list.php');
+  include_once('../database/db_user.php');
 
   // Verify if user is logged in
   if (!isset($_SESSION['username']))
@@ -10,10 +11,10 @@
   $price = $_POST['price'];
   $location = $_POST['location'];
   $type_id = $_POST['Type'];
-  $nr_bedrooms = $_POST['Nr of bedrooms'];
-  $nr_bathrooms = $_POST['Nr of bathroom'];
+  $nr_bedrooms = $_POST['Nrbedrooms'];
+  $nr_bathrooms = $_POST['Nrbathrooms'];
   $max_people = $_POST['maxGuests'];
-  $description = $_Post['description'];
+  $description = $_POST['description'];
   $rating = 0;
   $city_id = $_POST['Country'];
 
