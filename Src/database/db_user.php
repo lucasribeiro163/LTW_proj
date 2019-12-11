@@ -118,6 +118,17 @@
     return $user['email'];
   }
 
+  
+  function getPersonDescription($username) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username = ?');
+    $stmt->execute(array($username));
+    $user = $stmt->fetch();
+    return $user['descricao'];
+  }
+
+
+
   function getPersonCountry($username) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username = ?');
