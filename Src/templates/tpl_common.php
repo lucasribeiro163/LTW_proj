@@ -30,15 +30,16 @@ function draw_header($username) {
         <?php 
         if ($username != NULL) {  ?>
           <div class="dropdown">
-            <button onclick="myFunction()" class="userDropdown"><?=$username?></button>
-              <div id="myDropdown" class="dropdown-content">
+            <p><?=$username?></p>
+            <div id="myDropdown" class="dropdown-content">
               <a href="../../Src/pages/aboutUs.php">My places</a>
               <a href="../../Src/pages/aboutUs.php">My Lists</a>
               <a href="../../Src/pages/aboutUs.php">Rents</a>
               <a href="../../Src/pages/newHouse.php">Listing</a>
+              <a href="../../Src/pages/editProfile.php">Edit profile</a>
               <a href="../../Src/pages/profile.php">Profile</a>
               <a href="../actions/action_logout.php">Logout</a>
-          </div>
+            </div>
         </div>
         <?php
         }
