@@ -110,11 +110,6 @@ CREATE TABLE EscolhidoPelocliente (
     PRIMARY KEY (idReserva)
 );
 
-CREATE TABLE TipoDeHabitacao (
-    idTipo   INTEGER PRIMARY KEY,
-    nome VARCHAR(30) UNIQUE NOT NULL
-);
-
 CREATE TABLE Habitacao (
     idHabitacao INTEGER IDENTITY(1,1) PRIMARY KEY,
     idDono INTEGER CHECK (idDono >= 0), 
@@ -127,8 +122,13 @@ CREATE TABLE Habitacao (
     precoNoite  REAL    CHECK (precoNoite > 0), 
     classificacaoHabitacao INTEGER  CHECK(classificacaoHabitacao >= 1 AND classificacaoHabitacao <= 5), 
     idCidade      INTEGER REFERENCES Cidade (idCidade) ON DELETE CASCADE ON UPDATE CASCADE, 
-    idTipo        INTEGER REFERENCES TipoDeHabitacao (idTipo) ON DELETE SET NULL ON UPDATE ,
+    idTipo        INTEGER REFERENCES TipoDeHabitacao (idTipo) ON DELETE SET NULL ON UPDATE CASCADE,
     picture INTEGER
+);
+
+CREATE TABLE TipoDeHabitacao (
+    idTipo   INTEGER PRIMARY KEY,
+    nome VARCHAR(30) UNIQUE NOT NULL
 );
 
 CREATE TABLE Disponivel (
