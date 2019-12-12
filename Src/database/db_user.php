@@ -96,7 +96,7 @@
 
   function insertPersonImage($id) {
     // Database connection
-    $db = Database::instance()->db(); 
+    $dbh = Database::instance()->db(); 
     // Insert image data into database
     $stmt = $dbh->prepare("INSERT INTO imagesPersons VALUES(?)");
     $stmt->execute(array($id));
@@ -117,6 +117,17 @@
     $user = $stmt->fetch();
     return $user['email'];
   }
+
+  
+  function getPersonDescription($username) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username = ?');
+    $stmt->execute(array($username));
+    $user = $stmt->fetch();
+    return $user['descricao'];
+  }
+
+
 
   function getPersonCountry($username) {
     $db = Database::instance()->db();

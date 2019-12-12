@@ -41,10 +41,10 @@
   else $image = "../images/houses/thumbs_small/$idHabitacao.jpg";
   
 ?>
-<a href= "house.php?house=<?=$idHabitacao?>"> <img class="defaultImage" src="<?php echo $image; ?>" alt="house image"></img> </a>
+<a href= "house.php?house=<?=$idHabitacao?>"> <img id="defaultImage" src="<?php echo $image; ?>" alt="house image"></img> </a>
 <section id="Info">
-  <h1><?=print_r($cidade[0]['nome'])?></h1>
-  <h2><?=$item['titulo']?></h2>
+  <h1><?=$item['titulo']?></h1>
+  <h2><?=$cidade[0]['nome']?></h2>
   <section id="address">
     <?=htmlspecialchars($item['morada'])?>
   </section>
@@ -57,26 +57,29 @@
   foreach($lists as $list){
     foreach ($list['list_items'] as $item){
       if($item['idHabitacao'] == $house){
+
         $morada = $item['morada'];
         $cidade = getCity($item['idCidade']);
-        $idDefault = 0;
-
         $idHabitacao = $item['idHabitacao'];
         if(getHousePhoto($item['idHabitacao']) == null) 
-          $image = "../images/houses/thumbs_medium/default$idDefault.jpg";
+          $image = "../images/houses/thumbs_medium/default0.jpg";
         else $image = "../images/houses/thumbs_medium/$idHabitacao.jpg";
+
       }
     }
   }
     ?>
     <section id="Info">
-      <h2><?=$item['titulo']?></h2>
+      <h1><?=$item['titulo']?></h1>
+      <h2><?=$item['descricaoHabitacao']?></h2>
       <section id="address">
         <?=htmlspecialchars($morada)?>
         ,
         <?=print_r($cidade[0]['nome'])?>
       </section>
-      <img src="<?php echo $image; ?>" alt="house image"></img>
+      <a>Check-in: <input type="date" name="check-in"></a>
+      <a>Check-out: <input type="date" name="check-out"></a>
+      <button id="rent_button">Rent</button>
     </section>
-    
+    <img src="<?php echo $image; ?>" alt="house image"></img>
 <?php } ?>

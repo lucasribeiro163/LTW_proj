@@ -52,10 +52,10 @@
   /**
    * Inserts a new house into the database.
    */
-  function insertHouse($nr_bedrooms, $max_people, $price, $rating, $city_id, $type_id) {
+  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('INSERT INTO Habitacao VALUES(NULL, ? , ? , ? , ? , ? , ? )');
-    $stmt->execute(array($nr_bedrooms, $max_people, $price, $rating, $city_id, $type_id));
+    $stmt = $db->prepare('INSERT INTO Habitacao VALUES(? , ? , ? , ? , ? , ?, ? , ?, ?, ?, ? )');
+    $stmt->execute(array ($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id));
   }
 
   /**

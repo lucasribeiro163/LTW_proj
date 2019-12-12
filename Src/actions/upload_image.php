@@ -1,9 +1,9 @@
 <?php
-
-  include_once('../db_user.php');
+  include_once('../includes/database.php');
+  include_once('../database/db_user.php');
 
   // Get image ID
-  $id = $_GET['id'];
+  $id = $_POST['id'];
   if(getPersonImage($id) == null)
     insertPersonImage($id);
 

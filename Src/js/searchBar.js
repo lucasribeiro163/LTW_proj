@@ -8,27 +8,32 @@ function getCities(){
 
 function citiesReceived() {
     let cities = JSON.parse(this.responseText);
-    let list = document.getElementById("suggestions");
-    list.innerHTML = ""; // Clean current cities
   
-    // Add new suggestions
-    for (country in cities) {
+    // Add new cities
+    for (city in cities) {
       let item = document.createElement("li");
-      item.innerHTML = cities[country].name;
+      item.innerHTML = cities[city].name;
       list.appendChild(item);
     }
   }
 
 function getListReady(){
-    ul = document.getElementById("myUL");
+    var ul = document.getElementById("myUL");
+    console.log(ul);
+    var li = ul.getElementsByTagName("li");
+    console.log(li);
+    if(li && li.length)
+    return;
+    console.log("eddd");
     var cityList = getCities();
-    for(i = 0; i<cityList.length; i++)
+    for(var i = 0; i<cityList.length; i++)
     var li = document.createElement("li");
     li.appendChild(document.createTextNode("Four"));
     ul.appendChild(li);
 }
 
 function filterResults() {
+    getListReady();
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
