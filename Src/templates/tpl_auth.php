@@ -292,6 +292,7 @@ function draw_login() {
           <option value="256">Zambia</option>
           <option value="257">Zimbabwe</option>
         </select>    
+        <textarea name="description" rows="2" cols="50">Enter a short description of yourself.</textarea>
       <input type="submit" value="signup">
     </form>
     <p>Already have an account? So just <a href="login.php">Login!</a></p>
@@ -305,7 +306,7 @@ function draw_login() {
 
 function draw_listing() { 
 /**
- * Draws the signup section.
+ * Draws the newHouse/listing section.
  */ ?>
   <section id="listing">
     <header><h1>Create your home's listing.</h1></header>
@@ -617,17 +618,16 @@ function draw_listing() {
   </section>
 
   <section id="houseImg">
-    <img src="../images/house/thumbs_small/default0.jpg" alt="your house picture">
-    <form action="../actions/upload_house.php" method="post" enctype="multipart/form-data">
-      <input type="file" name="file">
-      <input type="submit" value="Change picture">
+    <img src="../images/houses/thumbs_small/default0.jpg" alt="your house picture">
+    <form action="../actions/upload_house.php?house=<?=$idHabitacao?>" method="post" enctype="multipart/form-data">
+      <input type="file" name="image">
     </form>
   </section>
 <?php } 
 
 function draw_editProfile($username) { 
   /**
-   * Draws the signup section.
+   * Draws the editProfile section.
    */ ?>
     <section id="editProfile">
   
@@ -658,9 +658,8 @@ function draw_editProfile($username) {
       </form>
 
       <form method="post" action="../actions/action_change_country.php"> 
-        <select name="Country" required>
+        <select name="country" required>
           <option value="Other" selected disabled>Home Contry</option>     
-          <option value="2">United States of America</option>
           <option value="3">Spain</option>
           <option value="4">France</option>
           <option value="5">United Kingdom</option>
@@ -892,6 +891,7 @@ function draw_editProfile($username) {
           <option value="242">Uganda</option>
           <option value="243">Ukraine</option>
           <option value="244">United Arab Emirates</option>
+          <option value="2">United States of America</option>
           <option value="245">Uruguay</option>
           <option value="246">Uzbekistan</option>
           <option value="247">Vanuatu</option>
@@ -975,7 +975,7 @@ function draw_contacts(){
 function draw_profile($username) {
   
 /**
-   * Draws the signup section.
+   * Draws the profile section.
    */ ?>
   <section id="profile">
   
@@ -985,7 +985,7 @@ function draw_profile($username) {
 
   <?php 
   $id = getId($username);  
-  if(getPersonImage($id) == null)
+  if(getPersonImage($id) == 0)
     $image = "../images/person/thumbs_small/default.jpg";
   else $image = "../images/person/thumbs_small/$id.jpg";
   ?>

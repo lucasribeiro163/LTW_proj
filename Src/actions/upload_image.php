@@ -4,7 +4,7 @@
   include_once('../database/db_user.php');
 
   // Get image ID
-  $id = $_GET['id'];
+  $id = $_POST['id'];
   if(getPersonImage($id) == 0)
     insertPersonImage($id);
 
@@ -41,5 +41,5 @@
   imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
   imagejpeg($medium, $mediumFileName);
 
-  header("Location: ../pages/main_page.php");
+  header("Location: ../pages/newHouse.php");
 ?>
