@@ -81,25 +81,25 @@
     $dbm = Database::instance()->db();
     $stmt = $dbm->prepare('SELECT * FROM Utilizador WHERE username = ?');
     $stmt->execute(array($username));
-
     $user = $stmt->fetch();
     return $user['id'];
   }
 
   function getPersonImage($id) {
     $db = Database::instance()->db();
-
-    $stmt = $db->prepare('SELECT * FROM imagesPersons WHERE id = ?');
+    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE id = ?');
     $stmt->execute(array($id));
-    return $stmt->fetch();
+    $stmt->fetch();
+    return $stmt['picture'];
   }
 
   function insertPersonImage($id) {
     // Database connection
     $dbh = Database::instance()->db(); 
     // Insert image data into database
-    $stmt = $dbh->prepare("INSERT INTO imagesPersons VALUES(?)");
-    $stmt->execute(array($id));
+    $stmt1 = $dbh->prepare('UPDATE Utilizador SET picture = ? WHERE id = ?');
+    $stmt1->execute(array(1, $id));
+
   }
 
   function getPersonName($username) {

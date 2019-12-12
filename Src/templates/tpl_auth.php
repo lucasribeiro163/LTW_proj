@@ -293,8 +293,8 @@ function draw_login() {
           <option value="257">Zimbabwe</option>
         </select>    
       <input type="submit" value="signup">
-      <p>Already have an account? So just <a href="login.php">Login!</a></p>
     </form>
+    <p>Already have an account? So just <a href="login.php">Login!</a></p>
   </section>
 
   <section id="someImage">
@@ -914,7 +914,7 @@ function draw_editProfile($username) {
 
     $id = getId($username);  
     
-    if(getPersonImage($id) == null)
+    if(getPersonImage($id) == 0)
       $image = "../images/person/thumbs_small/default.jpg";
     else $image = "../images/person/thumbs_small/$id.jpg";
     ?>
@@ -922,7 +922,7 @@ function draw_editProfile($username) {
     <section id="personImg">
       <img src="<?=$image?>" alt="person pic">
       <form action="../actions/upload_image.php?id=<?=$id?>" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
+        <input type="file" name="image">
         <input type="submit" value="Change picture">
       </form>
     </section>
@@ -999,9 +999,9 @@ function draw_profile($username) {
   
   
   <div id="userWall">
-    <p>Name: <?=getPersonName($username)?> </p>
-    <p>Description: <?=getPersonDescription($username)?> </p>
-    <p>Country: <?getPersonCountry($username)?> </p>
+    <p>Name:  <?=getPersonName($username)?> </p>
+    <p>Description:  <?=getPersonDescription($username)?> </p>
+    <p>Country:  <?=getPersonCountry($username)?> </p>
   </div>
   
   </section>

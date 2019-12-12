@@ -3,7 +3,7 @@
  
  try {
  //click on upload and there isn't a picture
-  $db = Database::instance()->db();
+  $dbh = Database::instance()->db();
 
   // Insert image data into database
   $stmt = $dbh->prepare("INSERT INTO imagesHouses VALUES(NULL, ?)");

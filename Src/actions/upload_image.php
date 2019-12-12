@@ -1,16 +1,17 @@
 <?php
   include_once('../includes/database.php');
+  include_once('../includes/session.php');
   include_once('../database/db_user.php');
 
   // Get image ID
-  $id = $_POST['id'];
-  if(getPersonImage($id) == null)
+  $id = $_GET['id'];
+  if(getPersonImage($id) == 0)
     insertPersonImage($id);
 
   // Generate filenames for original, small and medium files
-  $originalFileName = "images/person/originals/$id.jpg";
-  $smallFileName = "images/person/thumbs_small/$id.jpg";
-  $mediumFileName = "images/person/thumbs_medium/$id.jpg";
+  $originalFileName = "../images/person/originals/$id.jpg";
+  $smallFileName = "../images/person/thumbs_small/$id.jpg";
+  $mediumFileName = "../images/person/thumbs_medium/$id.jpg";
 
   // Move the uploaded file to its final destination
   move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
@@ -40,5 +41,5 @@
   imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
   imagejpeg($medium, $mediumFileName);
 
-  header("Location: main_page.php");
+  header("Location: ../pages/main_page.php");
 ?>
