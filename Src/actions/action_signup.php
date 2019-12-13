@@ -7,8 +7,8 @@
   $password1 = $_POST['password1'];
   $name = $_POST['name'];
   $email = $_POST['email'];
- // $country = $_POST['country'];  
- $country = 1;
+  $country = $_POST['country']; 
+  $description = $_POST['description']; 
 
   // Don't allow certain characters
   if ( !preg_match ("/^[a-zA-Z0-9]+$/", $username)) {
@@ -32,7 +32,7 @@
   }
 
   try {
-    insertUser($username, $password, $email, $name, $country);
+    insertUser($username, $password, $email, $name, $country, $description);
     $_SESSION['username'] = $username;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
     header('Location: ../pages/main_page.php');

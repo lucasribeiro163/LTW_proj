@@ -292,9 +292,10 @@ function draw_login() {
           <option value="256">Zambia</option>
           <option value="257">Zimbabwe</option>
         </select>    
+        <textarea name="description" rows="2" cols="50">Enter a short description of yourself.</textarea>
       <input type="submit" value="signup">
-      <p>Already have an account? So just <a href="login.php">Login!</a></p>
     </form>
+    <p>Already have an account? So just <a href="login.php">Login!</a></p>
   </section>
 
   <section id="someImage">
@@ -305,7 +306,7 @@ function draw_login() {
 
 function draw_listing() { 
 /**
- * Draws the signup section.
+ * Draws the newHouse/listing section.
  */ ?>
   <section id="listing">
     <header><h1>Create your home's listing.</h1></header>
@@ -617,17 +618,16 @@ function draw_listing() {
   </section>
 
   <section id="houseImg">
-    <img src="../images/house/thumbs_small/default0.jpg" alt="your house picture">
-    <form action="../actions/upload_house.php" method="post" enctype="multipart/form-data">
-      <input type="file" name="file">
-      <input type="submit" value="Change picture">
+    <img src="../images/houses/thumbs_small/default0.jpg" alt="your house picture">
+    <form action="../actions/upload_house.php?house=<?=$idHabitacao?>" method="post" enctype="multipart/form-data">
+      <input type="file" name="image">
     </form>
   </section>
 <?php } 
 
 function draw_editProfile($username) { 
   /**
-   * Draws the signup section.
+   * Draws the editProfile section.
    */ ?>
     <section id="editProfile">
   
@@ -658,9 +658,8 @@ function draw_editProfile($username) {
       </form>
 
       <form method="post" action="../actions/action_change_country.php"> 
-        <select name="Country" required>
+        <select name="country" required>
           <option value="Other" selected disabled>Home Contry</option>     
-          <option value="2">United States of America</option>
           <option value="3">Spain</option>
           <option value="4">France</option>
           <option value="5">United Kingdom</option>
@@ -892,6 +891,7 @@ function draw_editProfile($username) {
           <option value="242">Uganda</option>
           <option value="243">Ukraine</option>
           <option value="244">United Arab Emirates</option>
+          <option value="2">United States of America</option>
           <option value="245">Uruguay</option>
           <option value="246">Uzbekistan</option>
           <option value="247">Vanuatu</option>
@@ -914,7 +914,7 @@ function draw_editProfile($username) {
 
     $id = getId($username);  
     
-    if(getPersonImage($id) == null)
+    if(getPersonImage($id) == 0)
       $image = "../images/person/thumbs_small/default.jpg";
     else $image = "../images/person/thumbs_small/$id.jpg";
     ?>
@@ -922,7 +922,7 @@ function draw_editProfile($username) {
     <section id="personImg">
       <img src="<?=$image?>" alt="person pic">
       <form action="../actions/upload_image.php?id=<?=$id?>" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
+        <input type="file" name="image">
         <input type="submit" value="Change picture">
       </form>
     </section>
@@ -975,7 +975,7 @@ function draw_contacts(){
 function draw_profile($username) {
   
 /**
-   * Draws the signup section.
+   * Draws the profile section.
    */ ?>
   <section id="profile">
   
@@ -985,7 +985,7 @@ function draw_profile($username) {
 
   <?php 
   $id = getId($username);  
-  if(getPersonImage($id) == null)
+  if(getPersonImage($id) == 0)
     $image = "../images/person/thumbs_small/default.jpg";
   else $image = "../images/person/thumbs_small/$id.jpg";
   ?>
@@ -999,10 +999,14 @@ function draw_profile($username) {
   
   
   <div id="userWall">
-    <p>Name: <?=getPersonName($username)?> </p>
-    <p>Description: <?=getPersonDescription($username)?> </p>
-    <p>Country: <?getPersonCountry($username)?> </p>
+    <p>Name:  <?=getPersonName($username)?> </p>
+    <p>Description:  <?=getPersonDescription($username)?> </p>
+    <p>Country:  <?=getPersonCountry($username)?> </p>
   </div>
+
+  <section id ="mapSection"> 
+      <div id="map"></div>
+  </section>
   
   </section>
 
@@ -1039,6 +1043,7 @@ function draw_privacy() {
       <p>If you don't like to share all you data you don't have to, keep it privity.</p>
       <p>If you like us to have a more secure site, contact us by phone or email available, saying want we can do for you.</p>
       <p>Privity is a relation between two parties that is recognized by law, such as that of blood, lease, or service. So both you as us have to keep in contact to follow the privacy rules</p>
+      <p>Although the site uses our location, you can denied access to you localization any time. </p>
   </section>
   
 <?php

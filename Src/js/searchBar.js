@@ -1,37 +1,38 @@
 'use strict'
-function getCities(){
+ var cities;
+async function getCities(){
     let request = new XMLHttpRequest();
-  request.addEventListener("load", citiesReceived);
+    request.onload = await function citiesReceived() {
+    cities = JSON.parse(this.responseText);
+
+    var ul = document.getElementById("myUL");
+    var li = ul.getElementsByTagName("li");
+    
+    for(var i = 0; i<cities.length; i++)
+    {
+    var a = document.createElement("a");
+    var li = document.createElement("li");
+    a.textContent= cities[i];
+    a.setAttribute('href', "../../Src/pages/main_page.php");
+    li.appendChild(a);
+    ul.appendChild(li);}
+
+    var test = document.getElementsByTagName("li");
+    console.log(test);
+  }
   request.open("get", "../api/getCities.php", true);
   request.send();
-  console.log(request.responseText)
 }
-
-function citiesReceived() {
-
-    let cities = JSON.parse(this.responseText);
-  
-    // Add new cities
-    for (city in cities) {
-      let item = document.createElement("li");
-      item.innerHTML = cities[city].name;
-      list.appendChild(item);
-    }
-  }
 
 function getListReady(){
     var ul = document.getElementById("myUL");
     var li = ul.getElementsByTagName("li");
-    if(li && li.length)//check if it hasn't any elements
+    if(li.length!=0)//check if it hasn't any elements
     return;
-    var cityList = getCities();
-    for(var i = 0; i<cityList.length; i++)
-    var li = document.createElement("li");
-    li.appendChild(document.createTextNode("Four"));
-    ul.appendChild(li);
+    getCities();
 }
 
-function filterResults() {
+function filterResults(){
     getListReady();
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("myInput");

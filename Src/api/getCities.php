@@ -1,6 +1,5 @@
 <?php
   include_once('../database/db_searchInfo.php');
-
-  $cityList = getCities();
-  echo json_encode($cityList);
+  $city = getCities();
+  echo json_encode($city);
 ?>

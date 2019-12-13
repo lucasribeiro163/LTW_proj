@@ -17,13 +17,17 @@
   $description = $_POST['description'];
   $rating = 0;
   $city_id = $_POST['Country'];
-
+  $picture = 1;
   $id = getId($_SESSION['username']);
+  
+  if($_FILES['image']['tmp_name'] == NULL)
+    $picture = 0;
+
 
   try {
-    insertHouse($id, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id);
+    insertHouse($id, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, $picture);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'New house for rent!');
-    header('Location: ../pages/main_page.php');
+    header('Location: ../pages/upload_house.php?house=<?=$idHabitacao?>');
   } catch (PDOException $e) {
     die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to enter new house!');

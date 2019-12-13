@@ -2,16 +2,8 @@
  include_once('../includes/database.php');
  
  try {
- //click on upload and there isn't a picture
-  $db = Database::instance()->db();
-
-  // Insert image data into database
-  $stmt = $dbh->prepare("INSERT INTO imagesHouses VALUES(NULL, ?)");
-  $stmt->execute(array($_POST['title']));
-
   // Get image ID
-  $id = $dbh->lastInsertId();
-
+  $id = $_GET['house'];
   // Generate filenames for original, small and medium files
   $originalFileName = "images/house/originals/$id.jpg";
   $smallFileName = "images/house/thumbs_small/$id.jpg";
@@ -45,7 +37,7 @@
   imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
   imagejpeg($medium, $mediumFileName);
 
-  header("Location: main_page.php");
+  header("Location: ../pages/newHouse.php");
 } catch(RuntimeException $e){
   die(header('Location: ../pages/newHouse.php'));
 }?>

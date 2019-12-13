@@ -22,7 +22,8 @@ CREATE TABLE Utilizador (
     email           VARCHAR(30) UNIQUE NOT NULL, 
     idPais          INTEGER REFERENCES Pais (idPais) ON DELETE SET NULL ON UPDATE CASCADE,
     pass        VARCHAR(20) NOT NULL,
-    descricao    VARCHAR(100) NOT NULL
+    descricao    VARCHAR(100) NOT NULL, 
+    picture INTEGER
 );
 
 CREATE TABLE Cliente (
@@ -109,11 +110,6 @@ CREATE TABLE EscolhidoPelocliente (
     PRIMARY KEY (idReserva)
 );
 
-CREATE TABLE TipoDeHabitacao (
-    idTipo   INTEGER PRIMARY KEY,
-    nome VARCHAR(30) UNIQUE NOT NULL
-);
-
 CREATE TABLE Habitacao (
     idHabitacao INTEGER IDENTITY(1,1) PRIMARY KEY,
     idDono INTEGER CHECK (idDono >= 0), 
@@ -126,7 +122,13 @@ CREATE TABLE Habitacao (
     precoNoite  REAL    CHECK (precoNoite > 0), 
     classificacaoHabitacao INTEGER  CHECK(classificacaoHabitacao >= 1 AND classificacaoHabitacao <= 5), 
     idCidade      INTEGER REFERENCES Cidade (idCidade) ON DELETE CASCADE ON UPDATE CASCADE, 
-    idTipo        INTEGER REFERENCES TipoDeHabitacao (idTipo) ON DELETE SET NULL ON UPDATE CASCADE
+    idTipo        INTEGER REFERENCES TipoDeHabitacao (idTipo) ON DELETE SET NULL ON UPDATE CASCADE,
+    picture INTEGER
+);
+
+CREATE TABLE TipoDeHabitacao (
+    idTipo   INTEGER PRIMARY KEY,
+    nome VARCHAR(30) UNIQUE NOT NULL
 );
 
 CREATE TABLE Disponivel (
@@ -157,15 +159,6 @@ CREATE TABLE Possui (
     idAnfitriao   INTEGER REFERENCES Anfitriao (idAnfitriao) ON DELETE CASCADE ON UPDATE CASCADE, 
     idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE, 
     PRIMARY KEY (idHabitacao)
-);
-
-CREATE TABLE imagesHouses (
-  id INTEGER PRIMARY KEY,
-  title VARCHAR NOT NULL
-);
-
-CREATE TABLE imagesPersons (
-  id INTEGER PRIMARY KEY
 );
 
 
@@ -1064,14 +1057,14 @@ insert into Cliente (idCliente, ClassificacaoCliente) values (14, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (15, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (16, NULL);
 
-insert into Utilizador ( username, nome, email, idPais, pass, descricao) values ("Jose", "José Ribeiro", "jribeiro@gmail.com", 1, "crocodilo1", "Eu sou o José e gosto de animais e de conhecer pessoas de outras cultura.");
-insert into Utilizador ( username, nome, email, idPais, pass, descricao) values ( "Stuart","Stuart Little", "slittle@gmail.com", 2, "tartaruga2", "Sou um rato que fala e gosta de andar de skate.");
-insert into Utilizador ( username, nome, email, idPais, pass, descricao) values ("Marta", "Marta Silva", "msilva15@gmail.com", 1, "leao3", "Nasci no Brazil e adoro pintura e arte em geral");
-insert into Utilizador ( username, nome, email, idPais, pass, descricao) values ("Ricardo", "Ricardo Sousa", "rsousa@gmail.com", 1, "tigre4", "Gosto de conversas longas e dias na praia.");
-insert into Utilizador ( username, nome, email, idPais, pass, descricao) values ("Penélope","Penélope Cruz", "pcruz@gmail.com", 3, "hipopotamo5", "Adoro fotografia e locais verdes.");
-insert into Utilizador ( username, nome, email, idPais, pass, descricao) values ("Kit", "Kit Harington", "kharington@gmail.com", 5, "formiga6", "Sou mergulhador nos tempos livres e instrutor de surf a tempo inteiro.");
-insert into Utilizador ( username, nome, email, idPais, pass, descricao) values ("Monica", "Monica Bellucci", "mbelluci@gmail.com", 6, "pato7", "Nasci em Itália mas lamentavelmente não sei cozinhar.");
-insert into Utilizador ( username, nome, email, idPais, pass, descricao) values ("Chris","Chris Hemsworth", "chemsworth@gmail.com", 9, "rinoceronte8", "Os meus amigos chamam-me thor, mas prefiro Deus do Trovão.");
+insert into Utilizador ( username, nome, email, idPais, pass, descricao, picture) values ("Jose", "José Ribeiro", "jribeiro@gmail.com", 1, "crocodilo1", "Eu sou o José e gosto de animais e de conhecer pessoas de outras cultura.", 0);
+insert into Utilizador ( username, nome, email, idPais, pass, descricao, picture) values ( "Stuart","Stuart Little", "slittle@gmail.com", 2, "tartaruga2", "Sou um rato que fala e gosta de andar de skate.", 0);
+insert into Utilizador ( username, nome, email, idPais, pass, descricao, picture) values ("Marta", "Marta Silva", "msilva15@gmail.com", 1, "leao3", "Nasci no Brazil e adoro pintura e arte em geral", 0);
+insert into Utilizador ( username, nome, email, idPais, pass, descricao, picture) values ("Ricardo", "Ricardo Sousa", "rsousa@gmail.com", 1, "tigre4", "Gosto de conversas longas e dias na praia.", 0);
+insert into Utilizador ( username, nome, email, idPais, pass, descricao, picture) values ("Penélope","Penélope Cruz", "pcruz@gmail.com", 3, "hipopotamo5", "Adoro fotografia e locais verdes.", 0);
+insert into Utilizador ( username, nome, email, idPais, pass, descricao, picture) values ("Kit", "Kit Harington", "kharington@gmail.com", 5, "formiga6", "Sou mergulhador nos tempos livres e instrutor de surf a tempo inteiro.", 0);
+insert into Utilizador ( username, nome, email, idPais, pass, descricao, picture) values ("Monica", "Monica Bellucci", "mbelluci@gmail.com", 6, "pato7", "Nasci em Itália mas lamentavelmente não sei cozinhar.", 0);
+insert into Utilizador ( username, nome, email, idPais, pass, descricao, picture) values ("Chris","Chris Hemsworth", "chemsworth@gmail.com", 9, "rinoceronte8", "Os meus amigos chamam-me thor, mas prefiro Deus do Trovão.", 0);
 
 insert into MetodoDePagamento(idMetodo,nome) values(1,"Multibanco");
 insert into MetodoDePagamento(idMetodo,nome) values(2,"MB Way");
@@ -1108,24 +1101,24 @@ insert into TipoDeHabitacao(idTipo,nome) values (6,"Quarto Privado");
 insert into TipoDeHabitacao(idTipo,nome) values (7,"Quarto Partilhado");
 insert into TipoDeHabitacao(idTipo,nome) values (8,"Hostel");
 
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (1,1,3,2,7,"Casa pituresca perto do mar","Esta casa de sonho não estará disponível muito mais tempo.","Av. Afonso Henriques 9035", 35, NULL, 7, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (2,1,5,3,10,"Mansão de luxo nos suburbios","Luxo. Requinte. Para si.","Rua S. Caetano, s/n",40, NULL, 8, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (3,2,1,1,2,"Apartamento espaçoso no centro da cidade","Cómodo, agil e dinâmico.","Rua da Boavista",35, NULL, 1, 6);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (4,3,1,1,1,"Casa moderna com piscina","Diversão para família toda.","Praceta Joao XXI",80, NULL, 3, 5);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (5,3,4,2,9,"Casa clássica com salão de chá","Zen, reconquiste a sua paz interior","Av. Esteves Alberto 645", 33, NULL, 8, 6);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (6,3,3,2,3,"Apartamento low-budget","Mais barato não podia ser.","Rua D.Pedro III, s/n", 40, NULL, 7, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (7,4,2,1,4,"Apartamento com vista para o mar","Pechincha ideal para todos.","Rua da Trindade",43, NULL, 3, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (8,5,1,1,2,"Cabana na margem do rio","Ideal para quem gosta de pesca.","Praca Joao I", 23, NULL, 3, 5);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (9,5,3,1,7,"Quinta rural com campo de ténis","Perfeito para os amantes de amimais.","Rua do Algarve, 23", 23, NULL, 7, 2);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (1,1,3,2,7,"Casa pituresca perto do mar","Esta casa de sonho não estará disponível muito mais tempo.","Av. Afonso Henriques 9035", 35, NULL, 7, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (2,1,5,3,10,"Mansão de luxo nos suburbios","Luxo. Requinte. Para si.","Rua S. Caetano, s/n",40, NULL, 8, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (3,2,1,1,2,"Apartamento espaçoso no centro da cidade","Cómodo, agil e dinâmico.","Rua da Boavista",35, NULL, 1, 6, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (4,3,1,1,1,"Casa moderna com piscina","Diversão para família toda.","Praceta Joao XXI",80, NULL, 3, 5, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (5,3,4,2,9,"Casa clássica com salão de chá","Zen, reconquiste a sua paz interior","Av. Esteves Alberto 645", 33, NULL, 8, 6, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (6,3,3,2,3,"Apartamento low-budget","Mais barato não podia ser.","Rua D.Pedro III, s/n", 40, NULL, 7, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (7,4,2,1,4,"Apartamento com vista para o mar","Pechincha ideal para todos.","Rua da Trindade",43, NULL, 3, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (8,5,1,1,2,"Cabana na margem do rio","Ideal para quem gosta de pesca.","Praca Joao I", 23, NULL, 3, 5, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (9,5,3,1,7,"Quinta rural com campo de ténis","Perfeito para os amantes de amimais.","Rua do Algarve, 23", 23, NULL, 7, 2, 0);
 
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (10,1,0,1,5,"Estudio acolhedor com forno a lenha","Já dissemos que é acolhedor, porque é.","Rua do Olhar, 23", 50, NULL, 7, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (11,1,3,2,3,"Casa moderna com estúdio musical","Imagine um concerto com os seus amigos","Rua da Gaivota, 30", 70,  NULL, 7, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (12,2,2,2,10,"Apartamento moderno com piano","Modernidade com um toque de requinte","Praca D. Pedro, 10", 300, NULL, 7, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (13,3,2,2,5,"Apartamento pet-friendly perto da baixa","Traga o seu amigo de quatro patas.","Rua do Mar, 1", 23, NULL, 7, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (14,4,4,3,6,"Mansão com escorrega para piscina","Os seus filhos vão adorar","Rua da Alegria, 1000", 20,  NULL, 7, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (15,5,3,2,8,"Casa de dois andares com espaço social no telhado","Pores do sol são demais","Rua do Sal, 14", 60,  NULL, 7, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (16,4,1,1,4,"Cabana na floresta off-the-grid","Isole-se do mundo","Rua da Areia, 70", 85, NULL, 7, 2);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo) values (17,5,3,2,7,"Apartamento com escritório e varanda espaçosa","Hora de acabar o seu trabalho.","Rua do Algarve, 500", 890, NULL, 7, 2);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (10,1,0,1,5,"Estudio acolhedor com forno a lenha","Já dissemos que é acolhedor, porque é.","Rua do Olhar, 23", 50, NULL, 7, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (11,1,3,2,3,"Casa moderna com estúdio musical","Imagine um concerto com os seus amigos","Rua da Gaivota, 30", 70,  NULL, 7, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (12,2,2,2,10,"Apartamento moderno com piano","Modernidade com um toque de requinte","Praca D. Pedro, 10", 300, NULL, 7, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (13,3,2,2,5,"Apartamento pet-friendly perto da baixa","Traga o seu amigo de quatro patas.","Rua do Mar, 1", 23, NULL, 7, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (14,4,4,3,6,"Mansão com escorrega para piscina","Os seus filhos vão adorar","Rua da Alegria, 1000", 20,  NULL, 7, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (15,5,3,2,8,"Casa de dois andares com espaço social no telhado","Pores do sol são demais","Rua do Sal, 14", 60,  NULL, 7, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (16,4,1,1,4,"Cabana na floresta off-the-grid","Isole-se do mundo","Rua da Areia, 70", 85, NULL, 7, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao  , morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (17,5,3,2,7,"Apartamento com escritório e varanda espaçosa","Hora de acabar o seu trabalho.","Rua do Algarve, 500", 890, NULL, 7, 2, 0);
 
 insert into Disponivel (idHabitacao, data) values (1, '2019-06-01');   
 insert into Disponivel (idHabitacao, data) values (1, '2019-06-02');

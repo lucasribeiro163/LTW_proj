@@ -15,20 +15,13 @@
     return ($password == $user['pass']);
   }
 
-  function insertUser($username, $password, $email, $name,  $country) {
+  function insertUser($username, $password, $email, $name,  $country, $description) {
     $db = Database::instance()->db();
 
     $options = ['cost' => 12];
 
-    $stmt = $db->prepare('INSERT INTO Utilizador VALUES(?, ?, ?, ?, ?, ?)');
-    $stmt->execute(array(NULL, $username, $name, $email, $country, password_hash($password, PASSWORD_DEFAULT, $options)));
-    // Get user id
-    $id = getId($username);
-    $dbh = Database::instance()->db();
-    // Insert image data into database
-    $stmt = $dbh->prepare("INSERT INTO imagesPersons VALUES(?)");
-    $stmt->execute($id);
-
+    $stmt = $db->prepare('INSERT INTO Utilizador VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array(NULL, $username, $name, $email, $country, password_hash($password, PASSWORD_DEFAULT, $options),$description, 0 ));
   }
 
   function update_password($username, $password) {
@@ -81,25 +74,25 @@
     $dbm = Database::instance()->db();
     $stmt = $dbm->prepare('SELECT * FROM Utilizador WHERE username = ?');
     $stmt->execute(array($username));
-
     $user = $stmt->fetch();
     return $user['id'];
   }
 
   function getPersonImage($id) {
     $db = Database::instance()->db();
-
-    $stmt = $db->prepare('SELECT * FROM imagesPersons WHERE id = ?');
+    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE id = ?');
     $stmt->execute(array($id));
-    return $stmt->fetch();
+    $pic = $stmt->fetch();
+    return $pic['picture'];
   }
 
   function insertPersonImage($id) {
     // Database connection
     $dbh = Database::instance()->db(); 
     // Insert image data into database
-    $stmt = $dbh->prepare("INSERT INTO imagesPersons VALUES(?)");
-    $stmt->execute(array($id));
+    $stmt1 = $dbh->prepare('UPDATE Utilizador SET picture = ? WHERE id = ?');
+    $stmt1->execute(array(1, $id));
+
   }
 
   function getPersonName($username) {

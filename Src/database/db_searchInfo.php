@@ -2,22 +2,21 @@
   include_once('../includes/database.php');
 
   function getCities(){
-    $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT idCidade FROM Habitacao');
-    $stmt->execute(array());
-    $stmt->fetch();
-    $cityList = [];
-    for($i =0 ; $i< count($stmt) ; ++$i){
-        $temp = getCity($stmt[$i]);
-        push_array($cityList,$temp);
+    
+    $cityList = getCitiesArray();
+    
+    $list =[];
+    for($i =0 ; $i< count($cityList) ; ++$i){
+        $temp =$cityList[$i]['nome'];
+        array_push($list,$temp);
     }
-    return $cityList;
+    return $list;
+  }
+  function getCitiesArray(){
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT nome FROM Cidade');
+    $stmt->execute();
+    return $stmt->fetchAll();
   }
 
-  function getCity($cityId){
-    $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT nome FROM Cidade WHERE idCidade = ?');
-    $stmt->execute($cityId);
-    return $stmt->fetch();
-  }
-?>
+?>  

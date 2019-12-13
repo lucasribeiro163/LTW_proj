@@ -36,7 +36,7 @@
  **/
   $cidade = getCity($item['idCidade']);
   $idHabitacao = $item['idHabitacao'];
-  if(getHousePhoto($item['idHabitacao']) == null) 
+  if(getHousePhoto($item['idHabitacao']) == 0) 
     $image = "../images/houses/thumbs_small/default0.jpg";
   else $image = "../images/houses/thumbs_small/$idHabitacao.jpg";
   
@@ -61,10 +61,10 @@
         $morada = $item['morada'];
         $cidade = getCity($item['idCidade']);
         $idHabitacao = $item['idHabitacao'];
-        if(getHousePhoto($item['idHabitacao']) == null) 
+        if(getHousePhoto($item['idHabitacao']) == 0) 
           $image = "../images/houses/thumbs_medium/default0.jpg";
         else $image = "../images/houses/thumbs_medium/$idHabitacao.jpg";
-
+      
       }
     }
   }
@@ -80,6 +80,10 @@
       <a>Check-in: <input type="date" name="check-in"></a>
       <a>Check-out: <input type="date" name="check-out"></a>
       <button id="rent_button">Rent</button>
+    </section> 
+    <img src="<?php echo $image; ?>" alt="house image"></img>  
+    
+    <section id ="mapSection"> 
+      <div id="map"></div>
     </section>
-    <img src="<?php echo $image; ?>" alt="house image"></img>
 <?php } ?>

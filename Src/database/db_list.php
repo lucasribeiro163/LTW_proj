@@ -24,9 +24,10 @@
   
   function getHousePhoto($house_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM imagesHouses WHERE id = ?');
+    $stmt = $db->prepare('SELECT * FROM habitacao WHERE idHabitacao = ?');
     $stmt->execute(array($house_id));
-    return $stmt->fetch();
+    $house = $stmt->fetch();
+    return $house['picture'];
   }
 
   /**
@@ -52,10 +53,10 @@
   /**
    * Inserts a new house into the database.
    */
-  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id) {
+  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, $picture) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('INSERT INTO Habitacao VALUES(? , ? , ? , ? , ? , ?, ? , ?, ?, ?, ? )');
-    $stmt->execute(array ($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id));
+    $stmt = $db->prepare('INSERT INTO Habitacao VALUES(? , ? , ? , ? , ? , ? , ?, ? , ?, ?, ?, ? , ?)');
+    $stmt->execute(array (NULL, $idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, $picture));
   }
 
   /**
