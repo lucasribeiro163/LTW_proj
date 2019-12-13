@@ -7,8 +7,8 @@
     $stmt->execute(array());
     $stmt->fetch();
     $cityList = [];
-    for($i =0 ; $i< count($stmt) , ++$i){
-        $temp = getCity($stmt[$i])
+    for($i =0 ; $i< count($stmt) ; ++$i){
+        $temp = getCity($stmt[$i]);
         push_array($cityList,$temp);
     }
     return $cityList;

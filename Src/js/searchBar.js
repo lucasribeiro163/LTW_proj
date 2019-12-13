@@ -4,9 +4,11 @@ function getCities(){
   request.addEventListener("load", citiesReceived);
   request.open("get", "../api/getCities.php", true);
   request.send();
+  console.log(request.responseText)
 }
 
 function citiesReceived() {
+
     let cities = JSON.parse(this.responseText);
   
     // Add new cities
@@ -19,12 +21,9 @@ function citiesReceived() {
 
 function getListReady(){
     var ul = document.getElementById("myUL");
-    console.log(ul);
     var li = ul.getElementsByTagName("li");
-    console.log(li);
-    if(li && li.length)
+    if(li && li.length)//check if it hasn't any elements
     return;
-    console.log("eddd");
     var cityList = getCities();
     for(var i = 0; i<cityList.length; i++)
     var li = document.createElement("li");
