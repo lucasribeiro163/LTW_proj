@@ -14,12 +14,15 @@ function draw_header($username) {
       <title>Rent a house</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1.0">
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
       <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|+Sans+Condensed:300">
       <script src="../js/dropbox.js" defer></script>
       <script src="../js/changeColor.js" defer></script>
       <script src="../js/changeImage.js" defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&callback=initMap" async defer></script>
+      <script src="../js/googleMaps.js" defer></script>
     </head>
     
     <body>

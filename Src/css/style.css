@@ -507,6 +507,22 @@ body > #lists {
 
 }
 
+/**
+ *
+  */
+#map {
+  width: 100%;
+  height: 100%;
+  grid-column-start: 1;
+  margin: 10%;
+}
+
+/* used for map */
+#mapSection {
+  height: 200%;
+  margin: 0;
+  margin: 0;
+}
 
 /**
  * Profile

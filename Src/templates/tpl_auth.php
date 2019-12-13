@@ -1003,6 +1003,10 @@ function draw_profile($username) {
     <p>Description:  <?=getPersonDescription($username)?> </p>
     <p>Country:  <?=getPersonCountry($username)?> </p>
   </div>
+
+  <section id ="mapSection"> 
+      <div id="map"></div>
+  </section>
   
   </section>
 
@@ -1039,6 +1043,7 @@ function draw_privacy() {
       <p>If you don't like to share all you data you don't have to, keep it privity.</p>
       <p>If you like us to have a more secure site, contact us by phone or email available, saying want we can do for you.</p>
       <p>Privity is a relation between two parties that is recognized by law, such as that of blood, lease, or service. So both you as us have to keep in contact to follow the privacy rules</p>
+      <p>Although the site uses our location, you can denied access to you localization any time. </p>
   </section>
   
 <?php
