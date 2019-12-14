@@ -68,10 +68,9 @@
    */
   function insertHouse($username, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id) {
     $db = Database::instance()->db();
-    $id = $db->lastInsertId() + 1;
-    $stmt = $db->prepare('INSERT INTO Habitacao(idHabitacao, usernameDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) VALUES(?, ? , ? , ? , ? , ?, ? , ?, ?, ?, ? , ?, ?)');
+    $stmt = $db->prepare('INSERT INTO Habitacao VALUES(NULL, ? , ? , ? , ? , ?, ? , ?, ?, ?, ? , ?, ?)');
     //picture is always insert with picture = 0 and update if the upload is ok
-    $stmt->execute(array ($id, $username, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, 0));
+    $stmt->execute(array ($username, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, 0));
     return $db->lastInsertId();
   }
 

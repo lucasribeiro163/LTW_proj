@@ -292,7 +292,7 @@ function draw_login() {
           <option value="256">Zambia</option>
           <option value="257">Zimbabwe</option>
         </select>    
-        <textarea name="description" rows="2" cols="50">Enter a short description of yourself.</textarea>
+        <textarea name="description" rows="10" cols="40" placeholder="Enter a short description of yourself."></textarea>
       <input type="submit" value="signup">
     </form>
     <p>Already have an account? So just <a href="login.php">Login!</a></p>
@@ -612,24 +612,18 @@ function draw_listing() {
 
       <textarea name="description" rows="4" cols="50">Enter a short description of the home.</textarea>
       <input id="pac-input" class="controls" type="text" name="location" placeholder="Insert the house location" required>  
-
-   <!--     <input id="pac-input" class="controls" type="text"  placeholder="Insert House location" value="location" required>
-    <body> 
-        <div id="map"></div>
-      </body> -->
-
-      <input type="file" name="image">
+      <section id ="mapSection"> 
+        <div id="map1"></div>
+      </section>
+      <input type="file" name="file">
       <input type="submit" value="Submit">
     </form>
 
   </section>
 
- <!-- <section id="houseImg">
+  <section id="houseImg">
     <img src="../images/houses/thumbs_small/default0.jpg" alt="your house picture">
-    <form action="../actions/upload_house.php?house=<?=$idHabitacao?>" method="post" enctype="multipart/form-data">
-      
-    </form>
-  </section> -->
+  </section>
 
 
 <?php } 

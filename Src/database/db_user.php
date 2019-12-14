@@ -124,4 +124,13 @@
     $countryName = $stmt1->fetch();
     return $countryName['nome'];
   }
+
+  function getPersonId($username) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username = ?');
+    $stmt->execute(array($username));
+    $user = $stmt->fetch();
+    return $user['id'];
+  }
+  
 ?>

@@ -31,31 +31,28 @@ function draw_header($username) {
     
     <body>
       <header id="options">
-      <a href="../../Src/pages/login.php"><img src =../images/logo2.png alt="Rent a house"></a>
-      <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for names.." title="Type in a name">
-
-<ul id="myUL" >
-</ul>
-
-      <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
-      <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
-        <?php 
-        if ($username != NULL) {  ?>
-          <div class="dropdown">
-            <p><?=$username?></p>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="../../Src/pages/aboutUs.php">My places</a>
-              <a href="../../Src/pages/aboutUs.php">My Lists</a>
-              <a href="../../Src/pages/aboutUs.php">Rents</a>
-              <a href="../../Src/pages/newHouse.php">Listing</a>
-              <a href="../../Src/pages/editProfile.php">Edit profile</a>
-              <a href="../../Src/pages/profile.php">Profile</a>
-              <a href="../actions/action_logout.php">Logout</a>
+        <a href="../../Src/pages/login.php"><img src =../images/logo2.png alt="Rent a house"></a>
+        <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
+        <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
+          <?php 
+          if ($username != NULL) {  ?>
+            <div class="dropdown">
+              <p><?=$username?></p>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="../../Src/pages/aboutUs.php">My places</a>
+                <a href="../../Src/pages/aboutUs.php">My Lists</a>
+                <a href="../../Src/pages/aboutUs.php">Rents</a>
+                <a href="../../Src/pages/newHouse.php">Listing</a>
+                <a href="../../Src/pages/editProfile.php">Edit profile</a>
+                <a href="../../Src/pages/profile.php">Profile</a>
+                <a href="../actions/action_logout.php">Logout</a>
+              </div>
             </div>
-        </div>
-        <?php
-        }
-        ?>
+            <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for names.." title="Type in a name">
+            <ul id="myUL" ></ul>
+          <?php
+          }
+          ?>
       </header>
       <?php if (isset($_SESSION['messages'])) {?>
         <section id="messages">
