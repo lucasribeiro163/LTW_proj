@@ -48,17 +48,14 @@ h1 {
   font-size: 1.4em;
   font-family: var(--font-family);
   margin: 1.2em 0em 0.2em 0em;
-  margin-inline-start: 1em;
   padding: 0em;
 }
 
 h2, h3, h4, h5, h6 {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 0.9em;
   margin: 0em 0em 1.5em 1.5em;
-  padding: 0em;
+  padding-left: 2em;
   color: var(--dark-color);
-  margin-inline-start: 3em;
 }
 
 body {
@@ -90,7 +87,7 @@ select, textarea {
 }
 
 select {
-  width: 87%;
+  width: 86%;
   margin-inline-start: 1.9em;
 }
 
@@ -99,9 +96,9 @@ textarea {
   margin-inline-start: 1.8em;
 }
 
-input[type="text"], input[type="password"], input[type="email"], textarea, select {
+input[type="text"], input[type="password"], input[type="email"], input[type=number], textarea, select {
   padding: 0.6em;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: var(--font-family);
   border-color: var(--light-color);
   border-style: solid;
   border-radius: 7px;
@@ -183,7 +180,7 @@ body > header  i {
 
 
 /* login & signup */
-#someImage > img, #houseImage > img {
+.someImage > img {
   margin-top: 0em;
   border-style: solid;
   border-width: 0.5em;
@@ -191,7 +188,7 @@ body > header  i {
   overflow: scroll;
 }
 
-#signup, #login, #listing, #editProfile {
+#signup, #login, #listingForm {
   padding-top: 10%;
   padding-left: 10%;
   grid-column-start: 1;
@@ -217,10 +214,9 @@ body > header  i {
   grid-column-end: 4;
   padding-left: 0%;
   text-align: center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
 }
 
+/* puts login and signup blue*/
 #login a, #signup a {
   color: var(--main-color);
 }
@@ -234,9 +230,9 @@ body > header  i {
   background-color: var(--bg-color);
   color: var(--medium-color);
   text-align: center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: var(--font-family);
   font-weight: bold;
-  box-shadow: 0 -8px 10px rgba(0,0,0,.2);
+  box-shadow: 0 -8px 10px var(--black-color);
   padding-top: 0.5em;
 
 }
@@ -251,8 +247,8 @@ body > header  i {
 
   background-color: var(--bg-color);
   border: hidden;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  box-shadow: 0 -2px 3px rgba(0,0,0,.2);
+  font-family: var(--font-family);
+  box-shadow: 0 -2px 3px var(--black-color);
   font-weight: bold;
   color: var(--medium-color);
 
@@ -267,7 +263,7 @@ body > header  i {
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: var(--light-color);
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: var(--font-family);
 }
 
 #aboutUs h1,  #security h1, #privacy h1 {
@@ -298,7 +294,7 @@ body > header  i {
 }
 
  /**
- * Dropbox user
+ * Dropbox user with all the options available
  */
  
 .dropbtn {
@@ -332,10 +328,9 @@ body > header  i {
   color: var(--bg-color);
   padding-top: 3%;
   text-decoration: none; 
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: grid;
-
 }
+
 .dropdown a:hover {
   background-color: var(--dark-color);
 }
@@ -357,7 +352,7 @@ body > header  i {
   border-color:var(--bg-color);
   background-color: var(--bg-color);
   border-width: 0.05em;  
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: var(--font-family);
   border-radius: 5px;
   box-shadow: 0 4px 6px var(--dark-color);
 }
@@ -379,9 +374,15 @@ body > header  i {
  * listing a new house
  */
  
-#listing > form {
+#listing { 
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-left: 3%;
+}
+
+#listingForm {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 45% 55%;
 }
 
 /* box is half the size of the other */
@@ -394,43 +395,60 @@ body > header  i {
 #listing select[name="Nrbathrooms"]{
   grid-column-start: 2;
   grid-column-end: 3;
-  width: 70%;
+  width: 74%;
 } 
 
-#houseImg {
-  width: 50%;
-  padding-top: 30%;
+#listingImage {
+  padding-inline-start: 5%;
 }
+
+
 
 /**
  * editProfile
  */
 
-#editProfile select {
-  width: 88%;
+#editProfile {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding-inline-start: 20%;
+  padding-top: 8%;
 }
 
+#editProfile select, #editProfile input {
+  width: 100%;
+}
+
+#editProfile input[type="submit"]{
+  width: 80%;
+} 
+
 #personImg {
-  max-width: 160em;
-  padding: 2% 0% 0% 30% ;
+  grid-column-end: 2;
+  padding: 2% 0% 0% 10% ;
 }
 
 /**
  * Messages
  */
 
+body > #messages {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin: 0em;
+  padding: 1% 5%;
+  text-align: center;
+}
+
 body > #messages div {
-  max-width: 90%;
-  margin: 2em 1em 1em 1em;
   padding: 1em;
   text-align: center;
+  width: 90%;
 }
 
 body > #messages .error {
   color: var(--error-fg-color);
   background-color: var(--error-bg-color);
-  grid-column-start: 1;
-  grid-column-end: 2;
 }
 
 body > #messages .success {
@@ -495,7 +513,7 @@ body > #lists {
 #myInput {
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
+  width: 90%; /* Full-width */
   font-size: 16px; /* Increase font-size */
   padding: 12px 20px 12px 40px; /* Add some padding */
   border: 1px solid #ddd; /* Add a grey border */
@@ -529,123 +547,122 @@ body > #lists {
 }
 
 /**
- *
-  */
+ * map
+ */
 #map {
   width: 100%;
   height: 100%;
-  grid-column-start: 1;
-  margin: 10%;
 }
 
-#map1 {
-  width: 100%;
-  height: 100%;
-  grid-column-start: 2;
-}
 
 /* used for map */
 #mapSection {
-  height: 200%;
-  margin: 0;
-  margin: 0;
+  width: 350%;
+  height: 80%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-left: 20%;
+  padding: 0;
+  overflow: scroll;
 }
 
 #description {
-  font-family: Roboto;
+  font-family: var(--font-family);
   font-size: 15px;
   font-weight: 300;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  width: 200%
 }
 
 #infowindow-content .title {
   font-weight: bold;
 }
 
-      #infowindow-content {
-        display: none;
-      }
+#infowindow-content {
+  display: none;
+}
 
-      #map #infowindow-content {
-        display: inline;
-      }
+#map #infowindow-content {
+  display: inline;
+}
 
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px var(--black-color);
+  background-color: var(--bg-color);
+  font-family: var(--font-family);
+}
 
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
 
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
 
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
+.pac-controls label {
+  font-size: 13px;
+  font-weight: 300;
+}
 
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
+#pac-input {
+  background-color:var(--bg-color);
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 10px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
 
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
+#pac-input:focus {
+  border-color: var(--main-color);
+}
 
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
+#title {
+  color: var(--bg-color);
+  background-color: var(--main-color);
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+#target {
+  width: 345px;
+}
+
 /**
  * Profile
  */
 
 #profile {
-
+  grid-column-start: 1;
+  grid-column-end: 3;
   padding-left: 10%;
   padding-right: 10%;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: var(--font-family);
   display: grid;
 
- }
+}
 
-
- #profile > img {
-  
+#profile > img {
   width: 20em;
-  
   grid-column-start: 1;
   grid-column-end: 2;
 
- }
+}
 
 
- #userInfo {
+#userInfo {
 
   max-width: 20em;
   border: solid;
@@ -665,10 +682,9 @@ body > #lists {
   grid-row-start: 2;
   grid-row-end: 3;
 
- }
+}
 
-
-#Info{
+#Info {
 
   padding-left: 10%;
   padding-right: 10%;
@@ -676,7 +692,7 @@ body > #lists {
 
 }
 
-[type = "date"] {
+input[type = "date"] {
 
   color: var(--bg-color);
   background-color: var(--black-color);

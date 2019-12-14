@@ -83,7 +83,4 @@
     </section> 
     <img src="<?php echo $image; ?>" alt="house image"></img>  
     
-    <section id ="mapSection"> 
-      <div id="map"></div>
-    </section>
 <?php } ?>
