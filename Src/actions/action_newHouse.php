@@ -17,17 +17,13 @@
   $description = $_POST['description'];
   $rating = 1;
   $city_id = $_POST['Country'];
-  $picture = 1;
-  $id = getUserId($_SESSION['username']);
-
-  echo "title: " . $title. "<br>";
-  echo "price: " . $price. "<br>";
-  echo "id: " . $id. "<br>";
-  echo "username: ". $_SESSION['username']. "<br>";
-  $id = 5;
-
-/*  // insert image
-     //only jpg, bmp, jpeg , gif anf png are valid formats to the picture
+  $username = $_SESSION['username'];
+  
+  try {
+    $house_id = insertHouse($username, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id);
+    
+   /* // insert image
+    //only jpg, bmp, jpeg , gif anf png are valid formats to the picture
     $file_exts = array("jpg", "bmp", "jpeg", "gif", "png");
     $upload_exts = end(explode(".", $_FILES["image"]["name"]));
     if(($_FILES["image"]["size"] < 2000000)){
@@ -51,7 +47,7 @@
           echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
 
           if(getHousePhoto($id) == 0)
-            insertHouseImage($id);
+            insertHouseImage($house_id);
       
           // Generate filenames for original, small and medium files
           $originalFileName = "../images/houses/originals/$id.jpg";
@@ -101,9 +97,6 @@
       $_SESSION['messages'][] = array('type' => 'success', 'content' => 'New house for rent without picture!');
       //die(header('Location: ../pages/main_page.php'));
     }*/
-  
-  try {
-    $idHabitacao = insertHouse($id, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'New house for rent!');
    // header('Location: ../pages/main_page.php');
   } catch (PDOException $e) {

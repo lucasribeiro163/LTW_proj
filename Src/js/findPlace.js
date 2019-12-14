@@ -8,7 +8,7 @@
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
       function initAutocomplete() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        var map = new google.maps.Map(document.getElementById('map1'), {
           center: {lat: -33.8688, lng: 151.2195},
           zoom: 13,
           mapTypeId: 'roadmap'

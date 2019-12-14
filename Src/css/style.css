@@ -549,7 +549,7 @@ body > #lists {
 /**
  *
   */
-#map {
+#map, #map1 {
   width: 100%;
   height: 100%;
   grid-column-start: 1;

@@ -69,20 +69,6 @@
     return $stmt->fetch();
   }
 
-  function getUserId($username) {
-    $db = Database::instance()->db();
-
-    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username = ?');
-    $stmt->execute(array($username));
-
-    $user = $stmt->fetch();
-
-    echo "username db: ". $username."<br>";
-    echo "user db: ". $user['email']."<br>";
-    echo "user db: ". $user['id']."<br>";
-    return $user['id'];
-  }
-
   function getPersonImage($username) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username = ?');
