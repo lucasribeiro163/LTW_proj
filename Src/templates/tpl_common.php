@@ -21,6 +21,7 @@ function draw_header($username) {
       <script src="../js/dropbox.js" defer></script>
       <script src="../js/changeColor.js" defer></script>
       <script src="../js/changeImage.js" defer></script>
+      <script src="../js/searchBar.js" defer></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&callback=initMap" async defer></script>
       <script src="../js/googleMaps.js" defer></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&libraries=places&callback=initAutocomplete"
@@ -31,6 +32,11 @@ function draw_header($username) {
     <body>
       <header id="options">
       <a href="../../Src/pages/login.php"><img src =../images/logo2.png alt="Rent a house"></a>
+      <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for names.." title="Type in a name">
+
+<ul id="myUL" >
+</ul>
+
       <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
       <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
         <?php 
