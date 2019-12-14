@@ -24,9 +24,9 @@ body {
   --error-bg-color: #FFD2D2;
   --error-fg-color: #D8000C;
 
-  --font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
- 
-  font-family: var(--font-family);
+  --serif-font: 'Merriweather';
+  --sans-font: 'Open Sans Condensed';
+
   background-color: var(--bg-color);
 }
 
@@ -35,7 +35,7 @@ body {
  */
 
  a, p, input, li {
-  font-family: var(--font-family);
+  font-family: var(--serif-font), serif;
   color: var(--dark-color);
   padding: 1em 0em 0em 1em;
 }
@@ -46,14 +46,14 @@ a {
 
 h1 {
   font-size: 1.4em;
-  font-family: var(--font-family);
+  font-family: var(--serif-font), sans-serif;
   margin: 1.2em 0em 0.2em 0em;
   margin-inline-start: 1em;
   padding: 0em;
 }
 
 h2, h3, h4, h5, h6 {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: var(--serif-font), sans-serif;
   font-size: 0.9em;
   margin: 0em 0em 1.5em 1.5em;
   padding: 0em;
@@ -63,7 +63,7 @@ h2, h3, h4, h5, h6 {
 
 body {
   display: grid;
-  grid-template-columns: 35% auto;
+  grid-template-columns: 0.90fr auto;
 }
 
 input {
@@ -79,38 +79,30 @@ input {
 }
 
 form {
-  grid-column-end: 2;
   display: grid;
-  grid-template-columns: auto 25% 50%;
-  width: 85%;
-}
-
-select, textarea {
-  margin-bottom: 1em;
+  grid-template-columns: auto 20% 50%;
 }
 
 select {
-  width: 87%;
-  margin-inline-start: 1.9em;
+  padding: 1em;
+  margin-bottom: 1em;
+  margin-inline-start: 1.4em;
+  background-color: var(--panel-color);
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-size: 0.80em;
+  width: 90%;
 }
 
-textarea {
-  width: 81%;
-  margin-inline-start: 1.8em;
-}
-
-input[type="text"], input[type="password"], input[type="email"], textarea, select {
-  padding: 0.6em;
+input[type="text"], input[type="password"]{
+  padding: 1.6%;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   border-color: var(--light-color);
   border-style: solid;
   border-radius: 7px;
   background: var(--bg-color);
-  grid-column-start: 1;
-  grid-column-end: 4;
 
 }
-
 
 /* buttons to submit are blue rectangle */
 input[type="submit"]{
@@ -155,6 +147,7 @@ footer {
 /*
   Body Header
 */
+
 body > header {
   grid-column-start: 1;
   grid-column-end: 3;
@@ -172,7 +165,6 @@ body > header img {
   margin-right: 70%;
 }
 
-
 body > header  i {
   font-size: 1.5em;
   padding: 1%;
@@ -181,14 +173,36 @@ body > header  i {
   margin-left: 0%;
 }
 
+textarea {
+  font-size: 1.2em;
+  margin: 1em 0;
+  display: grid;
+  margin-inline-start: 1em;
+  width: 89%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
 
 /* login & signup */
 #someImage > img, #houseImage > img {
-  margin-top: 0em;
+  margin: 0em;
   border-style: solid;
   border-width: 0.5em;
-  max-width: 95%;
+  max-width: 1200px;
+  height: 650px;
+  margin-left: 10%;
   overflow: scroll;
+}
+
+#login{
+
+  margin-left: 60px;
+  font-size: 17px;
+
+}
+
+#signup a, #login a { 
+  color: var(--main-color);
 }
 
 #signup, #login, #listing, #editProfile {
@@ -196,9 +210,9 @@ body > header  i {
   padding-left: 10%;
   grid-column-start: 1;
   grid-column-end: 2;
-  font-size: 17px;
 
 }
+
 
 #login > header {
 
@@ -207,6 +221,20 @@ body > header  i {
   margin-bottom: 7%;
 
 }
+
+#login > header > h1,h2,h3 {
+
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+#login > form {
+
+  width: 85%;
+
+}
+
+
 
 #login > p, #signup > p{
   color: #333;
@@ -219,10 +247,6 @@ body > header  i {
   text-align: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
-}
-
-#login a, #signup a {
-  color: var(--main-color);
 }
 
 #f1 {
@@ -254,7 +278,7 @@ body > header  i {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   box-shadow: 0 -2px 3px rgba(0,0,0,.2);
   font-weight: bold;
-  color: var(--medium-color);
+  color: #babababa;
 
 }
 
@@ -346,23 +370,24 @@ body > header  i {
  * Listing
  */
 
-.list > a > img{
+ .list > a > img{
   border: solid;
   max-width: 92%;
 
-}
+ }
 
 
-.list {
+ .list {
   border-color:var(--bg-color);
   background-color: var(--bg-color);
   border-width: 0.05em;  
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   border-radius: 5px;
-  box-shadow: 0 4px 6px var(--dark-color);
-}
+  box-shadow: 0 4px 6px rgba(0,0,0,.2)
 
-#lists {
+ }
+
+ #lists {
 
   background-color: #fafafa;
   padding-left: 10%;
@@ -370,43 +395,38 @@ body > header  i {
 
  }
 
-#Info > h1, h2{
+ #Info > h1, h2{
+
   margin-left: 0em;
   text-align: left;
-}
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
-/**
- * listing a new house
- */
+
+ }
  
-#listing > form {
+ #listing > form {
   display: grid;
   grid-template-columns: 50% 50%;
 }
 
 /* box is half the size of the other */
-#listing select[name="Nrbedrooms"] {
+#listing select[name="Nr of bedrooms"] {
   grid-column-start: 1;
   grid-column-end: 2;
   width: 80%;
 } 
 
-#listing select[name="Nrbathrooms"]{
+#listing select[name="Nr of bathrooms"]{
   grid-column-start: 2;
   grid-column-end: 3;
-  width: 70%;
+  width: 80%;
 } 
-
-#houseImg {
-  width: 50%;
-  padding-top: 30%;
-}
 
 /**
  * editProfile
  */
 
-#editProfile select {
+ #editProfile select {
   width: 88%;
 }
 
@@ -419,7 +439,7 @@ body > header  i {
  * Messages
  */
 
-body > #messages div {
+ body > #messages div {
   max-width: 90%;
   margin: 2em 1em 1em 1em;
   padding: 1em;
@@ -429,8 +449,6 @@ body > #messages div {
 body > #messages .error {
   color: var(--error-fg-color);
   background-color: var(--error-bg-color);
-  grid-column-start: 1;
-  grid-column-end: 2;
 }
 
 body > #messages .success {
@@ -516,16 +534,16 @@ body > #lists {
 #myUL li {
   border: 1px solid #ddd; /* Add a border to all links */
   margin-top: -1px; /* Prevent double borders */
-  background-color: (var(--ligth-white)); /* Grey background color */
+  background-color: #f6f6f6; /* Grey background color */
   padding: 12px; /* Add some padding */
   text-decoration: none; /* Remove default text underline */
   font-size: 18px; /* Increase the font-size */
-  color: var(--black-color); /* Add a black text color */
+  color: black; /* Add a black text color */
   display: block; /* Make it into a block element to fill the whole list */
 }
 
 #myUL li:hover:not(.header) {
-  background-color:var(--panel-color); /* Add a hover effect to all links, except for headers */
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
 
 /**
@@ -538,12 +556,6 @@ body > #lists {
   margin: 10%;
 }
 
-#map1 {
-  width: 100%;
-  height: 100%;
-  grid-column-start: 2;
-}
-
 /* used for map */
 #mapSection {
   height: 200%;
@@ -551,76 +563,6 @@ body > #lists {
   margin: 0;
 }
 
-#description {
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-}
-
-#infowindow-content .title {
-  font-weight: bold;
-}
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
 /**
  * Profile
  */
@@ -668,17 +610,72 @@ body > #lists {
  }
 
 
-#Info{
 
-  padding-left: 10%;
-  padding-right: 10%;
-  grid: display;
+#house_ad {
+
+  margin-left: 5em;
+  grid-column-start: 1;
 
 }
 
-[type = "date"] {
+#house_ad > header > h1{
 
-  color: var(--bg-color);
-  background-color: var(--black-color);
+  padding-left: 0em;
+  margin-bottom: 1em;
 
+}
+
+#house_ad > header > h2{
+
+  padding-left: 2em;
+  margin-bottom: 0.5em;
+
+}
+
+#house_ad > header {
+
+  margin-bottom: 2em;
+
+}
+
+#house_ad > form { 
+  display: inline-block;
+  margin-left: 2em;
+}
+
+#house_ad > form > a{ 
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+#house_ad > form > button{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background: var(--main-color);
+  color: var(--panel-color);
+  font-family: sans-serif;
+  font-size: 1em;
+  border: none;
+  border-radius: 7px;
+  text-transform: uppercase;
+  margin-top: 2em;
+  max-width: 7em;
+  height: 3em;
+  width: 150%;
+  margin-left: 3em;
+}
+
+#house_ad > form > a >input{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background: white;
+  color: black;
+  font-family: sans-serif;
+  font-size: 1em;
+  border: solid;
+  border-radius: 7px;
+  border-width: 1px;
+  text-transform: uppercase;
+  max-width: 7em;
+  height: 0.7em;
+  width: 150%;
+  margin-left: 3em;
 }

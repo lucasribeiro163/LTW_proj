@@ -66,22 +66,10 @@
   /**
    * Inserts a new house into the database.
    */
-  function insertHouse($username, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id) {
+  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, $picture) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('INSERT INTO Habitacao VALUES(NULL, ? , ? , ? , ? , ?, ? , ?, ?, ?, ? , ?, ?)');
-    //picture is always insert with picture = 0 and update if the upload is ok
-    $stmt->execute(array ($username, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, 0));
-    return $db->lastInsertId();
-  }
-
-  
-  function insertHouseImage($house_id) {
-    // Database connection
-    $dbh = Database::instance()->db(); 
-    // Insert image data into database
-    $stmt = $dbh->prepare('UPDATE Habitacao SET picture = ? WHERE idHabitacao = ?');
-    $stmt->execute(array(1, $house_id));
-
+    $stmt = $db->prepare('INSERT INTO Habitacao VALUES(? , ? , ? , ? , ? , ? , ?, ? , ?, ?, ?, ? , ?)');
+    $stmt->execute(array (NULL, $idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, $picture));
   }
 
   /**
@@ -131,13 +119,42 @@
   }
 
   /**
-   * Creates a new reservation
+   * Creates a new reservation an returns the array of reservations
    */
   function createReservation($check_in, $check_out, $nr_people, $price, $house_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('INSERT INTO Reserva VALUES(NULL, ? , ? , ? , ? , 0 , ? )');
     $stmt->execute(array($check_in, $check_out, $nr_people, $price, $house_id));
+
+    $db = Database::instance()->db();
+    $stmt2 = $db->prepare('SELECT * FROM Reserva');
+    $stmt2->execute();
+    return $stmt2->fetchAll(); 
   }
 
+
+  /**
+   * Checks dates for check in and check out
+   */
+  function getAvailability($house_id){
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT dataCheckIn, dataCheckOut FROM Reserva WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
+    return $stmt->fetchAll();
+  }
+
+  /**
+   * Gets number of poeple for house
+   */
+  function getNrPeople($house_id){
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT maxHospedes FROM Habitacao WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
+    return $stmt->fetchAll();
+  }
+
+
+
+  
 ?>
 
