@@ -58,6 +58,7 @@
     foreach ($list['list_items'] as $item){
       if($item['idHabitacao'] == $house){
 
+        $precoNoite = $item['precoNoite'];
         $morada = $item['morada'];
         $cidade = getCity($item['idCidade']);
         $idHabitacao = $item['idHabitacao'];
@@ -68,6 +69,10 @@
       }
     }
   }
+  if (!isset($_POST['available'])){
+    ?> <h1> not set </h1> <?php
+    $_POST['available'] = 0;
+  }
     ?>
     <section id="Info">
       <h1><?=$item['titulo']?></h1>
@@ -76,11 +81,32 @@
         <?=htmlspecialchars($morada)?>
         ,
         <?=print_r($cidade[0]['nome'])?>
-      </section>
-      <a>Check-in: <input type="date" name="check-in"></a>
-      <a>Check-out: <input type="date" name="check-out"></a>
-      <button id="rent_button">Rent</button>
-    </section> 
+      <form action="../actions/action_rent.php" method="post">
+        <input type="hidden" name="idHabitacao" value="<?=$house;?>" />
+        <input type="hidden" name="precoNoite" value="<?=$precoNoite;?>" />
+        <a>Check-in: <input type="date" name="check-in"></a>
+        <a>Check-out: <input type="date" name="check-out"></a>
+        <a>Nr of people: <input type="number" name="nrpeople"></a>
+        <button id="rent_button">Rent</button>
+      </form>
+      <?php
+        if($_POST['available'] == 1) {
+          ?>
+          <h1> its available yay </h1>
+          <?php
+        }
+        else if($_POST['available'] == 2) {
+          ?>
+          <h1> its not available owh</h1>
+          <?php
+        }
+        else{
+          ?>
+          <h1> no info <?php print_r($_POST) ?> </h1>
+          <?php
+
+        }
+      ?>
     <img src="<?php echo $image; ?>" alt="house image"></img>  
     
     <section id ="mapSection"> 

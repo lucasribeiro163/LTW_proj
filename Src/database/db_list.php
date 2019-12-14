@@ -119,13 +119,32 @@
   }
 
   /**
-   * Creates a new reservation
+   * Creates a new reservation an returns the array of reservations
    */
   function createReservation($check_in, $check_out, $nr_people, $price, $house_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('INSERT INTO Reserva VALUES(NULL, ? , ? , ? , ? , 0 , ? )');
     $stmt->execute(array($check_in, $check_out, $nr_people, $price, $house_id));
+
+    $db = Database::instance()->db();
+    $stmt2 = $db->prepare('SELECT * FROM Reserva');
+    $stmt2->execute();
+    return $stmt2->fetchAll(); 
   }
 
+
+  /**
+   * Checks dates for check in and check out
+   */
+  function getAvailability($house_id){
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT dataCheckIn, dataCheckOut FROM Reserva WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
+    return $stmt->fetchAll();
+  }
+
+
+
+  
 ?>
 
