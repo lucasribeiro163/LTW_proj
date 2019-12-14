@@ -53,10 +53,22 @@
   /**
    * Inserts a new house into the database.
    */
-  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, $picture) {
+  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('INSERT INTO Habitacao VALUES(? , ? , ? , ? , ? , ? , ?, ? , ?, ?, ?, ? , ?)');
-    $stmt->execute(array (NULL, $idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, $picture));
+    $stmt = $db->prepare('INSERT INTO Habitacao( idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) VALUES(? , ? , ? , ? , ?, ? , ?, ?, ?, ? , ?, ?)');
+    //picture is always insert with picture = 0 and update if the upload is ok
+    $stmt->execute(array ($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, 0));
+    return $db->lastInsertId();
+  }
+
+  
+  function insertHouseImage($house_id) {
+    // Database connection
+    $dbh = Database::instance()->db(); 
+    // Insert image data into database
+    $stmt = $dbh->prepare('UPDATE Habitacao SET picture = ? WHERE idHabitacao = ?');
+    $stmt->execute(array(1, $house_id));
+
   }
 
   /**

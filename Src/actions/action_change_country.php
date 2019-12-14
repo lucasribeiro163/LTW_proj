@@ -4,7 +4,7 @@
 
   // Verify if user is logged in
   if (!isset($_SESSION['username']))
-    die(header('Location: ../page/login.php'));
+    die(header('Location: ../pages/login.php'));
 
   $country = $_POST['country'];
 

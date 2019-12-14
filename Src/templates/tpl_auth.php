@@ -315,7 +315,6 @@ function draw_listing() {
     <form method="post" action="../actions/action_newHouse.php">
       <input type="text" name="listingTitle" placeholder="Enter a title for the listing" required>  
       <input type="number" name="price" placeholder="Enter the house price" min="1" required>  
-      <textarea name="location" rows="4" cols="50">Enter the address of the house.</textarea>
       <select name="Country" required>
         <option value="Other" selected disabled>Home Contry</option>     
         <option value="2">United States of America</option>
@@ -612,17 +611,27 @@ function draw_listing() {
       </select>
 
       <textarea name="description" rows="4" cols="50">Enter a short description of the home.</textarea>
+      <input id="pac-input" class="controls" type="text" name="location" placeholder="Insert the house location" required>  
+
+   <!--     <input id="pac-input" class="controls" type="text"  placeholder="Insert House location" value="location" required>
+    <body> 
+        <div id="map"></div>
+      </body> -->
+
+      <input type="file" name="image">
       <input type="submit" value="Submit">
     </form>
 
   </section>
 
-  <section id="houseImg">
+ <!-- <section id="houseImg">
     <img src="../images/houses/thumbs_small/default0.jpg" alt="your house picture">
     <form action="../actions/upload_house.php?house=<?=$idHabitacao?>" method="post" enctype="multipart/form-data">
-      <input type="file" name="image">
+      
     </form>
-  </section>
+  </section> -->
+
+
 <?php } 
 
 function draw_editProfile($username) { 
@@ -910,20 +919,18 @@ function draw_editProfile($username) {
       </form>
     </section>
 
-  <?php
-
-    $id = getId($username);  
+  <?php 
     
-    if(getPersonImage($id) == 0)
+    if(getPersonImage($username) == 0)
       $image = "../images/person/thumbs_small/default.jpg";
-    else $image = "../images/person/thumbs_small/$id.jpg";
+    else $image = "../images/person/thumbs_small/$username.jpg";
     ?>
 
     <section id="personImg">
       <img src="<?=$image?>" alt="person pic">
-      <form action="../actions/upload_image.php?id=<?=$id?>" method="post" enctype="multipart/form-data">
+      <form action="../actions/upload_image.php" method="post" enctype="multipart/form-data">
         <input type="file" name="image">
-        <input type="submit" value="Change picture">
+        <input type="submit" value="Upload">
       </form>
     </section>
   
@@ -984,10 +991,10 @@ function draw_profile($username) {
   </header>
 
   <?php 
-  $id = getId($username);  
-  if(getPersonImage($id) == 0)
+
+  if(getPersonImage($username) == 0)
     $image = "../images/person/thumbs_small/default.jpg";
-  else $image = "../images/person/thumbs_small/$id.jpg";
+  else $image = "../images/person/thumbs_small/$username.jpg";
   ?>
   
   <img src="<?=$image?>" alt="person pic">

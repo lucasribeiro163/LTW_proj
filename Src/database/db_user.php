@@ -20,8 +20,8 @@
 
     $options = ['cost' => 12];
 
-    $stmt = $db->prepare('INSERT INTO Utilizador VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
-    $stmt->execute(array(NULL, $username, $name, $email, $country, password_hash($password, PASSWORD_DEFAULT, $options),$description, 0 ));
+    $stmt = $db->prepare('INSERT INTO Utilizador(username, nome, email, idPais, pass, descricao, picture) VALUES (?, ?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array($username, $name, $email, $country, password_hash($password, PASSWORD_DEFAULT, $options),$description, 0 ));
   }
 
   function update_password($username, $password) {
@@ -64,34 +64,39 @@
 
   function checkIfUsernameExists($username ) {
     $db = Database::instance()->db();
-
     $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username  = ?');
     $stmt->execute(array($username));
     return $stmt->fetch();
   }
 
-  function getId($username){
-    $dbm = Database::instance()->db();
-    $stmt = $dbm->prepare('SELECT * FROM Utilizador WHERE username = ?');
+  function getUserId($username) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username = ?');
     $stmt->execute(array($username));
+
     $user = $stmt->fetch();
+
+    echo "username db: ". $username."<br>";
+    echo "user db: ". $user['email']."<br>";
+    echo "user db: ". $user['id']."<br>";
     return $user['id'];
   }
 
-  function getPersonImage($id) {
+  function getPersonImage($username) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE id = ?');
-    $stmt->execute(array($id));
+    $stmt = $db->prepare('SELECT * FROM Utilizador WHERE username = ?');
+    $stmt->execute(array($username));
     $pic = $stmt->fetch();
     return $pic['picture'];
   }
 
-  function insertPersonImage($id) {
+  function insertPersonImage($username) {
     // Database connection
     $dbh = Database::instance()->db(); 
     // Insert image data into database
-    $stmt1 = $dbh->prepare('UPDATE Utilizador SET picture = ? WHERE id = ?');
-    $stmt1->execute(array(1, $id));
+    $stmt1 = $dbh->prepare('UPDATE Utilizador SET picture = ? WHERE username = ?');
+    $stmt1->execute(array(1, $username));
 
   }
 
@@ -119,8 +124,6 @@
     $user = $stmt->fetch();
     return $user['descricao'];
   }
-
-
 
   function getPersonCountry($username) {
     $db = Database::instance()->db();

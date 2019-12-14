@@ -4,9 +4,12 @@
 
   // Verify if user is logged in
   if (!isset($_SESSION['username']))
-    die(header('Location: ../page/login.php'));
+    die(header('Location: ../pages/login.php'));
 
   $name = $_POST['name'];
+
+  // Remove disallowed characters
+  $name = preg_replace ("/[^a-zA-Z\s]/", '', $name);
   
   try {
     update_name($_SESSION['username'], $name);
