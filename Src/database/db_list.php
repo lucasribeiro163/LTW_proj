@@ -1,6 +1,13 @@
 <?php
   include_once('../includes/database.php');
 
+  function getHousesWithId($city) {
+    $db = Database::instance()->db();
+    $idCity  = getCityId($city);
+    $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao WHERE idCidade = ?');
+    $stmt->execute(array($idCity[0]['idCidade']));
+    return $stmt->fetchAll(); 
+  }
   function getHouses() {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao');
@@ -8,6 +15,12 @@
     return $stmt->fetchAll(); 
   }
 
+  function getCityId($city){
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idCidade FROM Cidade WHERE nome = ?');
+    $stmt->execute(array($city));
+    return $stmt->fetchAll(); 
+  }
   function getHouseItems($house_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idHabitacao = ?');

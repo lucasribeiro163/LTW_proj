@@ -13,7 +13,7 @@ async function getCities(){
     var a = document.createElement("a");
     var li = document.createElement("li");
     a.textContent= cities[i];
-    a.setAttribute('href', "../../Src/pages/main_page.php");
+    a.setAttribute('href', "../../Src/pages/main_page.php?city=" + cities[i]);
     li.appendChild(a);
     ul.appendChild(li);}
 
