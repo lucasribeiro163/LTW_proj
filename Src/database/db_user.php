@@ -48,6 +48,12 @@
     $stmt->execute(array($name, $username));
   }
 
+  function update_description($username, $description) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('UPDATE Utilizador SET descricao = ? WHERE username = ?');
+    $stmt->execute(array($description, $username));
+  }
+
   function update_country($username, $country) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('UPDATE Utilizador SET idPais = ? WHERE username = ?');

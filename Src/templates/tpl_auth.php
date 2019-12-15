@@ -292,14 +292,14 @@ function draw_login() {
           <option value="256">Zambia</option>
           <option value="257">Zimbabwe</option>
         </select>    
-        <textarea name="description" rows="10" cols="40" placeholder="Enter a short description of yourself."></textarea>
+        <textarea name="description" rows="7" cols="50" placeholder="Enter a short description of yourself."></textarea>
       <input type="submit" value="signup">
     </form>
     <p>Already have an account? So just <a href="login.php">Login!</a></p>
   </section>
 
   <section class="someImage">
-    <img src ="http://projectus.pt/wp-content/uploads/2018/10/007.jpg" alt="house">
+    <img src ="https://airbnb.design/wp-content/uploads/2018/08/Plus-living.jpg" alt="house">
   </section>
 
 <?php }
@@ -327,21 +327,25 @@ function draw_editProfile($username) {
    * Draws the editProfile section.
    */ ?>
     <section id="editProfile">
-  
-
 
       <form method="post" action="../actions/action_change_email.php">  
-        <input type="text" name="email" placeholder="email" required>
+        <input type="text" name="email" value=<?=getPersonEmail($username)?> required>
         <input type="submit" value="edit">  
       </form>
 
       <form method="post" action="../actions/action_change_name.php"> 
-        <input type="text" name="name" placeholder="name" required>
+        <input type="text" name="name" value=<?=getPersonName($username)?> required>
         <input type="submit" value="edit">
       </form>
 
       <form method="post" action="../actions/action_change_username.php"> 
-        <input type="text" name="username" placeholder="username" required>
+        <input type="text" name="username" value=<?=$username?> required>
+        <input type="submit" value="edit">
+      </form>
+
+      <!-- not required description because we can want to change to no descriprion -->
+      <form method="post" action="../actions/action_change_description.php"> 
+        <textarea name="description" rows="1" cols="20"><?=getPersonDescription($username)?></textarea>
         <input type="submit" value="edit">
       </form>
 
@@ -353,7 +357,7 @@ function draw_editProfile($username) {
 
       <form method="post" action="../actions/action_change_country.php"> 
         <select name="country" required>
-          <option value="Other" selected disabled>Home Contry</option>     
+          <option value="Other" selected disabled><?=getPersonCountry($username)?> </option>     
           <option value="3">Spain</option>
           <option value="4">France</option>
           <option value="5">United Kingdom</option>

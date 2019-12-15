@@ -112,7 +112,7 @@ function draw_my_lists($lists) {
  * as articles. Uses the draw_list function to draw
  * each list.
  */ ?>
-  <section class="lists">
+  <article class="lists">
   
   <?php
     foreach($lists as $list){
@@ -120,7 +120,7 @@ function draw_my_lists($lists) {
     } 
   ?>
 
-  </section>
+  </article>
 <?php } ?>
 
 <?php function draw_my_list($list) {
@@ -137,6 +137,7 @@ function draw_my_lists($lists) {
       ?>
   </article>
 <?php } ?>
+
 
 <?php function draw_my_item($item) {
 /**
@@ -161,10 +162,10 @@ function draw_my_lists($lists) {
       <?=$item['morada']?>
     </section>
 
-
-  <a href="../../Src/pages/edit_house.php?house=<?=$house_id?>">Edit House</a>
-  <a href="../../Src/pages/house_reservations.php?house=<?=$house_id?>">See rents</a>
-
+  <div id="houseOptions">
+    <a href="../../Src/pages/edit_house.php?house=<?=$house_id?>">Edit</a>
+    <a href="../../Src/pages/house_reservations.php?house=<?=$house_id?>">See rents</a>
+  </div>
 <?php } 
 
 function draw_edit_house($house, $lists) {
@@ -177,6 +178,7 @@ foreach($lists as $list){
       $morada = $item['morada'];
       $country = getCountry($item['idPais']);
       $house_id = $item['idHabitacao'];
+      $class = "defaultImageMedium";
       if(getHousePhoto($item['idHabitacao']) == 0) 
         $image = "../images/houses/thumbs_medium/default0.jpg";
       else{
@@ -560,7 +562,7 @@ function draw_house_reservations($reservations, $house_id) {
 
   
   if(getHousePhoto($house_id) == 0) 
-     $image = "../images/houses/originals/default0.jpg";
+     $image = "../images/houses/thumbs_medium/default0.jpg";
   else $image = "../images/houses/thumbs_medium/$house_id.jpg";   
 
   $house = getHouseItems($house_id);
