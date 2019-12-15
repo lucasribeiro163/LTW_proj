@@ -21,7 +21,7 @@ function draw_login() {
   <p>Don't have an account?<a href="signup.php">Signup!</a></p>
   </section>
 
-  <section id="someImage">
+  <section class="someImage">
     <img src ="https://airbnb.design/wp-content/uploads/2018/08/Plus-living.jpg" alt="house">
   </section>
   
@@ -298,7 +298,7 @@ function draw_login() {
     <p>Already have an account? So just <a href="login.php">Login!</a></p>
   </section>
 
-  <section id="someImage">
+  <section class="someImage">
     <img src ="http://projectus.pt/wp-content/uploads/2018/10/007.jpg" alt="house">
   </section>
 
@@ -309,10 +309,11 @@ function draw_listing() {
  * Draws the newHouse/listing section.
  */ ?>
   <section id="listing">
-    <header><h1>Create your home's listing.</h1></header>
+    <h1>Create your home's listing.</h1>
     <h2>By filling the following requeriments.</h2>
 
     <form method="post" action="../actions/action_newHouse.php">
+      <div id="listingForm">
       <input type="text" name="listingTitle" placeholder="Enter a title for the listing" required>  
       <input type="number" name="price" placeholder="Enter the house price" min="1" required>  
       <select name="Country" required>
@@ -608,36 +609,49 @@ function draw_listing() {
         <option value="7">7</option>
         <option value="8">8</option>
         <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
       </select>
 
-      <textarea name="description" rows="4" cols="50">Enter a short description of the home.</textarea>
-      <input id="pac-input" class="controls" type="text" name="location" placeholder="Insert the house location" required>  
-      <section id ="mapSection"> 
-        <div id="map1"></div>
-      </section>
-      <input type="file" name="file">
-      <input type="submit" value="Submit">
+      <textarea name="description" rows="4" cols="50" placeholder="Enter a short description of the home."></textarea>
+      
+    </div>
+    <section id="mapSection">
+      <input id="pac-input" class="controls" type="text" name="location" placeholder="Insert the house location" required>   
+      <div id="map"></div>
+    </section>
+
     </form>
 
-  </section>
-
-  <section id="houseImg">
-    <img src="../images/houses/thumbs_small/default0.jpg" alt="your house picture">
   </section>
 
 
 <?php } 
 
 function draw_editProfile($username) { 
+
+  if(getPersonImage($username) == 0)
+    $image = "../images/person/thumbs_small/default.jpg";
+  else $image = "../images/person/thumbs_small/$username.jpg";
+  ?>
+
+  <section id="personImg">
+    <h1>Looking for a change.</h1>
+    <h2>Edit your credentials below.</h2> 
+    <img src="<?=$image?>" alt="person pic">
+    <form action="../actions/upload_image.php" method="post" enctype="multipart/form-data">
+      <input type="file" name="image">
+      <input type="submit" value="Upload">
+    </form>
+  </section>
+<?php
   /**
    * Draws the editProfile section.
    */ ?>
     <section id="editProfile">
   
-      <header>
-        <h1>Looking for a change.</h1>
-        <h2>Edit your credentials below.</h2>
-      </header>
+
 
       <form method="post" action="../actions/action_change_email.php">  
         <input type="text" name="email" placeholder="email" required>
@@ -913,22 +927,8 @@ function draw_editProfile($username) {
       </form>
     </section>
 
-  <?php 
-    
-    if(getPersonImage($username) == 0)
-      $image = "../images/person/thumbs_small/default.jpg";
-    else $image = "../images/person/thumbs_small/$username.jpg";
-    ?>
-
-    <section id="personImg">
-      <img src="<?=$image?>" alt="person pic">
-      <form action="../actions/upload_image.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="image">
-        <input type="submit" value="Upload">
-      </form>
-    </section>
   
-  <?php }
+<?php }
 
 function draw_aboutUs(){
   /**
@@ -1004,10 +1004,6 @@ function draw_profile($username) {
     <p>Description:  <?=getPersonDescription($username)?> </p>
     <p>Country:  <?=getPersonCountry($username)?> </p>
   </div>
-
-  <section id ="mapSection"> 
-      <div id="map"></div>
-  </section>
   
   </section>
 

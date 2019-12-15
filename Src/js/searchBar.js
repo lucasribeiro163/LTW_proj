@@ -1,40 +1,40 @@
 'use strict'
- var cities;
-async function getCities(){
+let countries;
+async function getCountries(){
     let request = new XMLHttpRequest();
-    request.onload = await function citiesReceived() {
-    cities = JSON.parse(this.responseText);
+    request.onload = await function countriesReceived() {
+    countries = JSON.parse(this.responseText);
 
-    var ul = document.getElementById("myUL");
-    var li = ul.getElementsByTagName("li");
+    let ul = document.getElementById("myUL");
+    let li = ul.getElementsByTagName("li");
     
-    for(var i = 0; i<cities.length; i++)
+    for(let i = 0; i< countries.length; i++)
     {
-    var a = document.createElement("a");
-    var li = document.createElement("li");
-    a.textContent= cities[i];
-    a.setAttribute('href', "../../Src/pages/main_page.php?city=" + cities[i]);
+    let a = document.createElement("a");
+    let li = document.createElement("li");
+    a.textContent= countries[i];
+    a.setAttribute('href', "../../Src/pages/main_page.php?country=" + countries[i]);
     li.appendChild(a);
     ul.appendChild(li);}
 
-    var test = document.getElementsByTagName("li");
+    let test = document.getElementsByTagName("li");
     console.log(test);
   }
-  request.open("get", "../api/getCities.php", true);
+  request.open("get", "../api/getCountries.php", true);
   request.send();
 }
 
 function getListReady(){
-    var ul = document.getElementById("myUL");
-    var li = ul.getElementsByTagName("li");
+    let ul = document.getElementById("myUL");
+    let li = ul.getElementsByTagName("li");
     if(li.length!=0)//check if it hasn't any elements
     return;
-    getCities();
+    getCountries();
 }
 
 function filterResults(){
     getListReady();
-    var input, filter, ul, li, a, i, txtValue;
+    let input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     ul = document.getElementById("myUL");
@@ -62,3 +62,6 @@ function getResults(picker){
 console.log(picker.getStartDate());
 console.log(picker.getEndDate());
 }
+let input = document.getElementById("myInput");
+input.addEventListener('keyup', filterResults) 
+  

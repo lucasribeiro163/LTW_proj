@@ -9,12 +9,6 @@ CREATE TABLE Pais (
     nome    VARCHAR(15) UNIQUE NOT NULL 
 );
 
-CREATE TABLE Cidade (
-    idCidade      INTEGER PRIMARY KEY,
-    nome    VARCHAR(15) NOT NULL, 
-    idPais    INTEGER REFERENCES Pais (idPais) 
-);
-
 CREATE TABLE Utilizador (
     id INTEGER PRIMARY KEY,
     username       VARCHAR(30) NOT NULL, 
@@ -121,7 +115,7 @@ CREATE TABLE Habitacao (
     morada      TEXT UNIQUE NOT NULL, 
     precoNoite  REAL    CHECK (precoNoite > 0), 
     classificacaoHabitacao INTEGER  CHECK(classificacaoHabitacao >= 1 AND classificacaoHabitacao <= 5), 
-    idCidade      INTEGER REFERENCES Cidade (idCidade) ON DELETE CASCADE ON UPDATE CASCADE, 
+    idPais      INTEGER REFERENCES Pais (idPais) ON DELETE CASCADE ON UPDATE CASCADE, 
     idTipo        INTEGER REFERENCES TipoDeHabitacao (idTipo) ON DELETE SET NULL ON UPDATE CASCADE,
     picture INTEGER
 );
@@ -147,12 +141,6 @@ CREATE TABLE Favorito (
     idCliente     INTEGER REFERENCES Cliente (idCliente) ON DELETE CASCADE ON UPDATE CASCADE, 
     idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE, 
     PRIMARY KEY (idCliente, idHabitacao)
-);
-
-CREATE TABLE Fotografia (
-    urlImagem   VARCHAR(20) PRIMARY KEY, 
-    legenda     VARCHAR(250), 
-    idHabitacao   INTEGER REFERENCES Habitacao(idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Possui (
@@ -997,43 +985,6 @@ INSERT INTO Pais(idPais, nome) VALUES (255, 'Yemen');
 INSERT INTO Pais(idPais, nome) VALUES (256, 'Zambia');
 INSERT INTO Pais(idPais, nome) VALUES (257, 'Zimbabwe');
 
-insert into Cidade(idCidade, nome, idPais) values(1,"Porto", 1);
-insert into Cidade(idCidade, nome, idPais) values(2,"Lisboa", 1);
-insert into Cidade(idCidade, nome, idPais) values(3,"Braga", 1);
-insert into Cidade(idCidade, nome, idPais) values(4,"Felgueiras", 1);
-insert into Cidade(idCidade, nome, idPais) values(5,"Fafe", 1);
-insert into Cidade(idCidade, nome, idPais) values(6,"Aveiro", 1);
-insert into Cidade(idCidade, nome, idPais) values(7,"Portimao", 1);
-insert into Cidade(idCidade, nome, idPais) values(8,"Alentejo", 1);
-insert into Cidade(idCidade, nome, idPais) values(9,"Coimbra", 1);
-insert into Cidade(idCidade, nome, idPais) values(10,"Nova Iorque", 2);
-insert into Cidade(idCidade, nome, idPais) values(11,"Madrid", 3);
-insert into Cidade(idCidade, nome, idPais) values(12,"Paris", 4);
-insert into Cidade(idCidade, nome, idPais) values(13,"Londres", 5);
-insert into Cidade(idCidade, nome, idPais) values(14,"Roma", 6);
-insert into Cidade(idCidade, nome, idPais) values(15,"Toquio", 7);
-insert into Cidade(idCidade, nome, idPais) values(16,"Luanda", 8);
-insert into Cidade(idCidade, nome, idPais) values(17,"Sydney", 9);
-insert into Cidade(idCidade, nome, idPais) values(18,"Santarem", 1);
-insert into Cidade(idCidade, nome, idPais) values(19,"Setubal", 1);
-insert into Cidade(idCidade, nome, idPais) values(20,"Vizela", 1);
-insert into Cidade(idCidade, nome, idPais) values(21,"Felgueiras", 1);
-insert into Cidade(idCidade, nome, idPais) values(22,"Pevidem", 1);
-insert into Cidade(idCidade, nome, idPais) values(23,"Guimaraes", 1);
-insert into Cidade(idCidade, nome, idPais) values(24,"Viana do Castelo", 1);
-insert into Cidade(idCidade, nome, idPais) values(25,"Caminha", 1);
-insert into Cidade(idCidade, nome, idPais) values(26,"Evora", 1);
-insert into Cidade(idCidade, nome, idPais) values(27,"Los Angeles", 2);
-insert into Cidade(idCidade, nome, idPais) values(28,"Helsinquia", 10);
-insert into Cidade(idCidade, nome, idPais) values(29,"Bamako", 11);
-insert into Cidade(idCidade, nome, idPais) values(30,"Lima", 12);
-insert into Cidade(idCidade, nome, idPais) values(31,"Santiago", 13);
-insert into Cidade(idCidade, nome, idPais) values(32,"Pequim", 14);
-insert into Cidade(idCidade, nome, idPais) values(33,"Auckland", 15);
-insert into Cidade(idCidade, nome, idPais) values(34,"Istambul", 16);
-insert into Cidade(idCidade, nome, idPais) values(35,"Rio de Janeiro", 17);
-insert into Cidade(idCidade, nome, idPais) values(36,"Buenos Aires", 18);
-
 insert into Anfitriao (idAnfitriao, classificacaoAnfitriao) values (1, NULL); 
 insert into Anfitriao (idAnfitriao, classificacaoAnfitriao) values (2, NULL);
 insert into Anfitriao (idAnfitriao, classificacaoAnfitriao) values (3, NULL);
@@ -1101,14 +1052,14 @@ insert into TipoDeHabitacao(idTipo,nome) values (6,"Quarto Privado");
 insert into TipoDeHabitacao(idTipo,nome) values (7,"Quarto Partilhado");
 insert into TipoDeHabitacao(idTipo,nome) values (8,"Hostel");
 
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (1, 1,3,2,7,"Casa pituresca perto do mar","Esta casa de sonho não estará disponível muito mais tempo.","Av. Afonso Henriques 9035", 35, NULL, 7, 2, 0);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (2, 2,5,3,10,"Mansão de luxo nos suburbios","Luxo. Requinte. Para si.","Rua S. Caetano, s/n",40, NULL, 8, 2, 0);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (3, 3,1,1,2,"Apartamento espaçoso no centro da cidade","Cómodo, agil e dinâmico.","Rua da Boavista",35, NULL, 1, 6, 0);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (4, 4,1,1,1,"Casa moderna com piscina","Diversão para família toda.","Praceta Joao XXI",80, NULL, 3, 5, 0);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (5, 5, 4,2,9,"Casa clássica com salão de chá","Zen, reconquiste a sua paz interior","Av. Esteves Alberto 645", 33, NULL, 8, 6, 0);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (6, 6,3,2,3,"Apartamento low-budget","Mais barato não podia ser.","Rua D.Pedro III, s/n", 40, NULL, 7, 2, 0);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (7, 7, 2,1,4,"Apartamento com vista para o mar","Pechincha ideal para todos.","Rua da Trindade",43, NULL, 3, 2, 0);
-insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idCidade, idTipo, picture) values (8, 8,1,1,2,"Cabana na margem do rio","Ideal para quem gosta de pesca.","Praca Joao I", 23, NULL, 3, 5, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idPais, idTipo, picture) values (1, 1,3,2,7,"Casa pituresca perto do mar","Esta casa de sonho não estará disponível muito mais tempo.","Av. Afonso Henriques 9035", 35, NULL, 1, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idPais, idTipo, picture) values (2, 2,5,3,10,"Mansão de luxo nos suburbios","Luxo. Requinte. Para si.","Rua S. Caetano, s/n",40, NULL, 1, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idPais, idTipo, picture) values (3, 3,1,1,2,"Apartamento espaçoso no centro da cidade","Cómodo, agil e dinâmico.","Rua da Boavista",35, NULL, 1, 6, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idPais, idTipo, picture) values (4, 4,1,1,1,"Casa moderna com piscina","Diversão para família toda.","Praceta Joao XXI",80, NULL, 1, 5, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idPais, idTipo, picture) values (5, 5, 4,2,9,"Casa clássica com salão de chá","Zen, reconquiste a sua paz interior","Av. Esteves Alberto 645", 33, NULL, 1, 6, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idPais, idTipo, picture) values (6, 6,3,2,3,"Apartamento low-budget","Mais barato não podia ser.","Rua D.Pedro III, s/n", 40, NULL, 1, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idPais, idTipo, picture) values (7, 7, 2,1,4,"Apartamento com vista para o mar","Pechincha ideal para todos.","Rua da Trindade",43, NULL, 1, 2, 0);
+insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idPais, idTipo, picture) values (8, 8,1,1,2,"Cabana na margem do rio","Ideal para quem gosta de pesca.","Praca Joao I", 23, NULL, 1, 5, 0);
 
 insert into Disponivel (idHabitacao, data) values (1, '2019-06-01');   
 insert into Disponivel (idHabitacao, data) values (1, '2019-06-02');

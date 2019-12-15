@@ -22,10 +22,7 @@ function draw_header($username) {
       <script src="../js/changeColor.js" defer></script>
       <script src="../js/changeImage.js" defer></script>
       <script src="../js/searchBar.js" defer></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&callback=initMap" async defer></script>
-      <script src="../js/googleMaps.js" defer></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&libraries=places&callback=initAutocomplete"
-         async defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&libraries=places&callback=initAutocomplete" async defer></script>
       <script src="../js/findPlace.js" defer></script>
       <script src="../js/findPlace.js" defer></script>
 
@@ -41,8 +38,7 @@ function draw_header($username) {
             <div class="dropdown">
               <p><?=$username?></p>
               <div id="myDropdown" class="dropdown-content">
-                <a href="../../Src/pages/aboutUs.php">My places</a>
-                <a href="../../Src/pages/aboutUs.php">My Lists</a>
+                <a href="../../Src/pages/myList.php">My Lists</a>
                 <a href="../../Src/pages/aboutUs.php">Rents</a>
                 <a href="../../Src/pages/newHouse.php">Listing</a>
                 <a href="../../Src/pages/editProfile.php">Edit profile</a>
@@ -50,7 +46,7 @@ function draw_header($username) {
                 <a href="../actions/action_logout.php">Logout</a>
               </div>
             </div>
-            <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for cities.." title="Type in a name">
+            <input type="text" id="myInput"  placeholder="Search for cities.." title="Type in a name">
             <ul id="myUL" ></ul>
             <input type="text" id="datepicker" onkeyup="getResults()" placeholder="Search for dates.."/>
             <link rel="stylesheet" type="text/css" href="../includes/calendar/css/lightpick.css">

@@ -22,12 +22,12 @@
   // Remove disallowed characters
   $description = preg_replace ("/[^0-9a-zA-Z\s]/", '', $description);
   $rating = 1;
-  $city_id = $_POST['Country'];
+  $country_id = $_POST['Country'];
   $username = $_SESSION['username'];
   $personId = getPersonId($username);
   
   try {
-    insertHouse($personId, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id);
+    insertHouse($personId, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $country_id, $type_id);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'New house for rent!');
     header('Location: ../pages/main_page.php');
   } catch (PDOException $e) {

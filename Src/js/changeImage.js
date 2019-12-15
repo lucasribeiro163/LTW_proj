@@ -48,6 +48,6 @@ function changeImage() {
   let random = changeNumber()
   for(let i = 0; i < defaultImages.length; i++) {
     console.log(defaultImages.item(i).src)
-    defaultImages.item(i).src = defaultImages.item(i).src = '../images/houses/thumbs_small/default' + random + '.jpg'
+    defaultImages.item(i).src = defaultImages.item(i).src = '../images/houses/thumbs_medium/default' + random + '.jpg'
   }
 }
