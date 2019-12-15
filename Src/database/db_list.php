@@ -1,13 +1,14 @@
 <?php
   include_once('../includes/database.php');
 
-  function getHousesWithId($city) {
+  function getHousesWithId($country) {
     $db = Database::instance()->db();
-    $idCity  = getCityId($city);
-    $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao WHERE idCidade = ?');
-    $stmt->execute(array($idCity[0]['idCidade']));
+    $idCountry  = getCountryId($country);
+    $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao WHERE idPais = ?');
+    $stmt->execute(array($idCountry[0]['idPais']));
     return $stmt->fetchAll(); 
   }
+
   function getHouses() {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao');
@@ -15,10 +16,10 @@
     return $stmt->fetchAll(); 
   }
 
-  function getCityId($city){
+  function getCountryId($country){
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT idCidade FROM Cidade WHERE nome = ?');
-    $stmt->execute(array($city));
+    $stmt = $db->prepare('SELECT idPais FROM Pais WHERE nome = ?');
+    $stmt->execute(array($country));
     return $stmt->fetchAll(); 
   }
 
@@ -29,16 +30,16 @@
     return $stmt->fetchAll(); 
   }
 
-  function getCity($city_id) {
+  function getCountry($country_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT nome FROM Cidade WHERE idCidade = ?');
-    $stmt->execute(array($city_id));
+    $stmt = $db->prepare('SELECT nome FROM Pais WHERE idPais = ?');
+    $stmt->execute(array($country_id));
     return $stmt->fetchAll(); 
   }
   
   function getHousePhoto($house_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT * FROM habitacao WHERE idHabitacao = ?');
+    $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idHabitacao = ?');
     $stmt->execute(array($house_id));
     $house = $stmt->fetch();
     return $house['picture'];
@@ -67,10 +68,10 @@
   /**
    * Inserts a new house into the database.
    */
-  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, $picture) {
+  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $country_id, $type_id, $picture) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('INSERT INTO Habitacao VALUES(? , ? , ? , ? , ? , ? , ?, ? , ?, ?, ?, ? , ?)');
-    $stmt->execute(array (NULL, $idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $city_id, $type_id, $picture));
+    $stmt->execute(array (NULL, $idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $country_id, $type_id, $picture));
   }
 
   /**

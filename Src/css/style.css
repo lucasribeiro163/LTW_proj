@@ -185,7 +185,7 @@ textarea {
   border-width: 0.5em;
   max-width: 87%;
   margin-left: 10%;
-  overflow: scroll;
+  overflow: hidden;
   grid-column-start: 2;
 }
 

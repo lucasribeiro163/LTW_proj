@@ -36,7 +36,6 @@ function draw_header($username) {
             <div class="dropdown">
               <p><?=$username?></p>
               <div id="myDropdown" class="dropdown-content">
-                <a href="../../Src/pages/aboutUs.php">My places</a>
                 <a href="../../Src/pages/myList.php">My Lists</a>
                 <a href="../../Src/pages/aboutUs.php">Rents</a>
                 <a href="../../Src/pages/newHouse.php">Listing</a>
@@ -45,7 +44,7 @@ function draw_header($username) {
                 <a href="../actions/action_logout.php">Logout</a>
               </div>
             </div>
-            <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for names.." title="Type in a name">
+            <input type="text" id="myInput" placeholder="Search for names.." title="Type in a name">
             <ul id="myUL" ></ul>
           <?php
           }

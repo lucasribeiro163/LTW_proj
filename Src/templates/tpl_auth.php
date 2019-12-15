@@ -609,10 +609,13 @@ function draw_listing() {
         <option value="7">7</option>
         <option value="8">8</option>
         <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
       </select>
 
       <textarea name="description" rows="4" cols="50" placeholder="Enter a short description of the home."></textarea>
-      <input type="submit" value="Submit">
+      
     </div>
     <section id="mapSection">
       <input id="pac-input" class="controls" type="text" name="location" placeholder="Insert the house location" required>   
