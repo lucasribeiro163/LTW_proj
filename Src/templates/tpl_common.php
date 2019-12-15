@@ -15,7 +15,6 @@ function draw_header($username) {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1.0">
-      <link rel="shortcut icon" href="../images/logo_head.jpg" />
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
       <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|+Sans+Condensed:300">
@@ -23,37 +22,33 @@ function draw_header($username) {
       <script src="../js/changeColor.js" defer></script>
       <script src="../js/changeImage.js" defer></script>
       <script src="../js/searchBar.js" defer></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&callback=initMap" async defer></script>
-      <script src="../js/googleMaps.js" defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&libraries=places&callback=initAutocomplete" async defer></script>
+      <script src="../js/findPlace.js" defer></script>
     </head>
     
     <body>
       <header id="options">
-      <a href="../../Src/pages/login.php"><img src =../images/logo2.png alt="Rent a house"></a>
-      <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for names.." title="Type in a name">
-
-<ul id="myUL" >
-</ul>
-
-      <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
-      <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
-        <?php 
-        if ($username != NULL) {  ?>
-          <div class="dropdown">
-            <p><?=$username?></p>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="../../Src/pages/aboutUs.php">My places</a>
-              <a href="../../Src/pages/aboutUs.php">My Lists</a>
-              <a href="../../Src/pages/aboutUs.php">Rents</a>
-              <a href="../../Src/pages/newHouse.php">Listing</a>
-              <a href="../../Src/pages/editProfile.php">Edit profile</a>
-              <a href="../../Src/pages/profile.php">Profile</a>
-              <a href="../actions/action_logout.php">Logout</a>
+        <a href="../../Src/pages/login.php"><img src =../images/logo2.png alt="Rent a house"></a>
+        <a href="../../Src/pages/contacts.php"><i class="fas fa-phone"></i></a>
+        <a href="../../Src/pages/aboutUs.php"><i class="fas fa-info-circle"></i></a>
+          <?php 
+          if ($username != NULL) {  ?>
+            <div class="dropdown">
+              <p><?=$username?></p>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="../../Src/pages/myList.php">My Lists</a>
+                <a href="../../Src/pages/aboutUs.php">Rents</a>
+                <a href="../../Src/pages/newHouse.php">Listing</a>
+                <a href="../../Src/pages/editProfile.php">Edit profile</a>
+                <a href="../../Src/pages/profile.php">Profile</a>
+                <a href="../actions/action_logout.php">Logout</a>
+              </div>
             </div>
-        </div>
-        <?php
-        }
-        ?>
+            <input type="text" id="myInput" placeholder="Search for names.." title="Type in a name">
+            <ul id="myUL" ></ul>
+          <?php
+          }
+          ?>
       </header>
       <?php if (isset($_SESSION['messages'])) {?>
         <section id="messages">
