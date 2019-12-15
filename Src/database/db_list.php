@@ -223,5 +223,13 @@
   }
 
 
+  function getReservations($house_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Reserva WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
+    return $stmt->fetchAll(); 
+  }
+
+
 ?>
 

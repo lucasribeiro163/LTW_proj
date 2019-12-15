@@ -163,7 +163,7 @@ function draw_my_lists($lists) {
 
 
   <a href="../../Src/pages/edit_house.php?house=<?=$house_id?>">Edit House</a>
-  <a href="../../Src/pages/myList.php">See rents</a>
+  <a href="../../Src/pages/house_reservations.php?house=<?=$house_id?>">See rents</a>
 
 <?php } 
 
@@ -553,5 +553,36 @@ function draw_listing() {
   
     </section>
   
+<?php }  ?>
+
+<?php
+function draw_house_reservations($reservations, $house_id) {
+
   
-  <?php }  ?>
+  if(getHousePhoto($house_id) == 0) 
+     $image = "../images/houses/originals/default0.jpg";
+  else $image = "../images/houses/thumbs_medium/$house_id.jpg";   
+
+  $house = getHouseItems($house_id);
+
+
+  ?>
+
+
+  <section id="Info">
+    <h1><?=$house[0]['titulo']?></h1>
+    <section id="address">
+      <?=htmlspecialchars($house[0]['morada'])?>
+
+<?php
+
+  foreach($reservations as $reservation)
+    ?> <p> <?php print_r($reservation['dataCheckIn']) ?> to  <?php print_r($reservation['dataCheckIn']) ?> </p> 
+    
+  </section>
+
+    <section class="someImage">
+    <img src="<?=$image?>" alt="house image">
+    </section>
+    <?php
+ } ?>
