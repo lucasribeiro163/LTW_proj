@@ -62,6 +62,9 @@ function getResults(picker){
 console.log(picker.getStartDate());
 console.log(picker.getEndDate());
 }
+
 let input = document.getElementById("myInput");
 input.addEventListener('keyup', filterResults) 
   
+
+var picker = new Lightpick({ field: document.getElementById('datepicker') });

@@ -55,10 +55,6 @@ function draw_header($username) {
             
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
             <script src="../includes/calendar/lightpick.js"></script>
-            <script>
-                var picker = new Lightpick({ field: document.getElementById('datepicker') });
-                getResults(picker);
-            </script>
             <!-- End of script for calender -->
           <?php
           }
