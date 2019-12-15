@@ -58,29 +58,40 @@
     foreach ($list['list_items'] as $item){
       if($item['idHabitacao'] == $house){
 
+        $precoNoite = $item['precoNoite'];
         $morada = $item['morada'];
         $cidade = getCity($item['idCidade']);
         $idHabitacao = $item['idHabitacao'];
         if(getHousePhoto($item['idHabitacao']) == 0) 
-          $image = "../images/houses/thumbs_medium/default0.jpg";
+          $image = "../images/houses/originals/default0.jpg";
         else $image = "../images/houses/thumbs_medium/$idHabitacao.jpg";
       
       }
     }
   }
+
     ?>
-    <section id="Info">
-      <h1><?=$item['titulo']?></h1>
-      <h2><?=$item['descricaoHabitacao']?></h2>
-      <section id="address">
-        <?=htmlspecialchars($morada)?>
+    <section id="house_ad">
+    <header>  
+        <h1><?=$item['titulo']?></h1>
+        <h2><?=$item['descricaoHabitacao']?></h2>
+        <h2><?=htmlspecialchars($morada)?>
         ,
-        <?=print_r($cidade[0]['nome'])?>
-      </section>
-      <a>Check-in: <input type="date" name="check-in"></a>
-      <a>Check-out: <input type="date" name="check-out"></a>
-      <button id="rent_button">Rent</button>
-    </section> 
-    <img src="<?php echo $image; ?>" alt="house image"></img>  
+        <?=print_r($cidade[0]['nome'])?></h2>
+    </header>
+
+    <form action="../actions/action_rent.php" method="post">
+        <input type="hidden" name="idHabitacao" value="<?=$house;?>" />
+        <input type="hidden" name="precoNoite" value="<?=$precoNoite;?>" />
+        <a>Check-in: <input type="date" name="check-in"></a>
+        <a>Check-out: <input type="date" name="check-out"></a>
+        <a>Nr of people: <input type="number" name="nrpeople"></a>
+        <button id="rent_button">Rent</button>
+      </form>
+    </section>
+
+    <section id="someImage">
+      <img src="<?php echo $image; ?>" alt="house image">
+    </section>
     
 <?php } ?>
