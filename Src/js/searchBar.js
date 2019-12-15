@@ -67,4 +67,7 @@ let input = document.getElementById("myInput");
 input.addEventListener('keyup', filterResults) 
   
 
-var picker = new Lightpick({ field: document.getElementById('datepicker') });
+let picker = new Lightpick({ field: document.getElementById('datepicker') });
+
+let dataInput = document.getElementById("datapicker")
+dataInput.addEventListener('keyup', getResults) 

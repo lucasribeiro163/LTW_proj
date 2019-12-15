@@ -158,7 +158,7 @@ function draw_my_lists($lists) {
     <h1><?=$item['titulo']?></h1>
     <h2><?=$country[0]['nome']?></h2>
     <section id="address">
-      <?=htmlspecialchars($item['morada'])?>
+      <?=$item['morada']?>
     </section>
 
 

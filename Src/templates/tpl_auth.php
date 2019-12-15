@@ -316,7 +316,9 @@ function draw_editProfile($username) {
     <h2>Edit your credentials below.</h2> 
     <img src="<?=$image?>" alt="person pic">
     <form action="../actions/upload_image.php" method="post" enctype="multipart/form-data">
-      <input type="file" name="image">
+      <label>File with your picture:
+        <input type="file" name="image">
+      </label>
       <input type="submit" value="Upload">
     </form>
   </section>
