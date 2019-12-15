@@ -1,10 +1,10 @@
 <?php function draw_lists($lists) {
 /**
- * Draws a section (#lists) containing several lists
+ * Draws a section (.lists) containing several lists
  * as articles. Uses the draw_list function to draw
  * each list.
  */ ?>
-  <section id="lists">
+  <section class="lists">
   
   <?php
     foreach($lists as $list){
@@ -41,7 +41,8 @@
   else $image = "../images/houses/thumbs_small/$idHabitacao.jpg";
   
 ?>
-<a href= "house.php?house=<?=$idHabitacao?>"> <img id="defaultImage" src="<?php echo $image; ?>" alt="house image"></img> </a>
+<a href= "house.php?house=<?=$idHabitacao?>">
+<img id="defaultImage" src="<?php echo $image; ?>" alt="house image"></img> </a>
 <section id="Info">
   <h1><?=$item['titulo']?></h1>
   <h2><?=$cidade[0]['nome']?></h2>
@@ -94,4 +95,62 @@
       <img src="<?php echo $image; ?>" alt="house image">
     </section>
     
+<?php }
+
+
+function draw_my_lists($lists) {
+/**
+ * Draws a section (.lists) containing all the lists of the user
+ * as articles. Uses the draw_list function to draw
+ * each list.
+ */ ?>
+  <section class="lists">
+  
+  <?php
+    foreach($lists as $list){
+     draw_mylist($list);
+    } //I'm going to change to draw_edit_item and add actions
+  ?>
+
+  </section>
+<?php } ?>
+
+<?php function draw_mylist($list) {
+/**
+ * Draw a single list as an article (.list). Uses the
+ * draw_item function to draw each item. Expects each 
+ * list to have an list_id, list_name and list_items 
+ * fields.
+ */ ?>
+  <article class="list">
+      <?php 
+        foreach ($list['list_items'] as $item)
+          draw_myitem($item);
+      ?>
+  </article>
+<?php } ?>
+
+<?php function draw_myitem($item) {
+/**
+ * Draws a single item. A dropBox will appear on click 
+ **/
+  $cidade = getCity($item['idCidade']);
+  $idHabitacao = $item['idHabitacao'];
+  if(getHousePhoto($item['idHabitacao']) == 0) 
+    $image = "../images/houses/thumbs_small/default0.jpg";
+  else $image = "../images/houses/thumbs_small/$idHabitacao.jpg";
+  
+?>
+  <img id="defaultImage" src="<?=$image?>" alt="house image"></img>
+  <section id="Info">
+    <h1><?=$item['titulo']?></h1>
+    <h2><?=$cidade[0]['nome']?></h2>
+    <section id="address">
+      <?=htmlspecialchars($item['morada'])?>
+    </section>
+
+
+  <a href="../../Src/pages/aboutUs.php">Edit House</a>
+  <a href="../../Src/pages/myList.php">See rents</a>
+
 <?php } ?>

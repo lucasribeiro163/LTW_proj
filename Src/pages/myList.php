@@ -16,6 +16,6 @@
     $lists[$k]['list_items'] = getHouseItems($list['idHabitacao']);
 
   draw_header($_SESSION['username']);
-  draw_lists($lists);
+  draw_my_lists($lists);
   draw_footer();
 ?>

@@ -365,7 +365,7 @@ textarea {
 
  }
 
- #lists {
+ .lists {
 
   background-color: var(--light-white);
   padding-left: 10%;
@@ -473,14 +473,14 @@ body > #messages .success {
 *Article
 */
 
-body > #lists { 
+body > .lists { 
   display: grid;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-template-columns: 33.4% 33.3% 33.3%;
 }
 
-#lists article{
+.lists article{
   border-style: solid;
   justify-content: space-around; 
   margin: 1em;
