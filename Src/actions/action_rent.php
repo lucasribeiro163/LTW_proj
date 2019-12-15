@@ -6,6 +6,7 @@
   $check_in = $_POST['check-in'];
   $check_out = $_POST['check-out'];
   $house_id = $_POST['idHabitacao'];
+  $precoNoite = $_POST['precoNoite'];
   $nrpeople = $_POST['nrpeople'];
 
   $available = true;
