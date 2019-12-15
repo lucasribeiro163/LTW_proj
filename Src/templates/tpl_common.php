@@ -37,7 +37,7 @@ function draw_header($username) {
               <p><?=$username?></p>
               <div id="myDropdown" class="dropdown-content">
                 <a href="../../Src/pages/aboutUs.php">My places</a>
-                <a href="../../Src/pages/aboutUs.php">My Lists</a>
+                <a href="../../Src/pages/myList.php">My Lists</a>
                 <a href="../../Src/pages/aboutUs.php">Rents</a>
                 <a href="../../Src/pages/newHouse.php">Listing</a>
                 <a href="../../Src/pages/editProfile.php">Edit profile</a>

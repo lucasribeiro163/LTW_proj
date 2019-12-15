@@ -68,7 +68,7 @@ body {
 
 form {
   display: grid;
-  grid-template-columns: auto 20% 50%;
+  grid-template-columns: auto 30% 50%;
 }
 
 select {
@@ -183,7 +183,7 @@ textarea {
   margin-top: 0em;
   border-style: solid;
   border-width: 0.5em;
-  max-width: 89%;
+  max-width: 87%;
   margin-left: 10%;
   overflow: scroll;
   grid-column-start: 2;

@@ -21,6 +21,7 @@
     $stmt->execute(array($city));
     return $stmt->fetchAll(); 
   }
+
   function getHouseItems($house_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idHabitacao = ?');
@@ -153,8 +154,13 @@
     return $stmt->fetchAll();
   }
 
+  function getUserHouseItems($userId) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idDono = ?');
+    $stmt->execute(array($userId));
+    return $stmt->fetchAll(); 
+  }
 
 
-  
 ?>
 
