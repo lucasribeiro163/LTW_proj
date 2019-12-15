@@ -133,4 +133,12 @@
     return $user['id'];
   }
   
+  /**
+   * Deletes a user from database
+   */
+  function deleteUser($user_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('DELETE FROM Utilizador WHERE id = ?');
+    $stmt->execute(array($user_id));
+  }
 ?>

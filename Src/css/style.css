@@ -36,7 +36,7 @@ body {
  * Generic
  */
 
- a, p, input, li {
+a, p, input, li {
   font-family: var(--serif-font), serif;
   color: var(--dark-color);
   padding: 1em 0em 0em 1em;
@@ -64,11 +64,6 @@ h2, h3, h4, h5, h6 {
 body {
   display: grid;
   grid-template-columns: 34% auto;
-}
-
-form {
-  display: grid;
-  grid-template-columns: auto 30% 50%;
 }
 
 select {
@@ -114,29 +109,22 @@ input[type="submit"]{
   padding: 1em;
 } 
 
+/* forms */
+form {
+  display: grid;
+  grid-template-columns: auto 30% 50%;
+}
+
 form > p {
   grid-column-start: 1;
   grid-column-end: 4;
   margin-left: 5em;
 }
 
-/*
-  Footer
-*/
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-footer {
-  text-align: center;
-  font-size: 15px;
-  margin-top: auto; 
-  grid-column-start: 1;
-  grid-column-end: 3;
-  width: 100%;
-  background-color: var(--bg-color);
 }
 
 /*
@@ -228,10 +216,14 @@ textarea {
   text-align: center;
 }
 
+/**
+ * footer
+ */
 #f1 {
 
   left: 0;
   bottom: 0;
+  margin-top: 2%;
   width: 100%;
   border-top-color: var(--bg-color);
   background-color: var(--bg-color);
@@ -261,11 +253,20 @@ textarea {
 
 }
 
+footer {
+  text-align: center;
+  font-size: 15px; 
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  background-color: var(--bg-color);
+} 
+
 
 /*
- *About Us, security and privacy
+ *About Us, security, terms and privacy
 */
-#aboutUs, #security, #privacy {
+#aboutUs, #security, #privacy, #terms {
   text-align: center;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -273,7 +274,7 @@ textarea {
   font-family: var(--font-family);
 }
 
-#aboutUs h1,  #security h1, #privacy h1 {
+#aboutUs h1,  #security h1, #privacy h1, #terms h1 {
   margin: 0;
   padding-top: 0.5em;
   padding-bottom: 1em;
@@ -281,7 +282,7 @@ textarea {
   color: var(--bg-color);
 }
 
-#descriptionAbout, #descriptionPrivacy, #descriptionSecurity  {
+#descriptionAbout, #descriptionPrivacy, #descriptionSecurity, #descriptionTerms  {
   margin: 0;
   text-align: center;
   position: relative;
@@ -293,7 +294,7 @@ textarea {
   grid-column-end: 3;
 }
 
-#descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2 {
+#descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2, #descriptionTerms > h2 {
   margin-bottom: 0;
   font-size: 20px;
   padding-top: 3.5em;
