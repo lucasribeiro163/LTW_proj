@@ -54,3 +54,11 @@ function filterResults(){
         
     }
 }
+
+/*
+* Picker
+*/
+function getResults(picker){
+console.log(picker.getStartDate());
+console.log(picker.getEndDate());
+}
