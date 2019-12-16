@@ -48,7 +48,7 @@
 <a href= "house.php?house=<?=$idHabitacao?>">
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
 <img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
-<section id="Info">
+<section class="Info">
   <h1><?=$item['titulo']?></h1>
   <h2><?=$country[0]['nome']?></h2>
   <section id="address">
@@ -155,7 +155,7 @@ function draw_my_lists($lists) {
 ?>
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
   <img class=<?=$class?> src="<?=$image?>" alt="house image" width="200" height="200" ></img>
-  <section id="Info">
+  <section class="Info">
     <h1><?=$item['titulo']?></h1>
     <h2><?=$country[0]['nome']?></h2>
     <section id="address">
@@ -503,6 +503,7 @@ function draw_listing() {
           <option value="5">Cabin</option>
           <option value="6">basement suite</option>
           <option value="7">Tiny home</option>
+          <option value="8">Hostel</option>
         </select> 
   
         <select name="Nrbedrooms" required>
@@ -571,7 +572,7 @@ function draw_house_reservations($reservations, $house_id) {
   ?>
 
 
-  <section id="Info">
+  <section class="Info">
     <h1><?=$house[0]['titulo']?></h1>
     <section id="address">
       <?=htmlspecialchars($house[0]['morada'])?>
@@ -648,7 +649,7 @@ function draw_house_reservations($reservations, $house_id) {
 <a href= "house.php?house=<?=$idHabitacao?>">
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
 <img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
-<section id="Info">
+<section class="Info">
   <h1><?=$item['titulo']?></h1>
   <h2><?=$country[0]['nome']?></h2>
   <section id="address">

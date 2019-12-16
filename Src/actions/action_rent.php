@@ -11,7 +11,6 @@
 
   $available = true;
 
-  
   $availability = getAvailability($house_id);
   $max_people = getNrPeople($house_id);
 

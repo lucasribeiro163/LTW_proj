@@ -1043,13 +1043,13 @@ insert into Comodidade(idComodidade,nome) values(10,"Piscina Exterior");
 insert into Comodidade(idComodidade,nome) values(11,"Piscina Interior");
 insert into Comodidade(idComodidade,nome) values(12,"Jacuzzi");
 
-insert into TipoDeHabitacao(idTipo,nome) values (1,"Apartamento");
-insert into TipoDeHabitacao(idTipo,nome) values (2,"Casa");
-insert into TipoDeHabitacao(idTipo,nome) values (3,"Bungalow");
-insert into TipoDeHabitacao(idTipo,nome) values (4,"Tenda");
-insert into TipoDeHabitacao(idTipo,nome) values (5,"Quarto de Hotel");
-insert into TipoDeHabitacao(idTipo,nome) values (6,"Quarto Privado");
-insert into TipoDeHabitacao(idTipo,nome) values (7,"Quarto Partilhado");
+insert into TipoDeHabitacao(idTipo,nome) values (1,"Housebarn");
+insert into TipoDeHabitacao(idTipo,nome) values (2,"flat");
+insert into TipoDeHabitacao(idTipo,nome) values (3,"Apartment");
+insert into TipoDeHabitacao(idTipo,nome) values (4,"Ranch-Style");
+insert into TipoDeHabitacao(idTipo,nome) values (5,"Cabin");
+insert into TipoDeHabitacao(idTipo,nome) values (6,"basement suite");
+insert into TipoDeHabitacao(idTipo,nome) values (7,"iny home");
 insert into TipoDeHabitacao(idTipo,nome) values (8,"Hostel");
 
 insert into Habitacao(idHabitacao, idDono, numQuartos, numBanho, maxHospedes , titulo , descricaoHabitacao, morada , precoNoite, classificacaoHabitacao, idPais, idTipo, picture) values (1, 1,3,2,7,"Casa pituresca perto do mar","Esta casa de sonho não estará disponível muito mais tempo.","Av. Afonso Henriques 9035", 35, NULL, 1, 2, 0);

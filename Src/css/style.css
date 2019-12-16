@@ -362,18 +362,13 @@ footer {
   font-family: var(--font-family);
   border-radius: 5px;
   box-shadow: 0 4px 6px var(--black-color);
-
- }
-
- .lists {
-
   background-color: var(--light-white);
-  padding-left: 10%;
-  padding-right: 10%;
+  padding: 0em;
+  align-content: center;
 
  }
 
- #Info > h1, h2{
+ .Info > h1, h2{
 
   margin-left: 0em;
   text-align: left;
@@ -385,12 +380,6 @@ footer {
   grid-column-end: 3;
   margin-left: 3%;
 }
-
-/*
-
-#listing input, select, textarea { 
-  width: 70%;
-}*/
 
 #listingForm {
   display: grid;
@@ -500,10 +489,10 @@ body > #messages .success {
 */
 
 body > .lists { 
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-template-columns: 33.4% 33.4% 33.4%;
 }
 
 .lists article{
@@ -513,6 +502,14 @@ body > .lists {
   overflow: hidden;
   border-radius: 25px;
   padding: 1em;
+}
+
+.list .Info * { 
+  width: 10em;
+}
+
+.Info {
+  font-size: 1.4em;
 }
 
 #houseOptions a {
@@ -525,10 +522,6 @@ body > .lists {
 
 #houseOptions {
   padding-top: 10%;
-}
-
-#Info {
-  font-size: 1.4em;
 }
 
 #options > nav ul {
