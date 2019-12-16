@@ -11,6 +11,7 @@
 
   $available = true;
 
+  
   $availability = getAvailability($house_id);
   $max_people = getNrPeople($house_id);
 
@@ -31,8 +32,16 @@
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Reservation was successful!');
   }
   else
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Those dates aren\'t available!');
- 
-  header("Location: ../pages/house.php?house=$house_id");
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Those dates arent available!');
 
+
+
+
+  
+   header('Location: ../pages/house.php?house='.$house_id);
+
+    
+
+
+  
 ?>

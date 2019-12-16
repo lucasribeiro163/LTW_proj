@@ -35,7 +35,7 @@
     update_username($oldUsername, $username);
     $_SESSION['username'] = $username; //change log username to new username
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our username was updated!');
-    header('Location: ../pages/profile.php');
+    header('Location: ../pages/main_page.php');
   } catch (PDOException $e) {
     die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update username!');

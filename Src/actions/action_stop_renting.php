@@ -23,6 +23,6 @@
   } catch (PDOException $e) {
     die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to stop renting!');
-    die(header("Location: ../pages/edit_house.php?house=$house_id"));
+    header('Location: ../pages/myLists.php');
   }
 ?>

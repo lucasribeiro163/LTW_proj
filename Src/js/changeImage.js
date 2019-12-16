@@ -33,7 +33,7 @@ function stopChange(){
 }
 
 
-if(document.getElementsByClassName("Info") ){
+if(document.getElementById("Info") ){
   startPeriodicChangeList()
 }
 
