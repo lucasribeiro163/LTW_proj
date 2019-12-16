@@ -4,11 +4,12 @@
 
   // Verify if user is logged in
   if (!isset($_SESSION['username']))
-    die(header('Location: ../page/login.php'));
+    die(header('Location: ../pages/login.php'));
 
-    $password = $_POST['password'];
-    $password1 = $_POST['password1'];
+  $password = $_POST['password'];
+  $password1 = $_POST['password1'];
 
+  //checks if passwords match
   if ($password != $password1 ) {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Passwords don\'t match!');
     die(header('Location: ../pages/editProfile.php'));

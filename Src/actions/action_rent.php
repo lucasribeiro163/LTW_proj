@@ -13,28 +13,32 @@
 
   
   $availability = getAvailability($house_id);
+  $max_people = getNrPeople($house_id);
 
 
   for($i = 0 ; $i< count($availability) ; ++$i){
     if(($availability[$i]['dataCheckIn'] >= $check_in && $availability[$i]['dataCheckIn'] <= $check_out) || 
     ($availability[$i]['dataCheckOut'] >= $check_in && $availability[$i]['dataCheckOut'] <= $check_out) ||
-    ($availability[$i]['dataCheckOut'] >= $check_out && $availability[$i]['dataCheckIn'] <= $check_in) ){
+    ($availability[$i]['dataCheckOut'] >= $check_out && $availability[$i]['dataCheckIn'] <= $check_in)){
         $available = false;
     }
   }
 
+  if($nrpeople > $max_people['0']['maxHospedes'])
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'This house cant fit that many people!');
+
   if($available){
     $reservas = createReservation($check_in, $check_out, $nrpeople, $precoNoite, $house_id);   
-    $_POST['available'] = 1;
+    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Reservation was successful!');
   }
   else
-    $_POST['available'] = 2;
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Those dates arent available!');
 
 
 
 
   
-  header('Location: ../pages/house.php?house='.$house_id);
+   header('Location: ../pages/house.php?house='.$house_id);
 
     
 

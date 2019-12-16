@@ -3,8 +3,8 @@
 /* When the user is over the username
   shows the dropdown content */
 function handleEventDrop(event) {
-  let dropdown = document.getElementById("myDropdown")
-  dropdown.classList.toggle("show");
+  let mydropdown = document.getElementById("myDropdown")
+  mydropdown.classList.toggle("show");
   event.preventDefault()
 }
 
@@ -26,4 +26,4 @@ function handleEventUp(event) {
 //puts the dropdown invisible when mouse is not over
 let dropdown1 = document.querySelector("#options p")
 dropdown1.addEventListener('click', handleEventUp) 
-
+  
