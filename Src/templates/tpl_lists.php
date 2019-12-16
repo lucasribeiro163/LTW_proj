@@ -587,4 +587,73 @@ function draw_house_reservations($reservations, $house_id) {
     <img src="<?=$image?>" alt="house image">
     </section>
     <?php
- } ?>
+ } 
+
+?>
+
+<?php function draw_my_reservations($lists) {
+/**
+ * Draws a section (.lists) containing several lists
+ * as articles. Uses the draw_list function to draw
+ * each list.
+ */ ?>
+  <section class="lists">
+  
+  <?php
+    if ($lists == -1){
+      ?><h1>"You haven't rented any houses yet.</h1> <?php
+    }
+    else{
+      foreach($lists as $list){
+        draw_my_reservation($list);
+      }
+    }
+  ?>
+
+  </section>
+<?php } ?>
+
+<?php function draw_my_reservation($list) {
+/**
+ * Draw a single list as an article (.list). Uses the
+ * draw_item function to draw each item. Expects each 
+ * list to have an list_id, list_name and list_items 
+ * fields.
+ */ ?>
+  <article class="list">
+      <?php 
+        foreach ($list['list_items'] as $item)
+        draw_reservation_item($item);
+      ?>
+  </article>
+<?php } ?>
+
+<?php function draw_reservation_item($item) {
+/**
+ * Draws a single item. Expects each item to have
+ * an item_id, item_done and item_text fields. 
+ **/
+  $country = getCountry($item['idPais']);
+  $idHabitacao = $item['idHabitacao'];
+  $class = "defaultImage";
+  if(getHousePhoto($item['idHabitacao']) == 0) 
+    $image = "../images/houses/thumbs_small/default0.jpg";
+  else {
+    $class = "not_defaultImage";
+    $image = "../images/houses/thumbs_small/$idHabitacao.jpg";
+  }
+  $user_id = getPersonId($_SESSION['username']);
+  
+?>
+<a href= "house.php?house=<?=$idHabitacao?>">
+<!-- upload makes all image in thumbs_small have width="200" and height="200" -->
+<img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
+<section id="Info">
+  <h1><?=$item['titulo']?></h1>
+  <h2><?=$country[0]['nome']?></h2>
+  <section id="address">
+    <?=$item['morada']?>
+  </section>
+  <h2>Reservation: from <?php print_r(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckIn']) ?>  to <?php print_r(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckOut']) ?></h2>
+</section>
+<?php } ?>

@@ -230,6 +230,54 @@
     return $stmt->fetchAll(); 
   }
 
+  /**
+   * gets id of user by his username
+   */
+  function getIdByUsername($username) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT id FROM Utilizador WHERE username = ?');
+    $stmt->execute(array($username));
+    return $stmt->fetchAll(); 
+  }
+
+  /**
+   * gets reservations by the id of the user who made them
+   */
+  function getReservationById($user_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idReserva FROM Efetua WHERE idCliente = ?');
+    $stmt->execute(array($user_id));
+    return $stmt->fetchAll(); 
+  }
+
+  /**
+   * gets house from reservartion 
+   */
+  function getHouseOfReservation($reservation_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idHabitacao FROM Reserva WHERE idReserva = ?');
+    $stmt->execute(array($reservation_id));
+    return $stmt->fetchAll(); 
+  }
+
+  /**
+   * gets reservations dates by the id of a user and the id of the specific 
+   */
+  function getHouseReservationDatesByUser($user_id, $house_id) {
+
+    $reservation_ids = getReservationById($user_id);
+    
+    foreach ($reservation_ids as $reservation_id){
+
+      if(getHouseOfReservation($reservation_id['idReserva'])[0]['idHabitacao'] == $house_id){
+        $db = Database::instance()->db();
+        $stmt = $db->prepare('SELECT dataCheckIn, dataCheckOut FROM Reserva WHERE idReserva = ? AND idHabitacao = ?');
+        $stmt->execute(array($reservation_id['idReserva'], $house_id));
+        return $stmt->fetchAll();
+      }
+    }
+  }
+
 
 ?>
 
