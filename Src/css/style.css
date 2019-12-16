@@ -70,6 +70,7 @@ body {
 }
 
 select {
+  width: 134%;
   margin-inline-start: 1.9em;
 }
 
@@ -79,7 +80,11 @@ textarea {
 }
 
 
-input[type="text"], input[type="password"], input[type="email"], input[type=number], textarea, select {
+input[type="text"], input[type="password"], input[type="email"], input[type=number] {
+  width: 120%;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type=number], input[type="date"] textarea, select {
   padding: 0.6em;
   font-family: var(--serif-font);
   padding: 1em;
@@ -143,7 +148,7 @@ body > header {
 body > header img {
   width: 9em;
   margin-top: 1%;
-  margin-right: 65%;
+  margin-right: 63%;
 }
 
 body > header  i {
@@ -178,7 +183,7 @@ textarea {
 #login, #signup {
 
   margin-left: 5%;
-  font-size: 17px; 
+  font-size: 17px;
 
 }
 
@@ -355,10 +360,11 @@ footer {
   grid-column-start: 1;
   grid-column-end: 3;
   margin-left: 3%;
-  display: flex;
 }
 
 #listingForm {
+  display: grid;
+  grid-template-columns: 45% 55%;
   padding-bottom: 10%;
 }
 
@@ -366,11 +372,13 @@ footer {
 #listing select[name="Nr of bedrooms"] {
   grid-column-start: 1;
   grid-column-end: 2;
+  width: 80%;
 } 
 
 #listing select[name="Nr of bathrooms"]{
   grid-column-start: 2;
   grid-column-end: 3;
+  width: 74%;
 } 
 
 #listingImage {
@@ -929,8 +937,8 @@ body > #messages .success {
   text-align: center;
 }
 
-
-@media(max-width:800px) {
+/*  Responsive design */
+@media(max-width:840px) {
   .someImage > img {
     display: none;
   }
@@ -944,19 +952,19 @@ body > #messages .success {
   form {
     display: grid;
     grid-template-columns: auto 45% 30%;
-    padding: 0em;
+    padding: 0.5em 0em;
     margin: 0em;
   }
   /* logo   */
   body > header img {
     width: 5.5em;
     margin-top: 1%;
-    margin-right: 0em;
+    margin-right: 22%;
   }
   #signup, #login, #listingForm {
-    margin: 0em;
+    margin: 0.1em;
     padding: 0em;
-    font-size: 9em;
+    font-size: 1.5em;
   }
   .lists {
     padding: 0em;
@@ -1007,9 +1015,38 @@ body > #messages .success {
   }
 
   #mapSection {
-    width: 90vw;
+    width: 60vw;
+    height: 80%;
     grid-column-start: 1;
-    grid-column-end: 2;
-    margin-left: 0vw;
+    grid-column-end: 3;
+    margin-left: 10vw;
+    padding: 0;
+    overflow: hidden;
   }
+}
+
+@media(max-width:400px) {
+ 
+  /* forms */
+  form {
+    display: grid;
+    grid-template-columns: auto 50% 30%;
+  }
+  /* logo   */
+  body > header img {
+    width: 5em;
+    margin-right: 5%;
+  }
+  #signup, #login, #listingForm {
+    font-size: 1em;
+  }
+  
+  #descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2, #descriptionTerms > h2 {
+    font-size: 0.5em;
+  }
+
+  #descriptionAbout > p, #descriptionPrivacy > p, #descriptionSecurity > p, #descriptionTerms > p {
+    font-size: 0.4em;
+  }
+
 }
