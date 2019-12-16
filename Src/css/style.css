@@ -14,7 +14,6 @@ body {
   --light-grey: #E4E4E4;
 
   --main-color: #4169E1;
-  --ligth-blue: lightblue;
 
   --dark-color: #333;
   --medium-color: #babababa;
@@ -84,7 +83,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type=numb
   width: 120%;
 }
 
-input[type="text"], input[type="password"], input[type="email"], input[type=number], input[type="date"] textarea, select {
+input[type="text"], input[type="password"], input[type="email"], input[type=number], textarea, select {
   padding: 0.6em;
   font-family: var(--serif-font);
   padding: 1em;
@@ -148,7 +147,7 @@ body > header {
 body > header img {
   width: 9em;
   margin-top: 1%;
-  margin-right: 63%;
+  margin-right: 65%;
 }
 
 body > header  i {
@@ -179,10 +178,9 @@ textarea {
   grid-column-start: 2;
 }
 
+#login, #signup{
 
-#login, #signup {
-
-  margin-left: 5%;
+  margin-left: 60px;
   font-size: 17px;
 
 }
@@ -246,6 +244,9 @@ textarea {
 }
 
 #f1 > a{
+
+
+  
   font-family: var(--general-font-family);
   color:var(--dark-color);
 }
@@ -274,7 +275,7 @@ footer {
 /*
  *About Us, security, terms and privacy
 */
-#aboutUs, #security, #privacy, #terms, #contacts {
+#aboutUs, #security, #privacy, #terms {
   text-align: center;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -284,9 +285,9 @@ footer {
 
 #aboutUs h1,  #security h1, #privacy h1, #terms h1 {
   margin: 0;
-  padding-top: 1em;
+  padding-top: 0.5em;
   padding-bottom: 1em;
-  font-size: 3em;
+  font-size: 100px;
   color: var(--bg-color);
 }
 
@@ -294,6 +295,7 @@ footer {
   margin: 0;
   text-align: center;
   position: relative;
+  float: left;
   left: 10%;
   align-self: auto;
   width: 75%;
@@ -302,8 +304,8 @@ footer {
 }
 
 #descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2, #descriptionTerms > h2 {
-  margin-bottom: 0.5em;
-  font-size: 1.5em;
+  margin-bottom: 0;
+  font-size: 20px;
   padding-top: 3.5em;
   text-align: center;
 }
@@ -353,14 +355,111 @@ footer {
 .show {display: grid;}
 
 /**
- * Listing a new house
+ * Listing
  */
 
+ .list > a > img{
+  max-width: 92%;
+  box-shadow: 0 4px 6px var(--medium-color);
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+ .list > #houseOptions{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+ #no_reservations{
+
+  margin-top: 80%;
+  text-align: center;
+  margin-bottom: 90%;
+  grid-column-start: 2;
+  font-family: var(--general-font-family);
+
+  
+ }
+
+
+ .list > #houseOptions > a {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5em;
+  color: var(--dark-color);
+  background-color: var(--light-grey);
+  font-weight: bold;
+  border-width: 0.05em;  
+  border: transparent;
+  font-family: var(--general-font-family);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px var(--medium-color);
+
+
+
+
+ }
+
+ .list > #houseOptions > a:hover {
+   
+  background-color: var(--dark-color);
+  color: var(--light-grey);
+
+
+ }
+
+ 
+ .list > #houseOptions > a:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(10%);
+ }
+
+
+ .list {
+  border-color:var(--bg-color);
+  background-color: var(--bg-color);
+  border-width: 0.05em;  
+  font-family: var(--general-font-family);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px var(--medium-color);
+
+ }
+
+ .lists {
+
+  background-color: var(--light-white);
+  padding-left: 20%;
+  padding-right: 20%;
+
+ }
+
+ #Info > h1, h2{
+
+  margin-left: 0em;
+  margin-bottom: 0.5em;
+  font-family: var(--general-font-family);
+  text-align: left;
+
+ }
+ 
 #listing { 
   grid-column-start: 1;
   grid-column-end: 3;
   margin-left: 3%;
 }
+
+/*
+
+#listing input, select, textarea { 
+  width: 70%;
+}*/
 
 #listingForm {
   display: grid;
@@ -384,6 +483,8 @@ footer {
 #listingImage {
   padding-inline-start: 5%;
 }
+
+
 
 /**
  * editProfile
@@ -462,81 +563,16 @@ body > #messages .success {
   background-color: var(--success-bg-color);
 }
 
-/**
- *
- */
 
-.list > a > img{
-  max-width: 92%;
-  box-shadow: 0 4px 6px var(--medium-color);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
- }
-
- .list > #houseOptions{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
- }
-
-
- .list > #houseOptions > a {
-
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0.5em;
-  color: var(--dark-color);
-  background-color: var(--light-grey);
-  font-weight: bold;
-  border-width: 0.05em;  
-  border: transparent;
-  font-family: var(--general-font-family);
-  border-radius: 5px;
-  box-shadow: 0 4px 6px var(--medium-color);
-
- }
-
-
- .list {
-  border-color:var(--bg-color);
-  border-width: 0.05em;  
-  font-family: var(--general-font-family);
-  border-radius: 5px;
-  box-shadow: 0 4px 6px var(--black-color);
-  background-color: var(--light-white);
-  padding: 0em;
-  align-content: center;
-  box-shadow: 0 4px 6px var(--medium-color);
-  background-color: var(--light-white);
-  padding-left: 20%;
-  padding-right: 20%;
-
- }
-
- .Info > h1, h2{
-
-  margin-left: 0em;
-  margin-bottom: 0.5em;
-  font-family: var(--general-font-family);
-  text-align: left;
-
- }
- 
 /*
 *Article
 */
 
-.lists { 
-  display: flex;
-  flex-wrap: wrap;
+body > .lists { 
+  display: grid;
   grid-column-start: 1;
   grid-column-end: 3;
-  margin: 2em 5em;
-
+  grid-template-columns: 33.4% 33.4% 33.4%;
 }
 
 .lists article{
@@ -546,14 +582,6 @@ body > #messages .success {
   overflow: hidden;
   border-radius: 25px;
   padding: 1em;
-}
-
-.list .Info * { 
-  width: 10em;
-}
-
-.Info {
-  font-size: 1.4em;
 }
 
 #houseOptions a {
@@ -566,6 +594,10 @@ body > #messages .success {
 
 #houseOptions {
   padding-top: 10%;
+}
+
+#Info {
+  font-size: 1.4em;
 }
 
 #options > nav ul {
@@ -613,7 +645,7 @@ body > #messages .success {
 #myUL {
   /* Remove default list styling */
   border: thick;
-  border-color: var(--ligth-blue);
+  border-color: aqua;
   width: 100px;
   position:absolute;
   list-style-type: none;
@@ -645,16 +677,20 @@ body > #messages .success {
 /**
  * map
  */
+#map {
+  width: 100%;
+  height: 100%;
+}
 
 /* used for map */
 #mapSection {
-  width: 60vw;
+  width: 350%;
   height: 80%;
   grid-column-start: 2;
   grid-column-end: 3;
-  margin-left: 10vw;
+  margin-left: 20%;
   padding: 0;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 #description {
@@ -887,7 +923,7 @@ body > #messages .success {
   color: var(--bg-color);
   position: absolute;
   left: 20%;
-  font-size: 6.5em;
+  font-size: 10em;
   text-shadow:  1px 1px 0 var(--dark-color),
   -1px 1px 0 var(--dark-color),
   1px -1px 0 var(--dark-color),
@@ -914,9 +950,9 @@ body > #messages .success {
   -2px -1px 0 var(--dark-color);
 }
 
-#contacts img {
+#contacts img{
   background-size: 100%;
-  position: relative;
+  position: absolute;
   width: 100%;
 }
 
@@ -924,129 +960,16 @@ body > #messages .success {
   display: flex;
   position: absolute;
   width: 100%;
+  position: absolute;
   justify-content: space-evenly;
   top: 80%;
-  flex-wrap: wrap;
 }
 
-#rectangles div {
-  background: var(--ligth-blue);
-  padding: 2em;
-  width: 40%;
+#rectangles div{
+  background: lightblue;
+  background: var(--bg-color);
+  padding: 20px;
+  width: 20%;
   border-radius: 25px;
   text-align: center;
-}
-
-/*  Responsive design */
-@media(max-width:840px) {
-  .someImage > img {
-    display: none;
-  }
-  body {
-    display: grid;
-    grid-template-columns: 100% 0%;
-    margin: 0em;
-    padding: 0em;
-  }
-  /* forms */
-  form {
-    display: grid;
-    grid-template-columns: auto 45% 30%;
-    padding: 0.5em 0em;
-    margin: 0em;
-  }
-  /* logo   */
-  body > header img {
-    width: 5.5em;
-    margin-top: 1%;
-    margin-right: 22%;
-  }
-  #signup, #login, #listingForm {
-    margin: 0.1em;
-    padding: 0em;
-    font-size: 1.5em;
-  }
-  .lists {
-    padding: 0em;
-    margin: 0em;
-    
-  }
-  .list { 
-    padding: 0em;
-  }
-  #myInput, #datepicker {
-    width: 70%;
-  }
-
-  #contacts h1{
-    left: 0.4em;
-    font-size: 3em;
-    padding: 0em;
-  } 
-
-  #rectangles {
-    position: relative;
-    top: 3%;
-    padding-top: 1em;
-    flex-wrap: wrap;
-  }
-  
-  #rectangles div {
-    width: 90%;
-  }
-  
-  .contactRectangle {
-    padding: 0em;
-    margin: 0em;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  #descriptionAbout, #descriptionPrivacy, #descriptionSecurity, #descriptionTerms  {
-    padding: 0em;
-  }
-
-  #descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2, #descriptionTerms > h2 {
-    font-size: 0.7em;
-  }
-
-  #descriptionAbout > p, #descriptionPrivacy > p, #descriptionSecurity > p, #descriptionTerms > p {
-    font-size: 0.5em;
-  }
-
-  #mapSection {
-    width: 60vw;
-    height: 80%;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    margin-left: 10vw;
-    padding: 0;
-    overflow: hidden;
-  }
-}
-
-@media(max-width:400px) {
- 
-  /* forms */
-  form {
-    display: grid;
-    grid-template-columns: auto 50% 30%;
-  }
-  /* logo   */
-  body > header img {
-    width: 5em;
-    margin-right: 5%;
-  }
-  #signup, #login, #listingForm {
-    font-size: 1em;
-  }
-  
-  #descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2, #descriptionTerms > h2 {
-    font-size: 0.5em;
-  }
-
-  #descriptionAbout > p, #descriptionPrivacy > p, #descriptionSecurity > p, #descriptionTerms > p {
-    font-size: 0.4em;
-  }
-
 }
