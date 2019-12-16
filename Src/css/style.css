@@ -11,8 +11,10 @@ body {
   --black-color: #000;
   --panel-color: #EEE;
   --light-white: #f3f3f3;
+  --light-grey: #E4E4E4;
 
   --main-color: #4169E1;
+  --ligth-blue: lightblue;
 
   --dark-color: #333;
   --medium-color: #babababa;
@@ -30,6 +32,7 @@ body {
 
   font-family: var(--sans-font);
   background-color: var(--bg-color);
+  
 }
 
 /**
@@ -47,7 +50,7 @@ a {
 }
 
 h1 {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-family: var(--serif-font), sans-serif;
   margin: 1.2em 0em 0.2em 0em;
   padding: 0em;
@@ -67,7 +70,6 @@ body {
 }
 
 select {
-  width: 134%;
   margin-inline-start: 1.9em;
 }
 
@@ -76,10 +78,6 @@ textarea {
   margin-inline-start: 1.8em;
 }
 
-
-input[type="text"], input[type="password"], input[type="email"], input[type=number] {
-  width: 120%;
-}
 
 input[type="text"], input[type="password"], input[type="email"], input[type=number], textarea, select {
   padding: 0.6em;
@@ -176,10 +174,11 @@ textarea {
   grid-column-start: 2;
 }
 
-#login, #signup{
 
-  margin-left: 60px;
-  font-size: 17px;
+#login, #signup {
+
+  margin-left: 5%;
+  font-size: 17px; 
 
 }
 
@@ -222,15 +221,16 @@ textarea {
 
   left: 0;
   bottom: 0;
-  margin-top: 2%;
+  margin-top: 0%;
+  margin-bottom: 1%;
   width: 100%;
-  border-top-color: var(--bg-color);
+  border-top-color: var(--medium-color);
   background-color: var(--bg-color);
   color: var(--medium-color);
   text-align: center;
-  font-family: var(--font-family);
+  font-family: var(--general-font-family);
   font-weight: bold;
-  box-shadow: 0 -8px 10px var(--black-color);
+  box-shadow: 0 -8px 10px var(--medium-color);
   padding-top: 0.5em;
 
 }
@@ -240,12 +240,16 @@ textarea {
   margin-bottom: 0.6em;
 }
 
+#f1 > a{
+  font-family: var(--general-font-family);
+  color:var(--dark-color);
+}
+
 
 #f1 > button{
 
   background-color: var(--bg-color);
   border: hidden;
-  font-family: var(--font-family);
   box-shadow: 0 -2px 3px var(--black-color);
   font-weight: bold;
   color: var(--medium-color);
@@ -265,7 +269,7 @@ footer {
 /*
  *About Us, security, terms and privacy
 */
-#aboutUs, #security, #privacy, #terms {
+#aboutUs, #security, #privacy, #terms, #contacts {
   text-align: center;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -275,9 +279,9 @@ footer {
 
 #aboutUs h1,  #security h1, #privacy h1, #terms h1 {
   margin: 0;
-  padding-top: 0.5em;
+  padding-top: 1em;
   padding-bottom: 1em;
-  font-size: 100px;
+  font-size: 3em;
   color: var(--bg-color);
 }
 
@@ -285,7 +289,6 @@ footer {
   margin: 0;
   text-align: center;
   position: relative;
-  float: left;
   left: 10%;
   align-self: auto;
   width: 75%;
@@ -294,8 +297,8 @@ footer {
 }
 
 #descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2, #descriptionTerms > h2 {
-  margin-bottom: 0;
-  font-size: 20px;
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
   padding-top: 3.5em;
   text-align: center;
 }
@@ -345,45 +348,17 @@ footer {
 .show {display: grid;}
 
 /**
- * Listing
+ * Listing a new house
  */
 
- .list > a > img{
-  border: solid;
-  max-width: 92%;
-
- }
-
-
- .list {
-  border-color:var(--bg-color);
-  background-color: var(--bg-color);
-  border-width: 0.05em;  
-  font-family: var(--font-family);
-  border-radius: 5px;
-  box-shadow: 0 4px 6px var(--black-color);
-  background-color: var(--light-white);
-  padding: 0em;
-  align-content: center;
-
- }
-
- .Info > h1, h2{
-
-  margin-left: 0em;
-  text-align: left;
-
- }
- 
 #listing { 
   grid-column-start: 1;
   grid-column-end: 3;
   margin-left: 3%;
+  display: flex;
 }
 
 #listingForm {
-  display: grid;
-  grid-template-columns: 45% 55%;
   padding-bottom: 10%;
 }
 
@@ -391,20 +366,16 @@ footer {
 #listing select[name="Nr of bedrooms"] {
   grid-column-start: 1;
   grid-column-end: 2;
-  width: 80%;
 } 
 
 #listing select[name="Nr of bathrooms"]{
   grid-column-start: 2;
   grid-column-end: 3;
-  width: 74%;
 } 
 
 #listingImage {
   padding-inline-start: 5%;
 }
-
-
 
 /**
  * editProfile
@@ -483,16 +454,81 @@ body > #messages .success {
   background-color: var(--success-bg-color);
 }
 
+/**
+ *
+ */
 
+.list > a > img{
+  max-width: 92%;
+  box-shadow: 0 4px 6px var(--medium-color);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+ .list > #houseOptions{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+
+ .list > #houseOptions > a {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5em;
+  color: var(--dark-color);
+  background-color: var(--light-grey);
+  font-weight: bold;
+  border-width: 0.05em;  
+  border: transparent;
+  font-family: var(--general-font-family);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px var(--medium-color);
+
+ }
+
+
+ .list {
+  border-color:var(--bg-color);
+  border-width: 0.05em;  
+  font-family: var(--general-font-family);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px var(--black-color);
+  background-color: var(--light-white);
+  padding: 0em;
+  align-content: center;
+  box-shadow: 0 4px 6px var(--medium-color);
+  background-color: var(--light-white);
+  padding-left: 20%;
+  padding-right: 20%;
+
+ }
+
+ .Info > h1, h2{
+
+  margin-left: 0em;
+  margin-bottom: 0.5em;
+  font-family: var(--general-font-family);
+  text-align: left;
+
+ }
+ 
 /*
 *Article
 */
 
-body > .lists { 
+.lists { 
   display: flex;
   flex-wrap: wrap;
   grid-column-start: 1;
   grid-column-end: 3;
+  margin: 2em 5em;
+
 }
 
 .lists article{
@@ -569,7 +605,7 @@ body > .lists {
 #myUL {
   /* Remove default list styling */
   border: thick;
-  border-color: aqua;
+  border-color: var(--ligth-blue);
   width: 100px;
   position:absolute;
   list-style-type: none;
@@ -601,20 +637,16 @@ body > .lists {
 /**
  * map
  */
-#map {
-  width: 100%;
-  height: 100%;
-}
 
 /* used for map */
 #mapSection {
-  width: 350%;
+  width: 60vw;
   height: 80%;
   grid-column-start: 2;
   grid-column-end: 3;
-  margin-left: 20%;
+  margin-left: 10vw;
   padding: 0;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 #description {
@@ -847,7 +879,7 @@ body > .lists {
   color: var(--bg-color);
   position: absolute;
   left: 20%;
-  font-size: 10em;
+  font-size: 6.5em;
   text-shadow:  1px 1px 0 var(--dark-color),
   -1px 1px 0 var(--dark-color),
   1px -1px 0 var(--dark-color),
@@ -874,9 +906,9 @@ body > .lists {
   -2px -1px 0 var(--dark-color);
 }
 
-#contacts img{
+#contacts img {
   background-size: 100%;
-  position: absolute;
+  position: relative;
   width: 100%;
 }
 
@@ -884,16 +916,100 @@ body > .lists {
   display: flex;
   position: absolute;
   width: 100%;
-  position: absolute;
   justify-content: space-evenly;
   top: 80%;
+  flex-wrap: wrap;
 }
 
-#rectangles div{
-  background: lightblue;
-  background: var(--bg-color);
-  padding: 20px;
-  width: 20%;
+#rectangles div {
+  background: var(--ligth-blue);
+  padding: 2em;
+  width: 40%;
   border-radius: 25px;
   text-align: center;
+}
+
+
+@media(max-width:800px) {
+  .someImage > img {
+    display: none;
+  }
+  body {
+    display: grid;
+    grid-template-columns: 100% 0%;
+    margin: 0em;
+    padding: 0em;
+  }
+  /* forms */
+  form {
+    display: grid;
+    grid-template-columns: auto 45% 30%;
+    padding: 0em;
+    margin: 0em;
+  }
+  /* logo   */
+  body > header img {
+    width: 5.5em;
+    margin-top: 1%;
+    margin-right: 0em;
+  }
+  #signup, #login, #listingForm {
+    margin: 0em;
+    padding: 0em;
+    font-size: 9em;
+  }
+  .lists {
+    padding: 0em;
+    margin: 0em;
+    
+  }
+  .list { 
+    padding: 0em;
+  }
+  #myInput, #datepicker {
+    width: 70%;
+  }
+
+  #contacts h1{
+    left: 0.4em;
+    font-size: 3em;
+    padding: 0em;
+  } 
+
+  #rectangles {
+    position: relative;
+    top: 3%;
+    padding-top: 1em;
+    flex-wrap: wrap;
+  }
+  
+  #rectangles div {
+    width: 90%;
+  }
+  
+  .contactRectangle {
+    padding: 0em;
+    margin: 0em;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #descriptionAbout, #descriptionPrivacy, #descriptionSecurity, #descriptionTerms  {
+    padding: 0em;
+  }
+
+  #descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2, #descriptionTerms > h2 {
+    font-size: 0.7em;
+  }
+
+  #descriptionAbout > p, #descriptionPrivacy > p, #descriptionSecurity > p, #descriptionTerms > p {
+    font-size: 0.5em;
+  }
+
+  #mapSection {
+    width: 90vw;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    margin-left: 0vw;
+  }
 }

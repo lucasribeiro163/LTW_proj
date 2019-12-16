@@ -49,11 +49,6 @@ function draw_header($username) {
               <input type="text" id="myInput"  placeholder="Search for cities.." title="Type in a name">
               <ul id="myUL" ></ul>
               <input type="text" id="datepicker" placeholder="Search for dates.."/>
-              <link rel="stylesheet" type="text/css" href="../includes/calendar/css/lightpick.css">
-              <!-- Script for calender -->         
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-              <script src="../includes/calendar/lightpick.js"></script>
-              <!-- End of script for calender -->
             </div>
           <?php
           }

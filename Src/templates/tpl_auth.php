@@ -639,13 +639,13 @@ function draw_contacts(){
   </section>
 
   <section id="rectangles">
-    <div id="contactRectangle1">
+    <div class="contactRectangle">
     <i class="fas fa-phone-volume"></i>
       <p>Call us</p>
       <h3 id="subText">+351 256 789 154</h3>
     </div>
 
-    <div id="contactRectangle2">
+    <div class="contactRectangle">
     <i class="far fa-paper-plane"></i>
       <p>Email us</p>
       <h3 id="subText">rentaAhouse@gmail.com</h3>
