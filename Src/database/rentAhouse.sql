@@ -106,7 +106,7 @@ CREATE TABLE EscolhidoPelocliente (
 
 CREATE TABLE Habitacao (
     idHabitacao INTEGER PRIMARY KEY,
-    idDono       INTEGER, 
+    idDono       INTEGER REFERENCES Utilizador(id), 
     numQuartos  INTEGER CHECK (numQuartos >= 0), 
     numBanho  INTEGER CHECK (numBanho > 0), 
     maxHospedes INTEGER CHECK (maxHospedes > 0), 
