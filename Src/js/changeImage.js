@@ -1,26 +1,25 @@
 'use strict'
-
+/*if we have lists being display, change images default periodic */
 if(document.getElementsByClassName("lists")){
   startPeriodicChange()
 }
 
 let imageInterval
 function startPeriodicChange(){
-  imageInterval = setInterval(changeImage, 9000);
+  imageInterval = setInterval(changeImageSmall, 9000);
 }
 
 function changeNumber() {
   // Check to see if the number has been initialized
   if ( typeof changeNumber.counter == 'undefined' ) {
-      // if it isn't initialized it set to 0, to set the new picture 1
+      // if it isn't initialized it set to 0, to set the new picture 1 (0 is the on before time to update ended)
       changeNumber.counter = 0;
   }
-
-  // Do something stupid to indicate the value
-  return (++changeNumber.counter % 2);
+  //value can only by between 0 and 2
+  return (++changeNumber.counter % 3);
 }
 
-function changeImage() {  
+function changeImageSmall() {  
     let defaultImages = document.getElementsByClassName("defaultImage")
     let random = changeNumber()
     for(let i = 0; i < defaultImages.length; i++) {
@@ -44,7 +43,7 @@ function startPeriodicChangeList(){
 }
 
 function changeImage() {  
-  let defaultImages = document.getElementsByClassName("defaultImage")
+  let defaultImages = document.getElementsByClassName("defaultImageMedium")
   let random = changeNumber()
   for(let i = 0; i < defaultImages.length; i++) {
     console.log(defaultImages.item(i).src)

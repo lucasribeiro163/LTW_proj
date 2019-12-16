@@ -11,7 +11,7 @@
   try {
     update_country($_SESSION['username'], $country) ;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our country was updated!');
-    header('Location: ../pages/main_page.php');
+    header('Location: ../pages/profile.php');
   } catch (PDOException $e) {
     die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update country!');

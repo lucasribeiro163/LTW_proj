@@ -11,6 +11,7 @@ body {
   --black-color: #000;
   --panel-color: #EEE;
   --light-white: #f3f3f3;
+  --light-grey: #E4E4E4;
 
   --main-color: #4169E1;
 
@@ -30,13 +31,14 @@ body {
 
   font-family: var(--sans-font);
   background-color: var(--bg-color);
+  
 }
 
 /**
  * Generic
  */
 
- a, p, input, li {
+a, p, input, li {
   font-family: var(--serif-font), serif;
   color: var(--dark-color);
   padding: 1em 0em 0em 1em;
@@ -47,7 +49,7 @@ a {
 }
 
 h1 {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-family: var(--serif-font), sans-serif;
   margin: 1.2em 0em 0.2em 0em;
   padding: 0em;
@@ -66,24 +68,19 @@ body {
   grid-template-columns: 34% auto;
 }
 
-form {
-  display: grid;
-  grid-template-columns: auto 30% 50%;
-}
-
 select {
-  width: 97%;
+  width: 134%;
   margin-inline-start: 1.9em;
 }
 
 textarea {
-  width: 45%;
+  width: 65%;
   margin-inline-start: 1.8em;
 }
 
 
 input[type="text"], input[type="password"], input[type="email"], input[type=number] {
-  width: 90%;
+  width: 120%;
 }
 
 input[type="text"], input[type="password"], input[type="email"], input[type=number], textarea, select {
@@ -114,34 +111,27 @@ input[type="submit"]{
   padding: 1em;
 } 
 
+/* forms */
+form {
+  display: grid;
+  grid-template-columns: auto 30% 50%;
+}
+
 form > p {
   grid-column-start: 1;
   grid-column-end: 4;
   margin-left: 5em;
 }
 
-/*
-  Footer
-*/
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-footer {
-  text-align: center;
-  font-size: 15px;
-  margin-top: auto; 
-  grid-column-start: 1;
-  grid-column-end: 3;
-  width: 100%;
-  background-color: var(--bg-color);
-}
-
-/*
-  Body Header
-*/
+/**
+ *Body Header
+ */
 
 body > header {
   grid-column-start: 1;
@@ -157,7 +147,7 @@ body > header {
 body > header img {
   width: 9em;
   margin-top: 1%;
-  margin-right: 70%;
+  margin-right: 65%;
 }
 
 body > header  i {
@@ -173,7 +163,7 @@ textarea {
   margin: 1em 0;
   display: grid;
   margin-inline-start: 1em;
-  width: 89%;
+  width: 100%;
   grid-column-start: 1;
   grid-column-end: 3;
 }
@@ -183,13 +173,12 @@ textarea {
   margin-top: 0em;
   border-style: solid;
   border-width: 0.5em;
-  max-width: 87%;
-  margin-left: 10%;
+  max-width: 98%;
   overflow: hidden;
   grid-column-start: 2;
 }
 
-#login{
+#login, #signup{
 
   margin-left: 60px;
   font-size: 17px;
@@ -228,18 +217,23 @@ textarea {
   text-align: center;
 }
 
+/**
+ * footer
+ */
 #f1 {
 
   left: 0;
   bottom: 0;
+  margin-top: 0%;
+  margin-bottom: 1%;
   width: 100%;
-  border-top-color: var(--bg-color);
+  border-top-color: var(--medium-color);
   background-color: var(--bg-color);
   color: var(--medium-color);
   text-align: center;
-  font-family: var(--font-family);
+  font-family: var(--general-font-family);
   font-weight: bold;
-  box-shadow: 0 -8px 10px var(--black-color);
+  box-shadow: 0 -8px 10px var(--medium-color);
   padding-top: 0.5em;
 
 }
@@ -249,23 +243,39 @@ textarea {
   margin-bottom: 0.6em;
 }
 
+#f1 > a{
+
+
+  
+  font-family: var(--general-font-family);
+  color:var(--dark-color);
+}
+
 
 #f1 > button{
 
   background-color: var(--bg-color);
   border: hidden;
-  font-family: var(--font-family);
   box-shadow: 0 -2px 3px var(--black-color);
   font-weight: bold;
   color: var(--medium-color);
 
 }
 
+footer {
+  text-align: center;
+  font-size: 15px; 
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  background-color: var(--bg-color);
+} 
+
 
 /*
- *About Us, security and privacy
+ *About Us, security, terms and privacy
 */
-#aboutUs, #security, #privacy {
+#aboutUs, #security, #privacy, #terms {
   text-align: center;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -273,7 +283,7 @@ textarea {
   font-family: var(--font-family);
 }
 
-#aboutUs h1,  #security h1, #privacy h1 {
+#aboutUs h1,  #security h1, #privacy h1, #terms h1 {
   margin: 0;
   padding-top: 0.5em;
   padding-bottom: 1em;
@@ -281,7 +291,7 @@ textarea {
   color: var(--bg-color);
 }
 
-#descriptionAbout, #descriptionPrivacy, #descriptionSecurity  {
+#descriptionAbout, #descriptionPrivacy, #descriptionSecurity, #descriptionTerms  {
   margin: 0;
   text-align: center;
   position: relative;
@@ -293,7 +303,7 @@ textarea {
   grid-column-end: 3;
 }
 
-#descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2 {
+#descriptionAbout > h2, #descriptionPrivacy > h2, #descriptionSecurity > h2, #descriptionTerms > h2 {
   margin-bottom: 0;
   font-size: 20px;
   padding-top: 3.5em;
@@ -325,7 +335,7 @@ textarea {
   display: none;
   position: absolute;
   background-color: var(--black-color);
-  width: 300%;
+  width: 250%;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px var(--light-color);
   z-index: 1;
@@ -333,7 +343,7 @@ textarea {
 
 .dropdown-content a {
   color: var(--bg-color);
-  padding-top: 3%;
+  padding: 3%;
   text-decoration: none; 
   display: grid;
 }
@@ -349,8 +359,40 @@ textarea {
  */
 
  .list > a > img{
-  border: solid;
   max-width: 92%;
+  box-shadow: 0 4px 6px var(--medium-color);
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+ .list > #houseOptions{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+
+ .list > #houseOptions > a {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5em;
+  color: var(--dark-color);
+  background-color: var(--light-grey);
+  font-weight: bold;
+  border-width: 0.05em;  
+  border: transparent;
+  font-family: var(--general-font-family);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px var(--medium-color);
+
+
+
 
  }
 
@@ -359,23 +401,25 @@ textarea {
   border-color:var(--bg-color);
   background-color: var(--bg-color);
   border-width: 0.05em;  
-  font-family: var(--font-family);
+  font-family: var(--general-font-family);
   border-radius: 5px;
-  box-shadow: 0 4px 6px var(--black-color);
+  box-shadow: 0 4px 6px var(--medium-color);
 
  }
 
  .lists {
 
   background-color: var(--light-white);
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 20%;
+  padding-right: 20%;
 
  }
 
  #Info > h1, h2{
 
   margin-left: 0em;
+  margin-bottom: 0.5em;
+  font-family: var(--general-font-family);
   text-align: left;
 
  }
@@ -420,22 +464,48 @@ textarea {
 /**
  * editProfile
  */
-
- #editProfile select {
-  width: 88%;
+#editProfile {
+  padding-top: 5%;
 }
 
-#editProfile select, #editProfile input {
-  width: 100%;
+#editProfile form {
+  display: grid;
+  grid-template-columns: 70% 15% auto;
+  padding-top: 2%;
 }
 
-#editProfile input[type="submit"]{
+#editProfile select {
+  width: 73%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#editProfile textarea {
+  font-size: small;
+}
+#editProfile input, #editProfile textarea {
+  width: 70%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+
+}
+
+#editProfile input[type="submit"] {
   width: 80%;
+  height: 80%;
+  grid-column-start: 2;
+  grid-column-end: 3;
 } 
 
 #personImg {
   grid-column-end: 2;
   padding: 2% 0% 0% 10% ;
+}
+
+#personImg input[type="submit"] {
+  grid-column-start: 1;
+  width: 40%;
+  margin: 5%;
 }
 
 /**
@@ -477,16 +547,28 @@ body > .lists {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-template-columns: 33.4% 33.3% 33.3%;
+  grid-template-columns: 33.4% 33.4% 33.4%;
 }
 
 .lists article{
   border-style: solid;
-  justify-content: space-around; 
+  justify-content: space-evenly; 
   margin: 1em;
   overflow: hidden;
   border-radius: 25px;
   padding: 1em;
+}
+
+#houseOptions a {
+  border: solid;
+  background-color: var(--light-color);
+  padding: 0.2em;
+  margin-left: 10%;
+  justify-content: space-evenly;
+}
+
+#houseOptions {
+  padding-top: 10%;
 }
 
 #Info {
@@ -505,7 +587,7 @@ body > .lists {
 
 #house_details > h3{
 
-  font-size: 2.2em;
+  font-size: 2em;
   margin: 2em;
 
 }
@@ -518,18 +600,21 @@ body > .lists {
   color: var(--light-color);
 
 }
+
+
 /*
 * Search Bar
 */
 
-#myInput {
+#myInput, #datepicker {
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 90%; /* Full-width */
+  width: 40%; /* 70% Full-width */
   font-size: 16px; /* Increase font-size */
   padding: 12px 20px 12px 40px; /* Add some padding */
   border: 1px solid #ddd; /* Add a grey border */
   margin-bottom: 12px; /* Add some space below the input */
+  grid-column-start: 2;
 }
 
 #myUL {
@@ -552,10 +637,16 @@ body > .lists {
   font-size: 18px; /* Increase the font-size */
   color: var(--black-color); /* Add a black text color */
   display: block; /* Make it into a block element to fill the whole list */
+  width: 350%;
+  overflow: hidden;
 }
 
 #myUL li:hover:not(.header) {
   background-color: var(--panel-color); /* Add a hover effect to all links, except for headers */
+}
+
+#searchInputs {
+  grid-template-columns: 50% 50%;
 }
 
 /**
@@ -727,13 +818,13 @@ body > .lists {
   margin-left: 2em;
 }
 
-#house_ad > form > a{ 
+#house_ad > form > a { 
   font-family: var(--general-font-family);
 }
 
 
 #house_ad > form > button{
-  font-family: var(--general-font-family);
+
   background: var(--main-color);
   color: var(--panel-color);
   font-family: sans-serif;
@@ -749,7 +840,7 @@ body > .lists {
 }
 
 #house_ad > form > a >input{
-  font-family: var(--general-font-family);
+
   background: var(--bg-color);
   color: var(--black-color);
   font-family: sans-serif;
@@ -762,4 +853,98 @@ body > .lists {
   height: 0.7em;
   width: 150%;
   margin-left: 3em;
+}
+
+
+#house_ad > form > button{
+
+  background: var(--main-color);
+  color: var(--panel-color);
+  font-family: sans-serif;
+  font-size: 1em;
+  border: none;
+  border-radius: 7px;
+  text-transform: uppercase;
+  margin-top: 2em;
+  max-width: 7em;
+  height: 3em;
+  width: 150%;
+  margin-left: 3em;
+}
+
+#house_ad > form > a >input{
+  background: var(--bg-color);
+  color: var(--black-color);
+  font-family: sans-serif;
+  font-size: 1em;
+  border: solid;
+  border-radius: 7px;
+  border-width: 1px;
+  text-transform: uppercase;
+  max-width: 7em;
+  height: 0.7em;
+  width: 150%;
+  margin-left: 3em;
+}
+
+/*
+* Contact us
+*/
+
+#contacts h1{
+  margin: 0;
+  justify-content: space-evenly;
+  top: 250px;
+  color: var(--bg-color);
+  position: absolute;
+  left: 20%;
+  font-size: 10em;
+  text-shadow:  1px 1px 0 var(--dark-color),
+  -1px 1px 0 var(--dark-color),
+  1px -1px 0 var(--dark-color),
+  -1px -1px 0 var(--dark-color),
+  0px 1px 0 var(--dark-color),
+  0px -1px 0 var(--dark-color),
+  -1px 0px 0 var(--dark-color),
+  1px 0px 0 var(--dark-color),
+  2px 2px 0 var(--dark-color),
+  -2px 2px 0 var(--dark-color),
+  2px -2px 0 var(--dark-color),
+  -2px -2px 0 var(--dark-color),
+  0px 2px 0 var(--dark-color),
+  0px -2px 0 var(--dark-color),
+  -2px 0px 0 var(--dark-color),
+  2px 0px 0 var(--dark-color),
+  1px 2px 0 var(--dark-color),
+  -1px 2px 0 var(--dark-color),
+  1px -2px 0 var(--dark-color),
+  -1px -2px 0 var(--dark-color),
+  2px 1px 0 var(--dark-color),
+  -2px 1px 0 var(--dark-color),
+  2px -1px 0 var(--dark-color),
+  -2px -1px 0 var(--dark-color);
+}
+
+#contacts img{
+  background-size: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+#rectangles {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  position: absolute;
+  justify-content: space-evenly;
+  top: 80%;
+}
+
+#rectangles div{
+  background: lightblue;
+  background: var(--bg-color);
+  padding: 20px;
+  width: 20%;
+  border-radius: 25px;
+  text-align: center;
 }

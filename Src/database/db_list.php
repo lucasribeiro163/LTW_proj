@@ -1,8 +1,9 @@
 <?php
   include_once('../includes/database.php');
-  /*
-  *Gets all of the houses in a certain contry
-  */
+
+  /**
+   * gets all houses id with country id equal to the argument passed
+   */
   function getHousesWithId($country) {
     $db = Database::instance()->db();
     $idCountry  = getCountryId($country);
@@ -11,9 +12,9 @@
     return $stmt->fetchAll(); 
   }
 
-  /*
-  *Gets all of the houses
-  */
+  /**
+   * get all houses id's
+   */
   function getHouses() {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao');
@@ -48,9 +49,9 @@
     return $stmt->fetchAll(); 
   }
 
-  /*
-  *Gets a certain house items
-  */
+  /**
+   * gets all the house items of the house with the id passed by argument
+   */
   function getHouseItems($house_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idHabitacao = ?');
@@ -58,7 +59,9 @@
     return $stmt->fetchAll(); 
   }
 
-  
+  /**
+   * get the name of the country, yous id is passed by id
+   */
   function getCountry($country_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT nome FROM Pais WHERE idPais = ?');
@@ -66,9 +69,9 @@
     return $stmt->fetchAll(); 
   }
   
-  /*
-  *Gets house photo
-  */
+  /**
+   * checks if the house already has a picture associated
+   */
   function getHousePhoto($house_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idHabitacao = ?');
@@ -98,12 +101,14 @@
   }
 
   /**
-   * Inserts a new house into the database.
+   * Inserts a new house into the database. return the id of the house inserted
    */
-  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $country_id, $type_id, $picture) {
+  function insertHouse($idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $country_id, $type_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('INSERT INTO Habitacao VALUES(? , ? , ? , ? , ? , ? , ?, ? , ?, ?, ?, ? , ?)');
-    $stmt->execute(array (NULL, $idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $country_id, $type_id, $picture));
+    //auto increment id of the houses
+    $stmt->execute(array (NULL, $idUser, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $country_id, $type_id, 0));
+    return $db->lastInsertId();
   }
 
   /**
@@ -126,15 +131,6 @@
   }
 
   /**
-   * Deletes a user from database
-   */
-  function deleteUser($user_id) {
-    $db = Database::instance()->db();
-    $stmt = $db->prepare('DELETE FROM Utilizador WHERE id = ?');
-    $stmt->execute(array($user_id));
-  }
-
-  /**
    * Deletes a house from database
    */
   function deleteHouse($house_id) {
@@ -153,7 +149,7 @@
   }
 
   /**
-   * Creates a new reservation an returns the array of reservations
+   * Creates a new reservation an returns the array of reservations parameters
    */
   function createReservation($check_in, $check_out, $nr_people, $price, $house_id) {
     $db = Database::instance()->db();
@@ -178,7 +174,7 @@
   }
 
   /**
-   * Gets number of poeple for house
+   * Gets the max number of people the house can have
    */
   function getNrPeople($house_id){
     $db = Database::instance()->db();
@@ -192,6 +188,111 @@
     $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idDono = ?');
     $stmt->execute(array($userId));
     return $stmt->fetchAll(); 
+  }
+
+  /**
+   * Updates the house title of the house with the id passed by argument
+   * to the title passed in the second argument
+   */
+  function update_house_title($house_id, $title) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('UPDATE Habitacao SET titulo = ? WHERE idHabitacao = ?');
+    $stmt->execute(array($title, $house_id));
+  }
+
+  /**
+   * Updates the house description of the house with the id passed by argument
+   * to the description passed in the second argument
+   */
+  function update_house_description($house_id, $description) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('UPDATE Habitacao SET descricaoHabitacao  = ? WHERE idHabitacao = ?');
+    $stmt->execute(array($description, $house_id));
+  }
+
+  /**
+   * Updates the house description of the house with the id passed by argument
+   * to the description passed in the second argument
+   */
+  function update_house_picture($house_id, $value) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('UPDATE Habitacao SET picture  = ? WHERE idHabitacao = ?');
+    $stmt->execute(array($value, $house_id));
+  }
+
+  /**
+   * gets all reservations belonging to a user
+   */
+  function get_house_reservation( $house_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Reserva WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
+    return $stmt->fetchAll(); 
+  }
+
+  /**
+   * deletes a single reservation with the id passed by argument
+   */
+  function delete_reservation($reservation_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('DELETE FROM Reserva WHERE idReserva = ?');
+    $stmt->execute(array($reservation_id));
+  }
+
+
+  function getReservations($house_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT * FROM Reserva WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
+    return $stmt->fetchAll(); 
+  }
+
+  /**
+   * gets id of user by his username
+   */
+  function getIdByUsername($username) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT id FROM Utilizador WHERE username = ?');
+    $stmt->execute(array($username));
+    return $stmt->fetchAll(); 
+  }
+
+  /**
+   * gets reservations by the id of the user who made them
+   */
+  function getReservationById($user_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idReserva FROM Efetua WHERE idCliente = ?');
+    $stmt->execute(array($user_id));
+    return $stmt->fetchAll(); 
+  }
+
+  /**
+   * gets house from reservartion 
+   */
+  function getHouseOfReservation($reservation_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idHabitacao FROM Reserva WHERE idReserva = ?');
+    $stmt->execute(array($reservation_id));
+    return $stmt->fetchAll(); 
+  }
+
+  /**
+   * gets reservations dates by the id of a user and the id of the specific 
+   */
+  function getHouseReservationDatesByUser($user_id, $house_id) {
+
+    $reservation_ids = getReservationById($user_id);
+    
+    foreach ($reservation_ids as $reservation_id){
+
+      if(getHouseOfReservation($reservation_id['idReserva'])[0]['idHabitacao'] == $house_id){
+        $db = Database::instance()->db();
+        $stmt = $db->prepare('SELECT dataCheckIn, dataCheckOut FROM Reserva WHERE idReserva = ? AND idHabitacao = ?');
+        $stmt->execute(array($reservation_id['idReserva'], $house_id));
+        return $stmt->fetchAll();
+      }
+    }
   }
 
 

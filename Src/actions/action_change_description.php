@@ -6,18 +6,18 @@
   if (!isset($_SESSION['username']))
     die(header('Location: ../pages/login.php'));
 
-  $name = $_POST['name'];
+  $description = $_POST['description'];
 
   // Remove disallowed characters
-  $name = preg_replace ("/[^a-zA-Z\s]/", '', $name);
-  
+  $description = preg_replace ("/[^0-9\?\.çãõa-zA-Z\s]/", '', $description);
+
   try {
-    update_name($_SESSION['username'], $name);
-    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our name was updated!');
+    update_description($_SESSION['username'], $description);
+    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our description was updated!');
     header('Location: ../pages/profile.php');
   } catch (PDOException $e) {
     die($e->getMessage());
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update name!');
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update description!');
     header('Location: ../pages/editProfile.php');
   }
 ?>

@@ -1,12 +1,14 @@
 <?php
   include_once('../includes/database.php');
   include_once('../includes/session.php');
-  include_once('../database/db_lists.php');
+  include_once('../database/db_user.php');
+  include_once('../database/db_list.php');
 
   // Verify if user is logged in
   if (!isset($_SESSION['username']))
     die(header('Location: ../pages/login.php'));
-    
+
+  $id = $_POST['house_id'];
 
   //only jpg, bmp, jpeg , gif anf png are valid formats to the picture
   $file_exts = array("jpg", "bmp", "jpeg", "gif", "png");
@@ -18,16 +20,14 @@
     {
       if ($_FILES["image"]["error"] > 0)
       {
-        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'couldn\'t upload image, try again please!');
-        die(header('Location: ../pages/editProfile.php'));
+        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'couldn\'t upload house image, try again please!');
+        die(header('Location: ../pages/myLists.php'));
       }
       else
       {      
-        // Get image ID
-        $id = $_GET['house'];
 
         if(getHousePhoto($id) == 0)
-          insertHouseImage($id);
+          update_house_picture($id, 1);
     
         // Generate filenames for original, small and medium files
         $originalFileName = "../images/houses/originals/$id.jpg";
@@ -65,15 +65,17 @@
       }
     }
     else {
-      $_SESSION['messages'][] = array('type' => 'error', 'content' => 'couldn\'t upload image, only jpg, bmp, jpeg , gif and png are valid formats to the picture !');
-      die(header('Location: ../pages/newHouse.php'));
+      $_SESSION['messages'][] = array('type' => 'error', 'content' => 'couldn\'t upload house image, only jpg, bmp, jpeg , gif and png are valid formats to the picture !');
+      //continues in the edit_house page of the house the user is changing
+      die(header("Location: ../pages/edit_house.php?house=$id"));
     } 
   }
   else
   {
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'couldn\'t upload image, try a smaller one!');
-    die(header('Location: ../pages/editProfile.php'));
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'couldn\'t upload house image, try a smaller one!');
+    //continues in the edit_house page of the house the user is changing
+    die(header("Location: ../pages/edit_house.php?house=$id"));
   }
-  //see the new profile with the new profile image
-  header("Location: ../pages/main_page.php");
+  header("Location: ../pages/myList.php");
+
 ?>

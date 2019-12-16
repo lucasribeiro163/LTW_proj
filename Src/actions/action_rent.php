@@ -6,6 +6,7 @@
   $check_in = $_POST['check-in'];
   $check_out = $_POST['check-out'];
   $house_id = $_POST['idHabitacao'];
+  $precoNoite = $_POST['precoNoite'];
   $nrpeople = $_POST['nrpeople'];
 
   $available = true;
@@ -32,15 +33,7 @@
   }
   else
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Those dates arent available!');
+ 
+  header("Location: ../pages/house.php?house=$house_id");
 
-
-
-
-  
-   header('Location: ../pages/house.php?house='.$house_id);
-
-    
-
-
-  
 ?>
