@@ -1,6 +1,8 @@
 <?php
   include_once('../includes/database.php');
-
+  /*
+  *Gets all of the houses in a certain contry
+  */
   function getHousesWithId($country) {
     $db = Database::instance()->db();
     $idCountry  = getCountryId($country);
@@ -9,6 +11,9 @@
     return $stmt->fetchAll(); 
   }
 
+  /*
+  *Gets all of the houses
+  */
   function getHouses() {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao');
@@ -16,6 +21,26 @@
     return $stmt->fetchAll(); 
   }
 
+  /*
+  *Gets all of the houses available in a certain date
+  */
+  function getHouseDate($date) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idHabitacao FROM Disponivel WHERE Disponivel.data=?');
+    $stmt->execute(array($date));
+    return $stmt->fetchAll(); 
+  }
+
+  function getHousesPrice($price){
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao WHERE precoNoite<=?');
+    $stmt->execute(array($price));
+    return $stmt->fetchAll();
+  }
+
+  /*
+  *Gets name of contryid
+  */
   function getCountryId($country){
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT idPais FROM Pais WHERE nome = ?');
@@ -23,6 +48,9 @@
     return $stmt->fetchAll(); 
   }
 
+  /*
+  *Gets a certain house items
+  */
   function getHouseItems($house_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idHabitacao = ?');
@@ -30,6 +58,7 @@
     return $stmt->fetchAll(); 
   }
 
+  
   function getCountry($country_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT nome FROM Pais WHERE idPais = ?');
@@ -37,6 +66,9 @@
     return $stmt->fetchAll(); 
   }
   
+  /*
+  *Gets house photo
+  */
   function getHousePhoto($house_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT * FROM Habitacao WHERE idHabitacao = ?');
@@ -56,7 +88,7 @@
   }
 
   /**
-   * Returns all the info from a hoyse with id equal to house_id
+   * Returns all the info from a house with id equal to house_id
    */
   function getHouseInfoArray($house_id) {
     $db = Database::instance()->db();

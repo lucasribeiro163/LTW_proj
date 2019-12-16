@@ -1,5 +1,14 @@
 'use strict'
 let countries;
+var country=null , date1=null , date2=null , price=null;
+price = document.getElementById("price");
+
+let input = document.getElementById("myInput");
+input.addEventListener('keyup', filterResults); 
+  
+
+var picker = new Lightpick({ field: document.getElementById('datepicker') });
+
 async function getCountries(){
     let request = new XMLHttpRequest();
     request.onload = await function countriesReceived() {
@@ -10,15 +19,14 @@ async function getCountries(){
     
     for(let i = 0; i< countries.length; i++)
     {
-    let a = document.createElement("a");
     let li = document.createElement("li");
-    a.textContent= countries[i];
-    a.setAttribute('href', "../../Src/pages/main_page.php?country=" + countries[i]);
-    li.appendChild(a);
+    li.textContent = countries[i];
+    li.addEventListener("click", function() {
+        input.value = countries[i];
+     });
     ul.appendChild(li);}
 
     let test = document.getElementsByTagName("li");
-    console.log(test);
   }
   request.open("get", "../api/getCountries.php", true);
   request.send();
@@ -34,14 +42,12 @@ function getListReady(){
 
 function filterResults(){
     getListReady();
-    let input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
+    let filter, ul, li, a, i, txtValue;
+    filter = textInput.value.toUpperCase();
     ul = document.getElementById("myUL");
     li = ul.getElementsByTagName("li");//todas as opcoes
     for (i = 0; i < li.length; i++) {
         a = li[i];
-        console.log(a);
         txtValue = a.textContent || a.innerText;
         if(filter =="")
             li[i].style.display = "none";
@@ -58,13 +64,17 @@ function filterResults(){
 /*
 * Picker
 */
-function getResults(picker){
-console.log(picker.getStartDate());
-console.log(picker.getEndDate());
+function getResults(){
+    if(picker.getStartDate()!=null)
+    date1 = picker.getStartDate().format("YYYY-MM-DD");
+    if(picker.getEndDate()!=null)
+    date2 = picker.getEndDate().format("YYYY-MM-DD");
 }
 
-let input = document.getElementById("myInput");
-input.addEventListener('keyup', filterResults) 
-  
-
-var picker = new Lightpick({ field: document.getElementById('datepicker') });
+/*
+* Final choice
+*/
+function submit(){
+    getResults();
+    window.location="../../Src/pages/main_page.php?country="+country +"&date1=" + date1 + "&date2=" + date2 + "&price="+price.value;
+}

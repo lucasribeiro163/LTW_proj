@@ -48,11 +48,12 @@ function draw_header($username) {
             </div>
             <input type="text" id="myInput"  placeholder="Search for cities.." title="Type in a name">
             <ul id="myUL" ></ul>
-            <input type="text" id="datepicker" onkeyup="getResults()" placeholder="Search for dates.."/>
+            <input type="text" id="datepicker" placeholder="Search for dates.."/>
             <link rel="stylesheet" type="text/css" href="../includes/calendar/css/lightpick.css">
+            <input type="text" id="price"  placeholder="Insert max price...">
+            <input type="button" id="submit" onmousedown="submit()" value="Search"/>
 
             <!-- Script for calender -->
-            
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
             <script src="../includes/calendar/lightpick.js"></script>
             <!-- End of script for calender -->
