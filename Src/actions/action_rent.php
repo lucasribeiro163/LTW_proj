@@ -33,15 +33,7 @@
   }
   else
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Those dates arent available!');
+ 
+  header("Location: ../pages/house.php?house=$house_id");
 
-
-
-
-  
-   header('Location: ../pages/house.php?house='.$house_id);
-
-    
-
-
-  
 ?>

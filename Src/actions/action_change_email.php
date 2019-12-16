@@ -10,13 +10,13 @@
 
   if (checkIfEmailExists($email) != null) {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Email is being use already!');
-    die(header('Location: ../pages/editProfile.php'));
+    die(header('Location: ../pages/profile.php'));
   }
   
   try {
     update_email($_SESSION['username'], $email);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our email was updated!');
-    header('Location: ../pages/main_page.php');
+    header('Location: ../pages/profile.php');
   } catch (PDOException $e) {
     die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update email!');

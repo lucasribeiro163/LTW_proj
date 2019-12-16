@@ -14,7 +14,7 @@
   try {
     update_name($_SESSION['username'], $name);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our name was updated!');
-    header('Location: ../pages/main_page.php');
+    header('Location: ../pages/profile.php');
   } catch (PDOException $e) {
     die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update name!');
