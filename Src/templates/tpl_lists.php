@@ -45,14 +45,14 @@
   } 
   
 ?>
-<a href= "house.php?house=<?=$idHabitacao?>">
+<a href= "house.php?house=<?=htmlspecialchars($idHabitacao)?>">
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
-<img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
-<section id="Info">
-  <h1><?=$item['titulo']?></h1>
-  <h2><?=$country[0]['nome']?></h2>
+<img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image" width="200" height="200"></img> </a>
+<section class="Info">
+  <h1><?=htmlspecialchars($item['titulo'])?></h1>
+  <h2><?=htmlspecialchars($country[0]['nome'])?></h2>
   <h2 id="address">
-    <?=$item['morada']?>
+    <?=htmlspecialchars($item['morada'])?>
   </h2>
 </section>
 <?php } ?>
@@ -83,15 +83,15 @@
     ?>
     <section id="house_ad">
     <header>  
-        <h1><?=$item['titulo']?></h1>
-        <h2><?=$item['descricaoHabitacao']?></h2>
-        <h2><?=$morada?>
-        <?=($country[0]['nome'])?></h2>
+        <h1><?=htmlspecialchars($item['titulo'])?></h1>
+        <h2><?=htmlspecialchars($item['descricaoHabitacao'])?></h2>
+        <h2><?=htmlspecialchars($morada)?>
+        <?=htmlspecialchars($country[0]['nome'])?></h2>
     </header>
 
     <form action="../actions/action_rent.php" method="post">
-        <input type="hidden" name="idHabitacao" value="<?=$house;?>" />
-        <input type="hidden" name="precoNoite" value="<?=$precoNoite;?>" />
+        <input type="hidden" name="idHabitacao" value="<?=htmlspecialchars($house)?>" />
+        <input type="hidden" name="precoNoite" value="<?=htmlspecialchars($precoNoite)?>" />
         <a>Check-in: <input type="date" name="check-in"></a>
         <a>Check-out: <input type="date" name="check-out"></a>
         <a>Nr of people: <input type="number" name="nrpeople"></a>
@@ -100,7 +100,7 @@
     </section>
 
     <section class="someImage">
-      <img class="<?=$class?>" src="<?=$image?>" alt="house image">
+      <img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image">
     </section>
     
 <?php }
@@ -155,18 +155,18 @@ function draw_my_lists($lists) {
 ?>
 <a>
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
-<img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
+<img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image" width="200" height="200"></img> </a>
 
-  <section id="Info">
-  <h1><?=$item['titulo']?></h1>
-  <h2><?=$country[0]['nome']?></h2>
+  <section class="Info">
+  <h1><?=htmlspecialchars($item['titulo'])?></h1>
+  <h2><?=htmlspecialchars($country[0]['nome'])?></h2>
   <h2 id="address">
-    <?=$item['morada']?>
+    <?=htmlspecialchars($item['morada'])?>
   </h2>
 </section>
   <div id="houseOptions">
-    <a href="../../Src/pages/edit_house.php?house=<?=$house_id?>">Edit</a>
-    <a href="../../Src/pages/house_reservations.php?house=<?=$house_id?>">See rents</a>
+    <a href="../../Src/pages/edit_house.php?house=<?=htmlspecialchars($house_id)?>">Edit</a>
+    <a href="../../Src/pages/house_reservations.php?house=<?=htmlspecialchars($house_id)?>">See rents</a>
   </div>
 <?php } 
 
@@ -194,21 +194,21 @@ foreach($lists as $list){
   <section id="edit_house">
 
     <form action="../actions/action_change_house_title.php" method="post">
-      <input type="hidden" name="house_id" value="<?=$house?>" /> 
-      <input type="text" name="title" value="<?=$item['titulo']?>" />
+      <input type="hidden" name="house_id" value="<?=htmlspecialchars($house)?>" /> 
+      <input type="text" name="title" value="<?=htmlspecialchars($item['titulo'])?>" />
       <input type="submit" value="Change">
     </form>
 
     <form action="../actions/action_change_house_price.php" method="post">
-      <input type="hidden" name="house_id" value="<?=$house?>" />
+      <input type="hidden" name="house_id" value="<?=htmlspecialchars($house)?>" />
       <p>The price of the houses already rented won't change! Just the next ones.</p>
-      <input type="number" name="price_per_night" value="<?=$price_per_night?>" />
+      <input type="number" name="price_per_night" value="<?=htmlspecialchars($price_per_night)?>" />
       <input type="submit" value="Change">
     </form>
 
     <form action="../actions/action_change_house_description.php" method="post">
-      <input type="hidden" name="house_id" value="<?=$house?>" />
-      <textarea name="description" rows="4" cols="50"><?=$item['descricaoHabitacao']?></textarea>
+      <input type="hidden" name="house_id" value="<?=htmlspecialchars($house)?>" />
+      <textarea name="description" rows="4" cols="50"><?=htmlspecialchars($item['descricaoHabitacao'])?></textarea>
       <input type="submit" value="Change">
     </form>
     
@@ -224,9 +224,9 @@ foreach($lists as $list){
   </section>
 
   <section class="someImage">
-    <img class="<?=$class?>" src="<?=$image?>" alt="house image">
+    <img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image">
     <form action="../actions/upload_house.php" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="house_id" value="<?=$house_id?>" />
+      <input type="hidden" name="house_id" value="<?=htmlspecialchars($house_id)?>" />
       <input type="file" name="image">
       <input type="submit" value="Upload">
     </form>
@@ -505,6 +505,7 @@ function draw_listing() {
           <option value="5">Cabin</option>
           <option value="6">basement suite</option>
           <option value="7">Tiny home</option>
+          <option value="8">Hostel</option>
         </select> 
   
         <select name="Nrbedrooms" required>
@@ -573,20 +574,20 @@ function draw_house_reservations($reservations, $house_id) {
   ?>
 
 
-  <section id="Info">
-    <h1><?=$house[0]['titulo']?></h1>
+  <section class="Info">
+    <h1><?=htmlspecialchars($house[0]['titulo'])?></h1>
     <section id="address">
       <?=htmlspecialchars($house[0]['morada'])?>
 
 <?php
 
   foreach($reservations as $reservation)
-    ?> <p> <?php print_r($reservation['dataCheckIn']) ?> to  <?php print_r($reservation['dataCheckIn']) ?> </p> 
+    ?> <p> <?=htmlspecialchars($reservation['dataCheckIn']) ?> to  <?=htmlspecialchars($reservation['dataCheckIn']) ?> </p> 
     
   </section>
 
     <section class="someImage">
-    <img src="<?=$image?>" alt="house image">
+    <img src="<?=htmlspecialchars($image)?>" alt="house image">
     </section>
     <?php
  } 
@@ -603,7 +604,7 @@ function draw_house_reservations($reservations, $house_id) {
   
   <?php
     if ($lists == -1){
-      ?><h1 id="no_reservations">You haven't rented any houses yet.</h1> <?php
+      ?><h1>"You haven't rented any houses yet.</h1> <?php
     }
     else{
       foreach($lists as $list){
@@ -625,7 +626,7 @@ function draw_house_reservations($reservations, $house_id) {
   <article class="list">
       <?php 
         foreach ($list['list_items'] as $item)
-        draw_reservation_item($item);
+          draw_reservation_item($item);
       ?>
   </article>
 <?php } ?>
@@ -647,18 +648,15 @@ function draw_house_reservations($reservations, $house_id) {
   $user_id = getPersonId($_SESSION['username']);
   
 ?>
-<a href= "house.php?house=<?=$idHabitacao?>">
+<a href= "house.php?house=<?=htmlspecialchars($idHabitacao)?>">
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
-<img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
-<section id="Info">
-  <h1><?=$item['titulo']?></h1>
-  <h2><?=$country[0]['nome']?></h2>
-  <h2 id="address">
+<img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image" width="200" height="200"></img> </a>
+<section class="Info">
+  <h1><?=htmlspecialchars($item['titulo'])?></h1>
+  <h2><?=htmlspecialchars($country[0]['nome'])?></h2>
+  <section id="address">
     <?=$item['morada']?>
-  </h2>
-  <h2>Reservation: from <?php print_r(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckIn']) ?>  to <?php print_r(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckOut']) ?></h2>
   </section>
-  <div id="houseOptions">
-    <a href="../../Src/actions/action_cancel_reservation.php?house=<?=$idHabitacao?>">Cancel Reservation</a>
-  </div>
+  <h2>Reservation: from <?=htmlspecialchars(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckIn']) ?>  to <?=htmlspecialchars(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckOut']) ?></h2>
+</section>
 <?php } ?>

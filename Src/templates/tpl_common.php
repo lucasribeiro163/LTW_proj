@@ -35,7 +35,7 @@ function draw_header($username) {
           <?php 
           if ($username != NULL) {  ?>
             <div class="dropdown">
-              <p><?=$username?></p>
+              <p><?=htmlspecialchars($username)?></p>
               <div id="myDropdown" class="dropdown-content">
                 <a href="../../Src/pages/myList.php">My Lists</a>
                 <a href="../../Src/pages/myReservations.php">Rents</a>
@@ -48,12 +48,7 @@ function draw_header($username) {
             <div id="searchInputs">
               <input type="text" id="myInput"  placeholder="Search for cities.." title="Type in a name">
               <ul id="myUL" ></ul>
-              <input type="text" id="datepicker" placeholder="Search for dates.."/>
-              <link rel="stylesheet" type="text/css" href="../includes/calendar/css/lightpick.css">
-              <!-- Script for calender -->         
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-              <script src="../includes/calendar/lightpick.js"></script>
-              <!-- End of script for calender -->
+              <input type="date" id="datepicker" placeholder="Search for dates.."/>
             </div>
           <?php
           }
@@ -62,7 +57,7 @@ function draw_header($username) {
       <?php if (isset($_SESSION['messages'])) {?>
         <section id="messages">
           <?php foreach($_SESSION['messages'] as $message) { ?>
-            <div class="<?=$message['type']?>"><?=$message['content']?></div>
+            <div class="<?=$message['type']?>"><?=htmlspecialchars($message['content'])?></div>
           <?php } ?>
         </section>
       <?php unset($_SESSION['messages']); } ?>

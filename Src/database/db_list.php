@@ -22,9 +22,26 @@
     return $stmt->fetchAll(); 
   }
 
-  /**
-   * get the id of a country name passed as argument
-   */
+  /*
+  *Gets all of the houses available in a certain date
+  */
+  function getHouseDate($date) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idHabitacao FROM Disponivel WHERE Disponivel.data=?');
+    $stmt->execute(array($date));
+    return $stmt->fetchAll(); 
+  }
+
+  function getHousesPrice($price){
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao WHERE precoNoite<=?');
+    $stmt->execute(array($price));
+    return $stmt->fetchAll();
+  }
+
+  /*
+  *Gets name of contryid
+  */
   function getCountryId($country){
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT idPais FROM Pais WHERE nome = ?');
@@ -74,7 +91,7 @@
   }
 
   /**
-   * Returns all the info from a hoyse with id equal to house_id
+   * Returns all the info from a house with id equal to house_id
    */
   function getHouseInfoArray($house_id) {
     $db = Database::instance()->db();
@@ -277,30 +294,6 @@
       }
     }
   }
-
-  /**
-   * Cancels reservation by user and house id
-   */
-  function cancelReservation($house_id, $username) {
-    
-    $user_id = getIdByUsername($username)[0]['id'];
-
-    //print_r($user_id);
-
-    $reservation_ids = getReservationById($user_id);
-
-    //print_r($reservation_ids);
-    
-    foreach ($reservation_ids as $reservation_id){
-
-      if(getHouseOfReservation($reservation_id['idReserva'])[0]['idHabitacao'] == $house_id){
-        $db = Database::instance()->db();
-        $stmt = $db->prepare('DELETE FROM Reserva WHERE idHabitacao = ?');
-        $stmt->execute(array($house_id));
-      }
-    }
-  }
-
 
 
 ?>
