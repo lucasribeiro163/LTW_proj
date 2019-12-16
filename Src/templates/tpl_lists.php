@@ -51,9 +51,9 @@
 <section id="Info">
   <h1><?=$item['titulo']?></h1>
   <h2><?=$country[0]['nome']?></h2>
-  <section id="address">
+  <h2 id="address">
     <?=$item['morada']?>
-  </section>
+  </h2>
 </section>
 <?php } ?>
 
@@ -153,15 +153,17 @@ function draw_my_lists($lists) {
     $image = "../images/houses/thumbs_small/$house_id.jpg";
   } 
 ?>
+<a>
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
-  <img class=<?=$class?> src="<?=$image?>" alt="house image" width="200" height="200" ></img>
-  <section id="Info">
-    <h1><?=$item['titulo']?></h1>
-    <h2><?=$country[0]['nome']?></h2>
-    <section id="address">
-      <?=$item['morada']?>
-    </section>
+<img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
 
+  <section id="Info">
+  <h1><?=$item['titulo']?></h1>
+  <h2><?=$country[0]['nome']?></h2>
+  <h2 id="address">
+    <?=$item['morada']?>
+  </h2>
+</section>
   <div id="houseOptions">
     <a href="../../Src/pages/edit_house.php?house=<?=$house_id?>">Edit</a>
     <a href="../../Src/pages/house_reservations.php?house=<?=$house_id?>">See rents</a>

@@ -11,6 +11,7 @@ body {
   --black-color: #000;
   --panel-color: #EEE;
   --light-white: #f3f3f3;
+  --light-grey: #E4E4E4;
 
   --main-color: #4169E1;
 
@@ -30,6 +31,7 @@ body {
 
   font-family: var(--sans-font);
   background-color: var(--bg-color);
+  
 }
 
 /**
@@ -47,7 +49,7 @@ a {
 }
 
 h1 {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-family: var(--serif-font), sans-serif;
   margin: 1.2em 0em 0.2em 0em;
   padding: 0em;
@@ -222,15 +224,16 @@ textarea {
 
   left: 0;
   bottom: 0;
-  margin-top: 2%;
+  margin-top: 0%;
+  margin-bottom: 1%;
   width: 100%;
-  border-top-color: var(--bg-color);
+  border-top-color: var(--medium-color);
   background-color: var(--bg-color);
   color: var(--medium-color);
   text-align: center;
-  font-family: var(--font-family);
+  font-family: var(--general-font-family);
   font-weight: bold;
-  box-shadow: 0 -8px 10px var(--black-color);
+  box-shadow: 0 -8px 10px var(--medium-color);
   padding-top: 0.5em;
 
 }
@@ -240,12 +243,19 @@ textarea {
   margin-bottom: 0.6em;
 }
 
+#f1 > a{
+
+
+  
+  font-family: var(--general-font-family);
+  color:var(--dark-color);
+}
+
 
 #f1 > button{
 
   background-color: var(--bg-color);
   border: hidden;
-  font-family: var(--font-family);
   box-shadow: 0 -2px 3px var(--black-color);
   font-weight: bold;
   color: var(--medium-color);
@@ -349,8 +359,40 @@ footer {
  */
 
  .list > a > img{
-  border: solid;
   max-width: 92%;
+  box-shadow: 0 4px 6px var(--medium-color);
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+ .list > #houseOptions{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+
+ .list > #houseOptions > a {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5em;
+  color: var(--dark-color);
+  background-color: var(--light-grey);
+  font-weight: bold;
+  border-width: 0.05em;  
+  border: transparent;
+  font-family: var(--general-font-family);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px var(--medium-color);
+
+
+
 
  }
 
@@ -359,23 +401,25 @@ footer {
   border-color:var(--bg-color);
   background-color: var(--bg-color);
   border-width: 0.05em;  
-  font-family: var(--font-family);
+  font-family: var(--general-font-family);
   border-radius: 5px;
-  box-shadow: 0 4px 6px var(--black-color);
+  box-shadow: 0 4px 6px var(--medium-color);
 
  }
 
  .lists {
 
   background-color: var(--light-white);
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 20%;
+  padding-right: 20%;
 
  }
 
  #Info > h1, h2{
 
   margin-left: 0em;
+  margin-bottom: 0.5em;
+  font-family: var(--general-font-family);
   text-align: left;
 
  }
