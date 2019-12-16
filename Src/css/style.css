@@ -191,7 +191,7 @@ textarea {
   color: var(--main-color);
 }
 
-#signup, #login, #listingForm  {
+#signup, #login, #listingForm {
   padding-top: 10%;
   padding-left: 10%;
   grid-column-start: 1;
@@ -467,16 +467,15 @@ body > #messages .success {
  */
 
 .list > a > img{
+  display: block;
   max-width: 92%;
   box-shadow: 0 4px 6px var(--medium-color);
-  display: block;
   margin-left: auto;
   margin-right: auto;
 
  }
 
- .list > #houseOptions{
-  display: block;
+ .list > #houseOptions {
   margin-left: auto;
   margin-right: auto;
 
@@ -495,13 +494,13 @@ body > #messages .success {
   border-width: 0.05em;  
   border: transparent;
   font-family: var(--general-font-family);
-  border-radius: 5px;
+  border-radius: 5%;
   box-shadow: 0 4px 6px var(--medium-color);
 
  }
 
 
- .list {
+ .list, #reservation {
   border-color:var(--bg-color);
   border-width: 0.05em;  
   font-family: var(--general-font-family);
@@ -735,7 +734,7 @@ body > #messages .success {
  * Profile
  */
 
-#profile {
+#profile, #ReservationInfo {
   grid-column-start: 1;
   grid-column-end: 3;
   padding-left: 10%;
@@ -937,6 +936,28 @@ body > #messages .success {
   text-align: center;
 }
 
+#reservation { 
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin: 5em;
+  padding: 0em;
+}
+
+#reservation .Info {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding: 1em;
+}
+
+#reservation .someImage {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  padding: 2em;
+  width: max-content;
+}
+
 /*  Responsive design */
 @media(max-width:840px) {
   .someImage > img {
@@ -966,6 +987,7 @@ body > #messages .success {
     padding: 0em;
     font-size: 1.5em;
   }
+
   .lists {
     padding: 0em;
     margin: 0em;
