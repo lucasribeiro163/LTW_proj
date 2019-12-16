@@ -482,6 +482,33 @@ body > #messages .success {
 
  }
 
+ #no_reservations{
+
+  margin-top: 20%;
+  text-align: center;
+  margin-left:40%;
+  margin-bottom: 15%;
+  grid-column-start: 2;
+  font-family: var(--general-font-family);
+
+  
+ }
+
+
+ .list > #houseOptions > a:hover {
+   
+  background-color: var(--dark-color);
+  color: var(--light-grey);
+
+
+ }
+
+ 
+ .list > #houseOptions > a:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(10%);
+ }
+
 
  .list > #houseOptions > a {
 
