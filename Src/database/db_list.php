@@ -22,9 +22,26 @@
     return $stmt->fetchAll(); 
   }
 
-  /**
-   * get the id of a country name passed as argument
-   */
+  /*
+  *Gets all of the houses available in a certain date
+  */
+  function getHouseDate($date) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idHabitacao FROM Disponivel WHERE Disponivel.data=?');
+    $stmt->execute(array($date));
+    return $stmt->fetchAll(); 
+  }
+
+  function getHousesPrice($price){
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT idHabitacao FROM Habitacao WHERE precoNoite<=?');
+    $stmt->execute(array($price));
+    return $stmt->fetchAll();
+  }
+
+  /*
+  *Gets name of contryid
+  */
   function getCountryId($country){
     $db = Database::instance()->db();
     $stmt = $db->prepare('SELECT idPais FROM Pais WHERE nome = ?');
@@ -74,7 +91,7 @@
   }
 
   /**
-   * Returns all the info from a hoyse with id equal to house_id
+   * Returns all the info from a house with id equal to house_id
    */
   function getHouseInfoArray($house_id) {
     $db = Database::instance()->db();
