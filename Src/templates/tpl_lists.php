@@ -48,7 +48,7 @@
 <a href= "house.php?house=<?=$idHabitacao?>">
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
 <img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
-<section class="Info">
+<section id="Info">
   <h1><?=$item['titulo']?></h1>
   <h2><?=$country[0]['nome']?></h2>
   <h2 id="address">
@@ -102,7 +102,6 @@
     <section class="someImage">
       <img class="<?=$class?>" src="<?=$image?>" alt="house image">
     </section>
-    <h1><?=$item['classificacaoHabitacao']?></h1>
     <section class="rating">
     <a id="houseId" style="display: none"><?=$item['classificacaoHabitacao']?></a>
     <a id="StarRating0"></a>
@@ -169,7 +168,7 @@ function draw_my_lists($lists) {
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
 <img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
 
-  <section class="Info">
+  <section id="Info">
   <h1><?=$item['titulo']?></h1>
   <h2><?=$country[0]['nome']?></h2>
   <h2 id="address">
@@ -517,7 +516,6 @@ function draw_listing() {
           <option value="5">Cabin</option>
           <option value="6">basement suite</option>
           <option value="7">Tiny home</option>
-          <option value="8">Hostel</option>
         </select> 
   
         <select name="Nrbedrooms" required>
@@ -577,30 +575,27 @@ function draw_house_reservations($reservations, $house_id) {
 
   
   if(getHousePhoto($house_id) == 0) 
-     $image = "../images/houses/thumbs_medium/default0.jpg";
-  else $image = "../images/houses/thumbs_medium/$house_id.jpg";   
+     $image = "../images/houses/thumbs_small/default0.jpg";
+  else $image = "../images/houses/thumbs_small/$house_id.jpg";   
 
   $house = getHouseItems($house_id);
 
-
   ?>
-
-
-  <section class="Info">
-    <h1><?=$house[0]['titulo']?></h1>
-    <section id="address">
-      <?=htmlspecialchars($house[0]['morada'])?>
-
-<?php
-
-  foreach($reservations as $reservation)
-    ?> <p> <?php print_r($reservation['dataCheckIn']) ?> to  <?php print_r($reservation['dataCheckIn']) ?> </p> 
-    
-  </section>
-
+  <section id="reservation">
     <section class="someImage">
-    <img src="<?=$image?>" alt="house image">
+        <img src="<?=htmlspecialchars($image)?>" alt="house image">
+      </section>
+    <section class="Info">
+      <h1><?=htmlspecialchars($house[0]['titulo'])?></h1>
+      <section id="address">
+        <?=htmlspecialchars($house[0]['morada'])?>
+  <?php
+    foreach($reservations as $reservation)
+      ?> <p> <?=htmlspecialchars($reservation['dataCheckIn']) ?> to  <?=htmlspecialchars($reservation['dataCheckIn']) ?> </p> 
+      
+      </section>
     </section>
+  </section>
     <?php
  } 
 
@@ -616,7 +611,7 @@ function draw_house_reservations($reservations, $house_id) {
   
   <?php
     if ($lists == -1){
-      ?><h1>"You haven't rented any houses yet.</h1> <?php
+      ?><h1 id="no_reservations">You haven't rented any houses yet.</h1> <?php
     }
     else{
       foreach($lists as $list){
@@ -652,23 +647,25 @@ function draw_house_reservations($reservations, $house_id) {
   $idHabitacao = $item['idHabitacao'];
   $class = "defaultImage";
   if(getHousePhoto($item['idHabitacao']) == 0) 
-    $image = "../images/houses/thumbs_small/default0.jpg";
+    $image = "../images/houses/thumbs_medium/default0.jpg";
   else {
     $class = "not_defaultImage";
-    $image = "../images/houses/thumbs_small/$idHabitacao.jpg";
+    $image = "../images/houses/thumbs_medium/$idHabitacao.jpg";
   }
   $user_id = getPersonId($_SESSION['username']);
   
 ?>
-<a href= "house.php?house=<?=$idHabitacao?>">
-<!-- upload makes all image in thumbs_small have width="200" and height="200" -->
-<img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
-<section class="Info">
-  <h1><?=$item['titulo']?></h1>
-  <h2><?=$country[0]['nome']?></h2>
-  <section id="address">
-    <?=$item['morada']?>
+<div id="reservation">
+  <a href= "house.php?house=<?=htmlspecialchars($idHabitacao)?>">
+  <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
+  <img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image" width="200" height="200"></img> </a>
+  <section class="Info">
+    <h1><?=htmlspecialchars($item['titulo'])?></h1>
+    <h2><?=htmlspecialchars($country[0]['nome'])?></h2>
+    <section id="address">
+      <?=$item['morada']?>
+    </section>
+    <h2>Reservation: from <?=htmlspecialchars(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckIn']) ?>  to <?=htmlspecialchars(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckOut']) ?></h2>
   </section>
-  <h2>Reservation: from <?php print_r(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckIn']) ?>  to <?php print_r(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckOut']) ?></h2>
-</section>
+</div>
 <?php } ?>

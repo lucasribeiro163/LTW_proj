@@ -35,7 +35,7 @@ function draw_header($username) {
           <?php 
           if ($username != NULL) {  ?>
             <div class="dropdown">
-              <p><?=$username?></p>
+              <p><?=htmlspecialchars($username)?></p>
               <div id="myDropdown" class="dropdown-content">
                 <a href="../../Src/pages/myList.php">My Lists</a>
                 <a href="../../Src/pages/myReservations.php">Rents</a>
@@ -57,7 +57,7 @@ function draw_header($username) {
       <?php if (isset($_SESSION['messages'])) {?>
         <section id="messages">
           <?php foreach($_SESSION['messages'] as $message) { ?>
-            <div class="<?=$message['type']?>"><?=$message['content']?></div>
+            <div class="<?=$message['type']?>"><?=htmlspecialchars($message['content'])?></div>
           <?php } ?>
         </section>
       <?php unset($_SESSION['messages']); } ?>
