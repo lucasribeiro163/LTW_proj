@@ -339,7 +339,7 @@ function draw_editProfile($username) {
       </form>
 
       <form method="post" action="../actions/action_change_username.php"> 
-        <input type="text" name="username" value=<?=htmlspecialchars($username)?> required>
+        <input type="text" name="username" placeholder="username" value=<?=htmlspecialchars($username)?> required>
         <input type="submit" value="edit">
       </form>
 
