@@ -694,6 +694,11 @@ body > #messages .success {
  * map
  */
 
+#map {
+  width: 100%;
+  height: 100%;
+}
+
 /* used for map */
 #mapSection {
   width: 60vw;

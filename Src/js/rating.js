@@ -3,7 +3,6 @@
 let rating = document.getElementById("StarRating");
 let classification;
 let houseID = document.getElementById("houseId").textContent;
-console.log(houseID);
 getClassification();
 
 async function getClassification(){

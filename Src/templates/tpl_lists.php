@@ -567,7 +567,8 @@ function draw_listing() {
       </div>
       <section id="mapSection">
         <input id="pac-input" class="controls" type="text" name="location" placeholder="Insert the house location" required>   
-        <div id="map"></div>
+        <div id="map">
+        </div>
       </section>
   
       </form>
