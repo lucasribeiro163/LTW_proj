@@ -63,7 +63,6 @@
   foreach($lists as $list){
     foreach ($list['list_items'] as $item){
       if($item['idHabitacao'] == $house){
-
         $precoNoite = $item['precoNoite'];
         $morada = $item['morada'];
         $country = getCountry($item['idPais']);
@@ -81,6 +80,7 @@
   }
 
     ?>
+    <script src="../js/rating.js" defer></script>
     <section id="house_ad">
     <header>  
         <h1><?=$item['titulo']?></h1>
@@ -101,6 +101,18 @@
 
     <section class="someImage">
       <img class="<?=$class?>" src="<?=$image?>" alt="house image">
+    </section>
+    <h1><?=$item['classificacaoHabitacao']?></h1>
+    <section class="rating">
+    <a id="houseId" style="display: none"><?=$item['classificacaoHabitacao']?></a>
+    <a id="StarRating0"></a>
+    <a id="StarRating1"></a>
+    <a id="StarRating2"></a>
+    <a id="StarRating3"></a>
+    <a id="StarRating4"></a>
+    </section>
+
+    <section class="comments">
     </section>
     
 <?php }

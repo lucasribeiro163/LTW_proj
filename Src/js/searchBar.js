@@ -4,8 +4,8 @@ var country=null , date1=null , date2=null , price=null;
 price = document.getElementById("price");
 
 let input = document.getElementById("myInput");
-input.addEventListener('keyup', filterResults); 
-  
+input.addEventListener('keyup', filterResults);
+
 
 var picker = new Lightpick({ field: document.getElementById('datepicker') });
 
@@ -15,7 +15,6 @@ async function getCountries(){
     countries = JSON.parse(this.responseText);
 
     let ul = document.getElementById("myUL");
-    let li = ul.getElementsByTagName("li");
     
     for(let i = 0; i< countries.length; i++)
     {
@@ -25,8 +24,6 @@ async function getCountries(){
         input.value = countries[i];
      });
     ul.appendChild(li);}
-
-    let test = document.getElementsByTagName("li");
   }
   request.open("get", "../api/getCountries.php", true);
   request.send();

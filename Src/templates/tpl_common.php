@@ -24,7 +24,7 @@ function draw_header($username) {
       <script src="../js/searchBar.js" defer></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&libraries=places&callback=initAutocomplete" async defer></script>
       <script src="../js/findPlace.js" defer></script>
-      <script src="../js/findPlace.js" defer></script>
+    
     </head>
     
     <body>

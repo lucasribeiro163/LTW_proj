@@ -295,6 +295,11 @@
     }
   }
 
-
+  function getClassification($house_id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT classificacaoHabitacao FROM Habitacao WHERE idHabitacao = ?');
+    $stmt->execute(array($house_id));
+    return $stmt->fetchAll(); 
+  }
 ?>
 
