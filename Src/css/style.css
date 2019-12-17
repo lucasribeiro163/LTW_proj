@@ -33,7 +33,7 @@ body {
   font-family: var(--sans-font);
   background-color: var(--bg-color);
   display: grid;
-  grid-template-columns: 34% auto;
+  grid-template-columns: 35% auto;
 }
 
 /**
@@ -65,11 +65,6 @@ h2, h3, h4, h5, h6 {
   color: var(--dark-color);
 }
 
-select {
-  width: 134%;
-  margin-inline-start: 1.9em;
-}
-
 textarea {
   width: 80%;
   margin-inline-start: 1.8em;
@@ -93,19 +88,24 @@ input[type="text"], input[type="password"], input[type="email"], input[type=numb
   border-radius: 7px;
 }
 
+select {
+  width: 134%;
+  margin-inline-start: 1.9em;
+}
+
 /* buttons to submit are blue rectangle */
 input[type="submit"]{
   background: var(--main-color);
   color: var(--panel-color);
   font-family: sans-serif;
-  font-size: 1em;
+  font-size: 0.8em;
   border: none;
   border-radius: 7px;
   text-transform: uppercase;
   grid-column-start: 2;
   grid-column-end: 3;
   width: 100%;
-  padding: 1em;
+  padding: 0.8em;
 } 
 
 /* forms */
@@ -188,6 +188,16 @@ textarea {
   font-size: 1.2em;
 }
 
+#signup textarea {
+  width: 60%;
+  grid-column-end: 4;
+  padding: 0.6em;
+  font-family: var(--serif-font);
+  margin-inline-start: 1.4em;
+  background-color: var(--panel-color);
+  font-size: 0.80em;
+  border-radius: 7px;
+}
 
 #login > header {
 
@@ -632,7 +642,7 @@ body > #messages .success {
 */
 
 #myInput, #datepicker {
-  width: 30%; 
+  width: 23%; 
   grid-column-start: 2;
 }
 
@@ -666,12 +676,19 @@ body > #messages .success {
 
 
 #price {
-  width: min-content;
+  width: max-content;
 }
 
 #submit {
-  width: max-content;
+  width: 10vw;
   padding: 1em;
+  background-color: var(--medium-color);
+  color: var(--dark-color);
+  
+}
+
+#searchInputs {
+  align-content: stretch;
 }
 /**
  * map
@@ -1127,4 +1144,11 @@ body > #messages .success {
     width: 70px;
   }
 
+  #signup textarea {
+    width: 85vw;
+  }
+  
+  #myInput, #datepicker, #price, #submit {
+    font-size: 0.6em;
+  }
 }

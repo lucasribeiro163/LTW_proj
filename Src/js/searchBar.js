@@ -1,13 +1,14 @@
 'use strict'
 let countries;
-var country=null , date1=null , date2=null , price=null;
+let country=null , date1=null , date2=null , price=null;
 price = document.getElementById("price");
+
 
 let input = document.getElementById("myInput");
 input.addEventListener('keyup', filterResults);
 
 
-var picker = new Lightpick({ field: document.getElementById('datepicker') });
+let picker = new Lightpick({ field: document.getElementById('datepicker') });
 
 async function getCountries(){
     let request = new XMLHttpRequest();
@@ -37,9 +38,10 @@ function getListReady(){
     getCountries();
 }
 
-function filterResults(){
+function filterResults(event){
     getListReady();
-    let filter, ul, li, a, i, txtValue;
+    let filter, ul, li, a, i, txtValue
+    let textInput = document.getElementById("myInput");
     filter = textInput.value.toUpperCase();
     ul = document.getElementById("myUL");
     li = ul.getElementsByTagName("li");//todas as opcoes
@@ -56,22 +58,33 @@ function filterResults(){
         }
         
     }
+    event.preventDefault()
 }
 
 /*
 * Picker
 */
-function getResults(){
+function getResults(event){
     if(picker.getStartDate()!=null)
     date1 = picker.getStartDate().format("YYYY-MM-DD");
     if(picker.getEndDate()!=null)
     date2 = picker.getEndDate().format("YYYY-MM-DD");
+    event.preventDefault()
 }
 
 /*
 * Final choice
 */
-function submit(){
-    getResults();
+function submit(event){
+    getResults(event);
     window.location="../../Src/pages/main_page.php?country="+country +"&date1=" + date1 + "&date2=" + date2 + "&price="+price.value;
+    event.preventDefault()
 }
+
+//calender eventListing
+let inputDates = document.getElementById("datapicker")
+inputDates.addEventListener('click', getResults) 
+
+
+let submitElement = document.getElementById("submit")
+submitElement.addEventListener('click', submit) 

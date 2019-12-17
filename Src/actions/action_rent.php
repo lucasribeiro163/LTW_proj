@@ -45,7 +45,7 @@
   if($available){
     $reservas = createReservation($check_in, $check_out, $nrpeople, $precoNoite, $house_id);   
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Reservation was successful!');
-    header("Location: ../pages/myList.php");
+    header("Location: ../pages/myReservations.php");
   }
   else{
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Those dates aren\'t available!');

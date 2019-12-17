@@ -15,7 +15,6 @@
 
   $reservations = getReservations($house);
 
-
   draw_header($_SESSION['username']);
   draw_house_reservations($reservations, $house);
   draw_footer();

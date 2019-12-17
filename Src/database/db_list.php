@@ -153,11 +153,11 @@
    */
   function createReservation($check_in, $check_out, $nr_people, $price, $house_id) {
     $db = Database::instance()->db();
-    $stmt = $db->prepare('INSERT INTO Reserva VALUES(NULL, ? , ? , ? , ? , 0 , ? )');
-    $stmt->execute(array($check_in, $check_out, $nr_people, $price, $house_id));
+    $stmt = $db->prepare('INSERT INTO Reserva VALUES(NULL, ? , ? , ? , ? , ? , ? )');
+    $stmt->execute(array($check_in, $check_out, $nr_people, $price, 0, $house_id));
 
-    $db = Database::instance()->db();
-    $stmt2 = $db->prepare('SELECT * FROM Reserva');
+    $db1 = Database::instance()->db();
+    $stmt2 = $db1->prepare('SELECT * FROM Reserva');
     $stmt2->execute();
     return $stmt2->fetchAll(); 
   }
@@ -248,16 +248,6 @@
   }
 
   /**
-   * gets id of user by his username
-   */
-  function getIdByUsername($username) {
-    $db = Database::instance()->db();
-    $stmt = $db->prepare('SELECT id FROM Utilizador WHERE username = ?');
-    $stmt->execute(array($username));
-    return $stmt->fetchAll(); 
-  }
-
-  /**
    * gets reservations by the id of the user who made them
    */
   function getReservationById($user_id) {
@@ -306,13 +296,9 @@
    */
   function cancelReservation($house_id, $username) {
     
-    $user_id = getIdByUsername($username)[0]['id'];
-
-    //print_r($user_id);
+    $user_id = getPersonId($username);
 
     $reservation_ids = getReservationById($user_id);
-
-    //print_r($reservation_ids);
     
     foreach ($reservation_ids as $reservation_id){
 

@@ -35,7 +35,7 @@
  * an item_id, item_done and item_text fields. 
  **/
   $country = getCountry($item['idPais']);
-  $idHabitacao = htmlspecialchars($item['idHabitacao']);
+  $idHabitacao = $item['idHabitacao'];
   $class = "defaultImage";
   if(getHousePhoto($item['idHabitacao']) == 0) 
     $image = "../images/houses/thumbs_small/default0.jpg";
@@ -82,9 +82,7 @@
     }
   }
 
-    ?>
-    <script src="../js/rating.js" defer></script>
-    
+    ?>    
 
     <section id="adImage">
       <img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image">
