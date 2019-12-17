@@ -675,6 +675,9 @@ function draw_house_reservations($reservations, $house_id) {
       <?=$item['morada']?>
     </section>
     <h2>Reservation: from <?=htmlspecialchars(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckIn']) ?>  to <?=htmlspecialchars(getHouseReservationDatesByUser($user_id, $idHabitacao)[0]['dataCheckOut']) ?></h2>
+    <div id="houseOptions">
+      <a href="../../Src/actions/action_cancel_reservation.php?house=<?=$idHabitacao?>">Cancel Reservation</a>
+    </div>
   </section>
 </div>
 <?php } ?>
