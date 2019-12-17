@@ -291,12 +291,24 @@
     $stmt->execute(array($house_id));
     return $stmt->fetchAll(); 
   }
+
+  /**
+   * gets id of user by his username
+   */
+  function getIdByUsername($username) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT id FROM Utilizador WHERE username = ?');
+    $stmt->execute(array($username));
+    return $stmt->fetchAll(); 
+  }
+
+
   /**
    * Cancels reservation by user and house id
    */
   function cancelReservation($house_id, $username) {
     
-    $user_id = getPersonId($username);
+    $user_id = getIdByUsername($username)[0]['id'];
 
     $reservation_ids = getReservationById($user_id);
     

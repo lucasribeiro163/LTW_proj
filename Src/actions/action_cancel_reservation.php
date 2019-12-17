@@ -20,7 +20,7 @@
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to cancel reservation!');
   }
   
-  header('Location: ../pages/myReservations.php');
+  //header('Location: ../pages/myReservations.php');
 
 
 ?>

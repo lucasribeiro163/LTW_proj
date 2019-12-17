@@ -634,7 +634,7 @@ function draw_contacts(){
    * Draws the about us section.
    */ ?>
   <section id="contacts">
-    <img src="https://www.thebighousemuseum.com/wp-content/uploads/2013/07/about-the-big-house-1.jpg"></img>
+    <img src="https://wallpapersmug.com/download/2560x1024/81db8b/houses-winter-landscape-sunst.jpg"></img>
     <h1>Get in touch</h1>
   </section>
 
