@@ -8,6 +8,10 @@
     die(header('Location: ../pages/login.php'));
 
   $house_id = $_POST['house_id'];
+
+  // Remove disallowed characters (only numbers are accepted)
+  $house_id = preg_replace ("/[^0-9]/", '', $house_id );
+  
   $user_id = getPersonId($_SESSION['username']);
 
   // Verify if user owns the house

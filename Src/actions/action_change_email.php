@@ -8,6 +8,9 @@
 
   $email = $_POST['email'];
 
+  // Remove disallowed characters
+  $email = preg_replace ("/[^0-9\?\.çãõa-zA-Z@\s]/", '', $email);
+
   if (checkIfEmailExists($email) != null) {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Email is being use already!');
     die(header('Location: ../pages/profile.php'));

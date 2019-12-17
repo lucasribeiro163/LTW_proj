@@ -26,6 +26,9 @@
   $username = $_SESSION['username'];
   $personId = getPersonId($username);
   
+  // Remove disallowed characters (only numbers are accepted)
+  $country_id = preg_replace ("/[^0-9]/", '', $country_id );
+
   try {
     $id = insertHouse($personId, $nr_bedrooms, $nr_bathrooms, $max_people, $title, $description, $location, $price, $rating, $country_id, $type_id);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'New house for rent!');

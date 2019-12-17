@@ -9,6 +9,9 @@
     die(header('Location: ../pages/login.php'));
 
   $id = $_POST['house_id'];
+  
+  // Remove disallowed characters (only numbers are accepted)
+  $id = preg_replace ("/[^0-9]/", '', $id );
 
   //only jpg, bmp, jpeg , gif anf png are valid formats to the picture
   $file_exts = array("jpg", "bmp", "jpeg", "gif", "png");

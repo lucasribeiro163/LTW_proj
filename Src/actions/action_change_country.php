@@ -8,6 +8,9 @@
 
   $country = $_POST['country'];
 
+  // Remove disallowed characters (only numbers are accepted)
+  $country = preg_replace ("/[^0-9]/", '', $country );
+  
   try {
     update_country($_SESSION['username'], $country) ;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our country was updated!');
