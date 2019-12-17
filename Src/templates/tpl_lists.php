@@ -104,32 +104,19 @@
     </header>
 
     <form action="../actions/action_rent.php" method="post">
-        <input type="hidden" name="idHabitacao" value="<?=htmlspecialchars($house)?>" />
-        <input type="hidden" name="precoNoite" value="<?=htmlspecialchars($precoNoite)?>" />
-        <a>Check-in: <input type="date" name="check-in"></a>
-        <a>Check-out: <input type="date" name="check-out"></a>
-        <p>Nr of people: <input type="number" name="nrpeople" min=1 max=20></p>
-        <button id="rent_button">Rent</button>
-      </form>
-
-    <section class="someImage">
-      <img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image">
-    </section>
-
-    <section class="rating">
-    <a id="houseId" style="display: none"><?=htmlspecialchars($idHabitacao)?></a>
-    <a id="StarRating0"></a>
-    <a id="StarRating1"></a>
-    <a id="StarRating2"></a>
-    <a id="StarRating3"></a>
-    <a id="StarRating4"></a>
-    </section>
+      <input type="hidden" name="idHabitacao" value="<?=htmlspecialchars($house)?>" />
+      <input type="hidden" name="precoNoite" value="<?=htmlspecialchars($precoNoite)?>" />
+      <a>Check-in: <input type="date" name="check-in"></a>
+      <a>Check-out: <input type="date" name="check-out"></a>
+      <p>Nr of people: <input type="number" name="nrpeople" min=1 max=20></p>
+      <button id="rent_button">Rent</button>
+    </form>
 
     <section class="comments">
     <button type="button" id="ShowComments" onclick="getComments()" >Show Comments</button>
     <ul id="houseComments" ></ul>
     </section>
-    
+    </section>
 <?php }
 
 
@@ -574,7 +561,7 @@ function draw_listing() {
           <option value="12">12</option>
         </select>
   
-        <textarea name="description" rows="4" cols="50" placeholder="Enter a short description of the home."></textarea>
+        <textarea name="description" rows="4" cols="50" placeholder="Enter a short description of the home." required></textarea>
         <input type="submit" value="create">
       </div>
       <section id="mapSection">
