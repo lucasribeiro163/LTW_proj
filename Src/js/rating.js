@@ -2,8 +2,12 @@
 
 let rating = document.getElementById("StarRating");
 let classification;
-let houseID = document.getElementById("houseId").textContent;
-getClassification();
+let houseID
+if(document.getElementById("houseId")){
+  houseID = document.getElementById("houseId").textContent;
+  getClassification();
+}
+
 
 async function getClassification(){
     let request = new XMLHttpRequest();

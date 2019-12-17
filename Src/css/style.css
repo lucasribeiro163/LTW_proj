@@ -188,6 +188,12 @@ textarea {
   font-size: 1.2em;
 }
 
+#listing textarea {
+  width: 90%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 #signup textarea {
   width: 60%;
   grid-column-end: 4;
