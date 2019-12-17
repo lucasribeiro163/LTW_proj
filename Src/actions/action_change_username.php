@@ -7,8 +7,13 @@
     die(header('Location: ../pages/login.php'));
 
   $username = $_POST['username'];
-  
 
+  // Don't allow certain characters
+  if ( !preg_match ("/^[a-zA-Z0-9]+$/", $username)) {
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Username can only contain letters and numbers!');
+    die(header('Location: ../pages/editProfile.php'));
+  }
+  
   if (checkIfUsernameExists( $username) != null) {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Username is being use already!');
     die(header('Location: ../pages/editProfile.php'));
