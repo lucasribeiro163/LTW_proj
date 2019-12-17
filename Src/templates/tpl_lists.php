@@ -86,7 +86,7 @@
     <section id="adImage">
       <img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image">
       <section class="rating">
-        <a id="houseId" style="display: none"><?=htmlspecialchars($item['classificacaoHabitacao'])?></a>
+        <a id="houseId" style="display: none"><?=htmlspecialchars($idHabitacao)?></a>
         <a id="StarRating0"></a>
         <a id="StarRating1"></a>
         <a id="StarRating2"></a>

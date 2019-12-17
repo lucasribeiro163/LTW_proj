@@ -2,14 +2,15 @@
 
 let rating = document.getElementById("StarRating");
 
+var comments_array =[];
+var counter = 0; 
+let classification;
+var houseID;
+
 if(document.getElementById("houseId")){
   houseID = document.getElementById("houseId").textContent;
   getClassification();
 }
-
-let comments_array = [];
-var counter = 0; 
-let classification;
 
 
 //*************Function section*************/
@@ -30,7 +31,8 @@ async function getClassification(){
 }
 
 async function getComments(){
-  console.log(counter);
+  console.log(houseID
+    );
   var tempTag=document.getElementById("houseComments");
 
   if(counter%2==1){
@@ -56,6 +58,7 @@ async function getComments(){
   request.onload = function classificationReceived() {
   comments_array = JSON.parse(this.responseText);
     insertComments(comments_array);
+    console.log(comments_array);
 }
 request.open("GET", "../api/getComments.php?"+ encodeForAjax({houseId: houseID}), true);
 request.send();
