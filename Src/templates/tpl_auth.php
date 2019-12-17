@@ -292,7 +292,7 @@ function draw_login() {
           <option value="256">Zambia</option>
           <option value="257">Zimbabwe</option>
         </select>    
-        <textarea name="description" rows="7" cols="20" placeholder="Enter a short description of yourself."></textarea>
+        <textarea name="description" rows="7" cols="25" placeholder="Enter a short description of yourself."></textarea>
       <input type="submit" value="signup">
     </form>
     <p>Already have an account? So just <a href="login.php">Login!</a></p>

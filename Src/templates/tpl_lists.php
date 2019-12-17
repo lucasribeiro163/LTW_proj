@@ -48,7 +48,7 @@
 <a href= "house.php?house=<?=$idHabitacao?>">
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
 <img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
-<section id="Info">
+<section class="Info">
   <h1><?=$item['titulo']?></h1>
   <h2><?=$country[0]['nome']?></h2>
   <h2 id="address">
@@ -168,7 +168,7 @@ function draw_my_lists($lists) {
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
 <img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
 
-  <section id="Info">
+  <section class="Info">
   <h1><?=$item['titulo']?></h1>
   <h2><?=$country[0]['nome']?></h2>
   <h2 id="address">
@@ -202,6 +202,17 @@ foreach($lists as $list){
   }
 }
   ?>
+
+  <section id="myhouseImage">
+    <img class="<?=$class?>" src="<?=$image?>" alt="house image">
+    <form action="../actions/upload_house.php" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="house_id" value="<?=$house_id?>" />
+      <input type="file" name="image">
+      <input type="submit" value="Upload">
+    </form>
+  </section>
+  
+
   <section id="edit_house">
 
     <form action="../actions/action_change_house_title.php" method="post">
@@ -234,15 +245,6 @@ foreach($lists as $list){
     </form>
   </section>
 
-  <section class="someImage">
-    <img class="<?=$class?>" src="<?=$image?>" alt="house image">
-    <form action="../actions/upload_house.php" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="house_id" value="<?=$house_id?>" />
-      <input type="file" name="image">
-      <input type="submit" value="Upload">
-    </form>
-  </section>
-  
 <?php }
 
 //used to create a new house
@@ -607,7 +609,7 @@ function draw_house_reservations($reservations, $house_id) {
  * as articles. Uses the draw_list function to draw
  * each list.
  */ ?>
-  <section class="lists">
+  <section id="Reservationlists">
   
   <?php
     if ($lists == -1){
@@ -633,7 +635,7 @@ function draw_house_reservations($reservations, $house_id) {
   <article class="list">
       <?php 
         foreach ($list['list_items'] as $item)
-        draw_reservation_item($item);
+          draw_reservation_item($item);
       ?>
   </article>
 <?php } ?>
