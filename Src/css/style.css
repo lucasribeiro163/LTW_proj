@@ -410,12 +410,12 @@ footer {
   grid-column-end: 3;
 } 
 
-#personImg, #myhouseImage {
+#personImg, .myhouseImage {
   grid-column-end: 2;
   padding: 2% 0% 0% 10% ;
 }
 
-#personImg input[type="submit"], #myhouseImage input[type="submit"]  {
+#personImg input[type="submit"], .myhouseImage input[type="submit"]  {
   grid-column-start: 1;
   width: 40%;
   margin: 5%;
@@ -470,7 +470,7 @@ body > #messages .success {
   margin-right: auto;
  }
 
- #no_reservations{
+ .no_reservations {
 
   margin-top: 20%;
   text-align: center;
@@ -532,7 +532,7 @@ body > #messages .success {
    padding-right: 20%;
  }
 
- #reservation {
+ .reservation {
   display: block;
   border-color:var(--bg-color);
   border-width: 0.05em;  
@@ -766,7 +766,7 @@ body > #messages .success {
  * Profile
  */
 
-#profile, #ReservationInfo {
+#profile {
   grid-column-start: 1;
   grid-column-end: 3;
   padding-left: 10%;
@@ -806,49 +806,30 @@ body > #messages .success {
 
 }
 
+#adImage img{
+  border: var(--black-color);
+  border: solid;
+  margin: 2em;
+}
+
 #house_ad {
 
   margin-left: 5em;
-  grid-column-start: 1;
-
-}
-
-#house_ad > header > h1{
-
-  padding-left: 0em;
-  margin-bottom: 1em;
-
-}
-
-#house_ad > header > h2{
-
-  padding-left: 2em;
-  margin-bottom: 0.5em;
-
-}
-
-#house_ad > header {
-
-  margin-bottom: 2em;
+  grid-column-start: 2;
 
 }
 
 #house_ad > form { 
   display: inline-block;
-  margin-left: 2em;
+  margin: 4em 0em;
 }
 
-#house_ad > form > a { 
-  font-family: var(--general-font-family);
-}
-
-
-#house_ad > form > button{
+#house_ad > form > button {
 
   background: var(--main-color);
   color: var(--panel-color);
   font-family: sans-serif;
-  font-size: 1em;
+  font-size: 0.8em;
   border: none;
   border-radius: 7px;
   text-transform: uppercase;
@@ -859,7 +840,7 @@ body > #messages .success {
   margin-left: 3em;
 }
 
-#house_ad > form > a >input{
+#house_ad > form > a > input, #house_ad > form > p > input{
 
   background: var(--bg-color);
   color: var(--black-color);
@@ -872,39 +853,11 @@ body > #messages .success {
   max-width: 7em;
   height: 0.7em;
   width: 150%;
-  margin-left: 3em;
+  margin-left: 1em;
 }
 
-
-#house_ad > form > button{
-
-  background: var(--main-color);
-  color: var(--panel-color);
-  font-family: sans-serif;
-  font-size: 1em;
-  border: none;
-  border-radius: 7px;
-  text-transform: uppercase;
-  margin-top: 2em;
-  max-width: 7em;
-  height: 3em;
-  width: 150%;
-  margin-left: 3em;
-}
-
-#house_ad > form > a >input{
-  background: var(--bg-color);
-  color: var(--black-color);
-  font-family: sans-serif;
-  font-size: 1em;
-  border: solid;
-  border-radius: 7px;
-  border-width: 1px;
-  text-transform: uppercase;
-  max-width: 7em;
-  height: 0.7em;
-  width: 150%;
-  margin-left: 3em;
+.rating {
+  margin-left: 3.4em;
 }
 
 /*
@@ -968,7 +921,7 @@ body > #messages .success {
   text-align: center;
 }
 
-#reservation { 
+.reservation { 
   grid-column-start: 1;
   grid-column-end: 3;
   display: grid;
@@ -978,22 +931,35 @@ body > #messages .success {
   width: 80vw;
 }
 
-#reservation .Info {
+.reservation .Info {
   grid-column-start: 2;
   grid-column-end: 3;
   padding: 1em;
+  width: 100%;
 }
 
-#reservation .someImage {
+.reservation .defaultImage,  .reservation .not_defaultImage{
   grid-column-start: 1;
   grid-column-end: 2;
-  padding: 2em;
+  padding: 1em;
   width: max-content;
+}
+
+.ReservationInfo {
+  padding: 0.5em;
+  margin: 0em;
+  font-size: 1.3em;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-family: var(--font-family);
+
 }
 
 /*  Responsive design */
 @media(max-width:840px) {
-  .someImage > img, #myhouseImage > img {
+  .someImage > img, .myhouseImage > img {
     display: none;
   }
 
@@ -1093,7 +1059,7 @@ body > #messages .success {
     width: 80vw;
   }
 
-  #editProfile input, #myhouseImage, #listing input[type="submit"], #edit_house input[type="submit"]  {
+  #editProfile input, .myhouseImage, #listing input[type="submit"], #edit_house input[type="submit"], .reservationInfo   {
     width: 100%;
     font-size: 0.6em;
     grid-column-start: 1;
@@ -1109,9 +1075,9 @@ body > #messages .success {
     padding-left: 2em;
   }
 
-  #edit_house, #edit_house textarea, #reservation > .Info {
+  #edit_house, #edit_house textarea, .reservation > .Info {
     font-size: 0.6em;
-    padding: 0em;
+    padding: 0.4em;
   }
 
   #Info { 
@@ -1119,14 +1085,14 @@ body > #messages .success {
     margin: 0em;
   }
 
-  #reservation > .Info {
+  .reservation > .Info {
     margin: 0.2em;
     text-align: center;
     grid-column-start: 1;
     font-size: 0.7em;
   }
 
-  #reservation {
+  .reservation {
     padding: 0em;
     margin: 0em;
   }
