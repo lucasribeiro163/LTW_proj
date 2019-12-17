@@ -64,10 +64,13 @@
     foreach ($list['list_items'] as $item){
       if($item['idHabitacao'] == $house){
         $precoNoite = $item['precoNoite'];
+        $house_id = $item['classificacaoHabitacao'];
         $morada = $item['morada'];
         $country = getCountry($item['idPais']);
         $idHabitacao = $item['idHabitacao'];
         $class = "defaultImageMedium";
+        $title = $item['titulo'];
+        $description = $item['descricaoHabitacao'];
         if(getHousePhoto($item['idHabitacao']) == 0) 
           $image = "../images/houses/thumbs_medium/default0.jpg";
         else{
@@ -83,8 +86,8 @@
     <script src="../js/rating.js" defer></script>
     <section id="house_ad">
     <header>  
-        <h1><?=$item['titulo']?></h1>
-        <h2><?=$item['descricaoHabitacao']?></h2>
+        <h1><?=$title;?></h1>
+        <h2><?=$description;?></h2>
         <h2><?=$morada?>
         <?=($country[0]['nome'])?></h2>
     </header>
@@ -103,7 +106,7 @@
       <img class="<?=$class?>" src="<?=$image?>" alt="house image">
     </section>
     <section class="rating">
-    <a id="houseId" style="display: none"><?=$item['classificacaoHabitacao']?></a>
+    <a id="houseId" style="display: none"><?= $house_id;?></a>
     <a id="StarRating0"></a>
     <a id="StarRating1"></a>
     <a id="StarRating2"></a>
