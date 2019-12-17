@@ -64,7 +64,6 @@
     foreach ($list['list_items'] as $item){
       if($item['idHabitacao'] == $house){
         $precoNoite = $item['precoNoite'];
-        $house_id = $item['classificacaoHabitacao'];
         $morada = $item['morada'];
         $country = getCountry($item['idPais']);
         $idHabitacao = $item['idHabitacao'];
@@ -86,8 +85,8 @@
     <script src="../js/rating.js" defer></script>
     <section id="house_ad">
     <header>  
-        <h1><?=htmlspecialchars($item['titulo'])?></h1>
-        <h2><?=htmlspecialchars($item['descricaoHabitacao'])?></h2>
+        <h1><?=htmlspecialchars($title)?></h1>
+        <h2><?=htmlspecialchars($description)?></h2>
         <h2><?=htmlspecialchars($morada)?>
         <?=htmlspecialchars($country[0]['nome'])?></h2>
     </header>
@@ -105,8 +104,9 @@
     <section class="someImage">
       <img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image">
     </section>
+
     <section class="rating">
-    <a id="houseId" style="display: none"><?=htmlspecialchars($item['classificacaoHabitacao'])?></a>
+    <a id="houseId" style="display: none"><?=htmlspecialchars($idHabitacao)?></a>
     <a id="StarRating0"></a>
     <a id="StarRating1"></a>
     <a id="StarRating2"></a>
@@ -115,6 +115,8 @@
     </section>
 
     <section class="comments">
+    <button type="button" id="ShowComments" onclick="getComments()" >Show Comments</button>
+    <ul id="houseComments" ></ul>
     </section>
     
 <?php }

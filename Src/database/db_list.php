@@ -324,6 +324,19 @@
     }
   }
 
+/*
+* Get comments with photo and username
+*/
+function getComments($houseID){
+  
+  $db = Database::instance()->db();
+  $stmt = $db->prepare('SELECT ClassificacaoPorCliente.descricaoAnfitriao,Utilizador.picture, Utilizador.username , ClassificacaoPorCliente.classificacaoAnfitriao
+  FROM ClassificacaoPorCliente,Reserva,Efetua,Utilizador
+  WHERE ClassificacaoPorCliente.idReserva=Reserva.idReserva and Reserva.idReserva=Efetua.idReserva
+  and Efetua.idCliente=ClassificacaoPorCliente.idCliente and Utilizador.id=Efetua.idCliente and Reserva.idHabitacao= ?');
+  $stmt->execute(array($houseID));
+  return $stmt->fetchAll(); 
+}
 
 
 ?>
