@@ -35,7 +35,7 @@
  * an item_id, item_done and item_text fields. 
  **/
   $country = getCountry($item['idPais']);
-  $idHabitacao = $item['idHabitacao'];
+  $idHabitacao = htmlspecialchars($item['idHabitacao']);
   $class = "defaultImage";
   if(getHousePhoto($item['idHabitacao']) == 0) 
     $image = "../images/houses/thumbs_small/default0.jpg";
@@ -47,12 +47,12 @@
 ?>
 <a href= "house.php?house=<?=$idHabitacao?>">
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
-<img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
+<img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image" width="200" height="200"></img> </a>
 <section class="Info">
-  <h1><?=$item['titulo']?></h1>
-  <h2><?=$country[0]['nome']?></h2>
+  <h1><?=htmlspecialchars($item['titulo'])?></h1>
+  <h2><?=htmlspecialchars($country[0]['nome'])?></h2>
   <h2 id="address">
-    <?=$item['morada']?>
+    <?=htmlspecialchars($item['morada'])?>
   </h2>
 </section>
 <?php } ?>
@@ -83,15 +83,15 @@
     <script src="../js/rating.js" defer></script>
     <section id="house_ad">
     <header>  
-        <h1><?=$item['titulo']?></h1>
-        <h2><?=$item['descricaoHabitacao']?></h2>
-        <h2><?=$morada?>
-        <?=($country[0]['nome'])?></h2>
+        <h1><?=htmlspecialchars($item['titulo'])?></h1>
+        <h2><?=htmlspecialchars($item['descricaoHabitacao'])?></h2>
+        <h2><?=htmlspecialchars($morada)?>
+        <?=htmlspecialchars($country[0]['nome'])?></h2>
     </header>
 
     <form action="../actions/action_rent.php" method="post">
-        <input type="hidden" name="idHabitacao" value="<?=$house;?>" />
-        <input type="hidden" name="precoNoite" value="<?=$precoNoite;?>" />
+        <input type="hidden" name="idHabitacao" value="<?=htmlspecialchars($house)?>" />
+        <input type="hidden" name="precoNoite" value="<?=htmlspecialchars($precoNoite)?>" />
         <a>Check-in: <input type="date" name="check-in"></a>
         <a>Check-out: <input type="date" name="check-out"></a>
         <a>Nr of people: <input type="number" name="nrpeople"></a>
@@ -100,10 +100,10 @@
     </section>
 
     <section class="someImage">
-      <img class="<?=$class?>" src="<?=$image?>" alt="house image">
+      <img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image">
     </section>
     <section class="rating">
-    <a id="houseId" style="display: none"><?=$item['classificacaoHabitacao']?></a>
+    <a id="houseId" style="display: none"><?=htmlspecialchars($item['classificacaoHabitacao'])?></a>
     <a id="StarRating0"></a>
     <a id="StarRating1"></a>
     <a id="StarRating2"></a>
@@ -166,13 +166,13 @@ function draw_my_lists($lists) {
 ?>
 <a>
 <!-- upload makes all image in thumbs_small have width="200" and height="200" -->
-<img class="<?=$class?>" src="<?=$image?>" alt="house image" width="200" height="200"></img> </a>
+<img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image" width="200" height="200"></img> </a>
 
   <section class="Info">
-  <h1><?=$item['titulo']?></h1>
-  <h2><?=$country[0]['nome']?></h2>
+  <h1><?=htmlspecialchars($item['titulo'])?></h1>
+  <h2><?=htmlspecialchars($country[0]['nome'])?></h2>
   <h2 id="address">
-    <?=$item['morada']?>
+    <?=htmlspecialchars($item['morada'])?>
   </h2>
 </section>
   <div id="houseOptions">
@@ -193,9 +193,9 @@ foreach($lists as $list){
       $house_id = $item['idHabitacao'];
       $class = "defaultImageMedium";
       if(getHousePhoto($item['idHabitacao']) == 0) 
-        $image = "../images/houses/thumbs_medium/default0.jpg";
+        $image = "../images/houses/thumbs_small/default0.jpg";
       else{
-        $image = "../images/houses/thumbs_medium/$house_id.jpg";
+        $image = "../images/houses/thumbs_small/$house_id.jpg";
         $class = "not_defaultImageMedium";
       }   
     }
@@ -204,9 +204,9 @@ foreach($lists as $list){
   ?>
 
   <section id="myhouseImage">
-    <img class="<?=$class?>" src="<?=$image?>" alt="house image">
+    <img class="<?=$class?>" src="<?=htmlspecialchars($image)?>" alt="house image">
     <form action="../actions/upload_house.php" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="house_id" value="<?=$house_id?>" />
+      <input type="hidden" name="house_id" value="<?=htmlspecialchars($house_id)?>" />
       <input type="file" name="image">
       <input type="submit" value="Upload">
     </form>
@@ -216,32 +216,32 @@ foreach($lists as $list){
   <section id="edit_house">
 
     <form action="../actions/action_change_house_title.php" method="post">
-      <input type="hidden" name="house_id" value="<?=$house?>" /> 
-      <input type="text" name="title" value="<?=$item['titulo']?>" />
+      <input type="hidden" name="house_id" value="<?=htmlspecialchars($house)?>" /> 
+      <input type="text" name="title" value="<?=htmlspecialchars($item['titulo'])?>" />
       <input type="submit" value="Change">
     </form>
 
     <form action="../actions/action_change_house_price.php" method="post">
-      <input type="hidden" name="house_id" value="<?=$house?>" />
+      <input type="hidden" name="house_id" value="<?=htmlspecialchars($house)?>" />
       <p>The price of the houses already rented won't change! Just the next ones.</p>
-      <input type="number" name="price_per_night" value="<?=$price_per_night?>" />
+      <input type="number" name="price_per_night" value="<?=htmlspecialchars($price_per_night)?>" />
       <input type="submit" value="Change">
     </form>
 
     <form action="../actions/action_change_house_description.php" method="post">
-      <input type="hidden" name="house_id" value="<?=$house?>" />
-      <textarea name="description" rows="4" cols="50"><?=$item['descricaoHabitacao']?></textarea>
+      <input type="hidden" name="house_id" value="<?=htmlspecialchars($house)?>" />
+      <textarea name="description" rows="4" cols="50"><?=htmlspecialchars($item['descricaoHabitacao'])?></textarea>
       <input type="submit" value="Change">
     </form>
     
     <form action="../actions/action_delete_house.php" method="post">
       <p>Deleting a house also deletes all reservations. Be careful.</p>
-      <input type="submit" value="Delete House">
+      <input type="submit" value="Delete">
     </form>
 
     <form action="../actions/action_stop_renting.php" method="post">
       <p>Stop renting a house keeps all reservations done before. Be careful.</p>
-      <input type="submit" value="stop Renting"> 
+      <input type="submit" value="stop Rents"> 
     </form>
   </section>
 

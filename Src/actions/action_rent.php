@@ -2,12 +2,26 @@
   include_once('../includes/session.php');
   include_once('../database/db_list.php');
 
-
   $check_in = $_POST['check-in'];
   $check_out = $_POST['check-out'];
   $house_id = $_POST['idHabitacao'];
   $precoNoite = $_POST['precoNoite'];
   $nrpeople = $_POST['nrpeople'];
+
+  // Remove disallowed characters
+  $check_in  = preg_replace ("/[^0-9\\\-]/", '', $check_in );
+
+  // Remove disallowed characters
+  $check_out  = preg_replace ("/[^0-9\\\-]/", '', $check_out );
+
+  // Remove disallowed characters (only numbers are accepted)
+  $house_id = preg_replace ("/[^0-9]/", '', $house_id );
+  
+  // Remove disallowed characters (only numbers and dot are accepted)
+  $precoNoite  = preg_replace ("/[^0-9\.]/", '', $precoNoite  );
+
+  // Remove disallowed characters (only numbers are accepted)
+  $nrpeople = preg_replace ("/[^0-9]/", '', $nrpeople );
 
   $available = true;
 

@@ -10,6 +10,18 @@
   $country = $_POST['country']; 
   $description = $_POST['description']; 
 
+  // Remove disallowed characters
+  $name = preg_replace ("/[^a-zA-Z\s]/", '', $name);
+
+  // Remove disallowed characters (only numbers are accepted)
+  $country = preg_replace ("/[^0-9]/", '', $country );
+  
+  // Remove disallowed characters
+  $email = preg_replace ("/[^0-9\?\.çãõa-zA-Z@\s]/", '', $email);
+
+  // Remove disallowed characters
+  $description = preg_replace ("/[^0-9\?\.çãõa-zA-Z\s]/", '', $description);
+
   // Don't allow certain characters
   if ( !preg_match ("/^[a-zA-Z0-9]+$/", $username)) {
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Username can only contain letters and numbers!');
