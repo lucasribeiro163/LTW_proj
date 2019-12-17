@@ -1,10 +1,16 @@
 'use strict'
 
 let rating = document.getElementById("StarRating");
-let houseID = document.getElementById("houseId").textContent;
+
+if(document.getElementById("houseId")){
+  houseID = document.getElementById("houseId").textContent;
+  getClassification();
+}
+
 let comments_array = [];
-getClassification();
 var counter = 0; 
+let classification;
+
 
 //*************Function section*************/
 /*

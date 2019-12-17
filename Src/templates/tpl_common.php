@@ -24,7 +24,12 @@ function draw_header($username) {
       <script src="../js/searchBar.js" defer></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4bmxav_mA6AxZ75zLbz_zoeyPzj0HwgY&libraries=places&callback=initAutocomplete" async defer></script>
       <script src="../js/findPlace.js" defer></script>
-    
+      <script src="../js/rating.js" defer></script>
+      <!-- Script for calender -->
+      <link rel="stylesheet" type="text/css" href="../includes/calendar/css/lightpick.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+      <script src="../includes/calendar/lightpick.js"></script>
+      <!-- End of script for calender -->
     </head>
     
     <body>
@@ -46,17 +51,11 @@ function draw_header($username) {
               </div>
             </div>
             <div id="searchInputs">
-              <input type="text" id="myInput"  placeholder="Search for cities.." title="Type in a name">
+              <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for cities.." title="Type in a name">
               <ul id="myUL" ></ul>
               <input type="text" id="datepicker" placeholder="Search for dates.."/>
-              <link rel="stylesheet" type="text/css" href="../includes/calendar/css/lightpick.css">
-              <input type="text" id="price"  placeholder="Insert max price...">
-              <input type="text" id="submit" onmousedown="submit()" value="Search"/>
-
-              <!-- Script for calender -->
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-              <script src="../includes/calendar/lightpick.js"></script>
-              <!-- End of script for calender -->
+              <input type="number" id="price" onclick="getResults()" placeholder="Insert max price..." min=0>
+              <button id="submit" type="button" onclick="submit()">Search</button>
             </div>
           <?php
           }

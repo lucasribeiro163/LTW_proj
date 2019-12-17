@@ -33,7 +33,7 @@ body {
   font-family: var(--sans-font);
   background-color: var(--bg-color);
   display: grid;
-  grid-template-columns: 34% auto;
+  grid-template-columns: 35% auto;
 }
 
 /**
@@ -65,22 +65,17 @@ h2, h3, h4, h5, h6 {
   color: var(--dark-color);
 }
 
-select {
-  width: 134%;
-  margin-inline-start: 1.9em;
-}
-
 textarea {
   width: 80%;
   margin-inline-start: 1.8em;
 }
 
 
-input[type="text"], input[type="password"], input[type="email"], input[type=number] {
+input[type="text"], input[type="password"], input[type="email"], input[type=number] , textarea{
   width: 120%;
 }
 
-input[type="text"], input[type="password"], input[type="email"], input[type=number], input[type="date"] textarea, select {
+input[type="text"], input[type="password"], input[type="email"], input[type=number], input[type="date"], textarea, select {
   padding: 0.6em;
   font-family: var(--serif-font);
   padding: 1em;
@@ -93,19 +88,24 @@ input[type="text"], input[type="password"], input[type="email"], input[type=numb
   border-radius: 7px;
 }
 
+select {
+  width: 134%;
+  margin-inline-start: 1.9em;
+}
+
 /* buttons to submit are blue rectangle */
 input[type="submit"]{
   background: var(--main-color);
   color: var(--panel-color);
   font-family: sans-serif;
-  font-size: 1em;
+  font-size: 0.8em;
   border: none;
   border-radius: 7px;
   text-transform: uppercase;
   grid-column-start: 2;
   grid-column-end: 3;
   width: 100%;
-  padding: 1em;
+  padding: 0.8em;
 } 
 
 /* forms */
@@ -188,6 +188,22 @@ textarea {
   font-size: 1.2em;
 }
 
+#listing textarea {
+  width: 90%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#signup textarea {
+  width: 60%;
+  grid-column-end: 4;
+  padding: 0.6em;
+  font-family: var(--serif-font);
+  margin-inline-start: 1.4em;
+  background-color: var(--panel-color);
+  font-size: 0.80em;
+  border-radius: 7px;
+}
 
 #login > header {
 
@@ -396,7 +412,7 @@ footer {
 #editProfile textarea , #edit_house textarea{
   font-size: small;
 }
-#editProfile input, #editProfile textarea, #edit_house textarea, #edit_house input {
+#editProfile input, #editProfile textarea, #edit_house textarea, #edit_house input, textarea {
   width: 70%;
   grid-column-start: 1;
   grid-column-end: 2;
@@ -410,12 +426,12 @@ footer {
   grid-column-end: 3;
 } 
 
-#personImg, #myhouseImage {
+#personImg, .myhouseImage {
   grid-column-end: 2;
   padding: 2% 0% 0% 10% ;
 }
 
-#personImg input[type="submit"], #myhouseImage input[type="submit"]  {
+#personImg input[type="submit"], .myhouseImage input[type="submit"]  {
   grid-column-start: 1;
   width: 40%;
   margin: 5%;
@@ -470,14 +486,15 @@ body > #messages .success {
   margin-right: auto;
  }
 
- #no_reservations{
+ .no_reservations {
 
-  margin-top: 20%;
+  width: 60%;
+  margin-top: 50%;
   text-align: center;
-  margin-left:40%;
-  margin-bottom: 15%;
-  grid-column-start: 2;
+  margin-left:110%;
+  margin-bottom: 50%;
   font-family: var(--general-font-family);
+  font-size: 2em;
 
   
  }
@@ -497,6 +514,37 @@ body > #messages .success {
   transform: translateY(10%);
  }
 
+ 
+ .ReservationInfo > #houseOptions > a:hover {
+   
+  background-color: var(--dark-color);
+  color: var(--light-grey);
+
+
+ }
+
+ 
+ .ReservationInfo > #houseOptions > a:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(10%);
+ }
+ 
+ .ReservationInfo > #houseOptions > a {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5em;
+  color: var(--dark-color);
+  background-color: var(--light-grey);
+  font-weight: bold;
+  border-width: 0.05em;  
+  border: transparent;
+  font-family: var(--general-font-family);
+  border-radius: 5%;
+  box-shadow: 0 4px 6px var(--medium-color);
+
+ }
 
  .list > #houseOptions > a {
 
@@ -515,6 +563,8 @@ body > #messages .success {
 
  }
 
+
+
  .list { 
    width: 250px;
    display: block;
@@ -532,7 +582,7 @@ body > #messages .success {
    padding-right: 20%;
  }
 
- #reservation {
+ .reservation {
   display: block;
   border-color:var(--bg-color);
   border-width: 0.05em;  
@@ -632,7 +682,7 @@ body > #messages .success {
 */
 
 #myInput, #datepicker {
-  width: 30%; 
+  width: 23%; 
   grid-column-start: 2;
 }
 
@@ -666,16 +716,53 @@ body > #messages .success {
 
 
 #price {
-  width: min-content;
+  width: max-content;
 }
 
 #submit {
-  width: max-content;
+  width: 10vw;
   padding: 1em;
+  background-color: var(--medium-color);
+  color: var(--dark-color);
+  margin-left: 1em;
+  color: var(--dark-color);
+  background-color: var(--light-grey);
+  font-weight: bold;
+  border-width: 0.05em;  
+  border: transparent;
+  font-family: var(--general-font-family);
+  border-radius: 5%;
+  box-shadow: 0 4px 6px var(--medium-color);
+  
+}
+
+#submit:hover {
+   
+  background-color: var(--dark-color);
+  color: var(--light-grey);
+
+
+ }
+
+ 
+ #submit:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(10%);
+ }
+
+
+
+#searchInputs {
+  align-content: stretch;
 }
 /**
  * map
  */
+
+#map {
+  width: 100%;
+  height: 100%;
+}
 
 /* used for map */
 #mapSection {
@@ -766,7 +853,7 @@ body > #messages .success {
  * Profile
  */
 
-#profile, #ReservationInfo {
+#profile {
   grid-column-start: 1;
   grid-column-end: 3;
   padding-left: 10%;
@@ -806,49 +893,30 @@ body > #messages .success {
 
 }
 
+#adImage img{
+  border: var(--black-color);
+  border: solid;
+  margin: 2em;
+}
+
 #house_ad {
 
   margin-left: 5em;
-  grid-column-start: 1;
-
-}
-
-#house_ad > header > h1{
-
-  padding-left: 0em;
-  margin-bottom: 1em;
-
-}
-
-#house_ad > header > h2{
-
-  padding-left: 2em;
-  margin-bottom: 0.5em;
-
-}
-
-#house_ad > header {
-
-  margin-bottom: 2em;
+  grid-column-start: 2;
 
 }
 
 #house_ad > form { 
   display: inline-block;
-  margin-left: 2em;
+  margin: 4em 0em;
 }
 
-#house_ad > form > a { 
-  font-family: var(--general-font-family);
-}
-
-
-#house_ad > form > button{
+#house_ad > form > button {
 
   background: var(--main-color);
   color: var(--panel-color);
   font-family: sans-serif;
-  font-size: 1em;
+  font-size: 0.8em;
   border: none;
   border-radius: 7px;
   text-transform: uppercase;
@@ -859,7 +927,7 @@ body > #messages .success {
   margin-left: 3em;
 }
 
-#house_ad > form > a >input{
+#house_ad > form > a > input, #house_ad > form > p > input{
 
   background: var(--bg-color);
   color: var(--black-color);
@@ -872,103 +940,75 @@ body > #messages .success {
   max-width: 7em;
   height: 0.7em;
   width: 150%;
-  margin-left: 3em;
+  margin-left: 1em;
 }
 
-
-#house_ad > form > button{
-
-  background: var(--main-color);
-  color: var(--panel-color);
-  font-family: sans-serif;
-  font-size: 1em;
-  border: none;
-  border-radius: 7px;
-  text-transform: uppercase;
-  margin-top: 2em;
-  max-width: 7em;
-  height: 3em;
-  width: 150%;
-  margin-left: 3em;
-}
-
-#house_ad > form > a >input{
-  background: var(--bg-color);
-  color: var(--black-color);
-  font-family: sans-serif;
-  font-size: 1em;
-  border: solid;
-  border-radius: 7px;
-  border-width: 1px;
-  text-transform: uppercase;
-  max-width: 7em;
-  height: 0.7em;
-  width: 150%;
-  margin-left: 3em;
+.rating {
+  margin-left: 3.4em;
 }
 
 /*
 * Contact us
 */
 
+#contacts{
+  
+  background-color: var(--bg-color);
+}
+
 #contacts h1{
+  width: 100%;
   margin: 0;
   justify-content: space-evenly;
-  top: 250px;
+  top: 35%;
   color: var(--bg-color);
+  text-align: center;
   position: absolute;
-  left: 20%;
+  font-family: var(--general-font-family);
   font-size: 6.5em;
-  text-shadow:  1px 1px 0 var(--dark-color),
-  -1px 1px 0 var(--dark-color),
-  1px -1px 0 var(--dark-color),
-  -1px -1px 0 var(--dark-color),
-  0px 1px 0 var(--dark-color),
-  0px -1px 0 var(--dark-color),
-  -1px 0px 0 var(--dark-color),
-  1px 0px 0 var(--dark-color),
-  2px 2px 0 var(--dark-color),
-  -2px 2px 0 var(--dark-color),
-  2px -2px 0 var(--dark-color),
-  -2px -2px 0 var(--dark-color),
-  0px 2px 0 var(--dark-color),
-  0px -2px 0 var(--dark-color),
-  -2px 0px 0 var(--dark-color),
-  2px 0px 0 var(--dark-color),
-  1px 2px 0 var(--dark-color),
-  -1px 2px 0 var(--dark-color),
-  1px -2px 0 var(--dark-color),
-  -1px -2px 0 var(--dark-color),
-  2px 1px 0 var(--dark-color),
-  -2px 1px 0 var(--dark-color),
-  2px -1px 0 var(--dark-color),
-  -2px -1px 0 var(--dark-color);
+  text-shadow: 0px 0px 15px var(--dark-color);
 }
 
 #contacts img {
   background-size: 100%;
   position: relative;
   width: 100%;
+  
+
 }
 
 #rectangles {
   display: flex;
   position: absolute;
-  width: 100%;
+  width: 50%;
+  margin-left: 25%;
   justify-content: space-evenly;
-  top: 80%;
+  top: 60%;
   flex-wrap: wrap;
 }
 
 #rectangles div {
-  background: var(--ligth-blue);
+  background: var(--bg-color);
   padding: 2em;
-  width: 40%;
-  border-radius: 25px;
+  width: 30%;
+  border-radius: 15px;
   text-align: center;
+  box-shadow: 0px 0px 15px var(--light-color);
+  
+  background:rgba(255,255,255,0.9);
 }
 
-#reservation { 
+#rectangles div h3,p{
+  margin: 1em;
+  font-family: var(--general-font-family);
+  padding: 0em;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.reservation { 
   grid-column-start: 1;
   grid-column-end: 3;
   display: grid;
@@ -978,22 +1018,37 @@ body > #messages .success {
   width: 80vw;
 }
 
-#reservation .Info {
+.reservation .Info {
   grid-column-start: 2;
   grid-column-end: 3;
   padding: 1em;
+  width: 100%;
 }
 
-#reservation .someImage {
+.reservation .defaultImage,  .reservation .not_defaultImage{
   grid-column-start: 1;
   grid-column-end: 2;
-  padding: 2em;
+  padding: 1em;
   width: max-content;
+}
+
+
+
+.ReservationInfo {
+  padding: 0.5em;
+  margin: 0em;
+  font-size: 1.3em;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-family: var(--font-family);
+
 }
 
 /*  Responsive design */
 @media(max-width:840px) {
-  .someImage > img, #myhouseImage > img {
+  .someImage > img, .myhouseImage > img {
     display: none;
   }
 
@@ -1093,7 +1148,7 @@ body > #messages .success {
     width: 80vw;
   }
 
-  #editProfile input, #myhouseImage, #listing input[type="submit"], #edit_house input[type="submit"]  {
+  #editProfile input, .myhouseImage, #listing input[type="submit"], #edit_house input[type="submit"], .reservationInfo   {
     width: 100%;
     font-size: 0.6em;
     grid-column-start: 1;
@@ -1109,9 +1164,9 @@ body > #messages .success {
     padding-left: 2em;
   }
 
-  #edit_house, #edit_house textarea, #reservation > .Info {
+  #edit_house, #edit_house textarea, .reservation > .Info {
     font-size: 0.6em;
-    padding: 0em;
+    padding: 0.4em;
   }
 
   #Info { 
@@ -1119,14 +1174,14 @@ body > #messages .success {
     margin: 0em;
   }
 
-  #reservation > .Info {
+  .reservation > .Info {
     margin: 0.2em;
     text-align: center;
     grid-column-start: 1;
     font-size: 0.7em;
   }
 
-  #reservation {
+  .reservation {
     padding: 0em;
     margin: 0em;
   }
@@ -1160,5 +1215,21 @@ body > #messages .success {
   #myUL {
     width: 70px;
   }
+
+  #signup textarea {
+    width: 85vw;
+  }
+  
+  #myInput, #datepicker, #price, #submit {
+    font-size: 0.6em;
+  }
+
+  #personImg > h1 {
+
+    font-family: var(--general-font-family);
+
+  }
+
+
 
 }

@@ -14,7 +14,7 @@
   // Lists of all houses
   $lists = getHouses();
   foreach ($lists as $k => $list)
-    $lists[$k]['list_items'] = getHouseItems($list['idHabitacao']);
+    $lists[$k]['list_items'] = getHouseItems($list['idHabitacao']); 
 
   draw_header($_SESSION['username']);
   draw_house_ad($house, $lists);

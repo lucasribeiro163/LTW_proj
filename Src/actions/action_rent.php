@@ -37,16 +37,19 @@
     }
   }
 
-  if($nrpeople > $max_people['0']['maxHospedes'])
+  if($nrpeople > $max_people['0']['maxHospedes']){
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'This house cant fit that many people!');
+    die(header("Location: ../pages/house.php?house=$house_id"));
+  }
 
   if($available){
     $reservas = createReservation($check_in, $check_out, $nrpeople, $precoNoite, $house_id);   
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Reservation was successful!');
+    header("Location: ../pages/myReservations.php");
   }
-  else
+  else{
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Those dates aren\'t available!');
- 
-  header("Location: ../pages/house.php?house=$house_id");
+    die(header("Location: ../pages/house.php?house=$house_id"));
+  }
 
 ?>
