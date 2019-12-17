@@ -51,7 +51,7 @@ function draw_header($username) {
               <input type="text" id="datepicker" placeholder="Search for dates.."/>
               <link rel="stylesheet" type="text/css" href="../includes/calendar/css/lightpick.css">
               <input type="text" id="price"  placeholder="Insert max price...">
-              <input type="button" id="submit" onmousedown="submit()" value="Search"/>
+              <input type="text" id="submit" onmousedown="submit()" value="Search"/>
 
               <!-- Script for calender -->
               <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>

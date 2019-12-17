@@ -64,10 +64,13 @@
     foreach ($list['list_items'] as $item){
       if($item['idHabitacao'] == $house){
         $precoNoite = $item['precoNoite'];
+        $house_id = $item['classificacaoHabitacao'];
         $morada = $item['morada'];
         $country = getCountry($item['idPais']);
         $idHabitacao = $item['idHabitacao'];
         $class = "defaultImageMedium";
+        $title = $item['titulo'];
+        $description = $item['descricaoHabitacao'];
         if(getHousePhoto($item['idHabitacao']) == 0) 
           $image = "../images/houses/thumbs_medium/default0.jpg";
         else{
