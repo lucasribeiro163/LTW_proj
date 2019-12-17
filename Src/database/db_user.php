@@ -39,7 +39,7 @@
   function update_username($username, $newUsername) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('UPDATE Utilizador SET username = ? WHERE username = ?');
-    $stmt->execute(array($username, $newUsername));
+    $stmt->execute(array($newUsername, $username));
   }
 
   function update_name($username, $name) {

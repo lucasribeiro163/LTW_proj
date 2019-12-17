@@ -33,6 +33,8 @@
 
   try {
     update_username($oldUsername, $username);
+    session_destroy();
+    session_start();
     $_SESSION['username'] = $username; //change log username to new username
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Our username was updated!');
     header('Location: ../pages/profile.php');
