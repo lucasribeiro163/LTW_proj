@@ -93,6 +93,82 @@ select {
   margin-inline-start: 1.9em;
 }
 
+
+#ShowComments {
+
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5em;
+  color: var(--dark-color);
+  background-color: var(--light-grey);
+  font-weight: bold;
+  border-width: 0.05em;  
+  border: transparent;
+  font-family: var(--general-font-family);
+  border-radius: 2%;
+  box-shadow: 0 4px 6px var(--medium-color);
+  margin-bottom: 2em;
+  padding: 1em;
+}
+
+#houseComments > li{
+
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5em;
+  color: var(--dark-color);
+  background-color: var(--light-grey);
+  font-weight: bold;
+  border-width: 0.05em;  
+  border: transparent;
+  font-family: var(--general-font-family);
+  border-radius: 2%;
+  box-shadow: 0 4px 6px var(--medium-color);
+
+  margin-bottom: 1em;
+  display: grid;
+
+
+}
+
+#houseComments > li > img{
+
+  max-width: 3em;
+  grid-column-start: 1;
+  margin-right: 0em;
+
+}
+
+#houseComments > li > #comment_article{
+
+  grid-column-start: 2;
+  text-align: right;
+
+}
+
+
+
+
+
+#comment_article > p {
+
+  padding: 0em;
+  margin:0em;
+}
+
+#houseComments > li > #comment_article > h3, #comment_stars{
+
+  margin-right: 1em;
+  margin-bottom: 1em;
+  text-align: right;
+
+}
+
+
 /* buttons to submit are blue rectangle */
 input[type="submit"]{
   background: var(--main-color);
@@ -1229,6 +1305,9 @@ body > #messages .success {
     font-family: var(--general-font-family);
 
   }
+
+  
+
 
 
 
