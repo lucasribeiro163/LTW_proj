@@ -1,6 +1,6 @@
 'use strict'
 var countries;
-var country = null, date1 = null, date2 = null
+var country = null, date1 = null, date2 = null, price = null
 var found = 0
 
 let input = document.getElementById("myInput");
@@ -20,7 +20,7 @@ async function getCountries() {
             li.textContent = countries[i];
             li.addEventListener("click", function () {
                 input.value = countries[i]
-                window.found = 1
+                found = 1
                 filterResults()
             });
             ul.appendChild(li);
@@ -45,7 +45,7 @@ function filterResults() {
     filter = textInput.value.toUpperCase();
     ul = document.getElementById("myUL");
     li = ul.getElementsByTagName("li");//todas as opcoes
-    if(window.found == 0) {
+    if(found == 0) {
     for (i = 0; i < li.length; i++) {
         a = li[i];
         txtValue = a.textContent || a.innerText;
@@ -63,7 +63,7 @@ function filterResults() {
         for (i = 0; i < li.length; i++) {
             li[i].style.display = "none";
         }
-        
+        country = input.value
     }
 
 }
@@ -84,9 +84,5 @@ function getResults() {
 */
 function submit() {
     getResults();
-    country = document.getElementById("myInput").value
-    date1 = picker.getStartDate().format("YYYY-MM-DD")
-    date2 = picker.getEndDate().format("YYYY-MM-DD")
-    price = document.getElementById("price")
     window.location = "../../Src/pages/main_page.php?country=" + country + "&date1=" + date1 + "&date2=" + date2 + "&price=" + price.value;
 }
