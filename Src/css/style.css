@@ -1126,8 +1126,11 @@ body > #messages .success {
   padding:1em;
   display: grid;
 }
+#comments input[type="number"], #comments textarea {
+  width: 20vw;
+}
 
-#comments input {
+#comments input[type="submit"]{
   grid-column-start: 1;
 }
 

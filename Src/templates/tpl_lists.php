@@ -98,7 +98,7 @@
         <input type="hidden" name="house_id" value="<?=htmlspecialchars($house)?>" />
         <textarea name="comment" rows="2" cols="25" placeholder="give us feedback"></textarea>
         <input type="number" name="stars" min=1 max=5 >
-        <button type="submit">Comment</button>
+        <input type="submit" value="Comment"/>
       </form> 
       </section>
 
