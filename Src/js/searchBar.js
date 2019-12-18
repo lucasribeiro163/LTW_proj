@@ -2,6 +2,7 @@
 var countries;
 var country = null, date1 = null, date2 = null, price = null
 var found = 0
+price = document.getElementById("price");
 
 let input = document.getElementById("myInput");
 input.addEventListener('keyup', filterResults); 
@@ -83,6 +84,6 @@ function getResults() {
 * Final choice
 */
 function submit() {
-    getResults();
+    getResults();  
     window.location = "../../Src/pages/main_page.php?country=" + country + "&date1=" + date1 + "&date2=" + date2 + "&price=" + price.value;
 }

@@ -58,7 +58,7 @@
 <?php } ?>
 
 
-<?php function draw_house_ad($house, $lists) {
+<?php function draw_house_ad($loged_in_user,$house, $lists) {
 
   foreach($lists as $list){
     foreach ($list['list_items'] as $item){
@@ -112,10 +112,11 @@
       <button id="rent_button">Rent</button>
     </form>
 
-      <section class="comments">
-      <button type="button" id="ShowComments" onclick="getComments()" >Show Comments</button>
-      <ul id="houseComments" ></ul>
-      </section>
+    <section class="comments">
+    <button type="button" id="ShowComments" onclick="getComments()" >Show Comments</button>
+    <ul id="houseComments" ></ul>
+    </section>
+
     </section>
 <?php }
 
