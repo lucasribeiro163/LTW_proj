@@ -93,6 +93,15 @@
         <a id="StarRating3"></a>
         <a id="StarRating4"></a>
       </section>
+      <section id="comments">
+      <form action="../actions/action_add_comment.php" method="post">
+        <input type="hidden" name="house_id" value="<?=htmlspecialchars($house)?>" />
+        <textarea name="comment" rows="2" cols="25" placeholder="give us feedback"></textarea>
+        <input type="number" name="stars" min=1 max=5 >
+        <button type="submit">Comment</button>
+      </form> 
+      </section>
+
     </section>
 
     <section id="house_ad">

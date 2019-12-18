@@ -1122,6 +1122,16 @@ body > #messages .success {
 
 }
 
+#comments {
+  padding:1em;
+  display: grid;
+}
+
+#comments input {
+  grid-column-start: 1;
+}
+
+
 /*  Responsive design */
 @media(max-width:840px) {
 

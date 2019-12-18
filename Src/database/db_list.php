@@ -322,19 +322,32 @@
     }
   }
 
-/*
-* Get comments with photo and username
-*/
-function getComments($houseID){
-  
-  $db = Database::instance()->db();
-  $stmt = $db->prepare('SELECT ClassificacaoPorCliente.descricaoAnfitriao,Utilizador.picture, Utilizador.username , ClassificacaoPorCliente.classificacaoAnfitriao
-  FROM ClassificacaoPorCliente,Reserva,Efetua,Utilizador
-  WHERE ClassificacaoPorCliente.idReserva=Reserva.idReserva and Reserva.idReserva=Efetua.idReserva
-  and Efetua.idCliente=ClassificacaoPorCliente.idCliente and Utilizador.id=Efetua.idCliente and Reserva.idHabitacao= ?');
-  $stmt->execute(array($houseID));
-  return $stmt->fetchAll(); 
-}
+  /*
+  * Get comments with photo and username
+  */
+  function getComments($houseID){
+    
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('SELECT ClassificacaoPorCliente.descricaoAnfitriao,Utilizador.picture, Utilizador.username , ClassificacaoPorCliente.classificacaoAnfitriao
+    FROM ClassificacaoPorCliente,Reserva,Efetua,Utilizador
+    WHERE ClassificacaoPorCliente.idReserva=Reserva.idReserva and Reserva.idReserva=Efetua.idReserva
+    and Efetua.idCliente=ClassificacaoPorCliente.idCliente and Utilizador.id=Efetua.idCliente and Reserva.idHabitacao= ?');
+    $stmt->execute(array($houseID));
+    return $stmt->fetchAll(); 
+  }
+
+  /**
+   * Inserts a new house into the database. return the id of the house inserted
+   */
+  function insert_comment($stars,  $description, $id) {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('INSERT INTO ClassificacaoPorCliente VALUES(? , ? , ? , ? , ? , ? , ?, ? , ?)');
+    //auto increment id of the houses
+    $stmt->execute(array (NULL, $stars, NULL, NULL, NULL, $stars, $description, NULL, $id));
+    return $db->lastInsertId();
+  }
+
+
 
 
 ?>
