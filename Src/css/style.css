@@ -1132,6 +1132,8 @@ body > #messages .success {
 
 #comments input[type="submit"]{
   grid-column-start: 1;
+  width: 10vw;
+  margin-inline-start: 7em;
 }
 
 
