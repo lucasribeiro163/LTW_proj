@@ -42,8 +42,11 @@
     die(header("Location: ../pages/house.php?house=$house_id"));
   }
 
+  $user_id = getIdByUsername($_SESSION['username']);
+
   if($available){
-    $reservas = createReservation($check_in, $check_out, $nrpeople, $precoNoite, $house_id);   
+    $reservas = createReservation($check_in, $check_out, $nrpeople, $precoNoite, $house_id, $user_id);   
+    //print_r($reservas);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Reservation was successful!');
     header("Location: ../pages/myReservations.php");
   }

@@ -20,6 +20,7 @@
   $user_id = getPersonId($_SESSION['username']);
   $reservation_ids = getReservationById($user_id);
 
+
   foreach ($reservation_ids as $k => $reservation_id)
     $houses[$k] = getHouseOfReservation($reservation_id['idReserva'])[0];
 
@@ -30,6 +31,8 @@
   else{
       $houses = -1;
   }
+
+
 
   draw_header($_SESSION['username']);
   draw_my_reservations($houses);

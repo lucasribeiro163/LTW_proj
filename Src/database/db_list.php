@@ -151,10 +151,17 @@
   /**
    * Creates a new reservation an returns the array of reservations parameters
    */
-  function createReservation($check_in, $check_out, $nr_people, $price, $house_id) {
+  function createReservation($check_in, $check_out, $nr_people, $price, $house_id, $client_id) {
     $db = Database::instance()->db();
     $stmt = $db->prepare('INSERT INTO Reserva VALUES(NULL, ? , ? , ? , ? , ? , ? )');
-    $stmt->execute(array($check_in, $check_out, $nr_people, $price, 0, $house_id));
+    $stmt->execute(array($check_in, $check_out, $nr_people, $price, 1, $house_id));
+
+    $last_id = $db->lastInsertId();
+
+    
+    $db2 = Database::instance()->db();
+    $stmt = $db2->prepare('INSERT INTO Efetua VALUES(?, ? )');
+    $stmt->execute(array($client_id[0]['id'], $last_id));
 
     $db1 = Database::instance()->db();
     $stmt2 = $db1->prepare('SELECT * FROM Reserva');
