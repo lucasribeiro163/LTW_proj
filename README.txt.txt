@@ -7,3 +7,5 @@ O projeto vou dividido equalitivamente por todos.
 
 Utilizador: Marta
 password: leao3
+
+Bibliotecas utilizadas: Litepicker - https://github.com/wakirin/Litepicker
