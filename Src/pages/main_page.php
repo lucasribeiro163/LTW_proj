@@ -70,7 +70,7 @@
   draw_footer();
 
   function compareDeepValue($val1, $val2)
-{
-   return strcmp($val1['idHabitacao'], $val2['idHabitacao']);
-}
+  {
+    return strcmp($val1['idHabitacao'], $val2['idHabitacao']);
+  }
 ?>

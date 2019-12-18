@@ -51,9 +51,9 @@ function draw_header($username) {
               </div>
             </div>
             <div id="searchInputs">
-              <input type="text" id="myInput" onkeyup="filterResults()" placeholder="Search for cities.." title="Type in a name">
+              <input type="text" id="myInput" placeholder="Search for countries.." title="Type in a name">
               <ul id="myUL" ></ul>
-              <input type="text" id="datepicker" placeholder="Search for dates.."/>
+              <input type="text" id="datepicker" placeholder="Search for dates.." />
               <input type="number" id="price" onclick="getResults()" placeholder="Insert max price..." min=0>
               <button id="submit" type="button" onclick="submit()">Search</button>
             </div>

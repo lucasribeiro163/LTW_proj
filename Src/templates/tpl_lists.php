@@ -117,8 +117,6 @@
     <ul id="houseComments" ></ul>
     </section>
 
-    <button type="button" id="ShowComments" onclick="getComments()" >Show Comments</button>
-
     </section>
 <?php }
 
