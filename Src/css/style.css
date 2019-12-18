@@ -1048,6 +1048,14 @@ body > #messages .success {
 
 /*  Responsive design */
 @media(max-width:840px) {
+
+  
+
+section {
+  background-color: aqua ;
+}
+
+
   .someImage > img, .myhouseImage > img {
     display: none;
   }
